@@ -8,5 +8,7 @@ Developer-relations samples for edge AI and on-device intelligence.
   including embedded Linux and Arduino UNO Q guidance.
 - [`AURA/`](AURA/) — a privacy-first physical-AI agent that combines vision,
   speech, memory, local reasoning, and on-device deployment workflows.
+- [`VSaaS/`](VSaaS/) — an edge-first video intelligence prototype that turns
+  camera observations into privacy-safe, searchable event metadata.
 
 See each project README for setup, dependencies, and usage instructions.
