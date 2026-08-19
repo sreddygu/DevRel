@@ -1,0 +1,98 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Local config (keeps .env.example tracked, ignores the live copy)
+.env
+.env.local
+
+# Tests / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.cache
+coverage.xml
+
+# Type checkers / linters
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.ruff_cache/
+.pyre/
+.pytype/
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ── AURA runtime state (generated on-device / at runtime) ──
+*.log
+output/
+# Local memory database + vector store (Milestone 3)
+aura.db
+*.sqlite
+*.sqlite3
+.chroma/
+chroma/
+faiss_index/
+
+# ── Model artifacts (large, fetched/exported on demand — never committed) ──
+*.onnx
+*.onnxsim_done
+*.bin
+*.dlc
+*.gguf
+*.pt
+*.pth
+*.tflite
+*.raw
+models/*
+!models/README.md
+!models/.gitkeep
+
+# ── Captured media (camera frames, audio, recordings) ──
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.webp
+*.mp4
+*.avi
+*.wav
+*.mp3
+# ...but keep intentional fixtures / demo assets
+!examples/**/fixture_*
+!docs/**/*.png

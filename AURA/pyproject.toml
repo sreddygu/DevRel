@@ -1,0 +1,132 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aura"
+version = "0.1.0"
+description = "AURA — Autonomous Understanding & Responsive Agent. A privacy-first Physical-AI agent that sees, hears, remembers, reasons, and acts entirely on-device on the Arduino VENTUNO Q. No cloud dependency."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [
+    { name = "AURA Contributors" },
+]
+keywords = [
+    "physical-ai",
+    "edge-ai",
+    "agent",
+    "vlm",
+    "yolo",
+    "whisper",
+    "local-llm",
+    "arduino",
+    "ventuno-q",
+    "on-device",
+    "privacy-first",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Video :: Capture",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+# Intentionally light base install so the repo clones and imports on-device
+# (VENTUNO Q) with only the essentials. The heavy, per-milestone runtimes
+# (whisper, chromadb/faiss, melotts, langgraph, opencv) live in the optional
+# groups below and are pulled in as each milestone is implemented.
+dependencies = [
+    "numpy>=1.24",
+    "pydantic>=2.7",
+]
+
+[project.optional-dependencies]
+# 👁️  Milestone 1 — Eyes: camera capture + YOLO (ONNX) detection.
+vision = [
+    "opencv-python>=4.9",
+    "onnxruntime>=1.18",
+    "Pillow>=10.0",
+]
+# 👂🗣️  Milestone 2 — Ears/Voice: Whisper STT + piper TTS.
+# On PC: openai-whisper + a piper binary on PATH. On-device (IQ8/VENTUNO Q)
+# the heavy engines are prebuilt aarch64 binaries (whisper.cpp `whisper-cli`,
+# `piper`) driven via the same injectable-backend seam — no wheels needed.
+speech = [
+    "openai-whisper>=20231117",
+    "sounddevice>=0.4",  # mic capture + WAV playback (optional)
+]
+# 📚  Milestone 3 — Memory: SQLite (stdlib) + vector store.
+memory = [
+    "chromadb>=0.5",
+]
+# 🧠🤖  Milestone 4/5 — Brain/Action: local LLM client + agent tools.
+agent = [
+    "httpx>=0.27",
+    "langgraph>=0.2",
+]
+# 🖥️  Dashboard: FastAPI + Streamlit UI.
+dashboard = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "streamlit>=1.36",
+]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "ruff>=0.4",
+    "mypy>=1.8",
+    "build>=1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/your-org/AURA"
+Issues   = "https://github.com/your-org/AURA/issues"
+
+[project.scripts]
+aura = "aura.cli:main"
+
+# ─── Build configuration ─────────────────────────────────────────────────
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/aura"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/aura",
+    "tests",
+    "docs",
+    "examples",
+    "scripts",
+    "README.md",
+    "LICENSE",
+    "pyproject.toml",
+]
+
+# ─── Tooling ─────────────────────────────────────────────────────────────
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-q --strict-markers"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501"]  # line length handled by line-length
+
+[tool.mypy]
+python_version = "3.10"
+strict = false
+ignore_missing_imports = true

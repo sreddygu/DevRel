@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local datasets / large files
+speech_commands_v0.02/
+*.tar.gz
+*.zip
+
+# Exported artifacts
+*.joblib
+*.onnx
+*.onnx.data
+*.tflite
+*.json
+*.pt
+output/
+
+# OS
+.DS_Store
+Thumbs.db
