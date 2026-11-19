@@ -28,8 +28,26 @@ This workspace collects hands-on Qualcomm developer-relations projects, learning
 
 ## Tooling and References
 
-- [DevRel Skills](devrel-skills/)
 - [QLI Dogfooding](qli_dogfooding/)
+
+## Skills Catalog
+
+[`skills.json`](skills.json) is the Academy Skills Hub entry point. It directly
+publishes the shared Academy skills and federates project catalogs that contain
+published `SKILL.md` procedures. Projects without skill documents are not
+listed as sources, so the catalog contains only installable, documented skills.
+
+Each catalog level also has a sibling `skills-metadata/` directory. It contains
+one concise `<skill-id>.md` discovery document per published skill, linked to
+its manifest entry and `SKILL.md` procedure.
+
+| Shared skill | Use when |
+| --- | --- |
+| [`project-onboarding`](skills/project-onboarding/) | Starting, reviewing, or promoting an Academy project. |
+| [`evidence-and-compatibility`](skills/evidence-and-compatibility/) | Recording reproducible evidence and supported environments. |
+| [`release-bundle-preparation`](skills/release-bundle-preparation/) | Preparing an incubating, preview, stable, or LTS release. |
+| [`public-asset-license-review`](skills/public-asset-license-review/) | Reviewing assets before public distribution. |
+| [`device-readiness`](skills/device-readiness/) | Establishing a hardware target's documented readiness. |
 
 ## Repository Guidance
 

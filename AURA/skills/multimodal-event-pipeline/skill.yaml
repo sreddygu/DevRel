@@ -17,7 +17,7 @@ synapse:
   visibility: "public"
   maturity: "pilot"
   developer_journey_stage: ["platform-experience"]
-  dependencies: ["aura-agent-orchestration", "p3-evidence-and-compatibility"]
+  dependencies: ["aura-agent-orchestration", "evidence-and-compatibility"]
   authoritative_docs: ["../../README.md", "../../tests/test_vision.py", "../../tests/test_speech.py", "../../tests/test_memory.py"]
 contract:
   prerequisites: ["Completed AURA runtime setup", "Selected pipeline stages"]

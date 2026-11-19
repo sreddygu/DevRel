@@ -25,9 +25,9 @@ samples/mobilenetv2_npu_iq9075/
 | Status | **Blocked, structurally, on this board** — `onnxruntime`'s Linux device-discovery code expects a DRM GPU node with a `vendor` file; this board's Hexagon NPU is exposed via `/dev/fastrpc-*` instead, which that code doesn't recognize. No newer `onnxruntime`/`onnxruntime-qnn` release fixes this. | **Works** — verified live, measured latency. Requires the board's on-device QAIRT version to be ≥ the version the binary was compiled for (`qnn-net-run --version`). |
 | Verified latency | N/A (never active) | ~2.5–2.7 ms mean, ~325–350 FPS on Hexagon HTP v73 |
 
-Full findings, environment pinning, and caveats:
-[`docs/debugging/8. NPU_Profiling_MobileNetV2_IQ9075.md`](../../docs/debugging/8.%20NPU_Profiling_MobileNetV2_IQ9075.md)
-(local source of truth — not committed to the public repo).
+The findings, environment pinning, and caveats are summarized here. The
+detailed local profiling record is intentionally not committed to this public
+repository.
 
 **Caveat carried over from that report:** the CPU path here profiles
 the ONNX Model Zoo `mobilenetv2.onnx` export; the NPU context-binary

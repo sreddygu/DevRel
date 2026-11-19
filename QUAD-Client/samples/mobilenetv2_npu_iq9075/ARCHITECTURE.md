@@ -61,10 +61,9 @@ on-device invocation for whichever transport the board supports.
 
 ## KPIs
 
-Verified latency numbers, environment pinning, and reproduction
-commands live in
-[`docs/debugging/8. NPU_Profiling_MobileNetV2_IQ9075.md`](../../docs/debugging/8.%20NPU_Profiling_MobileNetV2_IQ9075.md)
-(local source of truth — not committed to the public repo). Summary:
+Verified latency numbers, environment pinning, and reproduction commands are
+summarized below. The detailed local profiling record is intentionally not
+committed to this public repository. Summary:
 
 | Backend | Latency (mean) | Throughput |
 |---|---|---|

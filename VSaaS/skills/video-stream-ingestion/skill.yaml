@@ -17,7 +17,7 @@ synapse:
   visibility: "public"
   maturity: "pilot"
   developer_journey_stage: ["enablement", "platform-experience"]
-  dependencies: ["p3-device-readiness", "p3-evidence-and-compatibility"]
+  dependencies: ["device-readiness", "evidence-and-compatibility"]
   authoritative_docs: ["../../README.md", "../../scripts/run_edge_sim.sh", "../../scripts/run_edge_camera.sh"]
 contract:
   prerequisites: ["VSaaS source checkout", "Approved source and retention decision for camera mode"]

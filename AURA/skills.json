@@ -1,0 +1,95 @@
+{
+    "manifestVersion":  1,
+    "skills":  [
+                   {
+                       "name":  "aura-agent-orchestration",
+                       "displayName":  "AURA Agent Orchestration",
+                       "owner":  "sreddygu",
+                       "description":  "Prepare and inspect an AURA milestone runtime without activating device services by default.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "general",
+                       "tags":  [
+                                    "academy",
+                                    "aura",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "AURA Agent Orchestration"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  "skills/aura-agent-orchestration",
+                                            "docPath":  "skills/aura-agent-orchestration/SKILL.md",
+                                            "files":  [
+                                                          "skills/aura-agent-orchestration/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "multimodal-event-pipeline",
+                       "displayName":  "AURA Multimodal Event Pipeline",
+                       "owner":  "sreddygu",
+                       "description":  "Validate AURA perception and memory event handling with scoped, privacy-aware evidence.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "general",
+                       "tags":  [
+                                    "academy",
+                                    "aura",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "AURA Multimodal Event Pipeline"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  "skills/multimodal-event-pipeline",
+                                            "docPath":  "skills/multimodal-event-pipeline/SKILL.md",
+                                            "files":  [
+                                                          "skills/multimodal-event-pipeline/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "on-device-action-validation",
+                       "displayName":  "AURA On-Device Action Validation",
+                       "owner":  "sreddygu",
+                       "description":  "Validate AURA action policy and safety limits before approved device actions.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "hardware",
+                       "tags":  [
+                                    "academy",
+                                    "aura",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "AURA On-Device Action Validation"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  "skills/on-device-action-validation",
+                                            "docPath":  "skills/on-device-action-validation/SKILL.md",
+                                            "files":  [
+                                                          "skills/on-device-action-validation/**"
+                                                      ]
+                                        }
+                                    ]
+                   }
+               ]
+}

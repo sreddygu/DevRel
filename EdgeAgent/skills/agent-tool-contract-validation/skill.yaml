@@ -17,7 +17,7 @@ synapse:
   visibility: "public"
   maturity: "pilot"
   developer_journey_stage: ["enablement", "platform-experience"]
-  dependencies: ["edge-agent-runtime-setup", "p3-evidence-and-compatibility"]
+  dependencies: ["edge-agent-runtime-setup", "evidence-and-compatibility"]
   authoritative_docs: ["../../devrel_runtime/src/devrel_client/cli.py", "../../devrel_runtime/tests/test_cli.py", "../../devrel_runtime/tests/test_connection.py"]
 contract:
   prerequisites: ["Completed runtime setup", "Runtime-supplied transport settings"]

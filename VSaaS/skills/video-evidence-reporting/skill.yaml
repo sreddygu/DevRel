@@ -17,7 +17,7 @@ synapse:
   visibility: "public"
   maturity: "pilot"
   developer_journey_stage: ["platform-experience"]
-  dependencies: ["p3-evidence-and-compatibility", "p3-public-asset-license-review"]
+  dependencies: ["evidence-and-compatibility", "public-asset-license-review"]
   authoritative_docs: ["../../scripts/export_events_csv.py", "../../scripts/replay_events.py", "../../benchmarks/benchmark_log.json"]
 contract:
   prerequisites: ["Known event source and data classification", "Approval for any export or replay"]

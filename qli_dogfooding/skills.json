@@ -1,0 +1,335 @@
+{
+    "manifestVersion":  1,
+    "skills":  [
+                   {
+                       "name":  "ai-inference-benchmark",
+                       "displayName":  "AI Inference Benchmark",
+                       "owner":  "sreddygu",
+                       "description":  "Measure a discovered QLI model command with explicit warmup and iteration settings.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "hardware",
+                       "tags":  [
+                                    "academy",
+                                    "qli_dogfooding",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "AI Inference Benchmark"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "2.0.0",
+                                            "path":  "skills/ai-inference-benchmark",
+                                            "docPath":  "skills/ai-inference-benchmark/SKILL.md",
+                                            "files":  [
+                                                          "skills/ai-inference-benchmark/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "ai-model-execution",
+                       "displayName":  "AI Model Execution",
+                       "owner":  "sreddygu",
+                       "description":  "Run a discovered QLI model command on a supplied image and capture the parsed result.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "hardware",
+                       "tags":  [
+                                    "academy",
+                                    "qli_dogfooding",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "AI Model Execution"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "1.0.0",
+                                            "path":  "skills/ai-model-execution",
+                                            "docPath":  "skills/ai-model-execution/SKILL.md",
+                                            "files":  [
+                                                          "skills/ai-model-execution/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "baseline-evidence-collection",
+                       "displayName":  "Baseline Evidence Collection",
+                       "owner":  "sreddygu",
+                       "description":  "Collect non-destructive SSH evidence for a QLI device readiness assessment.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "general",
+                       "tags":  [
+                                    "academy",
+                                    "qli_dogfooding",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "Baseline Evidence Collection"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "1.0.0",
+                                            "path":  "skills/baseline-evidence-collection",
+                                            "docPath":  "skills/baseline-evidence-collection/SKILL.md",
+                                            "files":  [
+                                                          "skills/baseline-evidence-collection/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "developer-readiness-assessment",
+                       "displayName":  "Developer Readiness Assessment",
+                       "owner":  "sreddygu",
+                       "description":  "Assess developer readiness across device lifecycle, connectivity, media, storage, AI, agents, debugging, deployment, evidence, workbook, and report workflows.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "general",
+                       "tags":  [
+                                    "academy",
+                                    "qli_dogfooding",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "Developer Readiness Assessment"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "1.1.0",
+                                            "path":  "skills/developer-readiness-assessment",
+                                            "docPath":  "skills/developer-readiness-assessment/SKILL.md",
+                                            "files":  [
+                                                          "skills/developer-readiness-assessment/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "device-connectivity-validation",
+                       "displayName":  "Device Connectivity Validation",
+                       "owner":  "sreddygu",
+                       "description":  "Check TCP reachability to a QLI device without changing network configuration.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "hardware",
+                       "tags":  [
+                                    "academy",
+                                    "qli_dogfooding",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "Device Connectivity Validation"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "2.0.0",
+                                            "path":  "skills/device-connectivity-validation",
+                                            "docPath":  "skills/device-connectivity-validation/SKILL.md",
+                                            "files":  [
+                                                          "skills/device-connectivity-validation/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "device-identity-discovery",
+                       "displayName":  "Device Identity Discovery",
+                       "owner":  "sreddygu",
+                       "description":  "Inspect local QLI device identity information before selecting device-specific work.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "hardware",
+                       "tags":  [
+                                    "academy",
+                                    "qli_dogfooding",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "Device Identity Discovery"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "1.0.0",
+                                            "path":  "skills/device-identity-discovery",
+                                            "docPath":  "skills/device-identity-discovery/SKILL.md",
+                                            "files":  [
+                                                          "skills/device-identity-discovery/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "diagnostic-log-collection",
+                       "displayName":  "Diagnostic Log Collection",
+                       "owner":  "sreddygu",
+                       "description":  "Collect bounded QLI diagnostics for troubleshooting without changing device state.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "general",
+                       "tags":  [
+                                    "academy",
+                                    "qli_dogfooding",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "Diagnostic Log Collection"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "1.0.0",
+                                            "path":  "skills/diagnostic-log-collection",
+                                            "docPath":  "skills/diagnostic-log-collection/SKILL.md",
+                                            "files":  [
+                                                          "skills/diagnostic-log-collection/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "host-environment-validation",
+                       "displayName":  "Host Environment Validation",
+                       "owner":  "sreddygu",
+                       "description":  "Verify that the host has the tools required for a selected QLI workflow.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "devtools",
+                       "tags":  [
+                                    "academy",
+                                    "qli_dogfooding",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "Host Environment Validation"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "1.0.0",
+                                            "path":  "skills/host-environment-validation",
+                                            "docPath":  "skills/host-environment-validation/SKILL.md",
+                                            "files":  [
+                                                          "skills/host-environment-validation/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "qli-linux-domain",
+                       "displayName":  "QLI Linux Domain",
+                       "owner":  "sreddygu",
+                       "description":  "Context document providing supported-device, platform, safety, and evidence constraints for QLI Linux device skills.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "general",
+                       "tags":  [
+                                    "academy",
+                                    "qli_dogfooding",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "QLI Linux Domain"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "2.0.0",
+                                            "path":  "skills/qli-linux-domain",
+                                            "docPath":  "skills/qli-linux-domain/SKILL.md",
+                                            "files":  [
+                                                          "skills/qli-linux-domain/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "qli-readiness-agent",
+                       "displayName":  "QLI Readiness Agent",
+                       "owner":  "sreddygu",
+                       "description":  "\u003e",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "general",
+                       "tags":  [
+                                    "academy",
+                                    "qli_dogfooding",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "QLI Readiness Agent"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "1.0.0",
+                                            "path":  "skills/qli-readiness-agent",
+                                            "docPath":  "skills/qli-readiness-agent/SKILL.md",
+                                            "files":  [
+                                                          "skills/qli-readiness-agent/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "readiness-report-generation",
+                       "displayName":  "Readiness Report Generation",
+                       "owner":  "sreddygu",
+                       "description":  "Generate synchronized QLI readiness summary, workbook, and report deliverables from verified evidence.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "devtools",
+                       "tags":  [
+                                    "academy",
+                                    "qli_dogfooding",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "Readiness Report Generation"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "2.0.0",
+                                            "path":  "skills/readiness-report-generation",
+                                            "docPath":  "skills/readiness-report-generation/SKILL.md",
+                                            "files":  [
+                                                          "skills/readiness-report-generation/**"
+                                                      ]
+                                        }
+                                    ]
+                   }
+               ]
+}

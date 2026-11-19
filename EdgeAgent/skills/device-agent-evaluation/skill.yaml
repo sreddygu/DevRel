@@ -17,7 +17,7 @@ synapse:
   visibility: "public"
   maturity: "pilot"
   developer_journey_stage: ["platform-experience"]
-  dependencies: ["edge-agent-runtime-setup", "p3-device-readiness", "p3-evidence-and-compatibility"]
+  dependencies: ["edge-agent-runtime-setup", "device-readiness", "evidence-and-compatibility"]
   authoritative_docs: ["../../devrel_runtime/src/devrel_client/cli.py", "../../devrel_runtime/tests/test_local/test_device_agent.py"]
 contract:
   prerequisites: ["User-approved target", "Model or server-artifact reference", "Selected transport"]

@@ -17,7 +17,7 @@ synapse:
   visibility: "public"
   maturity: "pilot"
   developer_journey_stage: ["enablement"]
-  dependencies: ["p3-project-onboarding", "p3-evidence-and-compatibility"]
+  dependencies: ["project-onboarding", "evidence-and-compatibility"]
   authoritative_docs: ["../../README.md", "../../pyproject.toml"]
 contract:
   prerequisites: ["Python 3.10+", "AURA source checkout"]

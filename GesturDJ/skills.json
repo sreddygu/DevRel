@@ -1,0 +1,455 @@
+{
+    "manifestVersion":  1,
+    "skills":  [
+                   {
+                       "name":  "audio-output-integration",
+                       "displayName":  "Audio Output Integration",
+                       "owner":  "sreddygu",
+                       "description":  "Find the board\u0027s audio sink and players, measure how much time each player adds at the default and a small buffer, and choose the setting the live path will use.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "hardware",
+                       "tags":  [
+                                    "academy",
+                                    "gesturdj",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "Audio Output Integration"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  "skills/audio-output-integration",
+                                            "docPath":  "skills/audio-output-integration/SKILL.md",
+                                            "files":  [
+                                                          "skills/audio-output-integration/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "device-and-host-discovery",
+                       "displayName":  "Device and Host Discovery",
+                       "owner":  "sreddygu",
+                       "description":  "Read-only discovery of the developer\u0027s host and target devices (sensor/recognizer board, optional generator board, PC fallback) producing a device profile before any GesturDJ work.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "hardware",
+                       "tags":  [
+                                    "academy",
+                                    "gesturdj",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "Device and Host Discovery"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  "skills/device-and-host-discovery",
+                                            "docPath":  "skills/device-and-host-discovery/SKILL.md",
+                                            "files":  [
+                                                          "skills/device-and-host-discovery/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "gesturdj-agent",
+                       "displayName":  "GesturDJ Agent",
+                       "owner":  "sreddygu",
+                       "description":  "\u003e",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "general",
+                       "tags":  [
+                                    "academy",
+                                    "gesturdj",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "GesturDJ Agent"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  "skills/gesturdj-agent",
+                                            "docPath":  "skills/gesturdj-agent/SKILL.md",
+                                            "files":  [
+                                                          "skills/gesturdj-agent/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "gesturdj-build-journey",
+                       "displayName":  "GesturDJ Build Journey",
+                       "owner":  "sreddygu",
+                       "description":  "Take an independent developer from no setup to a gesture recognizer that is trained, exported, and validated on the machine that will run it, with a gesture-to-music mapping designed. The live mixer and the background music path are planned steps.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "devtools",
+                       "tags":  [
+                                    "academy",
+                                    "gesturdj",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "GesturDJ Build Journey"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  "skills/gesturdj-build-journey",
+                                            "docPath":  "skills/gesturdj-build-journey/SKILL.md",
+                                            "files":  [
+                                                          "skills/gesturdj-build-journey/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "gesture-dataset-preparation",
+                       "displayName":  "Gesture Dataset Preparation",
+                       "owner":  "sreddygu",
+                       "description":  "Choose and prepare the labelled motion dataset (synthetic, public, or the developer\u0027s own capture), check it, and decide whether it can support the gestures wanted before any training.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "hardware",
+                       "tags":  [
+                                    "academy",
+                                    "gesturdj",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "Gesture Dataset Preparation"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.2.0",
+                                            "path":  "skills/gesture-dataset-preparation",
+                                            "docPath":  "skills/gesture-dataset-preparation/SKILL.md",
+                                            "files":  [
+                                                          "skills/gesture-dataset-preparation/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "gesture-event-contract",
+                       "displayName":  "Gesture Event Contract",
+                       "owner":  "sreddygu",
+                       "description":  "The single interface between sensing (IMU or camera/pose) and everything after it.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "hardware",
+                       "tags":  [
+                                    "academy",
+                                    "gesturdj",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "Gesture Event Contract"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  "skills/gesture-event-contract",
+                                            "docPath":  "skills/gesture-event-contract/SKILL.md",
+                                            "files":  [
+                                                          "skills/gesture-event-contract/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "gesture-model-training-and-evaluation",
+                       "displayName":  "Gesture Model Training and Evaluation",
+                       "owner":  "sreddygu",
+                       "description":  "Train the gesture recognizer (scikit-learn baseline or PyTorch), read the held-out result honestly, and decide whether to deploy, collect more data, or change the approach.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "hardware",
+                       "tags":  [
+                                    "academy",
+                                    "gesturdj",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "Gesture Model Training and Evaluation"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.2.0",
+                                            "path":  "skills/gesture-model-training-and-evaluation",
+                                            "docPath":  "skills/gesture-model-training-and-evaluation/SKILL.md",
+                                            "files":  [
+                                                          "skills/gesture-model-training-and-evaluation/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "gesture-to-live-mix-design",
+                       "displayName":  "Gesture to Live Mix Design",
+                       "owner":  "sreddygu",
+                       "description":  "Design how a recognized gesture changes the music live (clip, tempo, volume, filter, layers) with debounce and a latency budget; and, for the optional background path, how a sustained gesture becomes a text style prompt and valid lyrics for the music model.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "hardware",
+                       "tags":  [
+                                    "academy",
+                                    "gesturdj",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "Gesture to Live Mix Design"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  "skills/gesture-to-live-mix-design",
+                                            "docPath":  "skills/gesture-to-live-mix-design/SKILL.md",
+                                            "files":  [
+                                                          "skills/gesture-to-live-mix-design/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "library-generation-and-quality-evaluation",
+                       "displayName":  "Library Generation and Quality Evaluation",
+                       "owner":  "sreddygu",
+                       "description":  "Generate a few music clips in the background from style prompts, then check each clip and the set with objective measures (length, loudness, clipping, silence, loop seam) before they join the live mixer\u0027s library.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "devtools",
+                       "tags":  [
+                                    "academy",
+                                    "gesturdj",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "Library Generation and Quality Evaluation"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  "skills/library-generation-and-quality-evaluation",
+                                            "docPath":  "skills/library-generation-and-quality-evaluation/SKILL.md",
+                                            "files":  [
+                                                          "skills/library-generation-and-quality-evaluation/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "live-mixer-and-latency-validation",
+                       "displayName":  "Live Mixer and Latency Validation",
+                       "owner":  "sreddygu",
+                       "description":  "Replay gestures through the recognizer, the mix map and the audio player many times and check the estimated gesture-to-sound time against the budget, with the audio stage taken from a measured number.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "devtools",
+                       "tags":  [
+                                    "academy",
+                                    "gesturdj",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "Live Mixer and Latency Validation"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  "skills/live-mixer-and-latency-validation",
+                                            "docPath":  "skills/live-mixer-and-latency-validation/SKILL.md",
+                                            "files":  [
+                                                          "skills/live-mixer-and-latency-validation/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "model-export-and-deployment",
+                       "displayName":  "Model Export and Deployment",
+                       "owner":  "sreddygu",
+                       "description":  "Export the trained PyTorch gesture model to a single-file ONNX model, prove it matches the original, and package exactly the files a torch-free target needs.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "hardware",
+                       "tags":  [
+                                    "academy",
+                                    "gesturdj",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "Model Export and Deployment"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.2.0",
+                                            "path":  "skills/model-export-and-deployment",
+                                            "docPath":  "skills/model-export-and-deployment/SKILL.md",
+                                            "files":  [
+                                                          "skills/model-export-and-deployment/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "music-model-npu-deployment",
+                       "displayName":  "Music Model NPU Deployment",
+                       "owner":  "sreddygu",
+                       "description":  "Check that a board is ready to run the DiffRhythm transformer on its NPU (OS, NPU firmware running, runtime libraries, compiled context binaries, no stale server) and that the four chained graphs load and run.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "hardware",
+                       "tags":  [
+                                    "academy",
+                                    "gesturdj",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "Music Model NPU Deployment"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  "skills/music-model-npu-deployment",
+                                            "docPath":  "skills/music-model-npu-deployment/SKILL.md",
+                                            "files":  [
+                                                          "skills/music-model-npu-deployment/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "npu-quantization-and-accuracy-gating",
+                       "displayName":  "NPU Quantization and Accuracy Gating",
+                       "owner":  "sreddygu",
+                       "description":  "Decide whether a quantized (int8) or mixed-precision version of the music model is accurate enough to use, by comparing its output on a fixed test case with the fp32 reference, before any song is generated.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "hardware",
+                       "tags":  [
+                                    "academy",
+                                    "gesturdj",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "NPU Quantization and Accuracy Gating"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  "skills/npu-quantization-and-accuracy-gating",
+                                            "docPath":  "skills/npu-quantization-and-accuracy-gating/SKILL.md",
+                                            "files":  [
+                                                          "skills/npu-quantization-and-accuracy-gating/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "on-device-gesture-validation",
+                       "displayName":  "On-Device Gesture Validation",
+                       "owner":  "sreddygu",
+                       "description":  "On the machine that will run the recognizer, measure whether the exported model matches the original, keeps its held-out accuracy, and meets the recognition latency budget.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "hardware",
+                       "tags":  [
+                                    "academy",
+                                    "gesturdj",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "On-Device Gesture Validation"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.2.0",
+                                            "path":  "skills/on-device-gesture-validation",
+                                            "docPath":  "skills/on-device-gesture-validation/SKILL.md",
+                                            "files":  [
+                                                          "skills/on-device-gesture-validation/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "p3-self-service-boundaries",
+                       "displayName":  "P3 Self-Service Boundaries",
+                       "owner":  "sreddygu",
+                       "description":  "What an independent developer can assume: public tools only, self-service, community support.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "general",
+                       "tags":  [
+                                    "academy",
+                                    "gesturdj",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "P3 Self-Service Boundaries"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  "skills/p3-self-service-boundaries",
+                                            "docPath":  "skills/p3-self-service-boundaries/SKILL.md",
+                                            "files":  [
+                                                          "skills/p3-self-service-boundaries/**"
+                                                      ]
+                                        }
+                                    ]
+                   }
+               ]
+}

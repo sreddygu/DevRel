@@ -17,7 +17,7 @@ synapse:
   visibility: "public"
   maturity: "pilot"
   developer_journey_stage: ["platform-experience"]
-  dependencies: ["aura-agent-orchestration", "p3-device-readiness", "p3-evidence-and-compatibility"]
+  dependencies: ["aura-agent-orchestration", "device-readiness", "evidence-and-compatibility"]
   authoritative_docs: ["../../src/aura/agent/robot.py", "../../tests/test_action.py", "../../tests/test_robot.py"]
 contract:
   prerequisites: ["User-approved target and action scope", "Completed safety-test run"]

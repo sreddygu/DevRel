@@ -1,0 +1,245 @@
+{
+    "manifestVersion":  1,
+    "skills":  [
+                   {
+                       "name":  "multimodal-command-validation",
+                       "displayName":  "RoboAgent Multimodal Command Validation",
+                       "owner":  "sreddygu",
+                       "description":  "Evaluate RoboAgent responses and proposed tool calls with deterministic, grounded checks.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "devtools",
+                       "tags":  [
+                                    "academy",
+                                    "roboagent",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "RoboAgent Multimodal Command Validation"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  "skills/multimodal-command-validation",
+                                            "docPath":  "skills/multimodal-command-validation/SKILL.md",
+                                            "files":  [
+                                                          "skills/multimodal-command-validation/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "robot-runtime-discovery",
+                       "displayName":  "RoboAgent Runtime Discovery",
+                       "owner":  "sreddygu",
+                       "description":  "Inspect RoboAgent QNN and Pi readiness without changing the host environment by default.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "hardware",
+                       "tags":  [
+                                    "academy",
+                                    "roboagent",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "RoboAgent Runtime Discovery"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  "skills/robot-runtime-discovery",
+                                            "docPath":  "skills/robot-runtime-discovery/SKILL.md",
+                                            "files":  [
+                                                          "skills/robot-runtime-discovery/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "robot-safety-boundaries",
+                       "displayName":  "RoboAgent Safety Boundaries",
+                       "owner":  "sreddygu",
+                       "description":  "Inject RoboAgent\u0027s read-only-first policy and interactive approval boundaries.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "hardware",
+                       "tags":  [
+                                    "academy",
+                                    "roboagent",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "RoboAgent Safety Boundaries"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  "skills/robot-safety-boundaries",
+                                            "docPath":  "skills/robot-safety-boundaries/SKILL.md",
+                                            "files":  [
+                                                          "skills/robot-safety-boundaries/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "roboagent-run-model",
+                       "displayName":  "Roboagent Run Model",
+                       "owner":  "sreddygu",
+                       "description":  "Run a QNN .pte model on this Windows-on-Snapdragon device â€” simple op tests via qnn_executor_runner, or LLMs via qnn_llama_runner. Use when validating a model, benchmarking tok/s, or debugging a runner failure.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "hardware",
+                       "tags":  [
+                                    "academy",
+                                    "roboagent",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "Roboagent Run Model"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  ".claude/skills/run-model",
+                                            "docPath":  ".claude/skills/run-model/SKILL.md",
+                                            "files":  [
+                                                          ".claude/skills/run-model/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "roboagent-setup",
+                       "displayName":  "Roboagent Setup",
+                       "owner":  "sreddygu",
+                       "description":  "Set up the ExecuTorch + QNN backend build environment natively on Windows-on-Snapdragon ARM64 (no cross-compile, no adb â€” this device is both host and target). Use before building or running anything QNN-related here.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "devtools",
+                       "tags":  [
+                                    "academy",
+                                    "roboagent",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "Roboagent Setup"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  ".claude/skills/setup",
+                                            "docPath":  ".claude/skills/setup/SKILL.md",
+                                            "files":  [
+                                                          ".claude/skills/setup/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "roboagent-evaluation",
+                       "displayName":  "Roboagent Evaluation",
+                       "owner":  "sreddygu",
+                       "description":  "Evaluate local Gemma 4 response quality, latency, and tool use.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "devtools",
+                       "tags":  [
+                                    "academy",
+                                    "roboagent",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "Roboagent Evaluation"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  ".pi/skills/roboagent-evaluation",
+                                            "docPath":  ".pi/skills/roboagent-evaluation/SKILL.md",
+                                            "files":  [
+                                                          ".pi/skills/roboagent-evaluation/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "roboagent-pi",
+                       "displayName":  "Roboagent Pi",
+                       "owner":  "sreddygu",
+                       "description":  "Use Pi with the local RoboAgent Gemma 4 provider and safe workspace tools.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "general",
+                       "tags":  [
+                                    "academy",
+                                    "roboagent",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "Roboagent Pi"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  ".pi/skills/roboagent-pi",
+                                            "docPath":  ".pi/skills/roboagent-pi/SKILL.md",
+                                            "files":  [
+                                                          ".pi/skills/roboagent-pi/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "roboagent-qnn",
+                       "displayName":  "Roboagent Qnn",
+                       "owner":  "sreddygu",
+                       "description":  "Run and troubleshoot the local RoboAgent Gemma 4 ExecuTorch QNN host on Windows-on-Snapdragon.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "general",
+                       "tags":  [
+                                    "academy",
+                                    "roboagent",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "Roboagent Qnn"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  ".pi/skills/roboagent-qnn",
+                                            "docPath":  ".pi/skills/roboagent-qnn/SKILL.md",
+                                            "files":  [
+                                                          ".pi/skills/roboagent-qnn/**"
+                                                      ]
+                                        }
+                                    ]
+                   }
+               ]
+}

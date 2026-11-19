@@ -3,7 +3,7 @@
 Dogfooding ground for running and benchmarking ExecuTorch's QNN (Qualcomm AI Engine
 Direct) backend natively on a Snapdragon X (SC8380XP) Windows-on-ARM device — no
 `adb`, no cross-compiling, this device is both host and target. Full narrative of
-every bug and gap found along the way lives in [`dog_fooding_writeup/`](dog_fooding_writeup/).
+every bug and gap found along the way lives in historical local notes.
 
 ## RoboAgent Guides
 
@@ -85,7 +85,6 @@ Full detail and every error message these produce when missing:
 | `tools/prefill_sweep/` | `run_sweep.sh` + `gen_prompts.py` — sweeps prefill/decode throughput across prompt lengths for a given `.pte`. `results_*.jsonl` are stored runs. |
 | `tools/context_binary_extract/` | `run_extract.sh` — pulls the raw QNN context binary(ies) out of a `.pte` and validates them with `qnn-context-binary-utility`. |
 | `data/` | Benchmark results, incl. `qnn_benchmark_results.xlsx` (Qwen3 context-length sweep, Gemma-4 AR-chunk sweep, both with charts). |
-| `dog_fooding_writeup/` | The full bring-up narrative: toolchain gaps, real bugs found and fixed, troubleshooting quick-reference. |
 | `.claude/skills/` | `setup` (build environment) and `run-model` (running + troubleshooting) — Claude Code skills for this repo. |
 
 ## The persistent host protocol
@@ -120,7 +119,7 @@ from the underlying `Runner`, not introduced by the host:
    recoverable error — keep your own token count comfortably under the model's
    compiled `max_context_len`.
 
-Full writeup: [`dog_fooding_writeup/running-qnn-executor-runner-persistent.md`](dog_fooding_writeup/running-qnn-executor-runner-persistent.md).
+The persistent-host protocol details are summarized in this section.
 
 ## Benchmarking a model
 
@@ -142,7 +141,7 @@ each script's own header comment for the env var overrides.
 | `DspTransport.openSession qnn_open failed, 0x80000406` | `ADSP_LIBRARY_PATH` not set, or pointed at a folder missing either the skel `.so` or its `.cat` signature file. |
 | `Cannot Open QNN library QnnHtp.dll ... LoadLibraryExA failed` | `lib\aarch64-windows-msvc` not on `Path`. |
 | `qnn_llm_host` crashes (`F ... assert failed ... sequence length exceeded`) on a **later** turn of a multi-turn pipe conversation, even though `--seq_len` looked generous | A request-level `seq_len` always overrides the host's `--seq_len` default, and it's a whole-connection running ceiling, not per-turn — a client that sends a small `seq_len` on every request (an old default in `chat_client.ps1` sent 256 unconditionally) silently defeats a large `--seq_len` on the host and eventually exceeds it. Fixed in `chat_client.ps1`: it now omits `seq_len` unless you pass `-SeqLen` explicitly. |
-| Fluent-looking garbage output, wrong from token 1 | Export commit and runner-build commit disagree on the attention-mask tensor rank — see `dog_fooding_writeup/qnn-backend-windows-arm64.md` §13.6. |
+| Fluent-looking garbage output, wrong from token 1 | Export commit and runner-build commit disagree on the attention-mask tensor rank. |
 | Model loads, reports healthy tok/s, but output is wrong | Always read the generated text — a healthy-looking run isn't proof of a correct one. |
 
-Full symptom-indexed table: [`dog_fooding_writeup/qnn-backend-windows-arm64.md` §14](dog_fooding_writeup/qnn-backend-windows-arm64.md#14-troubleshooting-quick-reference).
+This table is the maintained symptom-indexed troubleshooting quick reference.

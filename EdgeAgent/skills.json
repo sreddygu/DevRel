@@ -1,0 +1,95 @@
+{
+    "manifestVersion":  1,
+    "skills":  [
+                   {
+                       "name":  "agent-tool-contract-validation",
+                       "displayName":  "EdgeAgent Tool Contract Validation",
+                       "owner":  "sreddygu",
+                       "description":  "Validate an EdgeAgent MCP transport contract before it is installed.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "devtools",
+                       "tags":  [
+                                    "academy",
+                                    "edgeagent",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "EdgeAgent Tool Contract Validation"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  "skills/agent-tool-contract-validation",
+                                            "docPath":  "skills/agent-tool-contract-validation/SKILL.md",
+                                            "files":  [
+                                                          "skills/agent-tool-contract-validation/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "device-agent-evaluation",
+                       "displayName":  "EdgeAgent Device Agent Evaluation",
+                       "owner":  "sreddygu",
+                       "description":  "Evaluate an approved EdgeAgent workload and record target-specific evidence.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "hardware",
+                       "tags":  [
+                                    "academy",
+                                    "edgeagent",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "EdgeAgent Device Agent Evaluation"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  "skills/device-agent-evaluation",
+                                            "docPath":  "skills/device-agent-evaluation/SKILL.md",
+                                            "files":  [
+                                                          "skills/device-agent-evaluation/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "edge-agent-runtime-setup",
+                       "displayName":  "EdgeAgent Runtime Setup",
+                       "owner":  "sreddygu",
+                       "description":  "Prepare and inspect the EdgeAgent runtime without changing an MCP client by default.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "hardware",
+                       "tags":  [
+                                    "academy",
+                                    "edgeagent",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "EdgeAgent Runtime Setup"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  "skills/edge-agent-runtime-setup",
+                                            "docPath":  "skills/edge-agent-runtime-setup/SKILL.md",
+                                            "files":  [
+                                                          "skills/edge-agent-runtime-setup/**"
+                                                      ]
+                                        }
+                                    ]
+                   }
+               ]
+}

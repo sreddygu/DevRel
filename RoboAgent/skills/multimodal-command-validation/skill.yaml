@@ -17,7 +17,7 @@ synapse:
   visibility: "public"
   maturity: "pilot"
   developer_journey_stage: ["platform-experience"]
-  dependencies: ["robot-runtime-discovery", "robot-safety-boundaries", "p3-evidence-and-compatibility"]
+  dependencies: ["robot-runtime-discovery", "robot-safety-boundaries", "evidence-and-compatibility"]
   authoritative_docs: ["../../AGENTS.md", "../../.pi/skills/roboagent-evaluation/SKILL.md", "../../tools/pi/test-roboagent-protocol.ps1"]
 contract:
   prerequisites: ["Observed runtime readiness", "Approved host if protocol evaluation is requested"]

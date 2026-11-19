@@ -1,0 +1,95 @@
+{
+    "manifestVersion":  1,
+    "skills":  [
+                   {
+                       "name":  "video-evidence-reporting",
+                       "displayName":  "VSaaS Video Evidence Reporting",
+                       "owner":  "sreddygu",
+                       "description":  "Create redacted, provenance-preserving VSaaS evidence from event records.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "hardware",
+                       "tags":  [
+                                    "academy",
+                                    "vsaas",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "VSaaS Video Evidence Reporting"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  "skills/video-evidence-reporting",
+                                            "docPath":  "skills/video-evidence-reporting/SKILL.md",
+                                            "files":  [
+                                                          "skills/video-evidence-reporting/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "video-stream-ingestion",
+                       "displayName":  "VSaaS Video Stream Ingestion",
+                       "owner":  "sreddygu",
+                       "description":  "Validate VSaaS simulated or approved camera ingestion with privacy-aware evidence.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "hardware",
+                       "tags":  [
+                                    "academy",
+                                    "vsaas",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "VSaaS Video Stream Ingestion"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  "skills/video-stream-ingestion",
+                                            "docPath":  "skills/video-stream-ingestion/SKILL.md",
+                                            "files":  [
+                                                          "skills/video-stream-ingestion/**"
+                                                      ]
+                                        }
+                                    ]
+                   },
+                   {
+                       "name":  "vision-model-validation",
+                       "displayName":  "VSaaS Vision Model Validation",
+                       "owner":  "sreddygu",
+                       "description":  "Validate a VSaaS ONNX or QNN detector with backend- and target-labeled evidence.",
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ],
+                       "category":  "hardware",
+                       "tags":  [
+                                    "academy",
+                                    "vsaas",
+                                    "edge-ai"
+                                ],
+                       "useCases":  [
+                                        "VSaaS Vision Model Validation"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "0.1.0",
+                                            "path":  "skills/vision-model-validation",
+                                            "docPath":  "skills/vision-model-validation/SKILL.md",
+                                            "files":  [
+                                                          "skills/vision-model-validation/**"
+                                                      ]
+                                        }
+                                    ]
+                   }
+               ]
+}

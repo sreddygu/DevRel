@@ -17,7 +17,7 @@ synapse:
   visibility: "public"
   maturity: "pilot"
   developer_journey_stage: ["enablement", "platform-experience"]
-  dependencies: ["quad-client-installation", "p3-device-readiness", "p3-evidence-and-compatibility"]
+  dependencies: ["quad-client-installation", "device-readiness", "evidence-and-compatibility"]
   authoritative_docs: ["../../src/quad_mcp_client/cli.py", "../../tests/test_local/test_board_portability.py", "../../tests/test_local/test_profile_device_cli.py"]
 contract:
   prerequisites: ["Completed client setup", "User-approved target and transport"]

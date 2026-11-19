@@ -17,7 +17,7 @@ synapse:
   visibility: "public"
   maturity: "pilot"
   developer_journey_stage: ["platform-experience"]
-  dependencies: ["video-stream-ingestion", "p3-device-readiness", "p3-evidence-and-compatibility"]
+  dependencies: ["video-stream-ingestion", "device-readiness", "evidence-and-compatibility"]
   authoritative_docs: ["../../scripts/qnn_smoke_test.py", "../../src/vsaas/qnn_yolov8.py", "../../src/vsaas/yolo_onnx.py"]
 contract:
   prerequisites: ["Approved test frame", "Known detector and target intent"]

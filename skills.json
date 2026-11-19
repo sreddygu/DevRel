@@ -1,0 +1,204 @@
+{
+    "manifestVersion":  1,
+    "sources":  [
+                    {
+                        "type":  "folder",
+                        "path":  "AURA"
+                    },
+                    {
+                        "type":  "folder",
+                        "path":  "EdgeAgent"
+                    },
+                    {
+                        "type":  "folder",
+                        "path":  "GesturDJ"
+                    },
+                    {
+                        "type":  "folder",
+                        "path":  "qli_dogfooding"
+                    },
+                    {
+                        "type":  "folder",
+                        "path":  "QUAD-Client"
+                    },
+                    {
+                        "type":  "folder",
+                        "path":  "RoboAgent"
+                    },
+                    {
+                        "type":  "folder",
+                        "path":  "VSaaS"
+                    }
+                ],
+    "skills":  [
+                   {
+                       "name":  "project-onboarding",
+                       "displayName":  "P3 Project Onboarding",
+                       "owner":  "sreddygu",
+                       "description":  "Classify a portfolio project for independent P3 developers and establish a safe public delivery lane.",
+                       "category":  "general",
+                       "tags":  [
+                                    "devrel",
+                                    "p3",
+                                    "onboarding",
+                                    "release-readiness"
+                                ],
+                       "useCases":  [
+                                        "Start a P3 project",
+                                        "Review project readiness",
+                                        "Choose a public delivery lane"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "1.0.0",
+                                            "path":  "skills/project-onboarding",
+                                            "docPath":  "skills/project-onboarding/SKILL.md",
+                                            "files":  [
+                                                          "skills/project-onboarding/**"
+                                                      ]
+                                        }
+                                    ],
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ]
+                   },
+                   {
+                       "name":  "evidence-and-compatibility",
+                       "displayName":  "P3 Evidence and Compatibility",
+                       "owner":  "sreddygu",
+                       "description":  "Capture reproducible P3 validation evidence and document supported and excluded environments.",
+                       "category":  "general",
+                       "tags":  [
+                                    "devrel",
+                                    "p3",
+                                    "validation",
+                                    "compatibility",
+                                    "evidence"
+                                ],
+                       "useCases":  [
+                                        "Validate a project workflow",
+                                        "Publish a demo claim",
+                                        "Decide whether a release can be promoted"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "1.0.0",
+                                            "path":  "skills/evidence-and-compatibility",
+                                            "docPath":  "skills/evidence-and-compatibility/SKILL.md",
+                                            "files":  [
+                                                          "skills/evidence-and-compatibility/**"
+                                                      ]
+                                        }
+                                    ],
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ]
+                   },
+                   {
+                       "name":  "release-bundle-preparation",
+                       "displayName":  "P3 Release Bundle Preparation",
+                       "owner":  "sreddygu",
+                       "description":  "Prepare and validate a public P3 release bundle with evidence, compatibility data, checksums, and rollback instructions.",
+                       "category":  "devtools",
+                       "tags":  [
+                                    "devrel",
+                                    "p3",
+                                    "release",
+                                    "bundle",
+                                    "semver"
+                                ],
+                       "useCases":  [
+                                        "Publish a P3 release",
+                                        "Promote a preview to stable",
+                                        "Validate release metadata"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "1.0.0",
+                                            "path":  "skills/release-bundle-preparation",
+                                            "docPath":  "skills/release-bundle-preparation/SKILL.md",
+                                            "files":  [
+                                                          "skills/release-bundle-preparation/**"
+                                                      ]
+                                        }
+                                    ],
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ]
+                   },
+                   {
+                       "name":  "public-asset-license-review",
+                       "displayName":  "P3 Public Asset License Review",
+                       "owner":  "sreddygu",
+                       "description":  "Review source, model, data, binary, and documentation assets before public P3 distribution.",
+                       "category":  "general",
+                       "tags":  [
+                                    "devrel",
+                                    "p3",
+                                    "license",
+                                    "assets",
+                                    "distribution"
+                                ],
+                       "useCases":  [
+                                        "Add a dependency",
+                                        "Review a model checkpoint",
+                                        "Prepare downloadable release assets"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "1.0.0",
+                                            "path":  "skills/public-asset-license-review",
+                                            "docPath":  "skills/public-asset-license-review/SKILL.md",
+                                            "files":  [
+                                                          "skills/public-asset-license-review/**"
+                                                      ]
+                                        }
+                                    ],
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ]
+                   },
+                   {
+                       "name":  "device-readiness",
+                       "displayName":  "P3 Device Readiness",
+                       "owner":  "sreddygu",
+                       "description":  "Establish whether a publicly obtainable hardware target is ready for a documented P3 workflow.",
+                       "category":  "hardware",
+                       "tags":  [
+                                    "devrel",
+                                    "p3",
+                                    "device",
+                                    "readiness",
+                                    "validation"
+                                ],
+                       "useCases":  [
+                                        "Check a public hardware target",
+                                        "Validate device support",
+                                        "Prepare for a device workflow"
+                                    ],
+                       "versions":  [
+                                        {
+                                            "version":  "1.0.0",
+                                            "path":  "skills/device-readiness",
+                                            "docPath":  "skills/device-readiness/SKILL.md",
+                                            "files":  [
+                                                          "skills/device-readiness/**"
+                                                      ]
+                                        }
+                                    ],
+                       "agents":  [
+                                      "claude",
+                                      "codex",
+                                      "cursor"
+                                  ]
+                   }
+               ]
+}

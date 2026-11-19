@@ -17,7 +17,7 @@ synapse:
   visibility: "public"
   maturity: "pilot"
   developer_journey_stage: ["enablement"]
-  dependencies: ["p3-device-readiness", "p3-evidence-and-compatibility"]
+  dependencies: ["device-readiness", "evidence-and-compatibility"]
   authoritative_docs: ["../../AGENTS.md", "../../README.md", "../../tools/pi/README.md"]
 contract:
   prerequisites: ["RoboAgent source checkout"]
