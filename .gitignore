@@ -1,5 +1,6 @@
 # Workspace and editor state
 .vscode/
+**/.vscode/
 __pycache__/
 **/__pycache__/
 .git_disabled/
@@ -11,6 +12,7 @@ venv/
 env/
 **/.venv/
 **/.venv_*/
+**/.venv*/
 **/venv/
 **/env/
 **/.pytest_cache/
@@ -51,6 +53,13 @@ wake_word/speech_commands_hey_dragon/
 GesturDJ/diffrhythm_outputs/
 VSaaS/models/
 VSaaS/llama.cpp/
+VSaaS/data/
+RoboAgent/.roboagent-runtime/
+RoboAgent/RelWithDebInfo/
+RoboAgent/logs/
+RoboAgent/models/
+RoboAgent/qnn_*_runner.exe
+RoboAgent/qnn_llm_host.exe
 *.executed.ipynb
 
 # External checkout; manage separately as a submodule if required.
