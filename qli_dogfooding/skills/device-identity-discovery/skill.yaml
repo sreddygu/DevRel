@@ -1,0 +1,71 @@
+schema_version: "1.0"
+id: "device-identity-discovery"
+name: "Device Identity Discovery"
+version: "1.0.0"
+description: "Inspect local QLI device identity information before selecting device-specific work."
+entrypoint: "SKILL.md"
+kind: "domain-skill"
+language: "en"
+selection:
+  aliases: ["device identity", "inspect QLI device"]
+  triggers: ["Identify a connected QLI device"]
+synapse:
+  layer: "domain"
+  domain: "qli-linux"
+  owner: "Srinivas Reddy Gudala"
+  backup_owner: "DevRel Developer Experience team"
+  review_cadence: "Each major SDK or QLI device release"
+  visibility: "internal"
+  maturity: "pilot"
+  developer_journey_stage:
+    - "discovery"
+  supported_versions: ["Qualcomm Linux (QLI) 2.0", "QAIRT 2.47.x host runtime"]
+  dependencies:
+    - "qli-linux-domain"
+    - "device-connectivity-validation"
+  authoritative_docs: ["../../src/qli_device_lifecycle_apps.py"]
+  feedback_channel: >
+    GitHub Issues on the qa-intermediate-curriculum repository (label: synapse-domain).
+  a2a:
+    role: "skill"
+    accepts_from: ["qli-readiness-agent", "developer-readiness-assessment"]
+  deprecation_path: >
+    Set maturity: "deprecated" and announce via feedback_channel with 30-day notice.
+contract:
+  prerequisites: ["Access to the intended target context"]
+  inputs: ["Target device context"]
+  outputs: ["Device identity observation"]
+  negative_scope:
+    - "Does not change device configuration or state"
+    - "Does not select workflows — identity observation only"
+  validation: ["Lifecycle identity command completes successfully"]
+  failure_behavior: "Report the error and device state; do not infer identity from partial output."
+  known_failure_modes:
+    - "Device unreachable: surface error; route to device-connectivity-validation"
+    - "Unexpected identity output: return raw output for human review"
+  two_config_evidence:
+    - "IQ8 (QLI 2.0): identity returned iq-8275-evk, aarch64, rc=0, 2026-08-17 and 2026-10-26 (evidence/iq8-2026-10-26/baseline.json)"
+    - "IQ9 (QLI 2.0): identity returned iq-9075-evk, aarch64, rc=0, 2026-08-12 (evidence/iq9_validation_2026-08-12.json)"
+authority:
+  source_docs: "See synapse.authoritative_docs"
+  approved_tools:
+    - "src/qli_device_lifecycle_apps.py identity"
+  endpoints:
+    - "SSH (TCP/22) to the approved target device; address supplied at runtime, never stored"
+  provenance: "qa-intermediate-curriculum/projects/qli_dogfooding; run evidence under evidence/<device>-YYYY-MM-DD/"
+control:
+  approval_gates: "See safety.requires_explicit_approval"
+  consequential_actions: []
+  recovery_and_rollback: "Read-only; no rollback needed."
+review_gates:
+  # pilot = gates 1 + 3 met; supported = all six met (Synapse deck slide 6)
+  ownership: "met"
+  scope_and_boundary: "met"
+  validation_evidence: "met"
+  feedback_mechanism: "declared; reader is the named owner"
+  discoverability: "open: not yet listed in product or SDK documentation"
+  lifecycle_commitment: "met"
+project:
+  root_relative_to_skill: "../.."
+safety:
+  default_mode: "non-destructive"

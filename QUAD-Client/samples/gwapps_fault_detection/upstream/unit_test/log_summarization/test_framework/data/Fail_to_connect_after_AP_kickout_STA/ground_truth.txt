@@ -1,0 +1,160 @@
+WiFi Connectivity Issue Triage Report
+Executive Summary
+Critical connectivity failure detected on 5G band (wifi2) at Thu Nov 13 12:01:53
+2025. Station fc:b3:bc:f0:b0:c2 experienced repeated association
+rejections due to an active SA Query security procedure, preventing successful
+connection establishment despite successful SAE authentication.
+ISSUE TYPE
+SA Query Conflict
+BAND AFFECTED
+5G (5180 MHz)
+SECURITY
+WPA3-SAE
+ASSOC ATTEMPTS
+6 Failed
+
+1. What Happened
+
+Observed Symptom
+Station fc:b3:bc:f0:b0:c2 repeatedly failed to associate with AP
+00:03:7f:12:b1:b1
+All 6 association attempts were rejected with identical reason: "SA query is already
+initiated"
+Issue occurred within a 200ms window (12:01:53.067 - 12:01:53.241)
+Despite successful SAE authentication exchange, association was consistently
+blocked
+Supporting Log Evidence
+Timeline of Failed Association Attempts: 1763035313.067705: SA query is
+already initiated. So, reject this assoc (seq=0x2ba0) 1763035313.100912: SA
+query is already initiated. So, reject this assoc (seq=0x2bd0)
+1763035313.133654: SA query is already initiated. So, reject this assoc
+(seq=0x2c00) 1763035313.175835: SA query is already initiated. So, reject
+this assoc (seq=0x2c30) 1763035313.208269: SA query is already initiated.
+So, reject this assoc (seq=0x2c60) 1763035313.241065: SA query is already
+initiated. So, reject this assoc (seq=0x2c90)
+Environment Context
+Parameter Value Notes
+Band/Frequency 5G / 5180 MHz Channel 36
+Security Protocol WPA3-SAE (H2E) Hash-to-Element mode enabled
+AP BSSID 00:03:7f:12:b1:b1 Link ID: 2
+Client MAC fc:b3:bc:f0:b0:c2 Capabilities: 0x1511
+Listen Interval 250 Power save configuration
+
+2. Root Cause Analysis
+
+Primary Root Cause - HIGH Likelihood
+SA Query State Machine Conflict: An existing SA Query procedure is
+preventing new association attempts. The AP has an active SA Query timeout
+timer running for this client, blocking all association requests until the query
+completes or times out.
+Why This Matches (KB Pattern Recognition)
+Exact match with KB pattern: "SA query is already initiated. So, reject this assoc"
+Consistent with protected management frame (PMF) state machine behavior
+Aligns with WPA3-SAE mandatory PMF requirements
+Sequence numbers show rapid retry pattern (0x2ba0 → 0x2c90 in 174ms)
+Alternative Hypotheses
+MEDIUM Likelihood: Previous incomplete disconnection
+Client may have disconnected abruptly without proper deauth/disassoc
+AP still maintains stale security association state
+Supported by SAE reauthentication attempt at 1763035313.075543
+LOW Likelihood: MLO link transition failure
+Link ID 2 referenced in send_mlme operations
+Could indicate multi-link operation (MLO) state synchronization issue
+However, no explicit MLO errors in logs
+
+3. Why This Root Cause Fits
+
+Detailed Reasoning Chain
+KB Correlation
+KB Reference: WIN_Connectivity Issues - Section 3.2 "Assoc response with Error status
+code"
+Pattern matches: "SA Query cycle" behavior where association is temporarily rejected
+during active SA Query procedure. This is standard PMF behavior per IEEE 802.11w
+specification.
+Stats Confirmation
+Step 1: SAE Authentication Success
+SAE state transitions show successful authentication: State Accepted →
+Committed → Confirmed → Accepted
+Step 2: Association Request Arrives
+First assoc_req at 1763035313.067563 with valid parameters
+Step 3: SA Query Check Fails
+Hostapd internal check finds existing SA Query timer active
+Step 4: Association Response with Rejection
+ASSOC_RESP sent with rejection status (likely status code 30 -
+TEMPORARILY_REJECTED)
+Step 5: Client Rapid Retry
+Client retries 5 more times within 174ms, all rejected identically
+Metric Value Significance
+TX Retries (xretry) 372 Elevated retry rate indicates channel issues
+ACK Failures 186 Moderate packet loss affecting reliability
+HW Flush Count 242 Queue management issues, possible congestion
+User ACK Failures 705 High failure rate for management frames
+
+4. Mitigation / Next Steps
+
+Immediate Actions
+1. Clear SA Query State:
+cfg80211tool ath0 senddelba 1 0 0 fc:b3:bc:f0:b0:c2 hostapd_cli -i ath0
+sa_query fc:b3:bc:f0:b0:c2
+2. Adjust SA Query Timeout:
+uci set wireless.@wifi-iface[0].ieee80211w_mgmt_cipher='AES-128-CMAC'
+uci set wireless.@wifi-iface[0].ieee80211w_retry_timeout='201' uci set
+wireless.@wifi-iface[0].ieee80211w_max_timeout='1000' uci commit
+wireless && wifi reload
+3. Enable Enhanced Debug Logging:
+cfg80211tool ath0 dbgLVL 0x80c00000 cfg80211tool ath0 dbgLVL_high
+0x60000 hostapd_cli -i ath0 log_level DEBUG
+Verification Steps
+Monitor SA Query exchanges: tcpdump -i ath0 -w sa_query.pcap
+'wlan[0] == 0x08'
+Check association statistics: apstats -v -i ath0 | grep -E
+"Assoc|SA_Query"
+Verify PMF configuration: hostapd_cli -i ath0 get_config | grep
+ieee80211w
+Monitor state transitions: cfg80211tool ath0 sm_history
+Escalation Path
+If issue persists after mitigation:
+1. Capture full hostapd debug logs during failure window
+2. Collect OTA packet capture focusing on management frames
+3. Generate state machine dump: cfg80211tool ath0 ser_history
+4. Check for firmware issues: dmesg | grep -i "firmware|timeout"
+
+5. Open Questions / Gaps
+
+Missing Information
+Initial trigger: What caused the original SA Query to be initiated?
+Timeout value: Current SA Query timeout configuration not visible in logs
+Client behavior: Why did client retry so rapidly (30-40ms intervals)?
+Previous state: Was this client previously associated? Deauth/disassoc history
+missing
+Recommended Additional Data Collection
+# Comprehensive state capture hostapd_cli -i ath0 all_sta > sta_state.txt
+cfg80211tool ath0 txrx_stats 262 > ast_table.txt wifistats wifi2 20 --wmi >
+beacon_stats.txt cnss_diag -pc | grep -e VDEV_MGR_AP_KEEPALIVE -e
+STA_KICKOUT > diag_events.txt # SA Query specific traces cnss_diag -c |
+grep "security" > security_events.txt
+
+6. References
+
+Knowledge Base References (knowledge.txt)
+Section: 3. Association - "SA Query cycle" behavior
+Related: 4. 4-way Handshaking - PMF considerations
+Log Files Analyzed
+File Time Range Key Events
+syslog.txt
+12:01:53.044 -
+12:01:53.241
+SAE auth, 6 failed
+associations
+rate_of_change_wifistats.txt Snapshot at 12:01:54 TX/RX performance metrics
+1_fd_logs.txt 12:01:53 - 12:01:54
+Disconnect anomaly
+detection
+
+Confidence Assessment
+Overall Confidence: HIGH (85%)
+• Hostapd logs clearly show SA Query rejection pattern (Strong)
+• KB pattern match is exact (Strong)
+• Stats show elevated management frame failures (Supporting)
+• Missing complete deauth/disassoc history (Minor gap)
+• No contradictory evidence found in available logs

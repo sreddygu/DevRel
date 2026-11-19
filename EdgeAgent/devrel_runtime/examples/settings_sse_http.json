@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__devrel__hardware_detect",
+      "mcp__devrel__convert_model",
+      "mcp__devrel__profile_workload",
+      "mcp__devrel__orchestrate_workload",
+      "mcp__devrel__generate_code"
+    ]
+  },
+  "mcpServers": {
+    "devrel": {
+      "transport": {
+        "type": "sse",
+        "url": "https://mcp.example.com/sse",
+        "headers": {
+          "Authorization": "Bearer ${env:DevRel_MCP_TOKEN}"
+        }
+      }
+    }
+  }
+}

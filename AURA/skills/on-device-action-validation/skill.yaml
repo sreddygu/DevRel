@@ -1,0 +1,31 @@
+schema_version: "1.0"
+id: "on-device-action-validation"
+name: "AURA On-Device Action Validation"
+version: "0.1.0"
+description: "Validate AURA action policy and safety limits before approved device actions."
+entrypoint: "SKILL.md"
+kind: "domain-skill"
+language: "en"
+selection:
+  aliases: ["validate AURA action", "test AURA robot safety"]
+  triggers: ["Run an AURA action validation", "Check AURA robot safety"]
+synapse:
+  layer: "domain"
+  domain: "aura"
+  owner: "P3 portfolio maintainers"
+  review_cadence: "Each action-policy or target-device release"
+  visibility: "public"
+  maturity: "pilot"
+  developer_journey_stage: ["platform-experience"]
+  dependencies: ["aura-agent-orchestration", "p3-device-readiness", "p3-evidence-and-compatibility"]
+  authoritative_docs: ["../../src/aura/agent/robot.py", "../../tests/test_action.py", "../../tests/test_robot.py"]
+contract:
+  prerequisites: ["User-approved target and action scope", "Completed safety-test run"]
+  inputs: ["Action request", "Target details", "Declared safety limits"]
+  outputs: ["Safety-test result", "Policy decision", "Action validation record"]
+  negative_scope: ["Does not bypass emergency stop or safety policy", "Does not actuate hardware without approval"]
+  validation: ["Action, robot, and agent tests pass", "Every action result identifies its target and policy decision"]
+safety:
+  default_mode: "non-destructive"
+  requires_explicit_approval: ["Connecting to an actuator or robot", "Issuing a physical action", "Using a remote action endpoint"]
+  secrets_policy: "Never store device credentials or private control endpoints in evidence."

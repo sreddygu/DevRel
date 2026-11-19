@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "catalog_id": "gesturdj-synapse-skills",
+  "project": {
+    "id": "gesturdj",
+    "shared_profile": "p3-device",
+    "publication_state": "enabled-pilot",
+    "applicability_tags": ["p3", "edge-ai", "audio", "gesture", "on-device"]
+  },
+  "metadata_contract": {
+    "required_fields": ["id", "layer", "selection_mode", "reuse_class", "applicability_tags", "environment_tags", "publication_state", "evidence_state", "similarity_keys", "tool_refs"],
+    "reuse_classes": ["portfolio-shared-candidate", "reusable-candidate", "project-composed", "project-specific", "project-context"],
+    "selection_modes": ["selected", "injected"]
+  },
+  "tool_catalog": "mcp-tools.yaml",
+  "metrics_template": "skill-metrics-baseline.template.json",
+  "skills": [
+    {"id": "gesturdj-agent", "layer": "agent", "selection_mode": "selected", "reuse_class": "project-specific", "applicability_tags": ["p3", "gesture", "audio"], "environment_tags": ["pc", "iq8"], "publication_state": "pilot", "evidence_state": "partial", "similarity_keys": ["agent-orchestration", "approval-gating"], "tool_refs": []},
+    {"id": "gesturdj-build-journey", "layer": "journey", "selection_mode": "selected", "reuse_class": "project-composed", "applicability_tags": ["p3", "gesture", "audio"], "environment_tags": ["pc", "iq8"], "publication_state": "pilot", "evidence_state": "partial", "similarity_keys": ["edge-ai-build-journey", "evidence-gated-workflow"], "tool_refs": []},
+    {"id": "device-and-host-discovery", "layer": "domain", "selection_mode": "selected", "reuse_class": "reusable-candidate", "applicability_tags": ["p3", "edge-ai", "device-readiness"], "environment_tags": ["pc", "linux-board"], "publication_state": "pilot", "evidence_state": "backed", "similarity_keys": ["host-discovery", "device-readiness", "capability-profile"], "tool_refs": ["discover_host"]},
+    {"id": "gesture-dataset-preparation", "layer": "domain", "selection_mode": "selected", "reuse_class": "reusable-candidate", "applicability_tags": ["p3", "ml", "time-series"], "environment_tags": ["pc"], "publication_state": "pilot", "evidence_state": "backed", "similarity_keys": ["dataset-preparation", "synthetic-data", "data-quality"], "tool_refs": ["make_synthetic_dataset", "check_dataset"]},
+    {"id": "gesture-model-training-and-evaluation", "layer": "domain", "selection_mode": "selected", "reuse_class": "reusable-candidate", "applicability_tags": ["p3", "ml", "gesture"], "environment_tags": ["pc"], "publication_state": "pilot", "evidence_state": "partial", "similarity_keys": ["model-training", "model-evaluation", "classification"], "tool_refs": []},
+    {"id": "model-export-and-deployment", "layer": "domain", "selection_mode": "selected", "reuse_class": "reusable-candidate", "applicability_tags": ["p3", "edge-ai", "onnx"], "environment_tags": ["pc", "linux-board"], "publication_state": "pilot", "evidence_state": "backed", "similarity_keys": ["model-export", "onnx-deployment", "artifact-validation"], "tool_refs": ["export_onnx", "onnx_predict", "validate_onnx"]},
+    {"id": "on-device-gesture-validation", "layer": "domain", "selection_mode": "selected", "reuse_class": "reusable-candidate", "applicability_tags": ["p3", "edge-ai", "device-validation"], "environment_tags": ["pc", "iq8"], "publication_state": "pilot", "evidence_state": "backed", "similarity_keys": ["on-device-validation", "accuracy-gating", "latency-validation"], "tool_refs": ["validate_onnx"]},
+    {"id": "gesture-to-live-mix-design", "layer": "domain", "selection_mode": "selected", "reuse_class": "project-specific", "applicability_tags": ["p3", "gesture", "live-audio"], "environment_tags": ["iq8"], "publication_state": "pilot", "evidence_state": "partial", "similarity_keys": ["gesture-mapping", "live-mix", "latency-budget"], "tool_refs": ["live_mixer"]},
+    {"id": "audio-output-integration", "layer": "domain", "selection_mode": "selected", "reuse_class": "reusable-candidate", "applicability_tags": ["p3", "audio", "device-validation"], "environment_tags": ["linux-board"], "publication_state": "pilot", "evidence_state": "backed", "similarity_keys": ["audio-output", "device-discovery", "latency-measurement"], "tool_refs": ["probe_audio_output", "probe_hw_latency", "probe_warm_stream"]},
+    {"id": "live-mixer-and-latency-validation", "layer": "domain", "selection_mode": "selected", "reuse_class": "reusable-candidate", "applicability_tags": ["p3", "audio", "performance"], "environment_tags": ["iq8"], "publication_state": "pilot", "evidence_state": "backed", "similarity_keys": ["end-to-end-latency", "audio-performance", "latency-budget"], "tool_refs": ["validate_live_latency"]},
+    {"id": "music-model-npu-deployment", "layer": "domain", "selection_mode": "selected", "reuse_class": "reusable-candidate", "applicability_tags": ["p3", "npu", "music-generation"], "environment_tags": ["iq8"], "publication_state": "pilot", "evidence_state": "backed", "similarity_keys": ["npu-deployment", "model-readiness", "accelerator-validation"], "tool_refs": []},
+    {"id": "npu-quantization-and-accuracy-gating", "layer": "domain", "selection_mode": "selected", "reuse_class": "reusable-candidate", "applicability_tags": ["p3", "npu", "model-quality"], "environment_tags": ["iq8"], "publication_state": "pilot", "evidence_state": "backed", "similarity_keys": ["quantization", "accuracy-gating", "reference-comparison"], "tool_refs": ["cosine_vs_ref"]},
+    {"id": "library-generation-and-quality-evaluation", "layer": "domain", "selection_mode": "selected", "reuse_class": "reusable-candidate", "applicability_tags": ["p3", "audio", "quality-evaluation"], "environment_tags": ["pc", "iq8"], "publication_state": "pilot", "evidence_state": "backed", "similarity_keys": ["artifact-quality", "audio-quality", "library-evaluation"], "tool_refs": ["evaluate_clip_library"]},
+    {"id": "gesture-event-contract", "layer": "context", "selection_mode": "injected", "reuse_class": "project-context", "applicability_tags": ["p3", "gesture", "event-contract"], "environment_tags": ["pc", "linux-board"], "publication_state": "pilot", "evidence_state": "design", "similarity_keys": ["event-contract", "sensor-abstraction", "multimodal-events"], "tool_refs": []},
+    {"id": "p3-self-service-boundaries", "layer": "context", "selection_mode": "injected", "reuse_class": "portfolio-shared-candidate", "applicability_tags": ["p3", "safety", "self-service"], "environment_tags": ["all"], "publication_state": "pilot", "evidence_state": "design", "similarity_keys": ["approval-gating", "public-self-service", "safety-boundaries"], "tool_refs": []}
+  ]
+}

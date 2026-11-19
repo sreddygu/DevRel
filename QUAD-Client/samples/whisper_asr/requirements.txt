@@ -1,0 +1,11 @@
+fastmcp>=2.0
+numpy>=1.24
+scipy>=1.11                # Mel spectrogram / resampling
+psutil>=5.9                # CPU utilization tracking
+onnxruntime>=1.18          # CPU baseline inference
+onnx>=1.14                 # ONNX model loading
+onnxsim>=0.4.35            # Constant-fold for QAIRT compatibility
+sounddevice>=0.4.6         # Microphone input (WASAPI on Windows)
+soundfile>=0.12            # FLAC/WAV/OGG read for INT8 calibration audio
+tokenizers>=0.15           # Token-id → text via local tokenizer.json (no PyTorch / no HF hub)
+-e ../..                   # quad_mcp_client (qnn-net-run helpers for NPU/GPU benchmarks)

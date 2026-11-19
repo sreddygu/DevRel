@@ -1,0 +1,73 @@
+schema_version: "1.0"
+id: "device-and-host-discovery"
+name: "Device and Host Discovery"
+version: "0.1.0"
+description: "Read-only discovery of the developer's host and target devices (sensor/recognizer board, optional generator board, PC fallback) producing a device profile before any GesturDJ work."
+entrypoint: "SKILL.md"
+kind: "domain-skill"
+language: "en"
+selection:
+  aliases: ["device discovery", "host discovery", "gesturdj profile"]
+  triggers: ["Discover what hardware I have for GesturDJ", "Check whether my Ventuno Q or PC can run the gesture model", "Decide where music generation will run"]
+synapse:
+  layer: "domain"
+  domain: "gesturdj"
+  owner: "Srinivas Reddy Gudala"
+  backup_owner: "TBD: community maintainers (see finding F20 in ../../GESTURDJ_SYNAPSE_SKILLS.md)"
+  review_cadence: "Each ONNX Runtime major release or Ventuno Q image release"
+  visibility: "public"
+  maturity: "proposed"
+  supported_versions: ["Arduino Ventuno Q (Ubuntu)", "ONNX Runtime CPU", "Windows or Linux host with Python 3.10+"]
+  feedback_channel: >
+    TBD: Developer Portal community channel. Until it exists, GitHub Issues on the
+    qa-intermediate-curriculum repository (label: synapse-gesturdj).
+  deprecation_path: >
+    Set maturity: "deprecated" and announce via feedback_channel with 30-day notice;
+    point to the replacement skill.
+  developer_journey_stage: ["discovery"]
+  dependencies: ["gesture-event-contract", "p3-self-service-boundaries"]
+  authoritative_docs: ["../../gesture_scripts/ventunoq.md", "../../gesture_scripts/README.md", "../../GESTURDJ_SYNAPSE_SKILLS.md", "../../gesture_scripts/discover_host.py"]
+  a2a:
+    role: "skill"
+    accepts_from: ["gesturdj-agent"]
+contract:
+  prerequisites: ["Developer states which devices they own (or none)", "SSH details for any remote board supplied at runtime"]
+  inputs: ["Host (local machine)", "Optional target board host and user", "Optional generator board host and user"]
+  outputs: ["device-profile.json (see SKILL.md for fields)", "A recommended placement of each stage: sensing, recognition, mixing, generation, playback"]
+  negative_scope:
+    - "Does not install, update, flash, reboot or change any device"
+    - "Does not import torch on the target (can crash with SIGILL on Ventuno Q)"
+    - "Does not train, convert or run any model"
+  validation: ["Every profile field is either observed or marked unknown; none are guessed", "The recommended placement names a fallback when a stage has no capable device"]
+  failure_behavior: "Report which probe failed and the raw output; mark the field unknown; do not infer capability from partial output."
+  known_failure_modes:
+    - "Board unreachable over SSH: report and stop that branch; ask the developer to check power/network"
+    - "onnxruntime missing on the board: record as missing; installing it is a separate approved step"
+    - "No audio sink or camera present: record as absent; the plan must choose another output/input"
+    - "x64 Python on an ARM64 PC reports AMD64 in platform.machine() and the environment: ask Windows (IsWow64Process2, with declared ctypes types) for the real machine; the first attempt without declared types was wrong"
+    - "A clean install of the requirements files was missing onnx/onnxscript, so export would fail later: list missing packages now"
+  two_config_evidence:
+    - "PC (Windows ARM64 host, x64 Python 3.10 under emulation, clean venv), 2026-11-05: discover_host.py reported os_arch ARM64, python_arch AMD64 and the emulation note; flagged missing onnx/onnxscript (evidence/pc-run/device-profile.json)"
+    - "Second configuration (Ventuno Q over SSH): not run; the remote probe commands are specified but untested"
+authority:
+  source_docs: "See synapse.authoritative_docs"
+  approved_tools: ["gesture_scripts/discover_host.py (local host, run 2026-11-05)", "uname -m", "cat /etc/os-release", "python3 --version", "python3 -c import onnxruntime", "ls /dev/video*", "aplay -l (board probes: specified, not yet run)"]
+  endpoints: ["SSH (TCP/22) to a board the developer owns; address supplied at runtime, never stored"]
+  provenance: "projects/gesture_recognition (gesture_scripts/discover_host.py); PC run evidence under evidence/pc-run/"
+control:
+  approval_gates: "See safety.requires_explicit_approval"
+  consequential_actions: []
+  recovery_and_rollback: "Read-only; no rollback needed."
+review_gates:
+  # pilot = gates 1 + 3 met; supported = all six met
+  ownership: "met: named owner; backup owner open (F20)"
+  scope_and_boundary: "met: see negative_scope"
+  validation_evidence: "partial: local host probe run on 1 PC 2026-11-05; board probes not run"
+  feedback_mechanism: "open: community channel not yet defined"
+  discoverability: "open: not yet on the Developer Portal"
+  lifecycle_commitment: "open: community maintenance model undefined (F20)"
+project:
+  root_relative_to_skill: "../.."
+safety:
+  default_mode: "non-destructive"
+  secrets_policy: "Never persist credentials, tokens, private keys, or passwords. Read them from environment variables; redact before logging."

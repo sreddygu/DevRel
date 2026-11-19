@@ -1,0 +1,69 @@
+schema_version: "1.0"
+id: "host-environment-validation"
+name: "Host Environment Validation"
+version: "1.0.0"
+description: "Verify that the host has the tools required for a selected QLI workflow."
+entrypoint: "SKILL.md"
+kind: "domain-skill"
+language: "en"
+selection:
+  aliases: ["validate host", "QLI host setup"]
+  triggers: ["Check host prerequisites before a QLI workflow"]
+synapse:
+  layer: "domain"
+  domain: "qli-linux"
+  owner: "Srinivas Reddy Gudala"
+  backup_owner: "DevRel Developer Experience team"
+  review_cadence: "Each major SDK or QLI device release"
+  visibility: "internal"
+  maturity: "pilot"
+  developer_journey_stage:
+    - "enablement"
+  supported_versions: ["Qualcomm Linux (QLI) 2.0", "QAIRT 2.47.x host runtime"]
+  dependencies:
+    - "qli-linux-domain"
+  authoritative_docs: ["../../src/qli_device_lifecycle_apps.py"]
+  feedback_channel: >
+    GitHub Issues on the qa-intermediate-curriculum repository (label: synapse-domain).
+  a2a:
+    role: "skill"
+    accepts_from: ["qli-readiness-agent", "developer-readiness-assessment"]
+  deprecation_path: >
+    Set maturity: "deprecated" and announce via feedback_channel with 30-day notice.
+contract:
+  prerequisites: ["Python 3.10 or newer"]
+  inputs: ["Required command names"]
+  outputs: ["Per-tool availability result"]
+  negative_scope:
+    - "Does not install missing tools"
+    - "Does not modify PATH or shell configuration"
+  validation: ["Requested tools are reported by the lifecycle CLI"]
+  failure_behavior: "Report missing tools with their names; do not silently succeed or skip checks."
+  known_failure_modes:
+    - "Tool absent: report name and suggest install path from QLI Linux domain docs"
+  two_config_evidence:
+    - "IQ8 host (Windows 11 ARM64): Host Environment Validation Completed, 2026-08-17 (evidence/iq8-2026-08-17/summary.json)"
+    - "IQ9 host (Windows 11 ARM64): Host Environment Validation Completed, 2026-08-12 (evidence/iq9_summary_2026-08-12.json)"
+authority:
+  source_docs: "See synapse.authoritative_docs"
+  approved_tools:
+    - "src/qli_device_lifecycle_apps.py"
+  endpoints:
+    - "None; runs on the host only"
+  provenance: "qa-intermediate-curriculum/projects/qli_dogfooding; run evidence under evidence/<device>-YYYY-MM-DD/"
+control:
+  approval_gates: "See safety.requires_explicit_approval"
+  consequential_actions: []
+  recovery_and_rollback: "Read-only; no rollback needed."
+review_gates:
+  # pilot = gates 1 + 3 met; supported = all six met (Synapse deck slide 6)
+  ownership: "met"
+  scope_and_boundary: "met"
+  validation_evidence: "met"
+  feedback_mechanism: "declared; reader is the named owner"
+  discoverability: "open: not yet listed in product or SDK documentation"
+  lifecycle_commitment: "met"
+project:
+  root_relative_to_skill: "../.."
+safety:
+  default_mode: "non-destructive"

@@ -1,0 +1,8 @@
+numpy>=1.24
+onnx>=1.15
+pytest>=7.0
+pytest-timeout>=2.1
+# QUAD core itself -- needed by generate.py to call generate_code.
+# Installed editable via pip -e ../../../QUAD inside run.ps1 because
+# uv pip install -r requirements.txt does not handle path requirements
+# the same way pip does on Windows.

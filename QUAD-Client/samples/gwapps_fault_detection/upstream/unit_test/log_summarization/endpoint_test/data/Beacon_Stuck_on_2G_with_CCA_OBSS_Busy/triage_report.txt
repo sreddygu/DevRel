@@ -1,0 +1,13 @@
+WiFi Connectivity Issue Triage Report
+
+1. What Happened
+
+Observed Symptom
+• STA Unknown is experiencing BEACON_STUCK on WiFi
+
+2. Root Cause Analysis
+
+Primary Suspected Causes (Ranked by Likelihood)
+MEDIUM Likelihood: Tx path stability issue causing data stall
+• The high retry count and failure rate for both tx_xretry and mpdus_ack_failed indicate that the AP is experiencing issues with Tx path stability. This can cause data stall as the AP struggles to send and receive acknowledgments.
+• Evidence: Stats show tx_xretry = 193 and mpdus_ack_failed = 193

@@ -1,0 +1,48 @@
+schema_version: "1.0"
+id: "p3-self-service-boundaries"
+name: "P3 Self-Service Boundaries"
+version: "0.1.0"
+description: "What an independent developer can assume: public tools only, self-service, community support."
+entrypoint: "SKILL.md"
+kind: "context-document"
+language: "en"
+synapse:
+  layer: "context"
+  domain: "gesturdj"
+  owner: "Srinivas Reddy Gudala"
+  backup_owner: "TBD: community maintainers (see finding F20 in ../../GESTURDJ_SYNAPSE_SKILLS.md)"
+  review_cadence: "Each ONNX Runtime major release or Ventuno Q image release"
+  visibility: "public"
+  maturity: "proposed"
+  supported_versions: ["Arduino Ventuno Q (Ubuntu)", "ONNX Runtime CPU", "Windows or Linux host with Python 3.10+"]
+  feedback_channel: >
+    TBD: Developer Portal community channel. Until it exists, GitHub Issues on the
+    qa-intermediate-curriculum repository (label: synapse-gesturdj).
+  deprecation_path: >
+    Set maturity: "deprecated" and announce via feedback_channel with 30-day notice;
+    point to the replacement skill.
+  developer_journey_stage: ["discovery", "enablement"]
+  dependencies: []
+  authoritative_docs: ["../../GESTURDJ_SYNAPSE_SKILLS.md"]
+authority:
+  source_docs: "See synapse.authoritative_docs"
+  approved_tools: []
+  endpoints: []
+  provenance: "academy/GesturDJ"
+control:
+  approval_gates: "Not executable; injected as context only"
+  consequential_actions: []
+  recovery_and_rollback: "Not executable."
+review_gates:
+  # pilot = gates 1 + 3 met; supported = all six met
+  ownership: "met: named owner; backup owner open (F20)"
+  scope_and_boundary: "met: see negative_scope"
+  validation_evidence: "open: not yet executed on a Ventuno Q; proposed skill"
+  feedback_mechanism: "open: community channel not yet defined"
+  discoverability: "open: not yet on the Developer Portal"
+  lifecycle_commitment: "open: community maintenance model undefined (F20)"
+project:
+  root_relative_to_skill: "../.."
+safety:
+  default_mode: "non-destructive"
+  secrets_policy: "Never persist credentials, tokens, private keys, or passwords."

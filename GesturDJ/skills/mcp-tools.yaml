@@ -1,0 +1,146 @@
+schema_version: "1.0"
+catalog: "gesturdj-mcp-tools"
+description: >
+  Deterministic single-step GesturDJ operations. Each wraps one script in gesture_scripts/.
+  MCP-first: check the shared MCP inventory for an equivalent before registering these.
+  Status: specifications only; none is registered anywhere yet. All run on a developer machine, read the
+  listed inputs, and print JSON or plain text with a meaningful exit code.
+
+tools:
+
+  - id: "discover_host"
+    name: "GesturDJ Host Discovery"
+    description: "Report OS, real CPU architecture (detects x64 Python emulated on an ARM64 PC), Python, free disk, package versions, audio players on PATH. Observes only."
+    implementation: "gesture_scripts/discover_host.py"
+    command: "python gesture_scripts/discover_host.py --out device-profile.json"
+    input_schema: {type: object, properties: {out: {type: string}, path: {type: string}}}
+    output_schema: {type: object, properties: {host: {type: object}, unknown: {type: array}, notes: {type: array}}}
+    safety: {side_effects: none, destructive: false, requires_approval: false}
+    evidence: "evidence/pc-run/device-profile.json"
+
+  - id: "make_synthetic_dataset"
+    name: "Make Synthetic Gesture Dataset"
+    description: "Write a labelled synthetic accelerometer dataset (CSV per sample). Refuses to write into a non-empty folder."
+    implementation: "gesture_scripts/make_synthetic_dataset.py"
+    command: "python gesture_scripts/make_synthetic_dataset.py --data_dir <ABSOLUTE PATH>"
+    input_schema: {type: object, properties: {data_dir: {type: string}, labels: {type: array}, samples_per_label: {type: integer}, seed: {type: integer}}, required: [data_dir]}
+    output_schema: {type: object, properties: {data_dir: {type: string}}}
+    safety: {side_effects: writes a new folder, destructive: false, requires_approval: false}
+    note: "A relative data_dir resolves against the script folder, not the current folder."
+    evidence: "evidence/pc-run/02_make_dataset.log"
+
+  - id: "check_dataset"
+    name: "Check Gesture Dataset"
+    description: "Per-label counts and lengths; flags too few samples, imbalance, NaN/inf, flat series. Exit 1 on error."
+    implementation: "gesture_scripts/check_dataset.py"
+    command: "python gesture_scripts/check_dataset.py --data_dir <path> --out dataset-report.json"
+    input_schema: {type: object, properties: {data_dir: {type: string}, out: {type: string}}, required: [data_dir]}
+    output_schema: {type: object, properties: {labels: {type: object}, errors: {type: array}, warnings: {type: array}, ok: {type: boolean}}}
+    safety: {side_effects: none, destructive: false, requires_approval: false}
+    evidence: "evidence/pc-run/dataset-report.json"
+
+  - id: "export_onnx"
+    name: "Export Gesture Model to ONNX"
+    description: "PyTorch checkpoint to one self-contained ONNX file (weights embedded, UTF-8 safe console)."
+    implementation: "gesture_scripts/export_gesture_pytorch_to_onnx.py"
+    command: "python gesture_scripts/export_gesture_pytorch_to_onnx.py --pt <pt> --labels <json> --config <json> --onnx <out>"
+    input_schema: {type: object, properties: {pt: {type: string}, labels: {type: string}, config: {type: string}, onnx: {type: string}, opset: {type: integer}}, required: [pt, labels, config, onnx]}
+    output_schema: {type: object, properties: {onnx: {type: string}}}
+    safety: {side_effects: writes the .onnx file, destructive: false, requires_approval: false}
+    evidence: "evidence/pc-run/05_export_onnx.log"
+
+  - id: "onnx_predict"
+    name: "Classify One Gesture Sample"
+    description: "Top-k labels with probabilities for one CSV/NPY sample. Needs numpy and onnxruntime only (no torch)."
+    implementation: "gesture_scripts/predict_gesture_onnx.py"
+    command: "python gesture_scripts/predict_gesture_onnx.py --output_dir <model dir> --input <file> --topk 3"
+    input_schema: {type: object, properties: {output_dir: {type: string}, input: {type: string}, topk: {type: integer}}, required: [output_dir, input]}
+    output_schema: {type: string, description: "label<TAB>probability per line"}
+    safety: {side_effects: none, destructive: false, requires_approval: false}
+    evidence: "evidence/pc-run/10_predict_without_torch_AFTER_FIX.log"
+
+  - id: "validate_onnx"
+    name: "Validate Exported Gesture Model"
+    description: "Parity vs the PyTorch checkpoint, held-out accuracy with the training split, single-sample latency vs a budget. Exit 1 if parity or latency fails."
+    implementation: "gesture_scripts/validate_onnx.py"
+    command: "python gesture_scripts/validate_onnx.py --data_dir <path> --output_dir <model dir> [--no_parity] --out onnx-validation.json"
+    input_schema: {type: object, properties: {data_dir: {type: string}, output_dir: {type: string}, seed: {type: integer}, test_size: {type: number}, budget_ms: {type: number}, no_parity: {type: boolean}}, required: [data_dir, output_dir]}
+    output_schema: {type: object, properties: {accuracy: {type: object}, parity: {type: object}, latency_ms: {type: object}, ok: {type: boolean}}}
+    safety: {side_effects: none, destructive: false, requires_approval: false}
+    evidence: "evidence/pc-run/onnx-validation.json"
+
+  - id: "live_mixer"
+    name: "Replay Gestures Through the Live Mixer"
+    description: "Replay sensor windows through the ONNX recognizer and a mix map, switch the playing clip, and time inference, mix and player start against the latency budget."
+    implementation: "gesture_scripts/live_mixer.py"
+    command: "python gesture_scripts/live_mixer.py --model_dir <model dir> --mix_map <mix_map.json> --clips <clips dir> --events <window files...> [--report out.json]"
+    input_schema: {type: object, properties: {model_dir: {type: string}, mix_map: {type: string}, clips: {type: string}, events: {type: array}, buffer_ms: {type: integer}}, required: [model_dir, mix_map, clips, events]}
+    output_schema: {type: object, properties: {summary: {type: object}, events: {type: array}}}
+    safety: {side_effects: "starts a local audio player process", destructive: false, requires_approval: false}
+    evidence: "evidence/iq8-run/live-mixer-report.json"
+
+  - id: "probe_audio_output"
+    name: "Probe Audio Output"
+    description: "List sound cards and players, and time each player at its default and a small buffer by playing a silent 100 ms clip."
+    implementation: "gesture_scripts/probe_audio_output.py"
+    command: "python gesture_scripts/probe_audio_output.py [--runs 5] --out audio-output-probe.json"
+    input_schema: {type: object, properties: {runs: {type: integer}}}
+    output_schema: {type: object, properties: {variants: {type: array}, best_variant: {type: string}}}
+    safety: {side_effects: "plays a silent clip", destructive: false, requires_approval: false}
+    evidence: "evidence/iq8-run/audio-output-probe.json"
+
+  - id: "validate_live_latency"
+    name: "Validate Live Path Latency"
+    description: "Replay many gestures through recognizer, mix and player; report p50/p95/max per stage and the estimated gesture-to-sound time against the budget. Exit 1 if p95 is over budget."
+    implementation: "gesture_scripts/validate_live_latency.py"
+    command: "python gesture_scripts/validate_live_latency.py --model_dir <model dir> --clips <clips dir> --windows <dataset root> [--runs 200] [--buffer_ms N] --out live-latency.json"
+    input_schema: {type: object, properties: {model_dir: {type: string}, clips: {type: string}, windows: {type: string}, runs: {type: integer}, buffer_ms: {type: integer}, budget_ms: {type: number}}, required: [model_dir, clips, windows]}
+    output_schema: {type: object, properties: {gesture_to_sound_estimate_ms: {type: object}, ok: {type: boolean}}}
+    safety: {side_effects: "starts a local audio player process", destructive: false, requires_approval: false}
+    evidence: "evidence/iq8-run/live-latency-measured-overhead.json"
+
+  - id: "cosine_vs_ref"
+    name: "Score an NPU Output Against the Reference"
+    description: "Cosine similarity and max absolute error of an NPU output against the fp32 PyTorch reference, with a verdict. Exit 1 if below the minimum cosine."
+    implementation: "diffrhythm_npu_scripts/cosine_vs_ref.py"
+    command: "python3 diffrhythm_npu_scripts/cosine_vs_ref.py <npu_output.raw> <ref_v.f32> [--frames 960] [--min_cos 0.99]"
+    input_schema: {type: object, properties: {npu_output: {type: string}, reference: {type: string}, frames: {type: integer}, min_cos: {type: number}}, required: [npu_output, reference]}
+    output_schema: {type: object, properties: {cosine: {type: number}, max_abs_err: {type: number}, verdict: {type: string}, ok: {type: boolean}}}
+    safety: {side_effects: none, destructive: false, requires_approval: false}
+    evidence: "evidence/iq8-run/npu-accuracy-gate.log"
+
+  - id: "evaluate_clip_library"
+    name: "Evaluate Generated Clips"
+    description: "Objective checks per clip (length, finite, clipping, silence, DC offset, loop seam) and per library (one sample rate, loudness spread). Exit 1 on any failure."
+    implementation: "diffrhythm_npu_scripts/evaluate_clip_library.py"
+    command: "python diffrhythm_npu_scripts/evaluate_clip_library.py <clip.wav>... [--out clip-library-report.json]"
+    input_schema: {type: object, properties: {clips: {type: array}, max_spread_db: {type: number}}, required: [clips]}
+    output_schema: {type: object, properties: {clips: {type: array}, library_fails: {type: array}, ok: {type: boolean}}}
+    safety: {side_effects: none, destructive: false, requires_approval: false}
+    evidence: "evidence/iq8-run/clip-library-report.json"
+
+  - id: "probe_hw_latency"
+    name: "Probe Driver-Level Audio Start Latency"
+    description: "Start each player on a cold audio device and poll the ALSA PCM status until it is RUNNING; report time to RUNNING plus the hardware queue as the first-sound estimate. Driver level, not acoustic."
+    implementation: "gesture_scripts/probe_hw_latency.py"
+    command: "python3 gesture_scripts/probe_hw_latency.py [--runs 8] --out hw-latency.json   (on the board)"
+    input_schema: {type: object, properties: {runs: {type: integer}, card: {type: string}, pcm: {type: string}}}
+    output_schema: {type: object, properties: {players: {type: array}, warm_floor_ms: {type: number}, best_cold_player: {type: string}}}
+    safety: {side_effects: "plays a silent clip several times", destructive: false, requires_approval: false}
+    evidence: "evidence/iq8-run/hw-latency.json"
+
+  - id: "probe_warm_stream"
+    name: "Compare a Warm Output Stream with a Player per Gesture"
+    description: "Write a click into a temporary PipeWire null sink two ways (a stream kept open, and a player started per gesture) and time its arrival with a recorder on the sink's monitor. Software path only."
+    implementation: "gesture_scripts/probe_warm_stream.py"
+    command: "python3 gesture_scripts/probe_warm_stream.py [--trials 30] [--hw_queue_ms 52.7] --out warm-stream.json   (on the board)"
+    input_schema: {type: object, properties: {trials: {type: integer}, stream_latency_ms: {type: integer}, hw_queue_ms: {type: number}}}
+    output_schema: {type: object, properties: {warm_stream_ms: {type: object}, per_gesture_player_ms: {type: object}}}
+    safety: {side_effects: "creates a temporary audio sink while it runs", destructive: false, requires_approval: false}
+    evidence: "evidence/iq8-run/warm-stream.json"
+
+not_yet_written:
+  - "imu_capture (record accelerometer data; needs the sensor path decided, finding F5)"
+  - "camera_capture, pose_estimate (planned pose path)"
+  - "push_artifacts, device_connectivity_check (reuse candidates from the QLI catalog, portability unchecked)"
+  - "generate_clip (live_mixer replays recorded windows and plays clips; there is no real-time sensor loop)"

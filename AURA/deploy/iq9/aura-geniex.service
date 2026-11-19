@@ -1,0 +1,12 @@
+[Unit]
+Description=AURA GenieX OpenAI Server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/aura-iq9/start_geniex_server.sh
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

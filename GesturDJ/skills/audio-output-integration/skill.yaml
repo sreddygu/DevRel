@@ -1,0 +1,79 @@
+schema_version: "1.0"
+id: "audio-output-integration"
+name: "Audio Output Integration"
+version: "0.1.0"
+description: "Find the board's audio sink and players, measure how much time each player adds at the default and a small buffer, and choose the setting the live path will use."
+entrypoint: "SKILL.md"
+kind: "domain-skill"
+language: "en"
+selection:
+  aliases: ["audio output", "player latency", "pick an audio player"]
+  triggers: ["Which player should GesturDJ use", "Is audio output working on the board", "Why is there a delay before sound"]
+synapse:
+  layer: "domain"
+  domain: "gesturdj"
+  owner: "Srinivas Reddy Gudala"
+  backup_owner: "TBD: community maintainers (see finding F20 in ../../GESTURDJ_SYNAPSE_SKILLS.md)"
+  review_cadence: "Each ONNX Runtime major release or Ventuno Q image release"
+  visibility: "public"
+  maturity: "proposed"
+  supported_versions: ["Qualcomm IQ8 (Qualcomm Linux 2.0)", "Arduino Ventuno Q (Ubuntu)", "ONNX Runtime CPU", "Windows or Linux host with Python 3.10+"]
+  feedback_channel: >
+    TBD: Developer Portal community channel. Until it exists, GitHub Issues on the
+    qa-intermediate-curriculum repository (label: synapse-gesturdj).
+  deprecation_path: >
+    Set maturity: "deprecated" and announce via feedback_channel with 30-day notice;
+    point to the replacement skill.
+  developer_journey_stage: ["platform-experience"]
+  dependencies: ["gesture-event-contract", "p3-self-service-boundaries", "device-and-host-discovery"]
+  authoritative_docs: ["../../gesture_scripts/README.md", "../../GESTURDJ_SYNAPSE_SKILLS.md"]
+  a2a:
+    role: "skill"
+    accepts_from: ["gesturdj-agent"]
+contract:
+  prerequisites: ["A device profile (device-and-host-discovery)", "At least one audio player on the board's PATH"]
+  inputs: ["Board or host to probe", "Number of runs per setting (default 5)"]
+  outputs: ["audio-output-probe.json: sinks, players, per-setting overhead in ms, best setting"]
+  negative_scope:
+    - "Does not prove sound reaches a speaker: a player that exits 0 may be playing into nothing"
+    - "Does not change audio routing or volume"
+    - "Does not measure acoustic latency: the driver-level probe stops at the hardware, before the speaker"
+  validation:
+    - "Every probed setting reports its exit codes"
+    - "A best setting is named only from settings that exited 0"
+  failure_behavior: "Report which player failed and its exit code; do not name a best setting from failed runs; ask the developer to check the speaker, cable and routing."
+  known_failure_modes:
+    - "Default buffers are large: aplay with no buffer flag adds about 160 ms median on the IQ8; measure, do not guess"
+    - "All players exit 0 on a board with no speaker: a green probe is not proof of sound"
+    - "The process-level overhead is NOT an upper bound for first sound: a cold start reaches the hardware 236 to 280 ms after the player starts, because the player exits before the hardware plays"
+    - "Spawning a player per gesture pays the cold start every time; keep one output stream open (warm_output.py)"
+    - "A warm stream fed ahead of playback hides a constant backlog: audio written before the stream connects queues in the pipe (164 ms seen); cap the pipe at 4096 bytes"
+  two_config_evidence:
+    - "Qualcomm IQ8 board, 2026-11-10: aplay, paplay and pw-play at default and 40 ms buffer, 5 runs each; best aplay 40 ms at 112 ms median overhead, max 134 ms (evidence/iq8-run/audio-output-probe.json)"
+    - "Same board, driver level (ALSA PCM status polled until RUNNING), cold device, 6 runs each: pw-play 236 ms median / 249 ms max, aplay 237 / 241 ms, paplay 280 / 288 ms; warm floor 52.7 ms (evidence/iq8-run/hw-latency.json)"
+    - "Warm stream (pw-cat kept open, 48 kHz, pipe capped), 3 runs of 12 into a null sink: p50 37 to 38 ms, p95 44 to 48 ms, max 59 ms; a player started per gesture 116 to 132 ms p50, 145 to 152 ms p95 (evidence/iq8-run/warm-stream.json)"
+    - "Speaker level: not possible, no speaker or microphone attached (a tone played was not heard by the microphone)"
+    - "Ventuno Q: not run"
+authority:
+  source_docs: "See synapse.authoritative_docs"
+  approved_tools: ["gesture_scripts/probe_audio_output.py", "gesture_scripts/probe_hw_latency.py", "gesture_scripts/probe_warm_stream.py", "gesture_scripts/warm_output.py"]
+  endpoints: []
+  provenance: "academy/GesturDJ; IQ8 runs under evidence/iq8-run/"
+control:
+  approval_gates: "See safety.requires_explicit_approval"
+  consequential_actions: []
+  recovery_and_rollback: "Read-only apart from playing a silent 100 ms clip; nothing to roll back."
+review_gates:
+  # pilot = gates 1 + 3 met; supported = all six met
+  ownership: "met: named owner; backup owner open (F20)"
+  scope_and_boundary: "met: see negative_scope"
+  validation_evidence: "open: one IQ8, silent clip, no speaker confirmed; not a Ventuno Q"
+  feedback_mechanism: "open: community channel not yet defined"
+  discoverability: "open: not yet on the Developer Portal"
+  lifecycle_commitment: "open: community maintenance model undefined (F20)"
+project:
+  root_relative_to_skill: "../.."
+safety:
+  default_mode: "non-destructive"
+  requires_explicit_approval: []
+  secrets_policy: "Never persist credentials, tokens, private keys, or passwords. Read them from environment variables; redact before logging."

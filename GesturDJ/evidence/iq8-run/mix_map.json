@@ -1,0 +1,9 @@
+{
+  "latency_budget_ms": 200,
+  "gestures": {
+    "left":   {"action": "previous_clip", "min_confidence": 0.7, "debounce_ms": 300, "cooldown_ms": 500},
+    "right":  {"action": "next_clip",     "min_confidence": 0.7, "debounce_ms": 300, "cooldown_ms": 500},
+    "circle": {"action": "toggle_filter", "min_confidence": 0.8, "debounce_ms": 300, "cooldown_ms": 800}
+  },
+  "unmapped": []
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "purpose": "Baseline template only; values must be measured before targets are set.",
+  "measurement_unit": "one skill invocation or one composed journey step",
+  "records": [
+    {
+      "recorded_at": "YYYY-MM-DD",
+      "skill_id": "<catalog skill id>",
+      "layer": "<agent|journey|domain|context|mcp-tool>",
+      "reuse_class": "<catalog reuse class>",
+      "environment_tags": ["<pc|iq8|linux-board|all>"],
+      "request_type": "<discovery|validation|evaluation|journey>",
+      "token_measurement_available": false,
+      "input_tokens": null,
+      "output_tokens": null,
+      "total_tokens": null,
+      "elapsed_seconds": null,
+      "tool_call_count": null,
+      "retry_count": null,
+      "approval_prompt_count": null,
+      "validation_result": "<pass|fail|blocked|not-run>",
+      "evidence_reused": false,
+      "evidence_path": null,
+      "redaction_verified": false,
+      "notes": "<observed facts only>"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+schema_version: "1.0"
+id: "gesturdj-build-journey"
+name: "GesturDJ Build Journey"
+version: "0.1.0"
+description: "Take an independent developer from no setup to a gesture recognizer that is trained, exported, and validated on the machine that will run it, with a gesture-to-music mapping designed. The live mixer and the background music path are planned steps."
+entrypoint: "SKILL.md"
+kind: "procedural-skill"
+language: "en"
+synapse:
+  layer: "journey"
+  domain: "gesturdj"
+  owner: "Srinivas Reddy Gudala"
+  backup_owner: "TBD: community maintainers (see finding F20 in ../../GESTURDJ_SYNAPSE_SKILLS.md)"
+  review_cadence: "Each ONNX Runtime or PyTorch major release, or Ventuno Q image release"
+  visibility: "public"
+  maturity: "proposed"
+  supported_versions: ["Arduino Ventuno Q (Ubuntu): not yet tested", "Windows PC, Python 3.10, numpy 2.2, scikit-learn 1.7, torch 2.14, onnx 1.23, onnxruntime 1.23 (tested 2026-11-05)"]
+  feedback_channel: >
+    TBD: Developer Portal community channel. Until it exists, GitHub Issues on the
+    qa-intermediate-curriculum repository (label: synapse-gesturdj).
+  deprecation_path: >
+    Set maturity: "deprecated" and announce via feedback_channel with 30-day notice;
+    point to the replacement skill.
+  developer_journey_stage: ["discovery", "enablement", "platform-experience"]
+  dependencies: ["gesture-event-contract", "p3-self-service-boundaries", "device-and-host-discovery", "gesture-dataset-preparation", "gesture-model-training-and-evaluation", "model-export-and-deployment", "on-device-gesture-validation", "gesture-to-live-mix-design"]
+  authoritative_docs: ["../../GESTURDJ_SYNAPSE_SKILLS.md", "../../gesture_scripts/README.md", "../../gesture_scripts/ventunoq.md"]
+  a2a:
+    role: "skill"
+    accepts_from: ["gesturdj-agent"]
+    delegates_to: ["domain-skills", "mcp-tools"]
+  composition:
+    context_documents: ["gesture-event-contract", "p3-self-service-boundaries"]
+    domain_skills:
+      - "device-and-host-discovery"
+      - "gesture-dataset-preparation"
+      - "gesture-model-training-and-evaluation"
+      - "model-export-and-deployment"
+      - "on-device-gesture-validation"
+      - "gesture-to-live-mix-design"
+    planned_domain_skills: ["live-mixer-and-latency-validation", "audio-output-integration", "library-generation-and-quality-evaluation", "pose-gesture-recognition"]
+    mcp_tools: ["discover-host", "make-synthetic-dataset", "check-dataset", "export-onnx", "onnx-predict", "validate-onnx"]
+selection:
+  aliases: ["build GesturDJ", "gesture recognizer end to end"]
+  triggers:
+    - "Build a gesture recognizer I can run on my board"
+    - "Take me from nothing to a working gesture model"
+    - "Rerun the gesture pipeline after changing the data"
+capabilities:
+  - "Order the steps and carry the artifacts between them (device profile, dataset report, model folder, validation report)"
+  - "Stop at the first failed gate and name the failed check"
+  - "Reuse finished steps when inputs have not changed"
+authority:
+  source_docs: "See synapse.authoritative_docs"
+  approved_tools: ["gesture_scripts/*"]
+  endpoints: ["SSH (TCP/22) to a board the developer owns; address supplied at runtime, never stored"]
+  provenance: "projects/gesture_recognition; PC run evidence under evidence/pc-run/"
+control:
+  approval_gates: "See safety.requires_explicit_approval"
+  consequential_actions:
+    - "Writes datasets, models and reports into folders the developer chose"
+    - "Copying to a board and installing packages are separate approved steps"
+  recovery_and_rollback: "Each step writes to its own output folder; delete that folder to roll back. On a failed gate: stop, report, do not continue."
+review_gates:
+  # pilot = gates 1 + 3 met; supported = all six met
+  ownership: "met: named owner; backup owner open (F20)"
+  scope_and_boundary: "met: see negative_scope"
+  validation_evidence: "partial: steps 1-6 run on one PC configuration 2026-11-05 (evidence/pc-run/); Ventuno Q, real data and the planned steps not run"
+  feedback_mechanism: "open: community channel not yet defined"
+  discoverability: "open: not yet on the Developer Portal"
+  lifecycle_commitment: "open: community maintenance model undefined (F20)"
+project:
+  root_relative_to_skill: "../.."
+safety:
+  default_mode: "non-destructive"
+  requires_explicit_approval:
+    - "Downloading datasets or packages"
+    - "Writing into a folder that already has files"
+    - "Copying to a board or installing packages on it"
+    - "Recording sensor data or opening a camera"
+  secrets_policy: "Never persist credentials, tokens, private keys, or passwords. Read them from environment variables; redact before logging."

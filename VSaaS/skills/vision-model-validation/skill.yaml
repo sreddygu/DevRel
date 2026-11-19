@@ -1,0 +1,31 @@
+schema_version: "1.0"
+id: "vision-model-validation"
+name: "VSaaS Vision Model Validation"
+version: "0.1.0"
+description: "Validate a VSaaS ONNX or QNN detector with backend- and target-labeled evidence."
+entrypoint: "SKILL.md"
+kind: "domain-skill"
+language: "en"
+selection:
+  aliases: ["validate VSaaS vision", "test VSaaS QNN model"]
+  triggers: ["Check a VSaaS detector", "Run VSaaS QNN smoke test"]
+synapse:
+  layer: "domain"
+  domain: "vsaas"
+  owner: "P3 portfolio maintainers"
+  review_cadence: "Each detector, backend, model, or target-image release"
+  visibility: "public"
+  maturity: "pilot"
+  developer_journey_stage: ["platform-experience"]
+  dependencies: ["video-stream-ingestion", "p3-device-readiness", "p3-evidence-and-compatibility"]
+  authoritative_docs: ["../../scripts/qnn_smoke_test.py", "../../src/vsaas/qnn_yolov8.py", "../../src/vsaas/yolo_onnx.py"]
+contract:
+  prerequisites: ["Approved test frame", "Known detector and target intent"]
+  inputs: ["Model and backend settings", "Approved frame", "Optional approved target"]
+  outputs: ["Detector result", "Backend/target evidence", "Known dependency gaps"]
+  negative_scope: ["Does not claim NPU execution without target evidence", "Does not download or transfer models without approval"]
+  validation: ["Smoke-test output identifies detection result and exit status", "Evidence identifies model, backend, and target"]
+safety:
+  default_mode: "non-destructive"
+  requires_explicit_approval: ["Using QNN runtime paths", "Downloading or transferring a model", "Executing a target-side model", "Using a non-public image"]
+  secrets_policy: "Do not store private frames, model paths, credentials, or QNN SDK artifacts in evidence."

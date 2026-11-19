@@ -1,0 +1,13 @@
+# QUAD × ExecuTorch sample — dependencies
+#
+# The sample spawns the QUAD MCP server (which it imports from the sibling QUAD
+# install) and talks to it over stdio. It runs fully in MOCK mode with just
+# these — no torch, no NPU, no QNN SDK needed.
+fastmcp>=2.0
+
+# Optional: install on a 3.10–3.13 host to (a) save a REAL MobileNetV2 module
+# for ensure_model(), and (b) enable `run_executorch.py --real`. ExecuTorch is
+# requires-python <3.14, so a real export needs a 3.10–3.13 interpreter.
+#   torch>=2.4
+#   torchvision>=0.19
+#   executorch>=1.4.0

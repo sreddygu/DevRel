@@ -1,0 +1,72 @@
+{
+  "host": {
+    "os": "Linux 6.18.21-g7368c42b9cca-dirty",
+    "os_arch": "aarch64",
+    "python": "3.14.4",
+    "python_arch": "aarch64",
+    "python_executable": "/usr/bin/python3",
+    "free_disk_gb": 75.9,
+    "packages": {
+      "numpy": "2.4.3",
+      "sklearn": "missing",
+      "joblib": "missing",
+      "torch": "missing",
+      "onnx": "missing",
+      "onnxruntime": "1.31.1"
+    },
+    "audio_players_on_path": [
+      "paplay",
+      "pw-play",
+      "aplay",
+      "gst-play-1.0"
+    ],
+    "camera": "unknown",
+    "audio_sink": "unknown",
+    "onnxruntime": "present"
+  },
+  "unknown": [
+    "camera",
+    "audio_sink",
+    "recognizer_board",
+    "generator"
+  ],
+  "notes": [
+    "missing packages: sklearn, joblib, torch, onnx"
+  ]
+}
+{
+  "host": {
+    "os": "Linux 6.18.21-g7368c42b9cca-dirty",
+    "os_arch": "aarch64",
+    "python": "3.14.4",
+    "python_arch": "aarch64",
+    "python_executable": "/usr/bin/python3",
+    "free_disk_gb": 75.9,
+    "packages": {
+      "numpy": "2.4.3",
+      "sklearn": "missing",
+      "joblib": "missing",
+      "torch": "missing",
+      "onnx": "missing",
+      "onnxruntime": "1.31.1"
+    },
+    "audio_players_on_path": [
+      "paplay",
+      "pw-play",
+      "aplay",
+      "gst-play-1.0"
+    ],
+    "camera": "unknown",
+    "audio_sink": "unknown",
+    "onnxruntime": "present"
+  },
+  "unknown": [
+    "camera",
+    "audio_sink",
+    "recognizer_board",
+    "generator"
+  ],
+  "notes": [
+    "missing packages: sklearn, joblib, torch, onnx"
+  ]
+}

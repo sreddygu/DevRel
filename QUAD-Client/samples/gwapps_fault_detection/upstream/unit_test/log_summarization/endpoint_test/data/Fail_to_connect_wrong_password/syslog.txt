@@ -1,0 +1,474 @@
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.170672: nl80211: Event message available
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.170736: nl80211: BSS Event 59 (NL80211_CMD_FRAME) received for mld0
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.170753: nl80211: MLME event 59 (NL80211_CMD_FRAME) on mld0(00:0a:f5:22:12:31) A1=00:03:7f:12:76:76 A2=ca:8a:9a:d3:99:9f on link_id=2
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.170777: nl80211: MLME event frame - hexdump(len=140): b0 00 3c 00 00 03 7f 12 76 76 ca 8a 9a d3 99 9f 00 03 7f 12 76 76 f0 37 03 00 01 00 7e 00 13 00 67 3a 0b 69 6c 0f e6 47 31 49 df 64 7a 1f 2a 3c cb 5b 7b 2c 73 24 cb 47 f4 9c be db d9 25 36 aa ab 5e 92 51 b2 06 e6 fd 8d 0a a8 27 a8 3f c2 77 5b c2 00 89 ba 87 a0 57 f2 ac 36 57 af 6a 09 51 c3 65 e7 fd 3e b4 12 a6 4e 72 a8 34 e1 01 db ca 6c 7b bb fc d0 aa e3 ce 70 07 e6 2b 54 51 68 23 ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.170944: nl80211: Frame event
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.170954: nl80211: RX frame da=00:03:7f:12:76:76 sa=ca:8a:9a:d3:99:9f bssid=00:03:7f:12:76:76 freq=5180 ssi_signal=0 fc=0xb0 seq_ctrl=0x37f0 stype=11 (WLAN_FC_STYPE_AUTH) len=140
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.170989: mld0: Event RX_MGMT (18) received
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.171013: mgmt::auth
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.171271: EHT: SAE scalar length is 32
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.171299: EHT: SAE: Authentication frame elements - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.171329: authentication: STA=c8:8a:9a:d3:99:9c auth_alg=3 auth_transaction=1 status_code=126 wep=0 seq_ctrl=0x37f0
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.171351: SAE: Queue Authentication message from ca:8a:9a:d3:99:9f for processing (queue_len 0)
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.171393: SAE: Process next available message from queue
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.171591: EHT: SAE scalar length is 32
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.171618: EHT: SAE: Authentication frame elements - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.171644: authentication: STA=c8:8a:9a:d3:99:9c auth_alg=3 auth_transaction=1 status_code=126 wep=0 seq_ctrl=0x37f0 (from queue)
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.171765: nl80211: sta_remove -> DEL_STATION mld0 c8:8a:9a:d3:99:9c --> 0 (No error information)
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.171786: nl80211: NL80211_CMD_NEW_STATION STA c8:8a:9a:d3:99:9c
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.171802:   * supported rates - hexdump(len=3): 0c 18 30
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.171813:   * capability=0x0
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.171823:   * aid=1 (UNASSOC_STA workaround)
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.171830:   * listen_interval=0
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.171839:   * flags set=0x0 mask=0xa0
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.171847:   * mld_link_id=2
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.171854:   * mld_link_addr=ca:8a:9a:d3:99:9f
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.171943: SAE: State Committed -> Nothing for peer c8:8a:9a:d3:99:9c (Allow previous PWE to be reused)
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.171966: SAE: Peer commit-scalar - hexdump(len=32): 67 3a 0b 69 6c 0f e6 47 31 49 df 64 7a 1f 2a 3c cb 5b 7b 2c 73 24 cb 47 f4 9c be db d9 25 36 aa
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.172010: SAE: Peer commit-element(x) - hexdump(len=32): ab 5e 92 51 b2 06 e6 fd 8d 0a a8 27 a8 3f c2 77 5b c2 00 89 ba 87 a0 57 f2 ac 36 57 af 6a 09 51
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.172050: SAE: Peer commit-element(y) - hexdump(len=32): c3 65 e7 fd 3e b4 12 a6 4e 72 a8 34 e1 01 db ca 6c 7b bb fc d0 aa e3 ce 70 07 e6 2b 54 51 68 23
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.172122: SAE: Possible elements at the end of the frame - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.172146: SAE: Possible elements at the end of the frame - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.172167: SAE: Possible elements at the end of the frame - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.172188: SAE: Possible elements at the end of the frame - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.172212: SAE: Peer c8:8a:9a:d3:99:9c state=Nothing auth_trans=1
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.172233: SAE: own commit-scalar - hexdump(len=32): fa 1c 7e 9c 6a ea ce 8f 6b 47 3d 95 f3 5e a4 d8 30 2d 24 f2 90 cb d4 7e 4f 3e f4 7f 0e 3d 17 be
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.172330: SAE: own commit-element(x) - hexdump(len=32): 18 3f 2e 9e 47 3f 6b 15 45 9a 0b 3f cd e8 61 ab 85 44 41 bb b0 ca 69 ed 9d 82 2e 32 8b 46 0c d5
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.172389: SAE: own commit-element(y) - hexdump(len=32): a5 70 19 da b5 e3 5f 2c be ac d3 94 71 42 c4 0e b6 50 7e 50 67 08 2a 5c 28 3d d4 5e f2 90 eb c6
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.172435: authentication reply: STA=ca:8a:9a:d3:99:9f auth_alg=3 auth_transaction=1 resp=126 (IE len=98) (dbg=sae-send-commit)
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.172452: nl80211: send_mlme - da=ca:8a:9a:d3:99:9f sa=00:03:7f:12:76:76 bssid=00:03:7f:12:76:76 noack=0 freq=0 no_cck=0 offchanok=0 wait_time=0 no_encrypt=0 fc=0xb0 (WLAN_FC_STYPE_AUTH) nlmode=3 link_id=2
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.172479: nl80211: Use link freq=5180 for address 00:03:7f:12:76:76
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.172491: nl80211: send_mlme -> send_frame_cmd
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.172498: nl80211: CMD_FRAME freq=5180 wait=0 no_cck=0 no_ack=0 offchanok=0
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.172508: CMD_FRAME - hexdump(len=140): b0 00 00 00 ca 8a 9a d3 99 9f 00 03 7f 12 76 76 00 03 7f 12 76 76 00 00 03 00 01 00 7e 00 13 00 fa 1c 7e 9c 6a ea ce 8f 6b 47 3d 95 f3 5e a4 d8 30 2d 24 f2 90 cb d4 7e 4f 3e f4 7f 0e 3d 17 be 18 3f 2e 9e 47 3f 6b 15 45 9a 0b 3f cd e8 61 ab 85 44 41 bb b0 ca 69 ed 9d 82 2e 32 8b 46 0c d5 a5 70 19 da b5 e3 5f 2c be ac d3 94 71 42 c4 0e b6 50 7e 50 67 08 2a 5c 28 3d d4 5e f2 90 eb c6 ff 0a 6b 00 00 07 00 0a f5 22 12 31
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.172888: nl80211: Frame TX command accepted; cookie 0xfaa0faecc4e03600
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.172904: SAE: State Nothing -> Committed for peer c8:8a:9a:d3:99:9c (Sent Commit)
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.174369: SAE: k - hexdump(len=32): 4a 11 70 74 5a 64 f0 a9 ab 6c 39 37 14 1e f1 94 2b fb a4 47 dd ad 4f 1b c6 97 00 8b 7a d2 a2 61
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.174423: SAE: Derive keys - H2E=1 AKMP=0x0 = 00000000 (UNKNOWN)
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.174435: SAE: salt for keyseed derivation - hexdump(len=32): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.174570: SAE: keyseed - hexdump(len=32): 9f 89 62 a7 9e 57 fe 42 b2 86 d6 d8 9b 37 8a 5a 27 44 04 55 b9 40 1e 17 53 79 89 84 56 3d 69 f4
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.174627: SAE: PMKID - hexdump(len=16): 61 56 8a 06 d6 fa b4 d5 9c 91 1c fa 6d 7d cf 15
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.174720: SAE: KCK - hexdump(len=32): 1b 3d be cd 42 d6 08 a7 6a 6b 90 2b 42 92 7b 1e a5 ab 0d 5e 16 d7 86 22 21 13 91 0b 27 b5 dc d4
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.174768: SAE: PMK - hexdump(len=32): 9e 5b 6e 28 32 62 62 71 c1 2e 8a 30 3c 17 74 aa e8 6e 5e 8c 64 b1 f1 c2 20 21 9d 33 11 4d cf 81
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.174832: nl80211: Event message available
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.174865: nl80211: Drv Event 60 (NL80211_CMD_FRAME_TX_STATUS) received for mld0
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.174880: nl80211: MLME event 60 (NL80211_CMD_FRAME_TX_STATUS) on mld0(00:0a:f5:22:12:31) A1=ca:8a:9a:d3:99:9f A2=00:03:7f:12:76:76 on link_id=2
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.174902: nl80211: MLME event frame - hexdump(len=140): b0 00 00 00 ca 8a 9a d3 99 9f 00 03 7f 12 76 76 00 03 7f 12 76 76 00 00 03 00 01 00 7e 00 13 00 fa 1c 7e 9c 6a ea ce 8f 6b 47 3d 95 f3 5e a4 d8 30 2d 24 f2 90 cb d4 7e 4f 3e f4 7f 0e 3d 17 be 18 3f 2e 9e 47 3f 6b 15 45 9a 0b 3f cd e8 61 ab 85 44 41 bb b0 ca 69 ed 9d 82 2e 32 8b 46 0c d5 a5 70 19 da b5 e3 5f 2c be ac d3 94 71 42 c4 0e b6 50 7e 50 67 08 2a 5c 28 3d d4 5e f2 90 eb c6 ff 0a 6b 00 00 07 00 0a f5 22 12 31
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175230: nl80211: Frame TX status event A1=ca:8a:9a:d3:99:9f stype=11 cookie=0xfaa0faecc4e03600 ack=1
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175256: mld0: Event TX_STATUS (16) received
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175271: mgmt::auth cb
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175278: handle_auth_cb: STA ca:8a:9a:d3:99:9f not found
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175314: nl80211: Event message available
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175343: nl80211: BSS Event 59 (NL80211_CMD_FRAME) received for mld0
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175355: nl80211: MLME event 59 (NL80211_CMD_FRAME) on mld0(00:0a:f5:22:12:31) A1=00:03:7f:12:76:76 A2=c8:8a:9a:d3:99:9c on link_id=2
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175377: nl80211: MLME event frame - hexdump(len=76): b0 00 3c 00 00 03 7f 12 76 76 c8 8a 9a d3 99 9c 00 03 7f 12 76 76 00 38 03 00 02 00 00 00 05 00 de e8 71 a8 e5 89 16 eb 3b 9d 8a c6 a5 1e e4 9f e7 91 3f cc 6b 38 7f dc a8 d3 82 2c 10 52 f6 4f ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175461: nl80211: Frame event
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175468: nl80211: RX frame da=00:03:7f:12:76:76 sa=c8:8a:9a:d3:99:9c bssid=00:03:7f:12:76:76 freq=5180 ssi_signal=0 fc=0xb0 seq_ctrl=0x3800 stype=11 (WLAN_FC_STYPE_AUTH) len=76
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175498: mld0: Event RX_MGMT (18) received
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175511: mgmt::auth
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175519: SAE: confirm: kck_len=32
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175529: authentication: STA=c8:8a:9a:d3:99:9c auth_alg=3 auth_transaction=2 status_code=0 wep=0 seq_ctrl=0x3800
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175570: SAE: peer-send-confirm 5
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175731: SAE: Confirm mismatch
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175744: SAE: Received confirm - hexdump(len=32): de e8 71 a8 e5 89 16 eb 3b 9d 8a c6 a5 1e e4 9f e7 91 3f cc 6b 38 7f dc a8 d3 82 2c 10 52 f6 4f
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175783: SAE: Calculated verifier - hexdump(len=32): ab 95 67 06 a5 d3 f8 e7 9d 29 2d e0 a8 e5 33 2e 15 2f b2 ed ec 75 30 11 bb 9e 3d 6f 11 1b e0 3a
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175826: authentication reply: STA=c8:8a:9a:d3:99:9c auth_alg=3 auth_transaction=2 resp=15 (IE len=0) (dbg=auth-sae)
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175841: nl80211: send_mlme - da=c8:8a:9a:d3:99:9c sa=00:03:7f:12:76:76 bssid=00:03:7f:12:76:76 noack=0 freq=0 no_cck=0 offchanok=0 wait_time=0 no_encrypt=0 fc=0xb0 (WLAN_FC_STYPE_AUTH) nlmode=3 link_id=2
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175866: nl80211: Use link freq=5180 for address 00:03:7f:12:76:76
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175877: nl80211: send_mlme -> send_frame_cmd
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175883: nl80211: CMD_FRAME freq=5180 wait=0 no_cck=0 no_ack=0 offchanok=0
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.175893: CMD_FRAME - hexdump(len=42): b0 00 00 00 c8 8a 9a d3 99 9c 00 03 7f 12 76 76 00 03 7f 12 76 76 00 00 03 00 02 00 0f 00 ff 0a 6b 00 00 07 00 0a f5 22 12 31
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.190079: nl80211: Frame command failed: ret=-22 (Invalid argument) (freq=5180 wait=0)
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.190103: send_auth_reply: send failed
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.190169: nl80211: sta_remove -> DEL_STATION mld0 c8:8a:9a:d3:99:9c --> 0 (No error information)
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.190225: RTM_NEWLINK: ifi_index=20 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Wed Nov  5 01:26:02 2025 user.notice root: 1762305962.190302: RTM_NEWLINK: ifi_index=20 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Wed Nov  5 01:26:02 2025 kern.err kernel: [ 6110.689469] wlan: [2280:E:ANY] wlan_cfg80211_mgmt_tx: ni is NULL
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.169479: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.169543: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.169809: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.169899: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.169936: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.169964: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.171923: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.171968: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.172002: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.172030: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.174022: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.174128: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.176214: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.176259: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.178594: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.178642: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.180774: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.180822: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.180857: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.180883: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.183178: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.183225: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 18 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.183259: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.183287: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 18 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.183316: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.183341: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 18 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.185343: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.185389: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 18 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.185423: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.185452: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 18 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.187510: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.187555: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 18 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.189686: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.189729: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 18 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.196926: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.196987: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 18 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.199446: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.199496: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 18 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.199545: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.199573: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 18 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.202289: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.202335: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 14 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.202390: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.202431: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 14 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.202529: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.202593: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 14 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.204370: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.204414: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 14 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.204499: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.204576: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 14 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.206339: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.206446: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 14 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.208525: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.208569: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 14 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.217132: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.217194: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 14 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.219959: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.220005: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 14 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.220143: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.220196: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 14 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.221685: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.221731: nl80211: BSS Event 59 (NL80211_CMD_FRAME) received for mld0
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.221748: nl80211: MLME event 59 (NL80211_CMD_FRAME) on mld0(00:0a:f5:22:12:31) A1=00:03:7f:12:76:76 A2=ca:8a:9a:d3:99:9f on link_id=2
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.221772: nl80211: MLME event frame - hexdump(len=140): b0 00 3c 00 00 03 7f 12 76 76 ca 8a 9a d3 99 9f 00 03 7f 12 76 76 10 38 03 00 01 00 7e 00 13 00 f6 db bc 33 b6 9e 41 1a d5 e7 6a c4 47 ac c0 d1 c5 9f dc 08 5e 38 fd 51 43 97 2b e6 bd 8b 4b 67 84 97 b1 8f 91 59 3a 4c d1 a3 48 e5 1a 9a 4d ae 1c df 0f d1 61 4d a9 4d 1a 91 ca e1 70 f7 96 31 b9 c5 a8 55 fd 2e 95 25 59 e7 6b e1 ad 9b f1 6a da 0f 28 64 84 83 a3 1b 24 0f 31 04 d0 7d ef 3f ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.221927: nl80211: Frame event
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.221938: nl80211: RX frame da=00:03:7f:12:76:76 sa=ca:8a:9a:d3:99:9f bssid=00:03:7f:12:76:76 freq=5180 ssi_signal=0 fc=0xb0 seq_ctrl=0x3810 stype=11 (WLAN_FC_STYPE_AUTH) len=140
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.221973: mld0: Event RX_MGMT (18) received
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.221997: mgmt::auth
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.222282: EHT: SAE scalar length is 32
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.222312: EHT: SAE: Authentication frame elements - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.222342: authentication: STA=c8:8a:9a:d3:99:9c auth_alg=3 auth_transaction=1 status_code=126 wep=0 seq_ctrl=0x3810
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.222387: SAE: Queue Authentication message from ca:8a:9a:d3:99:9f for processing (queue_len 0)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.222429: SAE: Process next available message from queue
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.222632: EHT: SAE scalar length is 32
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.222654: EHT: SAE: Authentication frame elements - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.222680: authentication: STA=c8:8a:9a:d3:99:9c auth_alg=3 auth_transaction=1 status_code=126 wep=0 seq_ctrl=0x3810 (from queue)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.222794: nl80211: sta_remove -> DEL_STATION mld0 c8:8a:9a:d3:99:9c --> 0 (No error information)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.222815: nl80211: NL80211_CMD_NEW_STATION STA c8:8a:9a:d3:99:9c
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.222831:   * supported rates - hexdump(len=3): 0c 18 30
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.222843:   * capability=0x0
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.222852:   * aid=1 (UNASSOC_STA workaround)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.222860:   * listen_interval=0
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.222868:   * flags set=0x0 mask=0xa0
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.222877:   * mld_link_id=2
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.222884:   * mld_link_addr=ca:8a:9a:d3:99:9f
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.222976: SAE: State Committed -> Nothing for peer c8:8a:9a:d3:99:9c (Allow previous PWE to be reused)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.222999: SAE: Peer commit-scalar - hexdump(len=32): f6 db bc 33 b6 9e 41 1a d5 e7 6a c4 47 ac c0 d1 c5 9f dc 08 5e 38 fd 51 43 97 2b e6 bd 8b 4b 67
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.223043: SAE: Peer commit-element(x) - hexdump(len=32): 84 97 b1 8f 91 59 3a 4c d1 a3 48 e5 1a 9a 4d ae 1c df 0f d1 61 4d a9 4d 1a 91 ca e1 70 f7 96 31
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.223082: SAE: Peer commit-element(y) - hexdump(len=32): b9 c5 a8 55 fd 2e 95 25 59 e7 6b e1 ad 9b f1 6a da 0f 28 64 84 83 a3 1b 24 0f 31 04 d0 7d ef 3f
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.223153: SAE: Possible elements at the end of the frame - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.223178: SAE: Possible elements at the end of the frame - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.223199: SAE: Possible elements at the end of the frame - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.223220: SAE: Possible elements at the end of the frame - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.223244: SAE: Peer c8:8a:9a:d3:99:9c state=Nothing auth_trans=1
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.223264: SAE: own commit-scalar - hexdump(len=32): fa 1c 7e 9c 6a ea ce 8f 6b 47 3d 95 f3 5e a4 d8 30 2d 24 f2 90 cb d4 7e 4f 3e f4 7f 0e 3d 17 be
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.223360: SAE: own commit-element(x) - hexdump(len=32): 18 3f 2e 9e 47 3f 6b 15 45 9a 0b 3f cd e8 61 ab 85 44 41 bb b0 ca 69 ed 9d 82 2e 32 8b 46 0c d5
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.223400: SAE: own commit-element(y) - hexdump(len=32): a5 70 19 da b5 e3 5f 2c be ac d3 94 71 42 c4 0e b6 50 7e 50 67 08 2a 5c 28 3d d4 5e f2 90 eb c6
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.223445: authentication reply: STA=ca:8a:9a:d3:99:9f auth_alg=3 auth_transaction=1 resp=126 (IE len=98) (dbg=sae-send-commit)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.223462: nl80211: send_mlme - da=ca:8a:9a:d3:99:9f sa=00:03:7f:12:76:76 bssid=00:03:7f:12:76:76 noack=0 freq=0 no_cck=0 offchanok=0 wait_time=0 no_encrypt=0 fc=0xb0 (WLAN_FC_STYPE_AUTH) nlmode=3 link_id=2
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.223489: nl80211: Use link freq=5180 for address 00:03:7f:12:76:76
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.223500: nl80211: send_mlme -> send_frame_cmd
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.223507: nl80211: CMD_FRAME freq=5180 wait=0 no_cck=0 no_ack=0 offchanok=0
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.223517: CMD_FRAME - hexdump(len=140): b0 00 00 00 ca 8a 9a d3 99 9f 00 03 7f 12 76 76 00 03 7f 12 76 76 00 00 03 00 01 00 7e 00 13 00 fa 1c 7e 9c 6a ea ce 8f 6b 47 3d 95 f3 5e a4 d8 30 2d 24 f2 90 cb d4 7e 4f 3e f4 7f 0e 3d 17 be 18 3f 2e 9e 47 3f 6b 15 45 9a 0b 3f cd e8 61 ab 85 44 41 bb b0 ca 69 ed 9d 82 2e 32 8b 46 0c d5 a5 70 19 da b5 e3 5f 2c be ac d3 94 71 42 c4 0e b6 50 7e 50 67 08 2a 5c 28 3d d4 5e f2 90 eb c6 ff 0a 6b 00 00 07 00 0a f5 22 12 31
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.223872: nl80211: Frame TX command accepted; cookie 0xfaa0faecc4e03600
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.223888: SAE: State Nothing -> Committed for peer c8:8a:9a:d3:99:9c (Sent Commit)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.225212: SAE: k - hexdump(len=32): 73 f9 d4 f4 cf db c0 a5 e1 e3 c7 75 61 1d 70 f8 3e a6 6d 3a 51 89 e5 5d 92 24 da 6a b7 f6 eb 3a
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.225264: SAE: Derive keys - H2E=1 AKMP=0x0 = 00000000 (UNKNOWN)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.225277: SAE: salt for keyseed derivation - hexdump(len=32): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.225414: SAE: keyseed - hexdump(len=32): 42 a0 8a 2e ef 89 3c cb be 4b bc 78 a5 e2 19 35 3c 72 d5 36 11 87 ea 82 bd 28 fa f5 9d 92 8a a9
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.225472: SAE: PMKID - hexdump(len=16): f0 f8 3a d1 21 89 0f a9 41 2e a8 5a 3b 0b 65 aa
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.225565: SAE: KCK - hexdump(len=32): f1 4e de 86 b6 e7 7d 11 be 6a 73 7c 1f fa 63 96 d9 70 d6 b7 63 79 fa 58 b9 61 22 34 9b aa 97 b3
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.225610: SAE: PMK - hexdump(len=32): 22 50 b4 e9 ce d7 12 bc eb 78 92 bd 71 f4 80 90 1e 74 d4 22 3d 03 60 7d 44 7a b7 b1 9d 3c fe 96
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.225681: RTM_NEWLINK: ifi_index=20 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.225773: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.225808: nl80211: Drv Event 60 (NL80211_CMD_FRAME_TX_STATUS) received for mld0
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.225824: nl80211: MLME event 60 (NL80211_CMD_FRAME_TX_STATUS) on mld0(00:0a:f5:22:12:31) A1=ca:8a:9a:d3:99:9f A2=00:03:7f:12:76:76 on link_id=2
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.225845: nl80211: MLME event frame - hexdump(len=140): b0 00 00 00 ca 8a 9a d3 99 9f 00 03 7f 12 76 76 00 03 7f 12 76 76 00 00 03 00 01 00 7e 00 13 00 fa 1c 7e 9c 6a ea ce 8f 6b 47 3d 95 f3 5e a4 d8 30 2d 24 f2 90 cb d4 7e 4f 3e f4 7f 0e 3d 17 be 18 3f 2e 9e 47 3f 6b 15 45 9a 0b 3f cd e8 61 ab 85 44 41 bb b0 ca 69 ed 9d 82 2e 32 8b 46 0c d5 a5 70 19 da b5 e3 5f 2c be ac d3 94 71 42 c4 0e b6 50 7e 50 67 08 2a 5c 28 3d d4 5e f2 90 eb c6 ff 0a 6b 00 00 07 00 0a f5 22 12 31
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.225993: nl80211: Frame TX status event A1=ca:8a:9a:d3:99:9f stype=11 cookie=0xfaa0faecc4e03600 ack=1
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.226018: mld0: Event TX_STATUS (16) received
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.226036: mgmt::auth cb
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.226044: handle_auth_cb: STA ca:8a:9a:d3:99:9f not found
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.226322: nl80211: Event message available
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.226357: nl80211: BSS Event 59 (NL80211_CMD_FRAME) received for mld0
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.226370: nl80211: MLME event 59 (NL80211_CMD_FRAME) on mld0(00:0a:f5:22:12:31) A1=00:03:7f:12:76:76 A2=c8:8a:9a:d3:99:9c on link_id=2
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.226392: nl80211: MLME event frame - hexdump(len=76): b0 00 3c 00 00 03 7f 12 76 76 c8 8a 9a d3 99 9c 00 03 7f 12 76 76 20 38 03 00 02 00 00 00 06 00 94 ff 2e c7 d3 b3 de 07 5b e1 da d2 73 55 9e 47 da 03 d5 e0 97 63 e1 1e 45 d0 5f 1f e1 3f 79 2b ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.226477: nl80211: Frame event
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.226486: nl80211: RX frame da=00:03:7f:12:76:76 sa=c8:8a:9a:d3:99:9c bssid=00:03:7f:12:76:76 freq=5180 ssi_signal=0 fc=0xb0 seq_ctrl=0x3820 stype=11 (WLAN_FC_STYPE_AUTH) len=76
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.226516: mld0: Event RX_MGMT (18) received
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.226532: mgmt::auth
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.226542: SAE: confirm: kck_len=32
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.226553: authentication: STA=c8:8a:9a:d3:99:9c auth_alg=3 auth_transaction=2 status_code=0 wep=0 seq_ctrl=0x3820
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.226605: SAE: peer-send-confirm 6
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.226774: SAE: Confirm mismatch
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.226784: SAE: Received confirm - hexdump(len=32): 94 ff 2e c7 d3 b3 de 07 5b e1 da d2 73 55 9e 47 da 03 d5 e0 97 63 e1 1e 45 d0 5f 1f e1 3f 79 2b
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.226824: SAE: Calculated verifier - hexdump(len=32): fa 78 ce e5 85 14 53 9e bb 49 16 e5 a8 3a 78 4b bd ae 6f 48 93 cc 1a 14 31 c7 12 24 aa bf 2d 6c
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.226870: authentication reply: STA=c8:8a:9a:d3:99:9c auth_alg=3 auth_transaction=2 resp=15 (IE len=0) (dbg=auth-sae)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.226887: nl80211: send_mlme - da=c8:8a:9a:d3:99:9c sa=00:03:7f:12:76:76 bssid=00:03:7f:12:76:76 noack=0 freq=0 no_cck=0 offchanok=0 wait_time=0 no_encrypt=0 fc=0xb0 (WLAN_FC_STYPE_AUTH) nlmode=3 link_id=2
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.226914: nl80211: Use link freq=5180 for address 00:03:7f:12:76:76
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.226925: nl80211: send_mlme -> send_frame_cmd
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.226932: nl80211: CMD_FRAME freq=5180 wait=0 no_cck=0 no_ack=0 offchanok=0
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.226942: CMD_FRAME - hexdump(len=42): b0 00 00 00 c8 8a 9a d3 99 9c 00 03 7f 12 76 76 00 03 7f 12 76 76 00 00 03 00 02 00 0f 00 ff 0a 6b 00 00 07 00 0a f5 22 12 31
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.240271: nl80211: Frame command failed: ret=-22 (Invalid argument) (freq=5180 wait=0)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.240296: send_auth_reply: send failed
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.240369: nl80211: sta_remove -> DEL_STATION mld0 c8:8a:9a:d3:99:9c --> 0 (No error information)
+Wed Nov  5 01:26:03 2025 user.notice root: 1762305963.240438: RTM_NEWLINK: ifi_index=20 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Wed Nov  5 01:26:03 2025 kern.err kernel: [ 6111.740539] wlan: [2280:E:ANY] wlan_cfg80211_mgmt_tx: ni is NULL
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.270296: nl80211: Event message available
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.270369: nl80211: BSS Event 59 (NL80211_CMD_FRAME) received for mld0
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.270389: nl80211: MLME event 59 (NL80211_CMD_FRAME) on mld0(00:0a:f5:22:12:31) A1=00:03:7f:12:76:76 A2=ca:8a:9a:d3:99:9f on link_id=2
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.270414: nl80211: MLME event frame - hexdump(len=140): b0 00 3c 00 00 03 7f 12 76 76 ca 8a 9a d3 99 9f 00 03 7f 12 76 76 30 38 03 00 01 00 7e 00 13 00 4c 78 d9 44 2d dc b0 aa c9 a4 94 60 07 e4 bf 37 ea cb fc f4 fc 5d 9c d7 8c ba fe af 83 c7 d7 a2 60 78 ac c6 c7 b0 9b 5a 38 4d 3e 5a 86 7b f4 3c ca 3e ac 8e 0a 45 95 5c 11 da 61 eb c6 60 d2 4f b8 02 98 3d 27 e6 ee 5b 83 40 54 04 ae f5 5b 61 28 10 f9 68 57 37 da 9b c6 f2 ed 51 d1 3a e5 7e ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.270585: nl80211: Frame event
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.270596: nl80211: RX frame da=00:03:7f:12:76:76 sa=ca:8a:9a:d3:99:9f bssid=00:03:7f:12:76:76 freq=5180 ssi_signal=0 fc=0xb0 seq_ctrl=0x3830 stype=11 (WLAN_FC_STYPE_AUTH) len=140
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.270632: mld0: Event RX_MGMT (18) received
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.270656: mgmt::auth
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.270932: EHT: SAE scalar length is 32
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.270962: EHT: SAE: Authentication frame elements - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.270991: authentication: STA=c8:8a:9a:d3:99:9c auth_alg=3 auth_transaction=1 status_code=126 wep=0 seq_ctrl=0x3830
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271014: SAE: Queue Authentication message from ca:8a:9a:d3:99:9f for processing (queue_len 0)
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271054: SAE: Process next available message from queue
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271255: EHT: SAE scalar length is 32
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271282: EHT: SAE: Authentication frame elements - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271309: authentication: STA=c8:8a:9a:d3:99:9c auth_alg=3 auth_transaction=1 status_code=126 wep=0 seq_ctrl=0x3830 (from queue)
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271448: nl80211: sta_remove -> DEL_STATION mld0 c8:8a:9a:d3:99:9c --> 0 (No error information)
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271475: nl80211: NL80211_CMD_NEW_STATION STA c8:8a:9a:d3:99:9c
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271490:   * supported rates - hexdump(len=3): 0c 18 30
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271503:   * capability=0x0
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271512:   * aid=1 (UNASSOC_STA workaround)
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271520:   * listen_interval=0
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271528:   * flags set=0x0 mask=0xa0
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271537:   * mld_link_id=2
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271544:   * mld_link_addr=ca:8a:9a:d3:99:9f
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271635: SAE: State Committed -> Nothing for peer c8:8a:9a:d3:99:9c (Allow previous PWE to be reused)
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271658: SAE: Peer commit-scalar - hexdump(len=32): 4c 78 d9 44 2d dc b0 aa c9 a4 94 60 07 e4 bf 37 ea cb fc f4 fc 5d 9c d7 8c ba fe af 83 c7 d7 a2
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271702: SAE: Peer commit-element(x) - hexdump(len=32): 60 78 ac c6 c7 b0 9b 5a 38 4d 3e 5a 86 7b f4 3c ca 3e ac 8e 0a 45 95 5c 11 da 61 eb c6 60 d2 4f
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271741: SAE: Peer commit-element(y) - hexdump(len=32): b8 02 98 3d 27 e6 ee 5b 83 40 54 04 ae f5 5b 61 28 10 f9 68 57 37 da 9b c6 f2 ed 51 d1 3a e5 7e
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271813: SAE: Possible elements at the end of the frame - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271837: SAE: Possible elements at the end of the frame - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271859: SAE: Possible elements at the end of the frame - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271880: SAE: Possible elements at the end of the frame - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271904: SAE: Peer c8:8a:9a:d3:99:9c state=Nothing auth_trans=1
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.271924: SAE: own commit-scalar - hexdump(len=32): fa 1c 7e 9c 6a ea ce 8f 6b 47 3d 95 f3 5e a4 d8 30 2d 24 f2 90 cb d4 7e 4f 3e f4 7f 0e 3d 17 be
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.272021: SAE: own commit-element(x) - hexdump(len=32): 18 3f 2e 9e 47 3f 6b 15 45 9a 0b 3f cd e8 61 ab 85 44 41 bb b0 ca 69 ed 9d 82 2e 32 8b 46 0c d5
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.272060: SAE: own commit-element(y) - hexdump(len=32): a5 70 19 da b5 e3 5f 2c be ac d3 94 71 42 c4 0e b6 50 7e 50 67 08 2a 5c 28 3d d4 5e f2 90 eb c6
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.272106: authentication reply: STA=ca:8a:9a:d3:99:9f auth_alg=3 auth_transaction=1 resp=126 (IE len=98) (dbg=sae-send-commit)
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.272123: nl80211: send_mlme - da=ca:8a:9a:d3:99:9f sa=00:03:7f:12:76:76 bssid=00:03:7f:12:76:76 noack=0 freq=0 no_cck=0 offchanok=0 wait_time=0 no_encrypt=0 fc=0xb0 (WLAN_FC_STYPE_AUTH) nlmode=3 link_id=2
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.272150: nl80211: Use link freq=5180 for address 00:03:7f:12:76:76
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.272161: nl80211: send_mlme -> send_frame_cmd
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.272168: nl80211: CMD_FRAME freq=5180 wait=0 no_cck=0 no_ack=0 offchanok=0
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.272178: CMD_FRAME - hexdump(len=140): b0 00 00 00 ca 8a 9a d3 99 9f 00 03 7f 12 76 76 00 03 7f 12 76 76 00 00 03 00 01 00 7e 00 13 00 fa 1c 7e 9c 6a ea ce 8f 6b 47 3d 95 f3 5e a4 d8 30 2d 24 f2 90 cb d4 7e 4f 3e f4 7f 0e 3d 17 be 18 3f 2e 9e 47 3f 6b 15 45 9a 0b 3f cd e8 61 ab 85 44 41 bb b0 ca 69 ed 9d 82 2e 32 8b 46 0c d5 a5 70 19 da b5 e3 5f 2c be ac d3 94 71 42 c4 0e b6 50 7e 50 67 08 2a 5c 28 3d d4 5e f2 90 eb c6 ff 0a 6b 00 00 07 00 0a f5 22 12 31
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.272534: nl80211: Frame TX command accepted; cookie 0xfaa0faecc4e03600
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.272550: SAE: State Nothing -> Committed for peer c8:8a:9a:d3:99:9c (Sent Commit)
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.273928: SAE: k - hexdump(len=32): 68 be e8 2d fb 50 2c f4 79 85 23 1e 56 28 67 6c ce f5 7a cc 78 28 18 93 ad d4 53 fb 80 71 0e fe
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.273980: SAE: Derive keys - H2E=1 AKMP=0x0 = 00000000 (UNKNOWN)
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.273992: SAE: salt for keyseed derivation - hexdump(len=32): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.274127: SAE: keyseed - hexdump(len=32): 04 41 98 b9 a1 ab f8 8b ec 85 cb cd 82 71 81 a6 43 81 56 4c 62 ce 27 38 df 07 db d7 d9 d5 6d 20
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.274184: SAE: PMKID - hexdump(len=16): 46 95 57 e1 98 c7 7f 39 34 eb d1 f5 fb 43 64 10
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.274277: SAE: KCK - hexdump(len=32): c5 ea 8c c5 e1 8a e8 be b5 ce b0 b7 bd a0 2f fd c0 af 79 1d 1b db e5 eb cd f8 4e 01 e8 5e 44 3a
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.274320: SAE: PMK - hexdump(len=32): 38 e3 79 3c 60 ce fb af f6 ff 7a a3 d1 12 00 a5 1e 86 ea 33 0d e9 be d2 0b cd 81 2d c2 ed f2 62
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.274384: nl80211: Event message available
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.274416: nl80211: Drv Event 60 (NL80211_CMD_FRAME_TX_STATUS) received for mld0
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.274431: nl80211: MLME event 60 (NL80211_CMD_FRAME_TX_STATUS) on mld0(00:0a:f5:22:12:31) A1=ca:8a:9a:d3:99:9f A2=00:03:7f:12:76:76 on link_id=2
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.274452: nl80211: MLME event frame - hexdump(len=140): b0 00 00 00 ca 8a 9a d3 99 9f 00 03 7f 12 76 76 00 03 7f 12 76 76 00 00 03 00 01 00 7e 00 13 00 fa 1c 7e 9c 6a ea ce 8f 6b 47 3d 95 f3 5e a4 d8 30 2d 24 f2 90 cb d4 7e 4f 3e f4 7f 0e 3d 17 be 18 3f 2e 9e 47 3f 6b 15 45 9a 0b 3f cd e8 61 ab 85 44 41 bb b0 ca 69 ed 9d 82 2e 32 8b 46 0c d5 a5 70 19 da b5 e3 5f 2c be ac d3 94 71 42 c4 0e b6 50 7e 50 67 08 2a 5c 28 3d d4 5e f2 90 eb c6 ff 0a 6b 00 00 07 00 0a f5 22 12 31
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.274600: nl80211: Frame TX status event A1=ca:8a:9a:d3:99:9f stype=11 cookie=0xfaa0faecc4e03600 ack=1
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.274623: mld0: Event TX_STATUS (16) received
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.274638: mgmt::auth cb
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.274645: handle_auth_cb: STA ca:8a:9a:d3:99:9f not found
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.274796: nl80211: Event message available
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.274829: nl80211: BSS Event 59 (NL80211_CMD_FRAME) received for mld0
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.274842: nl80211: MLME event 59 (NL80211_CMD_FRAME) on mld0(00:0a:f5:22:12:31) A1=00:03:7f:12:76:76 A2=c8:8a:9a:d3:99:9c on link_id=2
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.274863: nl80211: MLME event frame - hexdump(len=76): b0 00 3c 00 00 03 7f 12 76 76 c8 8a 9a d3 99 9c 00 03 7f 12 76 76 40 38 03 00 02 00 00 00 07 00 ff 36 81 89 c0 7f 72 2f eb 2c 0f 6f d2 e7 7a 33 02 ca 78 48 3b c9 66 b8 e6 1f 3a d0 ba 4c b7 3b ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.274949: nl80211: Frame event
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.274956: nl80211: RX frame da=00:03:7f:12:76:76 sa=c8:8a:9a:d3:99:9c bssid=00:03:7f:12:76:76 freq=5180 ssi_signal=0 fc=0xb0 seq_ctrl=0x3840 stype=11 (WLAN_FC_STYPE_AUTH) len=76
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.274985: mld0: Event RX_MGMT (18) received
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.275000: mgmt::auth
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.275008: SAE: confirm: kck_len=32
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.275018: authentication: STA=c8:8a:9a:d3:99:9c auth_alg=3 auth_transaction=2 status_code=0 wep=0 seq_ctrl=0x3840
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.275059: SAE: peer-send-confirm 7
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.275218: SAE: Confirm mismatch
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.275229: SAE: Received confirm - hexdump(len=32): ff 36 81 89 c0 7f 72 2f eb 2c 0f 6f d2 e7 7a 33 02 ca 78 48 3b c9 66 b8 e6 1f 3a d0 ba 4c b7 3b
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.275269: SAE: Calculated verifier - hexdump(len=32): b4 f1 da f3 77 39 5c 90 21 46 b2 44 0a de 6f 4a 53 a7 97 e5 3b af d2 94 e6 03 4f 24 e5 77 81 b1
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.275313: authentication reply: STA=c8:8a:9a:d3:99:9c auth_alg=3 auth_transaction=2 resp=15 (IE len=0) (dbg=auth-sae)
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.275328: nl80211: send_mlme - da=c8:8a:9a:d3:99:9c sa=00:03:7f:12:76:76 bssid=00:03:7f:12:76:76 noack=0 freq=0 no_cck=0 offchanok=0 wait_time=0 no_encrypt=0 fc=0xb0 (WLAN_FC_STYPE_AUTH) nlmode=3 link_id=2
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.275354: nl80211: Use link freq=5180 for address 00:03:7f:12:76:76
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.275364: nl80211: send_mlme -> send_frame_cmd
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.275371: nl80211: CMD_FRAME freq=5180 wait=0 no_cck=0 no_ack=0 offchanok=0
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.275381: CMD_FRAME - hexdump(len=42): b0 00 00 00 c8 8a 9a d3 99 9c 00 03 7f 12 76 76 00 03 7f 12 76 76 00 00 03 00 02 00 0f 00 ff 0a 6b 00 00 07 00 0a f5 22 12 31
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.291661: nl80211: Frame command failed: ret=-22 (Invalid argument) (freq=5180 wait=0)
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.291688: send_auth_reply: send failed
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.291764: nl80211: sta_remove -> DEL_STATION mld0 c8:8a:9a:d3:99:9c --> 0 (No error information)
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.291837: RTM_NEWLINK: ifi_index=20 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Wed Nov  5 01:26:04 2025 user.notice root: 1762305964.291922: RTM_NEWLINK: ifi_index=20 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Wed Nov  5 01:26:04 2025 kern.err kernel: [ 6112.788953] wlan: [2280:E:ANY] wlan_cfg80211_mgmt_tx: ni is NULL
+Wed Nov  5 01:26:05 2025 authpriv.info dropbear[30342]: Child connection from 192.168.1.210:63183
+Wed Nov  5 01:26:05 2025 authpriv.notice dropbear[30342]: Auth succeeded with blank password for 'root' from 192.168.1.210:63183
+Wed Nov  5 01:26:05 2025 authpriv.info dropbear[30342]: Exit (root) from <192.168.1.210:63183>: Disconnect received
+Wed Nov  5 01:26:05 2025 authpriv.info dropbear[30346]: Child connection from 192.168.1.210:63184
+Wed Nov  5 01:26:05 2025 authpriv.notice dropbear[30346]: Auth succeeded with blank password for 'root' from 192.168.1.210:63184
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.357225: nl80211: Event message available
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.357297: nl80211: BSS Event 59 (NL80211_CMD_FRAME) received for mld0
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.357315: nl80211: MLME event 59 (NL80211_CMD_FRAME) on mld0(00:0a:f5:22:12:31) A1=00:03:7f:81:b9:80 A2=ca:8a:9a:d3:99:9f on link_id=0
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.357340: nl80211: MLME event frame - hexdump(len=140): b0 00 3a 01 00 03 7f 81 b9 80 ca 8a 9a d3 99 9f 00 03 7f 81 b9 80 50 38 03 00 01 00 7e 00 13 00 e6 eb e0 f6 db 26 d9 1c 10 87 61 5d 8f 47 93 3a 87 0a f0 19 4a 59 10 32 7e 63 b8 87 d0 f2 75 48 26 87 63 5b 89 91 97 9b b3 c7 17 e1 f8 66 78 ca 62 dd 0d 1e 8c 79 cd 4e 92 19 85 ae 81 e8 a6 b1 cd 14 31 eb c0 af 56 bd 2f 26 95 74 25 9e da ff 39 c3 a7 51 54 55 19 7b 64 10 89 a1 e0 52 43 55 ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.357487: nl80211: Frame event
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.357496: nl80211: RX frame da=00:03:7f:81:b9:80 sa=ca:8a:9a:d3:99:9f bssid=00:03:7f:81:b9:80 freq=2437 ssi_signal=0 fc=0xb0 seq_ctrl=0x3850 stype=11 (WLAN_FC_STYPE_AUTH) len=140
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.357532: mld0: Event RX_MGMT (18) received
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.357554: mgmt::auth
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.357843: EHT: SAE scalar length is 32
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.357874: EHT: SAE: Authentication frame elements - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.357904: authentication: STA=c8:8a:9a:d3:99:9c auth_alg=3 auth_transaction=1 status_code=126 wep=0 seq_ctrl=0x3850
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.357925: SAE: Queue Authentication message from ca:8a:9a:d3:99:9f for processing (queue_len 0)
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.357969: SAE: Process next available message from queue
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.358169: EHT: SAE scalar length is 32
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.358190: EHT: SAE: Authentication frame elements - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.358215: authentication: STA=c8:8a:9a:d3:99:9c auth_alg=3 auth_transaction=1 status_code=126 wep=0 seq_ctrl=0x3850 (from queue)
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.358234:   New STA
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.358317: Removing STA: c8:8a:9a:d3:99:9c of AP Link ID:2
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.358337: nl80211: Set STA flags - ifname=mld0 addr=c8:8a:9a:d3:99:9c total_flags=0x0 flags_or=0x0 flags_and=0xfffffff0 authorized=0
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.358523: nl80211: sta_remove -> DEL_STATION mld0 c8:8a:9a:d3:99:9c --> 0 (No error information)
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.358546: hostapd_ht_operation_update current operation mode=0x0
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.358556: hostapd_ht_operation_update new operation mode=0x0 changes=0
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.358565: ap_free_sta: cancel ap_handle_timer for link_id:2 c8:8a:9a:d3:99:9c
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.358671: nl80211: sta_remove -> DEL_STATION mld0 c8:8a:9a:d3:99:9c --> 0 (No error information)
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.358691: nl80211: NL80211_CMD_NEW_STATION STA c8:8a:9a:d3:99:9c
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.358705:   * supported rates - hexdump(len=4): 02 04 0b 16
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.358719:   * capability=0x0
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.358728:   * aid=1 (UNASSOC_STA workaround)
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.358735:   * listen_interval=0
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.358744:   * flags set=0x0 mask=0xa0
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.358754:   * mld_link_id=0
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.358761:   * mld_link_addr=ca:8a:9a:d3:99:9f
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.358828: SAE: State Nothing -> Nothing for peer c8:8a:9a:d3:99:9c (Init)
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.359060: SAE: Selecting supported ECC group 19
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.359079: SAE: Peer commit-scalar - hexdump(len=32): e6 eb e0 f6 db 26 d9 1c 10 87 61 5d 8f 47 93 3a 87 0a f0 19 4a 59 10 32 7e 63 b8 87 d0 f2 75 48
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.359123: SAE: Peer commit-element(x) - hexdump(len=32): 26 87 63 5b 89 91 97 9b b3 c7 17 e1 f8 66 78 ca 62 dd 0d 1e 8c 79 cd 4e 92 19 85 ae 81 e8 a6 b1
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.359162: SAE: Peer commit-element(y) - hexdump(len=32): cd 14 31 eb c0 af 56 bd 2f 26 95 74 25 9e da ff 39 c3 a7 51 54 55 19 7b 64 10 89 a1 e0 52 43 55
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.359225: SAE: Possible elements at the end of the frame - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.359248: SAE: Possible elements at the end of the frame - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.359269: SAE: Possible elements at the end of the frame - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.359290: SAE: Possible elements at the end of the frame - hexdump(len=12): ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.359313: SAE: Peer c8:8a:9a:d3:99:9c state=Nothing auth_trans=1
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.359331: SAE: Derive PWE from PT
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.359396: SAE: PT.x - hexdump(len=32): 65 07 b4 bc bb c6 d1 9f 72 7e e6 db c1 b9 9b 37 fb d3 35 4e ba c7 45 02 c3 e0 42 0a 4e 05 d5 66
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.359436: SAE: PT.y - hexdump(len=32): 93 77 dd 87 06 7f 39 64 f2 77 37 19 67 51 11 ca 70 ed 3a 3f 71 29 1d 04 31 b6 bd 5a 3f 00 b3 6c
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.359475: SAE: val = H(0^n, MAX(addrs) || MIN(addrs))
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.359573: SAE: val - hexdump(len=32): 3a c9 0d 7b 87 9c 0f 43 0d eb 15 13 9d 51 3b a6 57 77 b2 35 c8 8b 21 e4 18 b6 89 8c 38 b4 99 52
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.359633: SAE: val(reduced to 1..q-1) - hexdump(len=32): 3a c9 0d 7b 87 9c 0f 43 0d eb 15 13 9d 51 3b a6 57 77 b2 35 c8 8b 21 e4 18 b6 89 8c 38 b4 99 53
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.360346: SAE: PWE.x - hexdump(len=32): a4 b4 a7 1a c6 0d 06 7f e7 21 7b 01 91 82 b6 f6 78 fb 9b fc a4 86 89 34 df cb 64 6c 5c bc 53 9e
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.360389: SAE: PWE.y - hexdump(len=32): 15 39 c9 3d 46 9e ce 8d 0b bc d9 1d 2f 7b 0c 4f 3b 0d 64 f5 e9 e8 eb 33 ab b5 1c df 32 ba ed 8c
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.361133: SAE: own commit-scalar - hexdump(len=32): a8 2e 43 16 b2 2b 90 77 25 0a 2b 2e 4d 99 3c 7b 0d 87 08 e2 dd ba dd a6 29 dd 89 c6 14 f8 6a 21
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.361229: SAE: own commit-element(x) - hexdump(len=32): cd 94 57 ad 94 9b a9 bc c9 27 f8 68 5d 64 47 6f aa 89 fa c2 77 3b dc 8c d1 45 91 34 2e 34 86 93
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.361269: SAE: own commit-element(y) - hexdump(len=32): f3 04 ed d1 5c 0a 8d d3 6e 65 d8 0f e6 bd d4 c7 fc 3a 34 96 18 c1 69 d2 e6 61 9e cf d8 19 be fc
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.361316: authentication reply: STA=ca:8a:9a:d3:99:9f auth_alg=3 auth_transaction=1 resp=126 (IE len=98) (dbg=sae-send-commit)
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.361335: nl80211: send_mlme - da=ca:8a:9a:d3:99:9f sa=00:03:7f:81:b9:80 bssid=00:03:7f:81:b9:80 noack=0 freq=0 no_cck=0 offchanok=0 wait_time=0 no_encrypt=0 fc=0xb0 (WLAN_FC_STYPE_AUTH) nlmode=3 link_id=0
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.361362: nl80211: Use link freq=2437 for address 00:03:7f:81:b9:80
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.361374: nl80211: send_mlme -> send_frame_cmd
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.361381: nl80211: CMD_FRAME freq=2437 wait=0 no_cck=0 no_ack=0 offchanok=0
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.361391: CMD_FRAME - hexdump(len=140): b0 00 00 00 ca 8a 9a d3 99 9f 00 03 7f 81 b9 80 00 03 7f 81 b9 80 00 00 03 00 01 00 7e 00 13 00 a8 2e 43 16 b2 2b 90 77 25 0a 2b 2e 4d 99 3c 7b 0d 87 08 e2 dd ba dd a6 29 dd 89 c6 14 f8 6a 21 cd 94 57 ad 94 9b a9 bc c9 27 f8 68 5d 64 47 6f aa 89 fa c2 77 3b dc 8c d1 45 91 34 2e 34 86 93 f3 04 ed d1 5c 0a 8d d3 6e 65 d8 0f e6 bd d4 c7 fc 3a 34 96 18 c1 69 d2 e6 61 9e cf d8 19 be fc ff 0a 6b 00 00 07 00 0a f5 22 12 31
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.361785: nl80211: Frame TX command accepted; cookie 0xfaa0faecc4e03600
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.361803: SAE: State Nothing -> Committed for peer c8:8a:9a:d3:99:9c (Sent Commit)
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.363114: SAE: k - hexdump(len=32): 09 8f c3 89 a4 37 34 39 c0 86 a0 b2 b8 03 50 b3 44 2b 1b 91 69 42 d7 ef 75 fb 36 66 19 1e 9f ed
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.363168: SAE: Derive keys - H2E=1 AKMP=0x0 = 00000000 (UNKNOWN)
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.363180: SAE: salt for keyseed derivation - hexdump(len=32): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.363300: SAE: keyseed - hexdump(len=32): 15 f2 c1 22 f0 6a 84 90 05 35 13 3b c1 d8 8b a5 59 eb 20 bb cb f9 f6 6c 6d 8a cb 9c 56 4a 51 75
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.363366: SAE: PMKID - hexdump(len=16): 8f 1a 24 0e 8d 52 69 92 35 91 8c 8b dc e0 cf b5
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.363463: SAE: KCK - hexdump(len=32): 3d 64 71 bc 9f b0 ad 18 d4 48 ad 43 02 19 59 a3 24 3c ed e9 9a 94 ea ae 97 db 69 b0 33 04 ff 31
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.363512: SAE: PMK - hexdump(len=32): 02 65 3d b9 0a ed 52 89 27 17 89 a3 d9 6d 4e e2 76 50 3a 77 44 74 a4 9a 3f d9 28 a0 b1 a8 82 96
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.363611: RTM_NEWLINK: ifi_index=20 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.363694: nl80211: Event message available
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.363736: nl80211: Drv Event 60 (NL80211_CMD_FRAME_TX_STATUS) received for mld0
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.363752: nl80211: MLME event 60 (NL80211_CMD_FRAME_TX_STATUS) on mld0(00:0a:f5:22:12:31) A1=ca:8a:9a:d3:99:9f A2=00:03:7f:81:b9:80 on link_id=-1
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.363774: nl80211: MLME event frame - hexdump(len=140): b0 00 00 00 ca 8a 9a d3 99 9f 00 03 7f 81 b9 80 00 03 7f 81 b9 80 00 00 03 00 01 00 7e 00 13 00 a8 2e 43 16 b2 2b 90 77 25 0a 2b 2e 4d 99 3c 7b 0d 87 08 e2 dd ba dd a6 29 dd 89 c6 14 f8 6a 21 cd 94 57 ad 94 9b a9 bc c9 27 f8 68 5d 64 47 6f aa 89 fa c2 77 3b dc 8c d1 45 91 34 2e 34 86 93 f3 04 ed d1 5c 0a 8d d3 6e 65 d8 0f e6 bd d4 c7 fc 3a 34 96 18 c1 69 d2 e6 61 9e cf d8 19 be fc ff 0a 6b 00 00 07 00 0a f5 22 12 31
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.363922: nl80211: Frame TX status event A1=ca:8a:9a:d3:99:9f stype=11 cookie=0xfaa0faecc4e03600 ack=1
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.363947: mld0: Event TX_STATUS (16) received
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.363964: mgmt::auth cb
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.363971: handle_auth_cb: STA ca:8a:9a:d3:99:9f not found
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.365713: nl80211: Event message available
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.365758: nl80211: BSS Event 59 (NL80211_CMD_FRAME) received for mld0
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.365772: nl80211: MLME event 59 (NL80211_CMD_FRAME) on mld0(00:0a:f5:22:12:31) A1=00:03:7f:81:b9:80 A2=c8:8a:9a:d3:99:9c on link_id=0
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.365808: nl80211: MLME event frame - hexdump(len=76): b0 00 3a 01 00 03 7f 81 b9 80 c8 8a 9a d3 99 9c 00 03 7f 81 b9 80 60 38 03 00 02 00 00 00 08 00 37 83 92 0f 4c 39 0c 38 76 d7 56 b7 3c d1 b1 38 7b 69 32 4a d4 80 1d 45 9c d8 96 22 78 21 98 a9 ff 0a 6b 00 00 07 c8 8a 9a d3 99 9c
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.365899: nl80211: Frame event
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.365908: nl80211: RX frame da=00:03:7f:81:b9:80 sa=c8:8a:9a:d3:99:9c bssid=00:03:7f:81:b9:80 freq=2437 ssi_signal=0 fc=0xb0 seq_ctrl=0x3860 stype=11 (WLAN_FC_STYPE_AUTH) len=76
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.365941: mld0: Event RX_MGMT (18) received
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.365958: mgmt::auth
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.365968: SAE: confirm: kck_len=32
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.365982: authentication: STA=c8:8a:9a:d3:99:9c auth_alg=3 auth_transaction=2 status_code=0 wep=0 seq_ctrl=0x3860
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.366032: SAE: peer-send-confirm 8
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.366210: SAE: Confirm mismatch
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.366226: SAE: Received confirm - hexdump(len=32): 37 83 92 0f 4c 39 0c 38 76 d7 56 b7 3c d1 b1 38 7b 69 32 4a d4 80 1d 45 9c d8 96 22 78 21 98 a9
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.366267: SAE: Calculated verifier - hexdump(len=32): bf 41 58 64 04 1f 46 3c 45 ee 54 7e 71 1e 59 30 6a fa e8 26 d5 66 56 e2 32 47 5c 79 a6 d2 5a d8
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.366317: authentication reply: STA=c8:8a:9a:d3:99:9c auth_alg=3 auth_transaction=2 resp=15 (IE len=0) (dbg=auth-sae)
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.366334: nl80211: send_mlme - da=c8:8a:9a:d3:99:9c sa=00:03:7f:81:b9:80 bssid=00:03:7f:81:b9:80 noack=0 freq=0 no_cck=0 offchanok=0 wait_time=0 no_encrypt=0 fc=0xb0 (WLAN_FC_STYPE_AUTH) nlmode=3 link_id=0
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.366361: nl80211: Use link freq=2437 for address 00:03:7f:81:b9:80
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.366373: nl80211: send_mlme -> send_frame_cmd
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.366380: nl80211: CMD_FRAME freq=2437 wait=0 no_cck=0 no_ack=0 offchanok=0
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.366390: CMD_FRAME - hexdump(len=42): b0 00 00 00 c8 8a 9a d3 99 9c 00 03 7f 81 b9 80 00 03 7f 81 b9 80 00 00 03 00 02 00 0f 00 ff 0a 6b 00 00 07 00 0a f5 22 12 31
+Wed Nov  5 01:26:05 2025 authpriv.info dropbear[30346]: Exit (root) from <192.168.1.210:63184>: Disconnect received
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.376813: nl80211: Frame command failed: ret=-22 (Invalid argument) (freq=2437 wait=0)
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.376841: send_auth_reply: send failed
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.376920: nl80211: sta_remove -> DEL_STATION mld0 c8:8a:9a:d3:99:9c --> 0 (No error information)
+Wed Nov  5 01:26:05 2025 user.notice root: 1762305965.376997: RTM_NEWLINK: ifi_index=20 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Wed Nov  5 01:26:05 2025 kern.err kernel: [ 6113.879992] wlan: [2280:E:ANY] wlan_cfg80211_mgmt_tx: ni is NULL
+Wed Nov  5 01:26:05 2025 authpriv.info dropbear[30350]: Child connection from 192.168.1.210:63185
+Wed Nov  5 01:26:05 2025 authpriv.notice dropbear[30350]: Auth succeeded with blank password for 'root' from 192.168.1.210:63185
+Wed Nov  5 01:26:05 2025 authpriv.info dropbear[30350]: Exit (root) from <192.168.1.210:63185>: Disconnect received
+Wed Nov  5 01:26:05 2025 user.info nwaios[9556]: [aios_rx.c:37] aios_rx_execute_handler(): Application with PID [20714]/APP_ID[0] requesting inference.
+Wed Nov  5 01:26:05 2025 user.info nwaios[9556]: [aios_inference_director.c:56] aios_inf_parse_msg(): [LocalGateway_CPU0 NP] Processing Execute Request for model_id=0
+Wed Nov  5 01:26:05 2025 user.info nwaios[9556]: [aios_runtime_inf.cpp:147] aios_runtime_inf_execute(): Execute-> executeHandle=0x7fa80f9f30
+Wed Nov  5 01:26:05 2025 user.info nwaios[9556]: [aios_app_mgr.c:240] aios_app_tx_msg(): Sent Tx Msg[3] to application with PID[20714]/APP_ID[0] successfully.
+Wed Nov  5 01:26:05 2025 authpriv.info dropbear[30352]: Child connection from 192.168.1.210:63186
+Wed Nov  5 01:26:05 2025 authpriv.notice dropbear[30352]: Auth succeeded with blank password for 'root' from 192.168.1.210:63186
+Wed Nov  5 01:26:05 2025 authpriv.info dropbear[30352]: Exit (root) from <192.168.1.210:63186>: Disconnect received
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.003491: nl80211: Event message available
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.003557: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.003727: nl80211: Event message available
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.003769: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.013803: nl80211: Event message available
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.013865: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.022321: nl80211: Event message available
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.022387: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.022428: nl80211: Event message available
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.022459: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.022489: nl80211: Event message available
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.022515: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.034849: nl80211: Event message available
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.034917: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.043343: nl80211: Event message available
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.043422: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.052224: nl80211: Event message available
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.052288: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.052386: nl80211: Event message available
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.052418: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.062094: nl80211: Event message available
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.062159: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.062200: nl80211: Event message available
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.062227: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.072036: nl80211: Event message available
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.072099: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.072140: nl80211: Event message available
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.072167: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.081519: nl80211: Event message available
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.081580: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.081619: nl80211: Event message available
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.081648: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.092579: nl80211: Event message available
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.092638: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.101558: nl80211: Event message available
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.101617: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.109582: nl80211: Event message available
+Wed Nov  5 01:26:06 2025 user.notice root: 1762305966.109645: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)

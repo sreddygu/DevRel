@@ -1,0 +1,5 @@
+numpy
+torch
+# ONNX export (torch.onnx.export needs both on current PyTorch)
+onnx
+onnxscript

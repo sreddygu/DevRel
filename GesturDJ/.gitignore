@@ -1,0 +1,45 @@
+# Generated audio
+*.wav
+*.mp3
+*.flac
+*.raw
+diffrhythm_outputs/
+
+# Model files and build output (rebuilt by the notebook)
+*.dlc
+*.bin
+*.onnx
+*.onnx.data
+*.pt
+*.pth
+*.joblib
+*.npy
+*.npz
+*.tar
+*.so
+*.o
+dit_server
+seg*/
+ctx*/
+case*/
+calib*/
+outputs/
+gesture_data/
+
+# Python and Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+nbvenv/
+
+# Secrets, local config, OS and editor files
+.env
+*.pem
+*.key
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log.tmp

@@ -1,0 +1,6 @@
+numpy>=1.24
+Pillow>=10.0
+onnxruntime>=1.24          # CPU baseline -- 1.24.2+ recommended, see README "onnxruntime version matters"
+onnx>=1.14                 # ONNX model loading/saving (test suite / validation only)
+pytest>=7.0                # tests/
+pytest-timeout>=2.1

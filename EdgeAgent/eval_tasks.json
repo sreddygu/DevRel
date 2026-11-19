@@ -1,0 +1,41 @@
+{
+  "_comment": "Eval tasks for eval_agent.py -- a small, curated set in the spirit of Raschka's local-coding-agent-evals. Each task runs a prompt through the SAME agent loop as agent.py and applies checks. Check types: 'first_tool' (the FIRST action the model takes is one of `tools`), 'answer_contains' (final answer contains ALL `substrings`, case-insensitive), 'json_valid' (the model's first reply parses as a JSON action). Extend this file with your own workflow-representative tasks; re-run on every new model/backend to catch regressions.",
+  "tasks": [
+    {
+      "name": "calculator_power",
+      "prompt": "What is 2 to the power of 10? Respond with just the number.",
+      "checks": [
+        {"type": "json_valid"},
+        {"type": "answer_contains", "substrings": ["1024"]}
+      ]
+    },
+    {
+      "name": "sys_info_cores",
+      "prompt": "How many CPU cores does this device have? Use a tool, then answer with the number.",
+      "checks": [
+        {"type": "first_tool", "tools": ["sys_info", "run_shell"]}
+      ]
+    },
+    {
+      "name": "list_dir_explore",
+      "prompt": "List the files in the current directory.",
+      "checks": [
+        {"type": "first_tool", "tools": ["list_dir", "run_shell"]}
+      ]
+    },
+    {
+      "name": "read_file_readme",
+      "prompt": "Read the file README.md and tell me the first word of its title.",
+      "checks": [
+        {"type": "first_tool", "tools": ["read_file"]}
+      ]
+    },
+    {
+      "name": "direct_answer_no_tool",
+      "prompt": "Reply with exactly the word: pong",
+      "checks": [
+        {"type": "answer_contains", "substrings": ["pong"]}
+      ]
+    }
+  ]
+}

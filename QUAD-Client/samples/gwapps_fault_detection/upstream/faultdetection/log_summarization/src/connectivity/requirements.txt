@@ -1,0 +1,15 @@
+fastapi[standard]
+uvicorn
+gunicorn
+python-multipart
+python-dotenv
+PyJWT
+scikit-learn
+numpy
+langchain
+awscli
+boto3
+requests
+whoosh
+vllm
+asyncpg

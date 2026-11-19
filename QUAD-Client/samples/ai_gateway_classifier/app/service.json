@@ -1,0 +1,20 @@
+{
+  "name": "mobilenetv2",
+  "type": "native",
+  "binary": "/usr/bin/mobilenetv2",
+  "args": [],
+  "restart_policy": "on-failure",
+  "restart_delay_ms": 5000,
+  "keepalive_interval_ms": 5000,
+  "keepalive_threshold_ms": 25000,
+  "license_features": [],
+  "nwaios": {
+    "model_path": "/var/run/nwaios/mobilenetv2/m.bin",
+    "compute_engine": "nsp"
+  },
+  "metadata": {
+    "generated_by": "QUAD codegen",
+    "source_model": "/host/mobilenetv2.bin",
+    "target_arch": "aarch64-openwrt-linux"
+  }
+}

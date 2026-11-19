@@ -1,0 +1,35 @@
+# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+# All rights reserved.
+# Confidential and Proprietary - Qualcomm Technologies, Inc.
+
+services:
+  app:
+    container_name: AD_LOGS
+    image: log-summarization:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.gunicorn
+      args:
+        LOG_SUMMARIZATION_DATA_DIR: ${LOG_SUMMARIZATION_CONTAINER_DIR}
+    ports:
+      - "9010:8000"
+    env_file:
+      - .env
+    environment:
+      PYTHONUNBUFFERED: "1"
+      LOG_SUMMARIZATION_DATA_DIR: ${LOG_SUMMARIZATION_CONTAINER_DIR}
+      MAX_EXTRACT_BYTES: ${MAX_EXTRACT_BYTES}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY}
+      JWT_ALGORITHM: ${JWT_ALGORITHM}
+      S3_BUCKET_NAME: ${S3_BUCKET_NAME}
+      AWS_REGION: ${AWS_REGION}
+      S3_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID}
+      S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY}
+      API_KEY: ${API_KEY}
+      URL: ${URL}
+    volumes:
+      - ${LOG_SUMMARIZATION_HOST_DIR}:${LOG_SUMMARIZATION_CONTAINER_DIR}
+    # On Linux hosts, explicitly run as the same UID/GID as the image's appuser to avoid bind-mount perms issues.
+    # Safe to remove on macOS/Windows (Docker Desktop) or if your host perms are already compatible.
+    user: "10001:10001"
+    restart: unless-stopped

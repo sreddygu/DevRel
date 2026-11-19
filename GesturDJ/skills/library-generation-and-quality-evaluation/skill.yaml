@@ -1,0 +1,75 @@
+schema_version: "1.0"
+id: "library-generation-and-quality-evaluation"
+name: "Library Generation and Quality Evaluation"
+version: "0.1.0"
+description: "Generate a few music clips in the background from style prompts, then check each clip and the set with objective measures (length, loudness, clipping, silence, loop seam) before they join the live mixer's library."
+entrypoint: "SKILL.md"
+kind: "domain-skill"
+language: "en"
+selection:
+  aliases: ["generate clips", "clip library", "check generated music"]
+  triggers: ["Make clips for GesturDJ", "Are my generated clips usable", "Build the clip library"]
+synapse:
+  layer: "domain"
+  domain: "gesturdj"
+  owner: "Srinivas Reddy Gudala"
+  backup_owner: "TBD: community maintainers (see finding F20 in ../../GESTURDJ_SYNAPSE_SKILLS.md)"
+  review_cadence: "Each ONNX Runtime major release or Ventuno Q image release"
+  visibility: "public"
+  maturity: "proposed"
+  supported_versions: ["Qualcomm IQ8 (Qualcomm Linux 2.0, HTP v75)", "QAIRT 2.51 on a Windows x64 PC with WSL", "Arduino Ventuno Q: not run"]
+  feedback_channel: >
+    TBD: Developer Portal community channel. Until it exists, GitHub Issues on the
+    qa-intermediate-curriculum repository (label: synapse-gesturdj).
+  deprecation_path: >
+    Set maturity: "deprecated" and announce via feedback_channel with 30-day notice;
+    point to the replacement skill.
+  developer_journey_stage: ["platform-experience"]
+  dependencies: ["gesture-event-contract", "p3-self-service-boundaries", "device-and-host-discovery", "gesture-to-live-mix-design", "music-model-npu-deployment", "npu-quantization-and-accuracy-gating"]
+  authoritative_docs: ["../../DIFFRHYTHM_IQ8.md", "../../diffrhythm_iq8_npu_int8_45s.ipynb", "../../diffrhythm_npu_scripts/README.md"]
+  a2a:
+    role: "skill"
+    accepts_from: ["gesturdj-agent"]
+contract:
+  prerequisites: ["npu-quantization-and-accuracy-gating passed for the chosen setup", "Style prompts and lyrics (valid LRC: ascending timestamps, no empty lines, last line is an end marker)"]
+  inputs: ["Style prompts", "Lyrics file", "Sampler steps (16 gives about 5 minutes per clip on the IQ8)", "Context folders"]
+  outputs: ["One wav per prompt, 44.6 s", "clip-library-report.json: per-clip measures and library checks", "A pass or fail for the set"]
+  negative_scope:
+    - "Never on the live path: a clip takes minutes"
+    - "Does not say a clip sounds good: it checks for broken clips only"
+    - "Does not choose music for the developer's taste"
+  validation:
+    - "Each clip is at least 20 s, finite, not clipped (over 0.1 percent of samples), not mostly silent (over 30 percent), without DC offset"
+    - "The set shares one sample rate and its loudness spread is at most 8 dB"
+  failure_behavior: "Name the clip and the failed check; regenerate that clip with another prompt or step count; never drop the check to pass."
+  known_failure_modes:
+    - "A broken lyrics file (empty line) makes the text step crash"
+    - "The last lyric line is not sung; it marks the end"
+    - "A board reset during generation: the pipeline retries after the board returns"
+    - "Passing the objective checks does not mean the music is good"
+  two_config_evidence:
+    - "Qualcomm IQ8, 2026-11-10: two clips generated from new style prompts (electronic: 9.9 min wall, NPU 79.9 s; ambient: 12.2 min wall, NPU 81.2 s) and one earlier clip, 3 clips of 44.6 s evaluated: all pass, loudness spread 3.3 dB, loop seams 3.9, 11.0 and 16.7 dB, so none loops cleanly (evidence/iq8-run/clip-library-report.json)"
+    - "Ventuno Q: not run"
+authority:
+  source_docs: "See synapse.authoritative_docs"
+  approved_tools: ["diffrhythm_iq8_npu_int8_45s.ipynb", "diffrhythm_npu_scripts/evaluate_clip_library.py"]
+  endpoints: ["SSH (TCP/22) to a board the developer owns; address supplied at runtime, never stored"]
+  provenance: "academy/GesturDJ; IQ8 runs under evidence/iq8-run/"
+control:
+  approval_gates: "See safety.requires_explicit_approval"
+  consequential_actions: ["Running the graphs on the NPU for several minutes per clip"]
+  recovery_and_rollback: "Generated clips are new files; delete them to roll back."
+review_gates:
+  # pilot = gates 1 + 3 met; supported = all six met
+  ownership: "met: named owner; backup owner open (F20)"
+  scope_and_boundary: "met: see negative_scope"
+  validation_evidence: "open: one IQ8 and one PC pipeline; objective checks only; no listening panel"
+  feedback_mechanism: "open: community channel not yet defined"
+  discoverability: "open: not yet on the Developer Portal"
+  lifecycle_commitment: "open: community maintenance model undefined (F20)"
+project:
+  root_relative_to_skill: "../.."
+safety:
+  default_mode: "non-destructive"
+  requires_explicit_approval: ["Overwriting an existing clip library", "Rebooting a board"]
+  secrets_policy: "Never persist credentials, tokens, private keys, or passwords. Read them from environment variables; redact before logging."

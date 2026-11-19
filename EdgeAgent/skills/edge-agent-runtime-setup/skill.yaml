@@ -1,0 +1,31 @@
+schema_version: "1.0"
+id: "edge-agent-runtime-setup"
+name: "EdgeAgent Runtime Setup"
+version: "0.1.0"
+description: "Prepare and inspect the EdgeAgent runtime without changing an MCP client by default."
+entrypoint: "SKILL.md"
+kind: "journey-skill"
+language: "en"
+selection:
+  aliases: ["set up EdgeAgent", "prepare EdgeAgent runtime"]
+  triggers: ["Prepare my machine for EdgeAgent", "Choose an EdgeAgent transport"]
+synapse:
+  layer: "journey"
+  domain: "edge-agent"
+  owner: "P3 portfolio maintainers"
+  review_cadence: "Each EdgeAgent runtime release"
+  visibility: "public"
+  maturity: "pilot"
+  developer_journey_stage: ["enablement"]
+  dependencies: ["p3-project-onboarding", "p3-evidence-and-compatibility"]
+  authoritative_docs: ["../../devrel_runtime/README.md", "../../devrel_runtime/src/devrel_client/cli.py"]
+contract:
+  prerequisites: ["Python 3.10+", "EdgeAgent source checkout"]
+  inputs: ["Selected transport", "Optional runtime-supplied transport settings"]
+  outputs: ["Doctor result", "Redacted transport preview", "Dated evidence record"]
+  negative_scope: ["Does not write IDE configuration by default", "Does not install optional tooling without approval"]
+  validation: ["devrel-agent doctor completes", "devrel-agent preview renders the selected transport"]
+safety:
+  default_mode: "non-destructive"
+  requires_explicit_approval: ["Installing packages", "Running devrel-agent install", "Using an SSH key or bearer token"]
+  secrets_policy: "Accept secrets only at runtime and redact them from all output and evidence."

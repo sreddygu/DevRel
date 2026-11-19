@@ -1,0 +1,14 @@
+WiFi Connectivity Issue Triage Report
+
+1. What Happened
+
+Observed Symptom
+• STA c8:8a:9a:d3:99:9c is experiencing FAIL_TO_CONNECT on WiFi
+
+2. Root Cause Analysis
+
+Primary Suspected Causes (Ranked by Likelihood)
+MEDIUM Likelihood: Wrong password
+• The SAE (Secure Access Element) logs show two instances of 'SAE: Confirm mismatch', indicating that the client's password hash does not match the AP's expected value.
+• Evidence: - SAE: Confirm mismatch (01:26:05, Nov 5 2025: AUTH - {'description': 'authentication: STA=c8:8a:9a:d3:99:9c auth_alg=3 auth_transaction=1 status_code=126 wep=0 seq_ctrl=0x3850'})
+- SAE: Confirm mismatch (01:26:05, Nov 5 2025: AUTH - {'description': 'STA=ca:8a:9a:d3:99:9f auth_alg=3 auth_transaction=1 status_code=126 wep=0 seq_ctrl=0x3850'})

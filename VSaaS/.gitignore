@@ -1,0 +1,53 @@
+# Python-generated files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments and local configuration
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+
+# Runtime state and captured data
+data/
+logs/
+*.db
+*.sqlite
+*.sqlite3
+*.log
+*.pid
+
+# Build and packaging output
+build/
+dist/
+*.egg-info/
+
+# Downloaded models and third-party source trees
+models/
+llama.cpp/
+*.pt
+*.pth
+*.onnx
+*.dlc
+*.gguf
+*.tflite
+*.bin
+*.raw
+
+# Editor and operating-system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~

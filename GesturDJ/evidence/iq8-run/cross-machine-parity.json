@@ -1,0 +1,9 @@
+{
+  "samples": 150,
+  "max_abs_logit_diff": 2.384185791015625e-07,
+  "same_top_label": 150,
+  "pc": "Windows ARM64, x64 Python 3.10, onnxruntime 1.23.2",
+  "board": "IQ8 aarch64, Python 3.14.4, onnxruntime 1.31.1",
+  "tolerance": 0.001,
+  "ok": true
+}

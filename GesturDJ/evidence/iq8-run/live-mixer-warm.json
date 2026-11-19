@@ -1,0 +1,64 @@
+{
+  "summary": {
+    "budget_ms": 200.0,
+    "events": 4,
+    "applied": 4,
+    "worst_estimate_ms": 42.48,
+    "all_within_budget": true,
+    "note": "estimate = inference + mix + player start + configured audio buffer; not measured at the speaker"
+  },
+  "events": [
+    {
+      "event": "sample_00001.csv",
+      "label": "left",
+      "confidence": 0.977,
+      "inference_ms": 0.62,
+      "result": "applied",
+      "action": "previous_clip",
+      "clip": "clip_c.wav",
+      "mix_ms": 0.054,
+      "buffer_ms": 40,
+      "gesture_to_sound_estimate_ms": 40.75,
+      "within_budget": true
+    },
+    {
+      "event": "sample_00001.csv",
+      "label": "right",
+      "confidence": 0.966,
+      "inference_ms": 0.834,
+      "result": "applied",
+      "action": "next_clip",
+      "clip": "clip_a.wav",
+      "mix_ms": 0.068,
+      "buffer_ms": 40,
+      "gesture_to_sound_estimate_ms": 40.99,
+      "within_budget": true
+    },
+    {
+      "event": "sample_00001.csv",
+      "label": "circle",
+      "confidence": 0.99,
+      "inference_ms": 0.987,
+      "result": "applied",
+      "action": "toggle_filter",
+      "clip": "clip_a_filtered.wav",
+      "mix_ms": 0.193,
+      "buffer_ms": 40,
+      "gesture_to_sound_estimate_ms": 41.27,
+      "within_budget": true
+    },
+    {
+      "event": "sample_00002.csv",
+      "label": "left",
+      "confidence": 0.979,
+      "inference_ms": 1.899,
+      "result": "applied",
+      "action": "previous_clip",
+      "clip": "clip_c_filtered.wav",
+      "mix_ms": 0.36,
+      "buffer_ms": 40,
+      "gesture_to_sound_estimate_ms": 42.48,
+      "within_budget": true
+    }
+  ]
+}

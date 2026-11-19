@@ -1,0 +1,14 @@
+WiFi Connectivity Issue Triage Report
+
+1. What Happened
+
+Observed Symptom
+• STA fc:b3:bc:f0:b0:c2 is experiencing DISCONNECT on WiFi
+
+2. Root Cause Analysis
+
+Primary Suspected Causes (Ranked by Likelihood)
+HIGH Likelihood: AP-initiated disconnect due to multiple reassociation attempts from the client.
+• The client's repeated reassociation attempts may have caused the AP to become overwhelmed, leading it to initiate disconnections to manage its resources effectively.
+• Evidence: - The logs show multiple reassociation requests from the client (MAC: fc:b3:bc:f0:b0:c2)
+- The AP (MAC: 00:03:7f:12:b1:b1) initiated the disconnects (DEL_STATION) before receiving the client's deauth frames

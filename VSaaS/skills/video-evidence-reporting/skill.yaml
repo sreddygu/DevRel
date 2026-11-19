@@ -1,0 +1,31 @@
+schema_version: "1.0"
+id: "video-evidence-reporting"
+name: "VSaaS Video Evidence Reporting"
+version: "0.1.0"
+description: "Create redacted, provenance-preserving VSaaS evidence from event records."
+entrypoint: "SKILL.md"
+kind: "domain-skill"
+language: "en"
+selection:
+  aliases: ["report VSaaS evidence", "export VSaaS events"]
+  triggers: ["Prepare a VSaaS validation report", "Export VSaaS event evidence"]
+synapse:
+  layer: "domain"
+  domain: "vsaas"
+  owner: "P3 portfolio maintainers"
+  review_cadence: "Each release or evidence-schema change"
+  visibility: "public"
+  maturity: "pilot"
+  developer_journey_stage: ["platform-experience"]
+  dependencies: ["p3-evidence-and-compatibility", "p3-public-asset-license-review"]
+  authoritative_docs: ["../../scripts/export_events_csv.py", "../../scripts/replay_events.py", "../../benchmarks/benchmark_log.json"]
+contract:
+  prerequisites: ["Known event source and data classification", "Approval for any export or replay"]
+  inputs: ["Event database", "Time range", "Redaction requirements"]
+  outputs: ["Redacted evidence report", "Provenance declaration", "Exclusion list"]
+  negative_scope: ["Does not publish raw video or event payloads", "Does not replay or export data without approval"]
+  validation: ["Report distinguishes simulated, host-observed, and target-observed results", "Report records redactions and exclusions"]
+safety:
+  default_mode: "non-destructive"
+  requires_explicit_approval: ["Exporting event records", "Replaying events to an API", "Sharing evidence outside the workspace"]
+  secrets_policy: "Redact camera IDs, URLs, credentials, personal data, and raw payloads before distribution."

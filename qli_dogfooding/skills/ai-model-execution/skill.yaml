@@ -1,0 +1,77 @@
+schema_version: "1.0"
+id: "ai-model-execution"
+name: "AI Model Execution"
+version: "1.0.0"
+description: "Run a discovered QLI model command on a supplied image and capture the parsed result."
+entrypoint: "SKILL.md"
+kind: "domain-skill"
+language: "en"
+selection:
+  aliases: ["run QLI model", "execute AI model"]
+  triggers: ["Validate model inference on a QLI target"]
+synapse:
+  layer: "domain"
+  domain: "qli-linux"
+  owner: "Srinivas Reddy Gudala"
+  backup_owner: "DevRel Developer Experience team"
+  review_cadence: "Each major SDK or QLI device release"
+  visibility: "internal"
+  maturity: "pilot"
+  developer_journey_stage:
+    - "platform-experience"
+  supported_versions: ["Qualcomm Linux (QLI) 2.0", "QAIRT 2.47.x host runtime"]
+  dependencies:
+    - "qli-linux-domain"
+    - "host-environment-validation"
+    - "device-identity-discovery"
+  authoritative_docs: ["../../src/qli_ai_apps.py"]
+  feedback_channel: >
+    GitHub Issues on the qa-intermediate-curriculum repository (label: synapse-domain).
+  a2a:
+    role: "skill"
+    accepts_from: ["qli-readiness-agent", "developer-readiness-assessment"]
+  deprecation_path: >
+    Set maturity: "deprecated" and announce via feedback_channel with 30-day notice.
+contract:
+  prerequisites: ["Validated model runner command", "Image input"]
+  inputs: ["Image", "Runner command", "Optional timeout"]
+  outputs: ["Runner result and parsed inference output"]
+  negative_scope:
+    - "Does not install or configure the model runner"
+    - "Does not benchmark (use ai-inference-benchmark MCP tool for timing)"
+    - "Does not modify model weights or runtime configuration"
+  state_before: "Model runner command is validated and executable on the target"
+  state_after: "Inference result captured; device and model state unchanged"
+  validation: ["Runner return code, model/backend identity, output, and timing are recorded"]
+  failure_behavior: "Record runner return code and stderr; do not interpret partial output as success."
+  known_failure_modes:
+    - "Runner not found: route to host-environment-validation"
+    - "Inference timeout: record timeout event; do not fabricate output"
+    - "Backend mismatch: report detected vs. expected backend identity"
+  two_config_evidence:
+    - "IQ9 (v73, QLI 2.0): QNN HTP image classification Completed with qnn-net-run 2.47.1, rc=0, top-5 recorded, 2026-08-12 (evidence/iq9_deep_2026-08-12/qnn_run.txt, top5.txt)"
+    - "IQ8 (v75, QLI 2.0): same mobilenetv2.dlc on NPU (HTP) and CPU, rc=0, top-5 matches IQ9, 2026-10-26 (evidence/iq8-2026-10-26/deep/classify.json, classify_cpu.json, top5*.json)"
+authority:
+  source_docs: "See synapse.authoritative_docs"
+  approved_tools:
+    - "src/qli_ai_apps.py classify"
+    - "QNN/Genie runner supplied by the caller"
+  endpoints:
+    - "SSH (TCP/22) to the approved target device; address supplied at runtime, never stored"
+  provenance: "qa-intermediate-curriculum/projects/qli_dogfooding; run evidence under evidence/<device>-YYYY-MM-DD/"
+control:
+  approval_gates: "See safety.requires_explicit_approval"
+  consequential_actions: []
+  recovery_and_rollback: "Model and device state unchanged; rerun on failure."
+review_gates:
+  # pilot = gates 1 + 3 met; supported = all six met (Synapse deck slide 6)
+  ownership: "met"
+  scope_and_boundary: "met"
+  validation_evidence: "met: IQ8 NPU+CPU and IQ9 NPU"
+  feedback_mechanism: "declared; reader is the named owner"
+  discoverability: "open: not yet listed in product or SDK documentation"
+  lifecycle_commitment: "met"
+project:
+  root_relative_to_skill: "../.."
+safety:
+  default_mode: "non-destructive"

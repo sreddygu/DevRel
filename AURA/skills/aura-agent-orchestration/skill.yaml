@@ -1,0 +1,31 @@
+schema_version: "1.0"
+id: "aura-agent-orchestration"
+name: "AURA Agent Orchestration"
+version: "0.1.0"
+description: "Prepare and inspect an AURA milestone runtime without activating device services by default."
+entrypoint: "SKILL.md"
+kind: "journey-skill"
+language: "en"
+selection:
+  aliases: ["set up AURA", "prepare AURA agent"]
+  triggers: ["Prepare my AURA runtime", "Choose an AURA milestone"]
+synapse:
+  layer: "journey"
+  domain: "aura"
+  owner: "P3 portfolio maintainers"
+  review_cadence: "Each AURA runtime or target-image release"
+  visibility: "public"
+  maturity: "pilot"
+  developer_journey_stage: ["enablement"]
+  dependencies: ["p3-project-onboarding", "p3-evidence-and-compatibility"]
+  authoritative_docs: ["../../README.md", "../../pyproject.toml"]
+contract:
+  prerequisites: ["Python 3.10+", "AURA source checkout"]
+  inputs: ["Required AURA milestone", "Optional approved target details"]
+  outputs: ["Test result", "Resolved configuration", "Runtime evidence record"]
+  negative_scope: ["Does not start servers or sensors by default", "Does not install optional extras without approval"]
+  validation: ["pytest -q completes", "aura config reports the resolved configuration"]
+safety:
+  default_mode: "non-destructive"
+  requires_explicit_approval: ["Installing packages", "Starting a service", "Opening a camera or microphone", "Connecting to a device"]
+  secrets_policy: "Do not persist credentials, endpoints, model paths, or personal event data."

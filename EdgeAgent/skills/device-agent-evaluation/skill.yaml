@@ -1,0 +1,31 @@
+schema_version: "1.0"
+id: "device-agent-evaluation"
+name: "EdgeAgent Device Agent Evaluation"
+version: "0.1.0"
+description: "Evaluate an approved EdgeAgent workload and record target-specific evidence."
+entrypoint: "SKILL.md"
+kind: "domain-skill"
+language: "en"
+selection:
+  aliases: ["evaluate EdgeAgent device", "profile EdgeAgent model"]
+  triggers: ["Run EdgeAgent on my device", "Measure an EdgeAgent workload"]
+synapse:
+  layer: "domain"
+  domain: "edge-agent"
+  owner: "P3 portfolio maintainers"
+  review_cadence: "Each target image, model, or runtime release"
+  visibility: "public"
+  maturity: "pilot"
+  developer_journey_stage: ["platform-experience"]
+  dependencies: ["edge-agent-runtime-setup", "p3-device-readiness", "p3-evidence-and-compatibility"]
+  authoritative_docs: ["../../devrel_runtime/src/devrel_client/cli.py", "../../devrel_runtime/tests/test_local/test_device_agent.py"]
+contract:
+  prerequisites: ["User-approved target", "Model or server-artifact reference", "Selected transport"]
+  inputs: ["Target settings", "Model reference", "Optional conversion request"]
+  outputs: ["Host capability result", "Device evaluation record", "Focused test result"]
+  negative_scope: ["Does not flash, reboot, or reconfigure a target", "Does not transfer or convert a model without approval"]
+  validation: ["Local device-agent tests pass", "Evaluation reports backend and outcome"]
+safety:
+  default_mode: "non-destructive"
+  requires_explicit_approval: ["Uploading a model", "Running remote conversion", "Executing commands on a device", "Running a device test suite"]
+  secrets_policy: "Keep target credentials and private model locations out of evidence."

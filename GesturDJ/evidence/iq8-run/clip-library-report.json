@@ -1,0 +1,60 @@
+{
+  "checks": {
+    "min_seconds": 20.0,
+    "max_clipped": 0.001,
+    "max_silent": 0.3,
+    "max_dc": 0.01,
+    "max_seam_db": 6.0
+  },
+  "clips": [
+    {
+      "file": "diffrhythm_iq8_npu_20261109_1339_44s_16steps_mixed_w8a16.wav",
+      "seconds": 44.58,
+      "sample_rate": 44100,
+      "channels": 2,
+      "rms_dbfs": -18.6,
+      "peak": 0.904,
+      "clipped_fraction": 0.0,
+      "silent_fraction": 0.0,
+      "dc_offset": 1e-05,
+      "finite": true,
+      "start_end_seam_db": 3.9,
+      "loop_seam": "smooth",
+      "fails": []
+    },
+    {
+      "file": "diffrhythm_iq8_npu_20261110_1327_44s_16steps_mixed_w8a16_electronic.wav",
+      "seconds": 44.58,
+      "sample_rate": 44100,
+      "channels": 2,
+      "rms_dbfs": -15.3,
+      "peak": 0.747,
+      "clipped_fraction": 0.0,
+      "silent_fraction": 0.003,
+      "dc_offset": 0.00026,
+      "finite": true,
+      "start_end_seam_db": 11.0,
+      "loop_seam": "audible jump if looped",
+      "fails": []
+    },
+    {
+      "file": "diffrhythm_iq8_npu_20261110_1337_44s_16steps_mixed_w8a16_ambient.wav",
+      "seconds": 44.58,
+      "sample_rate": 44100,
+      "channels": 2,
+      "rms_dbfs": -17.8,
+      "peak": 0.76,
+      "clipped_fraction": 0.0,
+      "silent_fraction": 0.0,
+      "dc_offset": 0.00024,
+      "finite": true,
+      "start_end_seam_db": 16.7,
+      "loop_seam": "audible jump if looped",
+      "fails": []
+    }
+  ],
+  "loudness_spread_db": 3.3,
+  "library_fails": [],
+  "ok": true,
+  "note": "objective checks only; whether a clip sounds good needs a listener"
+}

@@ -1,0 +1,919 @@
+Thu Nov 13 12:02:08 2025 user.notice root: 1763035328.183069: WPA: EAPOL-Key MIC using AES-CMAC (AKM-defined - SAE)
+Thu Nov 13 12:02:08 2025 user.notice root: 1763035328.183125: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state PTKINITDONE
+Thu Nov 13 12:02:08 2025 user.notice root: 1763035328.183176: wpa_driver_nl80211_set_key: ifindex=18 (mld0) alg=3 addr=0x7fa910b0d0 key_idx=0 set_tx=1 seq_len=0 key_len=16 key_flag=0x2c link_id=-1
+Thu Nov 13 12:02:08 2025 user.notice root: 1763035328.183200: nl80211: NEW_KEY
+Thu Nov 13 12:02:08 2025 user.notice root: 1763035328.183252: nl80211: KEY_DATA - hexdump(len=16): 8f ac b8 09 df 7d 5c 3a ed 9b 4d 35 ba 83 a4 7b
+Thu Nov 13 12:02:08 2025 user.notice root: 1763035328.183285:    addr=fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:08 2025 user.notice root: 1763035328.183296:    pairwise key
+Thu Nov 13 12:02:08 2025 user.notice root: 1763035328.183572: Added PTKSA cache entry addr=fc:b3:bc:f0:b0:c2 cipher=16
+Thu Nov 13 12:02:08 2025 user.notice root: 1763035328.183606: nl80211: Set STA flags - ifname=mld0 addr=fc:b3:bc:f0:b0:c2 total_flags=0x6b flags_or=0x1 flags_and=0xffffffff authorized=1
+Thu Nov 13 12:02:08 2025 user.notice root: 1763035328.183924: mld0: AP-STA-CONNECTED fc:b3:bc:f0:b0:c2 link_id:1
+Thu Nov 13 12:02:08 2025 daemon.info hostapd: mld0: STA fc:b3:bc:f0:b0:c2 RADIUS: starting accounting session D5930C3B5CE4FA96
+Thu Nov 13 12:02:08 2025 user.notice root: 1763035328.183971: 1763035328.183973: mld0: STA fc:b3:bc:f0:b0:c2 RADIUS: starting accounting session D5930C3B5CE4FA96
+Thu Nov 13 12:02:08 2025 user.notice root: 1763035328.184032: 1763035328.184035: mld0: STA fc:b3:bc:f0:b0:c2 WPA: pairwise key handshake completed (RSN)
+Thu Nov 13 12:02:08 2025 daemon.info hostapd: mld0: STA fc:b3:bc:f0:b0:c2 WPA: pairwise key handshake completed (RSN)
+Thu Nov 13 12:02:08 2025 user.notice root: 1763035328.184112: mld0: EAPOL-4WAY-HS-COMPLETED fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:08 2025 user.notice root: 1763035328.184157: nl80211: Event message available
+Thu Nov 13 12:02:08 2025 user.notice root: 1763035328.184189: nl80211: Drv Event 139 (NL80211_CMD_CONTROL_PORT_FRAME_TX_STATUS) received for mld0
+Thu Nov 13 12:02:08 2025 user.notice root: 1763035328.184206: nl80211: Control port TX status (ack=1), cookie=162
+Thu Nov 13 12:02:08 2025 user.notice root: 1763035328.184222: mld0: Event EAPOL_TX_STATUS (37) received
+Thu Nov 13 12:02:08 2025 user.notice root: 1763035328.184234: IEEE 802.1X: fc:b3:bc:f0:b0:c2 TX status - version=2 type=3 length=215 - ack=1
+Thu Nov 13 12:02:08 2025 user.notice root: 1763035328.184248: WPA: EAPOL-Key TX status for STA fc:b3:bc:f0:b0:c2 ack=1
+Thu Nov 13 12:02:08 2025 user.notice root: 1763035328.184411: RTM_NEWLINK: ifi_index=18 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.171816: nl80211: Event message available
+Thu Nov 13 12:02:09 2025 daemon.info hostapd: mld0: STA fc:b3:bc:f0:b0:c2 IEEE 802.11: disassociated
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.171982: nl80211: Drv Event 20 (NL80211_CMD_DEL_STATION) received for mld0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.172004: nl80211: Delete station fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.172029: mld0: Event DISASSOC (1) received
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.172055: 1763035329.172058: mld0: STA fc:b3:bc:f0:b0:c2 IEEE 802.11: disassociated
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.172123: mld0: AP-STA-DISCONNECTED fc:b3:bc:f0:b0:c2 link_id:1
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.172137: nl80211: Set STA flags - ifname=mld0 addr=fc:b3:bc:f0:b0:c2 total_flags=0xa flags_or=0xa flags_and=0xfffffffa authorized=0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.172330: Flush PTKSA cache entry for fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.172410: wpa_driver_nl80211_set_key: ifindex=18 (mld0) alg=0 addr=0x7fa910b0d0 key_idx=0 set_tx=1 seq_len=0 key_len=0 key_flag=0x20 link_id=-1
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.172440: nl80211: DEL_KEY
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.172481:    addr=fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.172496:    pairwise key
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.172632: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state DISCONNECTED
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.172657: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state INITIALIZE
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.172705: wpa_driver_nl80211_set_key: ifindex=18 (mld0) alg=0 addr=0x7fa910b0d0 key_idx=0 set_tx=1 seq_len=0 key_len=0 key_flag=0x20 link_id=-1
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.172728: nl80211: DEL_KEY
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.172769:    addr=fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.172789:    pairwise key
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.172897: nl80211: Set STA flags - ifname=mld0 addr=fc:b3:bc:f0:b0:c2 total_flags=0xa flags_or=0x0 flags_and=0xfffffffe authorized=0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.173012: nl80211: Set STA flags - ifname=mld0 addr=fc:b3:bc:f0:b0:c2 total_flags=0xa flags_or=0xa flags_and=0xfffffffa authorized=0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.173145: nl80211: sta_remove -> DEL_STATION mld0 fc:b3:bc:f0:b0:c2 --> 0 (No error information)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.173174: hostapd_ht_operation_update current operation mode=0x13
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.173185: hostapd_ht_operation_update new operation mode=0x13 changes=0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.173194: ap_free_sta: cancel ap_handle_timer for link_id:1 fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.173274: nl80211: Event message available
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.173315: nl80211: BSS Event 59 (NL80211_CMD_FRAME) received for mld0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.173332: nl80211: MLME event 59 (NL80211_CMD_FRAME) on mld0(00:0a:f5:22:12:31) A1=02:03:7f:12:36:36 A2=fc:b3:bc:f0:b0:c2 on link_id=1
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.173356: nl80211: MLME event frame - hexdump(len=36): c0 40 3c 00 02 03 7f 12 36 36 fc b3 bc f0 b0 c2 02 03 7f 12 36 36 10 3b 01 00 dd 08 00 17 35 01 01 00 00 00
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.173404: nl80211: Frame event
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.173414: nl80211: RX frame da=02:03:7f:12:36:36 sa=fc:b3:bc:f0:b0:c2 bssid=02:03:7f:12:36:36 freq=6295 ssi_signal=0 fc=0x40c0 seq_ctrl=0x3b10 stype=12 (WLAN_FC_STYPE_DEAUTH) len=36
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.173446: mld0: Event RX_MGMT (18) received
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.173469: mld0: mgmt::deauth
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.173491: mld0: Station fc:b3:bc:f0:b0:c2 trying to deauthenticate, but it is not authenticated
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.173559: RTM_NEWLINK: ifi_index=18 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.173624: RTM_NEWLINK: ifi_index=18 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.176597: RTM_NEWLINK: ifi_index=18 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.176662: RTM_NEWLINK: ifi_index=18 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Thu Nov 13 12:02:09 2025 kern.debug kernel: [41264.755094] MCS: Processing station leave event
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.268298: nl80211: Event message available
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.268378: nl80211: BSS Event 59 (NL80211_CMD_FRAME) received for mld0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.268396: nl80211: MLME event 59 (NL80211_CMD_FRAME) on mld0(00:0a:f5:22:12:31) A1=00:03:7f:12:b1:b1 A2=fc:b3:bc:f0:b0:c2 on link_id=2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.268421: nl80211: MLME event frame - hexdump(len=30): b0 00 3c 00 00 03 7f 12 b1 b1 fc b3 bc f0 b0 c2 00 03 7f 12 b1 b1 20 3b 00 00 01 00 00 00
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.268462: nl80211: Frame event
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.268472: nl80211: RX frame da=00:03:7f:12:b1:b1 sa=fc:b3:bc:f0:b0:c2 bssid=00:03:7f:12:b1:b1 freq=5180 ssi_signal=0 fc=0xb0 seq_ctrl=0x3b20 stype=11 (WLAN_FC_STYPE_AUTH) len=30
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.268507: mld0: Event RX_MGMT (18) received
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.268531: mgmt::auth
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.268543: authentication: STA=fc:b3:bc:f0:b0:c2 auth_alg=0 auth_transaction=1 status_code=0 wep=0 seq_ctrl=0x3b20
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.268565:   New STA
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.268801: nl80211: sta_remove -> DEL_STATION mld0 fc:b3:bc:f0:b0:c2 --> 0 (No error information)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.268830: nl80211: NL80211_CMD_NEW_STATION STA fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.268847:   * supported rates - hexdump(len=3): 0c 18 30
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.268860:   * capability=0x0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.268870:   * aid=1 (UNASSOC_STA workaround)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.268877:   * listen_interval=0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.268886:   * flags set=0x0 mask=0xa0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.268894:   * mld_link_id=2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.269015: authentication reply: STA=fc:b3:bc:f0:b0:c2 auth_alg=0 auth_transaction=2 resp=0 (IE len=0) (dbg=handle-auth)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.269035: nl80211: send_mlme - da=fc:b3:bc:f0:b0:c2 sa=00:03:7f:12:b1:b1 bssid=00:03:7f:12:b1:b1 noack=0 freq=0 no_cck=0 offchanok=0 wait_time=0 no_encrypt=0 fc=0xb0 (WLAN_FC_STYPE_AUTH) nlmode=3 link_id=2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.269106: nl80211: Use link freq=5180 for address 00:03:7f:12:b1:b1
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.269118: nl80211: send_mlme -> send_frame_cmd
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.269126: nl80211: CMD_FRAME freq=5180 wait=0 no_cck=0 no_ack=0 offchanok=0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.269136: CMD_FRAME - hexdump(len=30): b0 00 00 00 fc b3 bc f0 b0 c2 00 03 7f 12 b1 b1 00 03 7f 12 b1 b1 00 00 00 00 02 00 00 00
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.269369: nl80211: Frame TX command accepted; cookie 0xe58f149efb411a00
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.269441: RTM_NEWLINK: ifi_index=18 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.269516: nl80211: Event message available
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.269552: nl80211: Drv Event 60 (NL80211_CMD_FRAME_TX_STATUS) received for mld0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.269607: nl80211: MLME event 60 (NL80211_CMD_FRAME_TX_STATUS) on mld0(00:0a:f5:22:12:31) A1=fc:b3:bc:f0:b0:c2 A2=00:03:7f:12:b1:b1 on link_id=2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.269631: nl80211: MLME event frame - hexdump(len=30): b0 00 00 00 fc b3 bc f0 b0 c2 00 03 7f 12 b1 b1 00 03 7f 12 b1 b1 00 00 00 00 02 00 00 00
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.269673: nl80211: Frame TX status event A1=fc:b3:bc:f0:b0:c2 stype=11 cookie=0xe58f149efb411a00 ack=1
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.269698: mld0: Event TX_STATUS (16) received
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.269712: mgmt::auth cb
+Thu Nov 13 12:02:09 2025 daemon.info hostapd: mld0: STA fc:b3:bc:f0:b0:c2 IEEE 802.11: authenticated
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.269733: 1763035329.269735: mld0: STA fc:b3:bc:f0:b0:c2 IEEE 802.11: authenticated
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.269779: nl80211: Set STA flags - ifname=mld0 addr=fc:b3:bc:f0:b0:c2 total_flags=0x20 flags_or=0x0 flags_and=0xfffffff0 authorized=0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.289807: nl80211: Event message available
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.289852: nl80211: BSS Event 59 (NL80211_CMD_FRAME) received for mld0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.289866: nl80211: MLME event 59 (NL80211_CMD_FRAME) on mld0(00:0a:f5:22:12:31) A1=00:03:7f:12:b1:b1 A2=fc:b3:bc:f0:b0:c2 on link_id=2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.289889: nl80211: MLME event frame - hexdump(len=244): 20 00 3c 00 00 03 7f 12 b1 b1 fc b3 bc f0 b0 c2 00 03 7f 12 b1 b1 30 3b 11 15 fa 00 00 00 00 00 00 00 00 0c 41 44 5f 34 36 36 5f 31 31 5f 31 32 01 08 8c 12 98 24 b0 48 60 6c 21 02 00 0e 2d 1a e7 09 17 ff ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 30 2a 01 00 00 0f ac 04 01 00 00 0f ac 04 01 00 00 0f ac 08 fc 00 01 00 43 7c 2b f8 b0 72 a4 69 6a ae 1a 22 b6 5d 6c bd 00 0f ac 06 3b 17 81 51 53 54 73 74 75 76 77 78 79 7a 7b 7c 7d 7e 7f 80 81 83 84 85 86 46 05 72 00 00 00 00 7f 0a 04 00 c8 80 01 40 00 c0 00 00 bf 0c f6 79 91 03 fa ff 00 00 fa ff 00 20 dd 07 00 50 f2 02 00 01 00 dd 06 00 17 35 08 01 00 f4 01 20 ff 1e 23 01 78 20 0a c0 ab 0e 30 0e 00 fd 09 8c 0e 0f fe 00 fa ff fa ff fa ff fa ff 61 1c c7 71
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290150: nl80211: Frame event
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290158: nl80211: RX frame da=00:03:7f:12:b1:b1 sa=fc:b3:bc:f0:b0:c2 bssid=00:03:7f:12:b1:b1 freq=5180 ssi_signal=0 fc=0x20 seq_ctrl=0x3b30 stype=2 (WLAN_FC_STYPE_REASSOC_REQ) len=244
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290190: mld0: Event RX_MGMT (18) received
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290208: mgmt::reassoc_req
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290216: reassociation request: STA=fc:b3:bc:f0:b0:c2 capab_info=0x1511 listen_interval=250 current_ap=00:00:00:00:00:00 seq_ctrl=0x3b30
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290244: IEEE 802.11 element parse element found (id=0 elen=12)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290253: IEEE 802.11 element parse element found (id=1 elen=8)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290261: IEEE 802.11 element parse element found (id=33 elen=2)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290269: IEEE 802.11 element parse element found (id=45 elen=26)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290276: IEEE 802.11 element parse element found (id=48 elen=42)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290284: IEEE 802.11 element parse element found (id=59 elen=23)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290291: IEEE 802.11 element parse element found (id=70 elen=5)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290299: IEEE 802.11 element parse element found (id=127 elen=10)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290306: IEEE 802.11 element parse element found (id=191 elen=12)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290314: IEEE 802.11 element parse element found (id=221 elen=7)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290323: IEEE 802.11 element parse element found (id=221 elen=6)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290331: IEEE 802.11 element parse element found (id=244 elen=1)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290338: IEEE 802.11 element parse element found (id=255 elen=30)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290349: WMM IE - hexdump(len=7): 00 50 f2 02 00 01 00
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290365: Validating WMM IE: OUI 00:50:f2  OUI type 2  OUI sub-type 0  version 1  QoS info 0x0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290420: RSN IE: STA PMKID - hexdump(len=16): 43 7c 2b f8 b0 72 a4 69 6a ae 1a 22 b6 5d 6c bd
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290473: SAE: fc:b3:bc:f0:b0:c2 using PMKSA caching
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290493:   new AID 3
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290503: HT: STA fc:b3:bc:f0:b0:c2 HT Capabilities Info: 0x09e7
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290514: update_sta_ht STA fc:b3:bc:f0:b0:c2 - no greenfield, num of non-gf stations 5
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290525: hostapd_ht_operation_update current operation mode=0x4
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290534: hostapd_ht_operation_update new operation mode=0x4 changes=0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290560: Add associated STA fc:b3:bc:f0:b0:c2 (added_unassoc=1 auth_alg=0 ft_over_ds=0 reassoc=1 authorized=0 ft_tk=0 fils_tk=0)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290581: nl80211: NL80211_CMD_SET_STATION STA fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290598:   * supported rates - hexdump(len=8): 8c 12 98 24 b0 48 60 6c
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290614:   * capability=0x1511
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290622:   * ht_capabilities - hexdump(len=26): 47 09 17 ff ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290660:   * vht_capabilities - hexdump(len=12): 76 79 91 03 fa ff 00 00 fa ff 00 20
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290680:   * he_capab - hexdump(len=29): 01 78 20 0a c0 ab 0e 30 0e 00 fd 09 8c 0e 0f fe 00 fa ff fa ff fa ff fa ff 61 1c c7 71
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290719:   * aid=3
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290725:   * listen_interval=250
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290734:   * flags set=0xb8 mask=0xb8
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290742:   * qosinfo=0x0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290750:   * mld_link_id=2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290892: nl80211: send_mlme - da=fc:b3:bc:f0:b0:c2 sa=00:03:7f:12:b1:b1 bssid=00:03:7f:12:b1:b1 noack=0 freq=0 no_cck=0 offchanok=0 wait_time=0 no_encrypt=0 fc=0x30 (WLAN_FC_STYPE_REASSOC_RESP) nlmode=3 link_id=2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290924: nl80211: Use link freq=5180 for address 00:03:7f:12:b1:b1
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290936: nl80211: send_mlme -> send_frame_cmd
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290943: nl80211: CMD_FRAME freq=5180 wait=0 no_cck=0 no_ack=0 offchanok=0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.290954: CMD_FRAME - hexdump(len=231): 30 00 00 00 fc b3 bc f0 b0 c2 00 03 7f 12 b1 b1 00 03 7f 12 b1 b1 00 00 11 00 00 00 03 c0 01 08 8c 12 98 24 b0 48 60 6c 32 01 fb 2d 1a cf 08 03 ff ff ff ff 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 3d 16 24 05 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 bf 0c f6 18 8b 33 aa ff 00 00 aa ff 00 00 c0 05 01 2a 32 fc ff ff 1b 23 0d 01 18 9a 40 18 0c 63 40 09 fc db 9f 1c 11 0e 00 aa ff aa ff aa ff aa ff 00 ff 07 24 f0 3f 00 89 fc ff 7f 0c 04 00 00 02 00 00 00 00 00 40 10 0c 5a 03 24 01 00 f4 02 21 05 ff 12 6c 37 00 80 ff db e0 18 77 00 0e 00 44 44 00 44 44 00 ff 06 6a 00 11 00 00 00 dd 18 00 50 f2 02 01 01 01 00 03 a4 00 00 27 a4 00 00 42 43 5e 00 62 32 2f 00
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.293378: nl80211: Frame TX command accepted; cookie 0xe58f149efb411a00
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.293462: RTM_NEWLINK: ifi_index=18 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.293531: nl80211: Event message available
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.293570: nl80211: Drv Event 103 (NL80211_CMD_VENDOR) received for mld0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.293583: nl80211: Vendor event: wiphy=0 vendor_id=0x1374 subcmd=75
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.293593: nl80211: Vendor data - hexdump(len=28): 08 00 11 00 4a 01 00 00 0b 00 13 00 00 fc b3 bc f0 b0 c2 00 05 00 63 00 02 00 00 00
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.294047: nl80211: Ignore unsupported QCA vendor event 75
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.298923: nl80211: Event message available
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.298964: nl80211: Drv Event 60 (NL80211_CMD_FRAME_TX_STATUS) received for mld0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.298981: nl80211: MLME event 60 (NL80211_CMD_FRAME_TX_STATUS) on mld0(00:0a:f5:22:12:31) A1=fc:b3:bc:f0:b0:c2 A2=00:03:7f:12:b1:b1 on link_id=2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.299004: nl80211: MLME event frame - hexdump(len=271): 30 00 00 00 fc b3 bc f0 b0 c2 00 03 7f 12 b1 b1 00 03 7f 12 b1 b1 00 10 11 05 00 00 06 00 01 08 8c 12 98 24 b0 48 60 6c 32 01 fb 2d 1a ef 09 03 ff ff ff ff 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 3d 16 24 05 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 7f 0b 04 00 0f 02 00 00 40 40 00 40 10 bf 0c f6 f9 8b 33 aa ff 00 00 aa ff 00 20 c0 05 01 2a 32 fc ff f4 02 21 05 ff 27 23 0d 01 08 1a 40 10 0c 63 40 88 ff 5b 9d 1c 11 0a 00 aa ff aa ff aa ff aa ff 7b 1c c7 71 1c c7 71 1c c7 71 1c c7 71 ff 07 24 f4 3f 00 16 fc ff ff 02 27 e3 ff 0e 26 0e 03 a4 03 27 a4 ff 42 43 ff 62 32 ff dd 17 8c fd f0 01 01 02 01 00 02 01 01 03 03 01 01 00 04 01 01 09 02 0f 0f dd 18 00 50 f2 02 01 01 8e 00 03 a4 00 00 27 a4 00 00 42 43 5e 00 62 32 2f 00 dd 06 50 6f 9a 23 01 04 dd 07 8c fd f0 04 01 01 02
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.299301: nl80211: Frame TX status event A1=fc:b3:bc:f0:b0:c2 stype=3 cookie=0x0 ack=1
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.299328: mld0: Event TX_STATUS (16) received
+Thu Nov 13 12:02:09 2025 daemon.info hostapd: mld0: STA fc:b3:bc:f0:b0:c2 IEEE 802.11: associated (aid 3)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.299347: mgmt::reassoc_resp cb
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.299370: 1763035329.299373: mld0: STA fc:b3:bc:f0:b0:c2 IEEE 802.11: associated (aid 3)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.299496: wpa_driver_nl80211_set_key: ifindex=18 (mld0) alg=0 addr=0x7fa9117930 key_idx=0 set_tx=1 seq_len=0 key_len=0 key_flag=0x20 link_id=-1
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.299525: nl80211: DEL_KEY
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.299575:    addr=fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.299589:    pairwise key
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.299797: nl80211: mld0[18]: set_sta_vlan(fc:b3:bc:f0:b0:c2, ifname=mld0[18], vlan_id=0)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.299914: nl80211: Set STA flags - ifname=mld0 addr=fc:b3:bc:f0:b0:c2 total_flags=0x6a flags_or=0xa flags_and=0xfffffffa authorized=0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.300128: wpa_driver_nl80211_set_key: ifindex=18 (mld0) alg=0 addr=0x7fa9117930 key_idx=0 set_tx=1 seq_len=0 key_len=0 key_flag=0x20 link_id=-1
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.300157: nl80211: DEL_KEY
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.300198:    addr=fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.300212:    pairwise key
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.300331: IEEE 802.1X: Ignore STA - 802.1X not enabled or forced for WPS
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.300368: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state INITIALIZE
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.300412: wpa_driver_nl80211_set_key: ifindex=18 (mld0) alg=0 addr=0x7fa9117930 key_idx=0 set_tx=1 seq_len=0 key_len=0 key_flag=0x20 link_id=-1
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.300438: nl80211: DEL_KEY
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.300478:    addr=fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.300537:    pairwise key
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.300657: nl80211: Set STA flags - ifname=mld0 addr=fc:b3:bc:f0:b0:c2 total_flags=0x6a flags_or=0x0 flags_and=0xfffffffe authorized=0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.300771: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK_GROUP entering state IDLE
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.300795: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state AUTHENTICATION
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.300810: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state AUTHENTICATION2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.300825: Get randomness: len=32 entropy=72
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.301127: WPA: Assign ANonce - hexdump(len=32): 4a a6 d9 5a 5c a3 60 28 77 c2 1c 4b 2f d2 9e 0f 49 c5 61 99 71 a5 40 84 8f 2b b5 16 d7 93 2d 89
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.301182: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state INITPSK
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.301195: No PSK for STA trying to use SAE with PMKSA caching
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.301204: SAE: PMK from PMKSA cache (len=32)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.301214: No PSK for STA trying to use SAE with PMKSA caching
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.301221: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state PTKSTART
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.301246: RSN: Message 1/4 PMKID from PMKSA entry - hexdump(len=16): 43 7c 2b f8 b0 72 a4 69 6a ae 1a 22 b6 5d 6c bd
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.301273: EAPOL-DATA:  - hexdump(len=22): dd 14 00 0f ac 04 43 7c 2b f8 b0 72 a4 69 6a ae 1a 22 b6 5d 6c bd
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.301305: WPA: Send EAPOL(version=0 secure=0 mic=0 ack=1 install=0 pairwise=1 kde_len=22 keyidx=0 encr=0)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.301324: WPA: Replay Counter - hexdump(len=8): 00 00 00 00 00 00 00 01
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.301344: Send EAPOL-Key msg - hexdump(len=121): 02 03 00 75 02 00 88 00 10 00 00 00 00 00 00 00 01 4a a6 d9 5a 5c a3 60 28 77 c2 1c 4b 2f d2 9e 0f 49 c5 61 99 71 a5 40 84 8f 2b b5 16 d7 93 2d 89 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 16 dd 14 00 0f ac 04 43 7c 2b f8 b0 72 a4 69 6a ae 1a 22 b6 5d 6c bd
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.301488: nl80211: Send over control port dest=fc:b3:bc:f0:b0:c2 proto=0x888e len=121 no_encrypt=1
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.301599: nl80211: tx_control_port cookie=0x34
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.301613: WPA: Use EAPOL-Key timeout of 100 ms (retry counter 1)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.301705: nl80211: Event message available
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.301737: nl80211: Drv Event 103 (NL80211_CMD_VENDOR) received for mld0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.301750: nl80211: Vendor event: wiphy=0 vendor_id=0x1374 subcmd=75
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.301759: nl80211: Vendor data - hexdump(len=28): 08 00 11 00 4a 01 00 00 0b 00 13 00 00 fc b3 bc f0 b0 c2 00 05 00 63 00 02 00 00 00
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.302201: nl80211: Ignore unsupported QCA vendor event 75
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.302242: nl80211: Event message available
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.302271: nl80211: Drv Event 103 (NL80211_CMD_VENDOR) received for mld0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.302283: nl80211: Vendor event: wiphy=0 vendor_id=0x1374 subcmd=75
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.302292: nl80211: Vendor data - hexdump(len=48): 08 00 11 00 06 01 00 00 1f 00 13 00 d0 00 3c 00 00 03 7f 12 b1 b1 fc b3 bc f0 b0 c2 00 03 7f 12 b1 b1 40 3b 07 01 00 00 05 00 63 00 02 00 00 00
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.302630: nl80211: Ignore unsupported QCA vendor event 75
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.304028: nl80211: Event message available
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.304066: nl80211: Drv Event 139 (NL80211_CMD_CONTROL_PORT_FRAME_TX_STATUS) received for mld0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.304082: nl80211: Control port TX status (ack=1), cookie=52
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.304102: mld0: Event EAPOL_TX_STATUS (37) received
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.304118: IEEE 802.1X: fc:b3:bc:f0:b0:c2 TX status - version=2 type=3 length=117 - ack=1
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.304133: WPA: EAPOL-Key TX status for STA fc:b3:bc:f0:b0:c2 ack=1
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.304143: WPA: Increase initial EAPOL-Key 1/4 timeout by 1000 ms because of acknowledged frame
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.304581: nl80211: Event message available
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.304617: nl80211: Drv Event 139 (NL80211_CMD_CONTROL_PORT_FRAME_TX_STATUS) received for mld0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.304630: nl80211: Control port TX status (ack=1), cookie=0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.304646: mld0: Event EAPOL_TX_STATUS (37) received
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.304656: Received Eapol Tx status is not for the current outstanding frame - Ignore
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.304665: nl80211: Event message available
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.304690: nl80211: BSS Event 129 (NL80211_CMD_CONTROL_PORT_FRAME) received for mld0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.304710: mld0: Event EAPOL_RX (23) received
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.304721: IEEE 802.1X: 146 bytes from fc:b3:bc:f0:b0:c2 (encrypted=1)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.304733:    IEEE 802.1X: version=1 type=3 length=142
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.304742: WPA: RX EAPOL data - hexdump(len=146): 01 03 00 8e 02 01 08 00 00 00 00 00 00 00 00 00 01 1f ab 65 8f 20 63 d4 85 ec 14 81 0f 07 25 4a 40 a5 a1 2f 00 ef d8 fd 2c c9 42 fb db 3d b4 07 45 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 be 9a 65 b1 b0 f8 b2 61 5e 5f 5b 4e 60 70 9b 03 00 2f 30 2a 01 00 00 0f ac 04 01 00 00 0f ac 04 01 00 00 0f ac 08 fc 00 01 00 43 7c 2b f8 b0 72 a4 69 6a ae 1a 22 b6 5d 6c bd 00 0f ac 06 f4 01 20
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.304914: WPA: Received EAPOL-Key from fc:b3:bc:f0:b0:c2 key_info=0x108 type=2 mic_len=16 key_data_length=47
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.304930: WPA: EAPOL-Key header (ending before Key MIC) - hexdump(len=77): 02 01 08 00 00 00 00 00 00 00 00 00 01 1f ab 65 8f 20 63 d4 85 ec 14 81 0f 07 25 4a 40 a5 a1 2f 00 ef d8 fd 2c c9 42 fb db 3d b4 07 45 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.305140: WPA: EAPOL-Key Key MIC - hexdump(len=16): be 9a 65 b1 b0 f8 b2 61 5e 5f 5b 4e 60 70 9b 03
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.305166: WPA: Received Key Nonce - hexdump(len=32): 1f ab 65 8f 20 63 d4 85 ec 14 81 0f 07 25 4a 40 a5 a1 2f 00 ef d8 fd 2c c9 42 fb db 3d b4 07 45
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.305205: WPA: Received Replay Counter - hexdump(len=8): 00 00 00 00 00 00 00 01
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.305262: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state PTKCALCNEGOTIATING
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.305285: WPA: PTK derivation using PRF(SHA256)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.305389: WPA: PTK derivation - A1=00:03:7f:12:b1:b1 A2=fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.305415: WPA: Nonce1 - hexdump(len=32): 4a a6 d9 5a 5c a3 60 28 77 c2 1c 4b 2f d2 9e 0f 49 c5 61 99 71 a5 40 84 8f 2b b5 16 d7 93 2d 89
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.305455: WPA: Nonce2 - hexdump(len=32): 1f ab 65 8f 20 63 d4 85 ec 14 81 0f 07 25 4a 40 a5 a1 2f 00 ef d8 fd 2c c9 42 fb db 3d b4 07 45
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.305499: WPA: PMK - hexdump(len=32): a9 95 ba 12 68 8c 70 35 76 db d3 8a 1c 5f a1 5a 84 64 34 b7 51 76 2f f7 ff 60 9e ea 61 88 4a 16
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.305537: WPA: PTK - hexdump(len=48): 35 c6 cf 01 63 07 fa 55 00 b1 fb 83 35 a2 39 01 ad 16 cc f9 84 ec 34 de 35 51 c3 90 59 fe 6c 0f 44 6d 71 43 be 72 b7 70 c4 77 ce 8d e7 ac f9 da
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.305597: WPA: KCK - hexdump(len=16): 35 c6 cf 01 63 07 fa 55 00 b1 fb 83 35 a2 39 01
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.305621: WPA: KEK - hexdump(len=16): ad 16 cc f9 84 ec 34 de 35 51 c3 90 59 fe 6c 0f
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.305645: WPA: TK - hexdump(len=16): 44 6d 71 43 be 72 b7 70 c4 77 ce 8d e7 ac f9 da
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.305714: WPA: EAPOL-Key MIC using AES-CMAC (AKM-defined - SAE)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.305787: WPA: RSN IE in EAPOL-Key - hexdump(len=44): 30 2a 01 00 00 0f ac 04 01 00 00 0f ac 04 01 00 00 0f ac 08 fc 00 01 00 43 7c 2b f8 b0 72 a4 69 6a ae 1a 22 b6 5d 6c bd 00 0f ac 06
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.305852: WPA: RSNXE in EAPOL-Key - hexdump(len=3): f4 01 20
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.305874: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state PTKCALCNEGOTIATING2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.305889: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state PTKINITNEGOTIATING
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.307459: EAPOL-DATA:  - hexdump(len=110): 30 14 01 00 00 0f ac 04 01 00 00 0f ac 04 01 00 00 0f ac 08 cc 00 f4 02 21 05 dd 16 00 0f ac 01 01 00 7b 3a 67 85 2c 2f fb c8 b8 ea 1d 54 4a e9 db 0f dd 1c 00 0f ac 09 04 00 00 00 00 00 00 00 73 4b 3e 47 2d 4c e1 6b 3d e6 33 bb d4 8b 51 af dd 1c 00 0f ac 0e 06 00 67 24 06 00 00 00 b6 9a 09 91 71 64 b1 2c 5d 3e 4f 63 62 b1 ed d6
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.307596: WPA: Send EAPOL(version=0 secure=1 mic=1 ack=1 install=1 pairwise=1 kde_len=110 keyidx=0 encr=1)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.307616: WPA: Replay Counter - hexdump(len=8): 00 00 00 00 00 00 00 02
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.307670: Plaintext EAPOL-Key Key Data (+ padding) - hexdump(len=120): 30 14 01 00 00 0f ac 04 01 00 00 0f ac 04 01 00 00 0f ac 08 cc 00 f4 02 21 05 dd 16 00 0f ac 01 01 00 7b 3a 67 85 2c 2f fb c8 b8 ea 1d 54 4a e9 db 0f dd 1c 00 0f ac 09 04 00 00 00 00 00 00 00 73 4b 3e 47 2d 4c e1 6b 3d e6 33 bb d4 8b 51 af dd 1c 00 0f ac 0e 06 00 67 24 06 00 00 00 b6 9a 09 91 71 64 b1 2c 5d 3e 4f 63 62 b1 ed d6 dd 00 00 00 00 00 00 00 00 00
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.307811: RSN: AES-WRAP using KEK - hexdump(len=16): ad 16 cc f9 84 ec 34 de 35 51 c3 90 59 fe 6c 0f
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.307918: RSN: Encrypted Key Data from AES-WRAP - hexdump(len=120): 1e ba 16 c5 90 dd b8 a2 ea 3c 5e 45 56 6a 56 ed 58 b6 3a bd 67 ec 0a 38 1a 6a c9 3c f3 52 4d 90 d5 f8 48 18 db 7d db 46 76 5b 5c 94 f4 04 66 4a e0 10 e5 1b e8 33 33 e4 46 c0 5b 98 10 a4 61 9d 25 51 e2 ca c4 2e 4e c3 34 ba 42 3c 98 d2 55 30 b2 3a a9 63 10 bc 04 54 aa e7 66 d0 f2 36 15 63 d9 56 d5 cb c2 b8 83 a4 9a 63 d4 ab 4d 6f fe fa a9 17 84 ea d8 72 bf 59
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.308050: WPA: EAPOL-Key MIC using AES-CMAC (AKM-defined - SAE)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.308097: Send EAPOL-Key msg - hexdump(len=219): 02 03 00 d7 02 13 c8 00 10 00 00 00 00 00 00 00 02 4a a6 d9 5a 5c a3 60 28 77 c2 1c 4b 2f d2 9e 0f 49 c5 61 99 71 a5 40 84 8f 2b b5 16 d7 93 2d 89 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 ad 03 00 00 00 00 00 00 00 00 00 00 00 00 00 dc f9 84 53 46 bd 45 46 49 4c 08 eb 13 02 84 1f 00 78 1e ba 16 c5 90 dd b8 a2 ea 3c 5e 45 56 6a 56 ed 58 b6 3a bd 67 ec 0a 38 1a 6a c9 3c f3 52 4d 90 d5 f8 48 18 db 7d db 46 76 5b 5c 94 f4 04 66 4a e0 10 e5 1b e8 33 33 e4 46 c0 5b 98 10 a4 61 9d 25 51 e2 ca c4 2e 4e c3 34 ba 42 3c 98 d2 55 30 b2 3a a9 63 10 bc 04 54 aa e7 66 d0 f2 36 15 63 d9 56 d5 cb c2 b8 83 a4 9a 63 d4 ab 4d 6f fe fa a9 17 84 ea d8 72 bf 59
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.308339: nl80211: Send over control port dest=fc:b3:bc:f0:b0:c2 proto=0x888e len=219 no_encrypt=1
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.308444: nl80211: tx_control_port cookie=0x35
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.308466: WPA: Use EAPOL-Key timeout of 100 ms (retry counter 1)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.309844: nl80211: Event message available
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.309882: nl80211: Drv Event 139 (NL80211_CMD_CONTROL_PORT_FRAME_TX_STATUS) received for mld0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.309895: nl80211: Control port TX status (ack=1), cookie=0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.309912: mld0: Event EAPOL_TX_STATUS (37) received
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.309922: Received Eapol Tx status is not for the current outstanding frame - Ignore
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.309931: nl80211: Event message available
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.309954: nl80211: BSS Event 129 (NL80211_CMD_CONTROL_PORT_FRAME) received for mld0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.309973: mld0: Event EAPOL_RX (23) received
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.309983: IEEE 802.1X: 99 bytes from fc:b3:bc:f0:b0:c2 (encrypted=1)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.309995:    IEEE 802.1X: version=1 type=3 length=95
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.310004: WPA: RX EAPOL data - hexdump(len=99): 01 03 00 5f 02 03 08 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 12 8c bf 11 98 7a f7 61 d7 d4 ad fa 1c 97 ae 08 00 00
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.310134: WPA: Received EAPOL-Key from fc:b3:bc:f0:b0:c2 key_info=0x308 type=2 mic_len=16 key_data_length=0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.310147: WPA: EAPOL-Key header (ending before Key MIC) - hexdump(len=77): 02 03 08 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.310430: WPA: EAPOL-Key Key MIC - hexdump(len=16): 12 8c bf 11 98 7a f7 61 d7 d4 ad fa 1c 97 ae 08
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.310456: WPA: Received Key Nonce - hexdump(len=32): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.310502: WPA: Received Replay Counter - hexdump(len=8): 00 00 00 00 00 00 00 02
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.310539: WPA: EAPOL-Key MIC using AES-CMAC (AKM-defined - SAE)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.310596: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state PTKINITDONE
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.310650: wpa_driver_nl80211_set_key: ifindex=18 (mld0) alg=3 addr=0x7fa9117930 key_idx=0 set_tx=1 seq_len=0 key_len=16 key_flag=0x2c link_id=-1
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.310675: nl80211: NEW_KEY
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.310728: nl80211: KEY_DATA - hexdump(len=16): 44 6d 71 43 be 72 b7 70 c4 77 ce 8d e7 ac f9 da
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.310800:    addr=fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.310811:    pairwise key
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.311089: Added PTKSA cache entry addr=fc:b3:bc:f0:b0:c2 cipher=16
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.311125: nl80211: Set STA flags - ifname=mld0 addr=fc:b3:bc:f0:b0:c2 total_flags=0x6b flags_or=0x1 flags_and=0xffffffff authorized=1
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.311770: mld0: AP-STA-CONNECTED fc:b3:bc:f0:b0:c2 link_id:2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.311959: 1763035329.311962: mld0: STA fc:b3:bc:f0:b0:c2 RADIUS: starting accounting session 6BBDC21572DD965C
+Thu Nov 13 12:02:09 2025 daemon.info hostapd: mld0: STA fc:b3:bc:f0:b0:c2 RADIUS: starting accounting session 6BBDC21572DD965C
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.312212: 1763035329.312215: mld0: STA fc:b3:bc:f0:b0:c2 WPA: pairwise key handshake completed (RSN)
+Thu Nov 13 12:02:09 2025 daemon.info hostapd: mld0: STA fc:b3:bc:f0:b0:c2 WPA: pairwise key handshake completed (RSN)
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.312291: mld0: EAPOL-4WAY-HS-COMPLETED fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.312341: nl80211: Event message available
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.312396: nl80211: Drv Event 139 (NL80211_CMD_CONTROL_PORT_FRAME_TX_STATUS) received for mld0
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.312417: nl80211: Control port TX status (ack=1), cookie=53
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.312434: mld0: Event EAPOL_TX_STATUS (37) received
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.312448: IEEE 802.1X: fc:b3:bc:f0:b0:c2 TX status - version=2 type=3 length=215 - ack=1
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.312462: WPA: EAPOL-Key TX status for STA fc:b3:bc:f0:b0:c2 ack=1
+Thu Nov 13 12:02:09 2025 user.notice root: 1763035329.312669: RTM_NEWLINK: ifi_index=18 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.130197: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.130260: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.130300: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.130331: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.130359: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.130386: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.133546: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.133594: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.133629: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.133655: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.136175: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.136218: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.139054: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.139097: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.147729: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.147778: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.151194: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.151241: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.151275: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.151301: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.153128: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.153193: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.153518: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.153561: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.153837: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.153876: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.156496: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.156542: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.156706: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.156792: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.159260: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.159371: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.161463: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.161631: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.167750: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.167801: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.171907: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.171964: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.172052: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.172088: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 16 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.312291: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.312358: nl80211: Drv Event 20 (NL80211_CMD_DEL_STATION) received for mld0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.312374: nl80211: Delete station fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:10 2025 daemon.info hostapd: mld0: STA fc:b3:bc:f0:b0:c2 IEEE 802.11: disassociated
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.312398: mld0: Event DISASSOC (1) received
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.312425: 1763035330.312428: mld0: STA fc:b3:bc:f0:b0:c2 IEEE 802.11: disassociated
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.312488: mld0: AP-STA-DISCONNECTED fc:b3:bc:f0:b0:c2 link_id:2
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.312502: nl80211: Set STA flags - ifname=mld0 addr=fc:b3:bc:f0:b0:c2 total_flags=0xa flags_or=0xa flags_and=0xfffffffa authorized=0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.312650: Flush PTKSA cache entry for fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.312732: wpa_driver_nl80211_set_key: ifindex=18 (mld0) alg=0 addr=0x7fa9117930 key_idx=0 set_tx=1 seq_len=0 key_len=0 key_flag=0x20 link_id=-1
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.312756: nl80211: DEL_KEY
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.312819:    addr=fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.312833:    pairwise key
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.312968: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state DISCONNECTED
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.312988: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state INITIALIZE
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.313036: wpa_driver_nl80211_set_key: ifindex=18 (mld0) alg=0 addr=0x7fa9117930 key_idx=0 set_tx=1 seq_len=0 key_len=0 key_flag=0x20 link_id=-1
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.313059: nl80211: DEL_KEY
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.313101:    addr=fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.313115:    pairwise key
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.313233: nl80211: Set STA flags - ifname=mld0 addr=fc:b3:bc:f0:b0:c2 total_flags=0xa flags_or=0x0 flags_and=0xfffffffe authorized=0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.313348: nl80211: Set STA flags - ifname=mld0 addr=fc:b3:bc:f0:b0:c2 total_flags=0xa flags_or=0xa flags_and=0xfffffffa authorized=0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.313475: nl80211: sta_remove -> DEL_STATION mld0 fc:b3:bc:f0:b0:c2 --> 0 (No error information)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.313497: hostapd_ht_operation_update current operation mode=0x4
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.313507: hostapd_ht_operation_update new operation mode=0x4 changes=0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.313516: ap_free_sta: cancel ap_handle_timer for link_id:2 fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.313606: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.313676: nl80211: BSS Event 59 (NL80211_CMD_FRAME) received for mld0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.313692: nl80211: MLME event 59 (NL80211_CMD_FRAME) on mld0(00:0a:f5:22:12:31) A1=00:03:7f:12:b1:b1 A2=fc:b3:bc:f0:b0:c2 on link_id=2
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.313716: nl80211: MLME event frame - hexdump(len=36): c0 40 3c 00 00 03 7f 12 b1 b1 fc b3 bc f0 b0 c2 00 03 7f 12 b1 b1 80 3b 01 00 dd 08 00 17 35 01 01 00 00 00
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.313763: nl80211: Frame event
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.313772: nl80211: RX frame da=00:03:7f:12:b1:b1 sa=fc:b3:bc:f0:b0:c2 bssid=00:03:7f:12:b1:b1 freq=5180 ssi_signal=0 fc=0x40c0 seq_ctrl=0x3b80 stype=12 (WLAN_FC_STYPE_DEAUTH) len=36
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.313803: mld0: Event RX_MGMT (18) received
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.313825: mld0: mgmt::deauth
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.313846: mld0: Station fc:b3:bc:f0:b0:c2 trying to deauthenticate, but it is not authenticated
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.314366: RTM_NEWLINK: ifi_index=18 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.314433: RTM_NEWLINK: ifi_index=18 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.316844: RTM_NEWLINK: ifi_index=18 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.316914: RTM_NEWLINK: ifi_index=18 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Thu Nov 13 12:02:10 2025 kern.debug kernel: [41265.895438] MCS: Processing station leave event
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.435873: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.436011: nl80211: BSS Event 59 (NL80211_CMD_FRAME) received for mld0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.436036: nl80211: MLME event 59 (NL80211_CMD_FRAME) on mld0(00:0a:f5:22:12:31) A1=02:03:7f:12:36:36 A2=fc:b3:bc:f0:b0:c2 on link_id=1
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.436061: nl80211: MLME event frame - hexdump(len=30): b0 00 3c 00 02 03 7f 12 36 36 fc b3 bc f0 b0 c2 02 03 7f 12 36 36 90 3b 00 00 01 00 00 00
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.436103: nl80211: Frame event
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.436112: nl80211: RX frame da=02:03:7f:12:36:36 sa=fc:b3:bc:f0:b0:c2 bssid=02:03:7f:12:36:36 freq=6295 ssi_signal=0 fc=0xb0 seq_ctrl=0x3b90 stype=11 (WLAN_FC_STYPE_AUTH) len=30
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.436147: mld0: Event RX_MGMT (18) received
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.436169: mgmt::auth
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.436180: authentication: STA=fc:b3:bc:f0:b0:c2 auth_alg=0 auth_transaction=1 status_code=0 wep=0 seq_ctrl=0x3b90
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.436201:   New STA
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.436527: nl80211: sta_remove -> DEL_STATION mld0 fc:b3:bc:f0:b0:c2 --> 0 (No error information)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.436556: nl80211: NL80211_CMD_NEW_STATION STA fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.436573:   * supported rates - hexdump(len=3): 0c 18 30
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.436585:   * capability=0x0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.436595:   * aid=1 (UNASSOC_STA workaround)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.436603:   * listen_interval=0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.436611:   * flags set=0x0 mask=0xa0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.436619:   * mld_link_id=1
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.436812: authentication reply: STA=fc:b3:bc:f0:b0:c2 auth_alg=0 auth_transaction=2 resp=0 (IE len=0) (dbg=handle-auth)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.436834: nl80211: send_mlme - da=fc:b3:bc:f0:b0:c2 sa=02:03:7f:12:36:36 bssid=02:03:7f:12:36:36 noack=0 freq=0 no_cck=0 offchanok=0 wait_time=0 no_encrypt=0 fc=0xb0 (WLAN_FC_STYPE_AUTH) nlmode=3 link_id=1
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.436862: nl80211: Use link freq=6295 for address 02:03:7f:12:36:36
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.436873: nl80211: send_mlme -> send_frame_cmd
+Thu Nov 13 12:02:10 2025 daemon.info hostapd: mld0: STA fc:b3:bc:f0:b0:c2 IEEE 802.11: authenticated
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.436881: nl80211: CMD_FRAME freq=6295 wait=0 no_cck=0 no_ack=0 offchanok=0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.436891: CMD_FRAME - hexdump(len=30): b0 00 00 00 fc b3 bc f0 b0 c2 02 03 7f 12 36 36 02 03 7f 12 36 36 00 00 00 00 02 00 00 00
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.437290: nl80211: Frame TX command accepted; cookie 0xe58f149efb411a00
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.437392: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.437439: nl80211: Drv Event 60 (NL80211_CMD_FRAME_TX_STATUS) received for mld0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.437455: nl80211: MLME event 60 (NL80211_CMD_FRAME_TX_STATUS) on mld0(00:0a:f5:22:12:31) A1=fc:b3:bc:f0:b0:c2 A2=02:03:7f:12:36:36 on link_id=1
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.437476: nl80211: MLME event frame - hexdump(len=30): b0 00 00 00 fc b3 bc f0 b0 c2 02 03 7f 12 36 36 02 03 7f 12 36 36 00 00 00 00 02 00 00 00
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.437518: nl80211: Frame TX status event A1=fc:b3:bc:f0:b0:c2 stype=11 cookie=0xe58f149efb411a00 ack=1
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.437542: mld0: Event TX_STATUS (16) received
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.437556: mgmt::auth cb
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.437576: 1763035330.437578: mld0: STA fc:b3:bc:f0:b0:c2 IEEE 802.11: authenticated
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.437621: nl80211: Set STA flags - ifname=mld0 addr=fc:b3:bc:f0:b0:c2 total_flags=0x20 flags_or=0x0 flags_and=0xfffffff0 authorized=0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.438395: RTM_NEWLINK: ifi_index=18 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.455497: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.455549: nl80211: BSS Event 59 (NL80211_CMD_FRAME) received for mld0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.455566: nl80211: MLME event 59 (NL80211_CMD_FRAME) on mld0(00:0a:f5:22:12:31) A1=02:03:7f:12:36:36 A2=fc:b3:bc:f0:b0:c2 on link_id=1
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.455591: nl80211: MLME event frame - hexdump(len=207): 20 00 3c 00 02 03 7f 12 36 36 fc b3 bc f0 b0 c2 02 03 7f 12 36 36 a0 3b 11 15 fa 00 00 00 00 00 00 00 00 0c 41 44 5f 34 36 36 5f 31 31 5f 31 32 01 08 8c 12 98 24 b0 48 60 6c 21 02 00 0f 30 2a 01 00 00 0f ac 04 01 00 00 0f ac 04 01 00 00 0f ac 08 fc 00 01 00 45 c3 6d 56 3e c9 1e 5f 03 00 ac 37 7c 45 d2 6e 00 0f ac 06 3b 17 86 51 53 54 73 74 75 76 77 78 79 7a 7b 7c 7d 7e 7f 80 81 83 84 85 86 46 05 72 00 00 00 00 7f 0a 04 00 c8 80 01 40 00 00 00 00 dd 07 00 50 f2 02 00 01 00 dd 06 00 17 35 08 01 00 f4 01 20 ff 1e 23 01 78 20 0a c0 ab 0e 30 0e 00 fd 09 8c 0e 0f fe 00 fa ff fa ff fa ff fa ff 61 1c c7 71 ff 03 3b 7d 02
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.455842: nl80211: Frame event
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.455852: nl80211: RX frame da=02:03:7f:12:36:36 sa=fc:b3:bc:f0:b0:c2 bssid=02:03:7f:12:36:36 freq=6295 ssi_signal=0 fc=0x20 seq_ctrl=0x3ba0 stype=2 (WLAN_FC_STYPE_REASSOC_REQ) len=207
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.455887: mld0: Event RX_MGMT (18) received
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.455909: mgmt::reassoc_req
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.455917: reassociation request: STA=fc:b3:bc:f0:b0:c2 capab_info=0x1511 listen_interval=250 current_ap=00:00:00:00:00:00 seq_ctrl=0x3ba0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.455946: IEEE 802.11 element parse element found (id=0 elen=12)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.455956: IEEE 802.11 element parse element found (id=1 elen=8)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.455963: IEEE 802.11 element parse element found (id=33 elen=2)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.455971: IEEE 802.11 element parse element found (id=48 elen=42)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.455979: IEEE 802.11 element parse element found (id=59 elen=23)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.455986: IEEE 802.11 element parse element found (id=70 elen=5)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.455994: IEEE 802.11 element parse element found (id=127 elen=10)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456002: IEEE 802.11 element parse element found (id=221 elen=7)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456011: IEEE 802.11 element parse element found (id=221 elen=6)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456018: IEEE 802.11 element parse element found (id=244 elen=1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456026: IEEE 802.11 element parse element found (id=255 elen=30)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456034: IEEE 802.11 element parse element found (id=255 elen=3)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456044: WMM IE - hexdump(len=7): 00 50 f2 02 00 01 00
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456061: Validating WMM IE: OUI 00:50:f2  OUI type 2  OUI sub-type 0  version 1  QoS info 0x0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456114: RSN IE: STA PMKID - hexdump(len=16): 45 c3 6d 56 3e c9 1e 5f 03 00 ac 37 7c 45 d2 6e
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456171: SAE: fc:b3:bc:f0:b0:c2 using PMKSA caching
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456192:   new AID 4
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456201: update_sta_no_ht STA fc:b3:bc:f0:b0:c2 - no HT, num of non-HT stations 11
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456213: hostapd_ht_operation_update current operation mode=0x13
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456221: hostapd_ht_operation_update new operation mode=0x13 changes=0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456247: Add associated STA fc:b3:bc:f0:b0:c2 (added_unassoc=1 auth_alg=0 ft_over_ds=0 reassoc=1 authorized=0 ft_tk=0 fils_tk=0)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456267: nl80211: NL80211_CMD_SET_STATION STA fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456285:   * supported rates - hexdump(len=8): 8c 12 98 24 b0 48 60 6c
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456302:   * capability=0x1511
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456310:   * he_capab - hexdump(len=29): 01 78 20 0a c0 ab 0e 30 0e 00 fd 09 8c 0e 0f fe 00 fa ff fa ff fa ff fa ff 61 1c c7 71
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456347:   * he_6ghz_capab - hexdump(len=2): 7d 02
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456358:   * aid=4
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456365:   * listen_interval=250
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456373:   * flags set=0xb8 mask=0xb8
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456382:   * qosinfo=0x0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456390:   * mld_link_id=1
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456594: nl80211: send_mlme - da=fc:b3:bc:f0:b0:c2 sa=02:03:7f:12:36:36 bssid=02:03:7f:12:36:36 noack=0 freq=0 no_cck=0 offchanok=0 wait_time=0 no_encrypt=0 fc=0x30 (WLAN_FC_STYPE_REASSOC_RESP) nlmode=3 link_id=1
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456627: nl80211: Use link freq=6295 for address 02:03:7f:12:36:36
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456638: nl80211: send_mlme -> send_frame_cmd
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456646: nl80211: CMD_FRAME freq=6295 wait=0 no_cck=0 no_ack=0 offchanok=0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.456656: CMD_FRAME - hexdump(len=177): 30 00 00 00 fc b3 bc f0 b0 c2 02 03 7f 12 36 36 02 03 7f 12 36 36 00 00 11 00 00 00 04 c0 01 08 8c 12 98 24 b0 48 60 6c 32 01 fb ff 1b 23 0d 01 18 9a 40 18 0c 63 40 09 fc db 9f 1c 11 0e 00 aa ff aa ff aa ff aa ff 00 ff 0c 24 f0 3f 02 85 fc ff 45 13 47 4f 06 ff 03 3b b8 36 7f 0c 04 00 00 02 00 00 00 00 00 40 10 0c 5a 03 24 01 00 f4 02 21 05 ff 18 6c 37 00 82 ff db e0 18 77 00 0e 00 44 44 00 44 44 00 44 44 00 00 00 00 ff 09 6a 01 11 00 00 00 04 4f 3f dd 18 00 50 f2 02 01 01 01 00 03 a4 00 00 27 a4 00 00 42 43 5e 00 62 32 2f 00
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.458419: nl80211: Frame TX command accepted; cookie 0xe58f149efb411a00
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.458494: RTM_NEWLINK: ifi_index=18 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.458557: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.458592: nl80211: Drv Event 103 (NL80211_CMD_VENDOR) received for mld0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.458604: nl80211: Vendor event: wiphy=0 vendor_id=0x1374 subcmd=75
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.458614: nl80211: Vendor data - hexdump(len=28): 08 00 11 00 4a 01 00 00 0b 00 13 00 00 fc b3 bc f0 b0 c2 00 05 00 63 00 01 00 00 00
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.459056: nl80211: Ignore unsupported QCA vendor event 75
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.465290: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.465330: nl80211: Drv Event 60 (NL80211_CMD_FRAME_TX_STATUS) received for mld0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.465346: nl80211: MLME event 60 (NL80211_CMD_FRAME_TX_STATUS) on mld0(00:0a:f5:22:12:31) A1=fc:b3:bc:f0:b0:c2 A2=02:03:7f:12:36:36 on link_id=1
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.465368: nl80211: MLME event frame - hexdump(len=208): 30 00 00 00 fc b3 bc f0 b0 c2 02 03 7f 12 36 36 02 03 7f 12 36 36 00 10 11 05 00 00 07 00 01 08 8c 12 98 24 b0 48 60 6c 32 01 fb 7f 0b 04 00 4f 02 00 00 40 40 00 40 19 f4 02 21 05 ff 27 23 0d 01 08 1a 40 10 0c 63 40 88 ff 5b 9d 1c 11 0a 00 aa ff aa ff aa ff aa ff 7b 1c c7 71 1c c7 71 1c c7 71 1c c7 71 ff 0c 24 f4 3f 02 03 fc ff 45 03 47 4f 01 ff 02 27 03 ff 0e 26 0a 03 a4 0b 27 a4 ff 42 43 ff 62 32 ff ff 03 3b b8 36 dd 17 8c fd f0 01 01 02 01 00 02 01 01 03 03 01 01 00 04 01 01 09 02 0f 0f dd 18 00 50 f2 02 01 01 8a 00 03 a4 00 00 27 a4 00 00 42 43 5e 00 62 32 2f 00 dd 06 50 6f 9a 23 01 04 dd 07 8c fd f0 04 01 01 02
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.465596: nl80211: Frame TX status event A1=fc:b3:bc:f0:b0:c2 stype=3 cookie=0x0 ack=1
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.465622: mld0: Event TX_STATUS (16) received
+Thu Nov 13 12:02:10 2025 daemon.info hostapd: mld0: STA fc:b3:bc:f0:b0:c2 IEEE 802.11: associated (aid 4)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.465639: mgmt::reassoc_resp cb
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.465662: 1763035330.465665: mld0: STA fc:b3:bc:f0:b0:c2 IEEE 802.11: associated (aid 4)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.465784: wpa_driver_nl80211_set_key: ifindex=18 (mld0) alg=0 addr=0x7fa9117940 key_idx=0 set_tx=1 seq_len=0 key_len=0 key_flag=0x20 link_id=-1
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.465814: nl80211: DEL_KEY
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.465865:    addr=fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.465878:    pairwise key
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.466081: nl80211: mld0[18]: set_sta_vlan(fc:b3:bc:f0:b0:c2, ifname=mld0[18], vlan_id=0)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.466188: nl80211: Set STA flags - ifname=mld0 addr=fc:b3:bc:f0:b0:c2 total_flags=0x6a flags_or=0xa flags_and=0xfffffffa authorized=0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.466318: wpa_driver_nl80211_set_key: ifindex=18 (mld0) alg=0 addr=0x7fa9117940 key_idx=0 set_tx=1 seq_len=0 key_len=0 key_flag=0x20 link_id=-1
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.466341: nl80211: DEL_KEY
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.466382:    addr=fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.466395:    pairwise key
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.466511: IEEE 802.1X: Ignore STA - 802.1X not enabled or forced for WPS
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.466543: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state INITIALIZE
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.466588: wpa_driver_nl80211_set_key: ifindex=18 (mld0) alg=0 addr=0x7fa9117940 key_idx=0 set_tx=1 seq_len=0 key_len=0 key_flag=0x20 link_id=-1
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.466609: nl80211: DEL_KEY
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.466648:    addr=fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.466661:    pairwise key
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.466770: nl80211: Set STA flags - ifname=mld0 addr=fc:b3:bc:f0:b0:c2 total_flags=0x6a flags_or=0x0 flags_and=0xfffffffe authorized=0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.466871: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK_GROUP entering state IDLE
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.466888: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state AUTHENTICATION
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.466902: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state AUTHENTICATION2
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.466915: Get randomness: len=32 entropy=44
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.467171: WPA: Assign ANonce - hexdump(len=32): 51 0b 4a 72 78 4d fe 88 e0 af 65 05 58 16 46 bd f9 4f d6 c3 b3 5f 27 b0 45 c4 c7 91 3e 31 04 50
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.467221: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state INITPSK
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.467233: No PSK for STA trying to use SAE with PMKSA caching
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.467241: SAE: PMK from PMKSA cache (len=32)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.467251: No PSK for STA trying to use SAE with PMKSA caching
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.467259: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state PTKSTART
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.467283: RSN: Message 1/4 PMKID from PMKSA entry - hexdump(len=16): 45 c3 6d 56 3e c9 1e 5f 03 00 ac 37 7c 45 d2 6e
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.467309: EAPOL-DATA:  - hexdump(len=22): dd 14 00 0f ac 04 45 c3 6d 56 3e c9 1e 5f 03 00 ac 37 7c 45 d2 6e
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.467342: WPA: Send EAPOL(version=0 secure=0 mic=0 ack=1 install=0 pairwise=1 kde_len=22 keyidx=0 encr=0)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.467361: WPA: Replay Counter - hexdump(len=8): 00 00 00 00 00 00 00 01
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.467380: Send EAPOL-Key msg - hexdump(len=121): 02 03 00 75 02 00 88 00 10 00 00 00 00 00 00 00 01 51 0b 4a 72 78 4d fe 88 e0 af 65 05 58 16 46 bd f9 4f d6 c3 b3 5f 27 b0 45 c4 c7 91 3e 31 04 50 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 16 dd 14 00 0f ac 04 45 c3 6d 56 3e c9 1e 5f 03 00 ac 37 7c 45 d2 6e
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.467522: nl80211: Send over control port dest=fc:b3:bc:f0:b0:c2 proto=0x888e len=121 no_encrypt=1
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.467654: nl80211: tx_control_port cookie=0xa3
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.467671: WPA: Use EAPOL-Key timeout of 100 ms (retry counter 1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.467714: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.467744: nl80211: Drv Event 103 (NL80211_CMD_VENDOR) received for mld0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.467756: nl80211: Vendor event: wiphy=0 vendor_id=0x1374 subcmd=75
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.467766: nl80211: Vendor data - hexdump(len=28): 08 00 11 00 4a 01 00 00 0b 00 13 00 00 fc b3 bc f0 b0 c2 00 05 00 63 00 01 00 00 00
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.468154: nl80211: Ignore unsupported QCA vendor event 75
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.468187: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.468214: nl80211: Drv Event 103 (NL80211_CMD_VENDOR) received for mld0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.468226: nl80211: Vendor event: wiphy=0 vendor_id=0x1374 subcmd=75
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.468236: nl80211: Vendor data - hexdump(len=48): 08 00 11 00 06 01 00 00 1f 00 13 00 d0 00 3c 00 02 03 7f 12 36 36 fc b3 bc f0 b0 c2 02 03 7f 12 36 36 b0 3b 07 01 00 00 05 00 63 00 01 00 00 00
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.468570: nl80211: Ignore unsupported QCA vendor event 75
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.471939: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.471979: nl80211: Drv Event 139 (NL80211_CMD_CONTROL_PORT_FRAME_TX_STATUS) received for mld0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.471994: nl80211: Control port TX status (ack=1), cookie=163
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.472013: mld0: Event EAPOL_TX_STATUS (37) received
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.472029: IEEE 802.1X: fc:b3:bc:f0:b0:c2 TX status - version=2 type=3 length=117 - ack=1
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.472044: WPA: EAPOL-Key TX status for STA fc:b3:bc:f0:b0:c2 ack=1
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.472054: WPA: Increase initial EAPOL-Key 1/4 timeout by 1000 ms because of acknowledged frame
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.472558: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.472597: nl80211: Drv Event 139 (NL80211_CMD_CONTROL_PORT_FRAME_TX_STATUS) received for mld0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.472610: nl80211: Control port TX status (ack=1), cookie=0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.472627: mld0: Event EAPOL_TX_STATUS (37) received
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.472647: Received Eapol Tx status is not for the current outstanding frame - Ignore
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.472675: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.472704: nl80211: BSS Event 129 (NL80211_CMD_CONTROL_PORT_FRAME) received for mld0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.472729: mld0: Event EAPOL_RX (23) received
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.472741: IEEE 802.1X: 146 bytes from fc:b3:bc:f0:b0:c2 (encrypted=1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.472753:    IEEE 802.1X: version=1 type=3 length=142
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.472763: WPA: RX EAPOL data - hexdump(len=146): 01 03 00 8e 02 01 08 00 00 00 00 00 00 00 00 00 01 53 e6 92 b4 4b 9e e4 59 ce a2 76 51 3e 98 86 17 25 31 86 6e da 87 75 bd 8a d8 ff a1 ef 15 54 57 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 3d 8e b5 7a 61 03 06 06 0d 3e 3a 4f 0e 62 90 36 00 2f 30 2a 01 00 00 0f ac 04 01 00 00 0f ac 04 01 00 00 0f ac 08 fc 00 01 00 45 c3 6d 56 3e c9 1e 5f 03 00 ac 37 7c 45 d2 6e 00 0f ac 06 f4 01 20
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.472936: WPA: Received EAPOL-Key from fc:b3:bc:f0:b0:c2 key_info=0x108 type=2 mic_len=16 key_data_length=47
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.472950: WPA: EAPOL-Key header (ending before Key MIC) - hexdump(len=77): 02 01 08 00 00 00 00 00 00 00 00 00 01 53 e6 92 b4 4b 9e e4 59 ce a2 76 51 3e 98 86 17 25 31 86 6e da 87 75 bd 8a d8 ff a1 ef 15 54 57 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.473043: WPA: EAPOL-Key Key MIC - hexdump(len=16): 3d 8e b5 7a 61 03 06 06 0d 3e 3a 4f 0e 62 90 36
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.473067: WPA: Received Key Nonce - hexdump(len=32): 53 e6 92 b4 4b 9e e4 59 ce a2 76 51 3e 98 86 17 25 31 86 6e da 87 75 bd 8a d8 ff a1 ef 15 54 57
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.473106: WPA: Received Replay Counter - hexdump(len=8): 00 00 00 00 00 00 00 01
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.473162: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state PTKCALCNEGOTIATING
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.473182: WPA: PTK derivation using PRF(SHA256)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.473299: WPA: PTK derivation - A1=02:03:7f:12:36:36 A2=fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.473318: WPA: Nonce1 - hexdump(len=32): 51 0b 4a 72 78 4d fe 88 e0 af 65 05 58 16 46 bd f9 4f d6 c3 b3 5f 27 b0 45 c4 c7 91 3e 31 04 50
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.473358: WPA: Nonce2 - hexdump(len=32): 53 e6 92 b4 4b 9e e4 59 ce a2 76 51 3e 98 86 17 25 31 86 6e da 87 75 bd 8a d8 ff a1 ef 15 54 57
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.473396: WPA: PMK - hexdump(len=32): 7f e2 53 a9 6c 4f 83 87 47 3b 8a 63 9e 4b 2b 1a 87 e2 3f f0 38 81 ab 74 03 73 53 e9 2b dd c9 ca
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.473435: WPA: PTK - hexdump(len=48): 96 b5 23 60 4e 5a 0b e3 a2 fb 8e bf 8c fe 52 55 f7 d7 26 9e 78 76 bd 7f 00 1b eb 61 db ef c8 f9 42 b1 c9 04 c4 67 11 e9 54 36 8d b9 8b 56 68 c7
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.473489: WPA: KCK - hexdump(len=16): 96 b5 23 60 4e 5a 0b e3 a2 fb 8e bf 8c fe 52 55
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.473512: WPA: KEK - hexdump(len=16): f7 d7 26 9e 78 76 bd 7f 00 1b eb 61 db ef c8 f9
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.473535: WPA: TK - hexdump(len=16): 42 b1 c9 04 c4 67 11 e9 54 36 8d b9 8b 56 68 c7
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.473561: WPA: EAPOL-Key MIC using AES-CMAC (AKM-defined - SAE)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.473630: WPA: RSN IE in EAPOL-Key - hexdump(len=44): 30 2a 01 00 00 0f ac 04 01 00 00 0f ac 04 01 00 00 0f ac 08 fc 00 01 00 45 c3 6d 56 3e c9 1e 5f 03 00 ac 37 7c 45 d2 6e 00 0f ac 06
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.473690: WPA: RSNXE in EAPOL-Key - hexdump(len=3): f4 01 20
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.473712: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state PTKCALCNEGOTIATING2
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.473726: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state PTKINITNEGOTIATING
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.475304: EAPOL-DATA:  - hexdump(len=110): 30 14 01 00 00 0f ac 04 01 00 00 0f ac 04 01 00 00 0f ac 08 cc 00 f4 02 21 05 dd 16 00 0f ac 01 01 00 31 67 ff 2b 4c dc 22 d8 eb b5 48 00 55 41 90 07 dd 1c 00 0f ac 09 04 00 00 00 00 00 00 00 26 d5 5c 8e 5b ec b0 54 e5 4b f0 4a e5 cb cd 19 dd 1c 00 0f ac 0e 06 00 77 24 06 00 00 00 3d 6d 38 8e 96 f5 05 89 42 2c 70 81 25 37 98 71
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.475442: WPA: Send EAPOL(version=0 secure=1 mic=1 ack=1 install=1 pairwise=1 kde_len=110 keyidx=0 encr=1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.475464: WPA: Replay Counter - hexdump(len=8): 00 00 00 00 00 00 00 02
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.475484: Plaintext EAPOL-Key Key Data (+ padding) - hexdump(len=120): 30 14 01 00 00 0f ac 04 01 00 00 0f ac 04 01 00 00 0f ac 08 cc 00 f4 02 21 05 dd 16 00 0f ac 01 01 00 31 67 ff 2b 4c dc 22 d8 eb b5 48 00 55 41 90 07 dd 1c 00 0f ac 09 04 00 00 00 00 00 00 00 26 d5 5c 8e 5b ec b0 54 e5 4b f0 4a e5 cb cd 19 dd 1c 00 0f ac 0e 06 00 77 24 06 00 00 00 3d 6d 38 8e 96 f5 05 89 42 2c 70 81 25 37 98 71 dd 00 00 00 00 00 00 00 00 00
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.475625: RSN: AES-WRAP using KEK - hexdump(len=16): f7 d7 26 9e 78 76 bd 7f 00 1b eb 61 db ef c8 f9
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.475732: RSN: Encrypted Key Data from AES-WRAP - hexdump(len=120): 6c 77 64 09 20 39 f4 c6 25 e7 f6 70 7a d9 8a 29 15 c1 a8 5d 34 3b 3a b7 75 d7 5a 3b 1c f8 91 7c 8d ea c4 dc e8 39 55 fc b6 81 01 2f 40 57 2e ce 32 96 fa 29 b8 d9 61 fa fc 30 ef e2 4d db 39 fd 2b 8e 10 15 9f e4 6d 74 04 16 0d eb 6a a0 3f 44 ee 21 75 f7 3e a5 02 d6 23 bd e1 56 41 f3 d7 28 aa f4 1d 2a 6a 5b 6b c2 86 fd 13 33 74 12 48 ec 1f 9d e4 54 f7 fd 7d 96
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.475867: WPA: EAPOL-Key MIC using AES-CMAC (AKM-defined - SAE)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.475916: Send EAPOL-Key msg - hexdump(len=219): 02 03 00 d7 02 13 c8 00 10 00 00 00 00 00 00 00 02 51 0b 4a 72 78 4d fe 88 e0 af 65 05 58 16 46 bd f9 4f d6 c3 b3 5f 27 b0 45 c4 c7 91 3e 31 04 50 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 7a af 03 00 00 00 00 00 00 00 00 00 00 00 00 00 9b 53 96 99 55 1d d9 eb 80 73 22 84 f6 85 3c 16 00 78 6c 77 64 09 20 39 f4 c6 25 e7 f6 70 7a d9 8a 29 15 c1 a8 5d 34 3b 3a b7 75 d7 5a 3b 1c f8 91 7c 8d ea c4 dc e8 39 55 fc b6 81 01 2f 40 57 2e ce 32 96 fa 29 b8 d9 61 fa fc 30 ef e2 4d db 39 fd 2b 8e 10 15 9f e4 6d 74 04 16 0d eb 6a a0 3f 44 ee 21 75 f7 3e a5 02 d6 23 bd e1 56 41 f3 d7 28 aa f4 1d 2a 6a 5b 6b c2 86 fd 13 33 74 12 48 ec 1f 9d e4 54 f7 fd 7d 96
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.476155: nl80211: Send over control port dest=fc:b3:bc:f0:b0:c2 proto=0x888e len=219 no_encrypt=1
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.476267: nl80211: tx_control_port cookie=0xa4
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.476286: WPA: Use EAPOL-Key timeout of 100 ms (retry counter 1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.478000: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.478046: nl80211: Drv Event 139 (NL80211_CMD_CONTROL_PORT_FRAME_TX_STATUS) received for mld0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.478060: nl80211: Control port TX status (ack=1), cookie=0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.478078: mld0: Event EAPOL_TX_STATUS (37) received
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.478088: Received Eapol Tx status is not for the current outstanding frame - Ignore
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.478116: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.478142: nl80211: BSS Event 129 (NL80211_CMD_CONTROL_PORT_FRAME) received for mld0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.478244: mld0: Event EAPOL_RX (23) received
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.478265: IEEE 802.1X: 99 bytes from fc:b3:bc:f0:b0:c2 (encrypted=1)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.478278:    IEEE 802.1X: version=1 type=3 length=95
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.478288: WPA: RX EAPOL data - hexdump(len=99): 01 03 00 5f 02 03 08 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 4d 26 41 26 07 75 2b ed d4 35 f8 1a 35 2e 83 36 00 00
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.478415: WPA: Received EAPOL-Key from fc:b3:bc:f0:b0:c2 key_info=0x308 type=2 mic_len=16 key_data_length=0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.478428: WPA: EAPOL-Key header (ending before Key MIC) - hexdump(len=77): 02 03 08 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.478526: WPA: EAPOL-Key Key MIC - hexdump(len=16): 4d 26 41 26 07 75 2b ed d4 35 f8 1a 35 2e 83 36
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.478550: WPA: Received Key Nonce - hexdump(len=32): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.478596: WPA: Received Replay Counter - hexdump(len=8): 00 00 00 00 00 00 00 02
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.478633: WPA: EAPOL-Key MIC using AES-CMAC (AKM-defined - SAE)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.478694: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state PTKINITDONE
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.478744: wpa_driver_nl80211_set_key: ifindex=18 (mld0) alg=3 addr=0x7fa9117940 key_idx=0 set_tx=1 seq_len=0 key_len=16 key_flag=0x2c link_id=-1
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.478775: nl80211: NEW_KEY
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.478841: nl80211: KEY_DATA - hexdump(len=16): 42 b1 c9 04 c4 67 11 e9 54 36 8d b9 8b 56 68 c7
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.478876:    addr=fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.478887:    pairwise key
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.479183: Added PTKSA cache entry addr=fc:b3:bc:f0:b0:c2 cipher=16
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.479219: nl80211: Set STA flags - ifname=mld0 addr=fc:b3:bc:f0:b0:c2 total_flags=0x6b flags_or=0x1 flags_and=0xffffffff authorized=1
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.479530: mld0: AP-STA-CONNECTED fc:b3:bc:f0:b0:c2 link_id:1
+Thu Nov 13 12:02:10 2025 daemon.info hostapd: mld0: STA fc:b3:bc:f0:b0:c2 RADIUS: starting accounting session 56BE04A29A29535A
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.479576: 1763035330.479579: mld0: STA fc:b3:bc:f0:b0:c2 RADIUS: starting accounting session 56BE04A29A29535A
+Thu Nov 13 12:02:10 2025 daemon.info hostapd: mld0: STA fc:b3:bc:f0:b0:c2 WPA: pairwise key handshake completed (RSN)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.479639: 1763035330.479642: mld0: STA fc:b3:bc:f0:b0:c2 WPA: pairwise key handshake completed (RSN)
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.479715: mld0: EAPOL-4WAY-HS-COMPLETED fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.479759: nl80211: Event message available
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.479791: nl80211: Drv Event 139 (NL80211_CMD_CONTROL_PORT_FRAME_TX_STATUS) received for mld0
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.479808: nl80211: Control port TX status (ack=1), cookie=164
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.479824: mld0: Event EAPOL_TX_STATUS (37) received
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.479837: IEEE 802.1X: fc:b3:bc:f0:b0:c2 TX status - version=2 type=3 length=215 - ack=1
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.479851: WPA: EAPOL-Key TX status for STA fc:b3:bc:f0:b0:c2 ack=1
+Thu Nov 13 12:02:10 2025 user.notice root: 1763035330.479960: RTM_NEWLINK: ifi_index=18 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Thu Nov 13 12:02:10 2025 authpriv.info dropbear[27318]: Child connection from 192.168.1.210:62683
+Thu Nov 13 12:02:11 2025 authpriv.notice dropbear[27318]: Auth succeeded with blank password for 'root' from 192.168.1.210:62683
+Thu Nov 13 12:02:11 2025 authpriv.info dropbear[27318]: Exit (root) from <192.168.1.210:62683>: Disconnect received
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.453519: nl80211: Event message available
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.453606: nl80211: Drv Event 20 (NL80211_CMD_DEL_STATION) received for mld0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.453623: nl80211: Delete station fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:11 2025 daemon.info hostapd: mld0: STA fc:b3:bc:f0:b0:c2 IEEE 802.11: disassociated
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.453648: mld0: Event DISASSOC (1) received
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.453676: 1763035331.453679: mld0: STA fc:b3:bc:f0:b0:c2 IEEE 802.11: disassociated
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.453742: mld0: AP-STA-DISCONNECTED fc:b3:bc:f0:b0:c2 link_id:1
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.453757: nl80211: Set STA flags - ifname=mld0 addr=fc:b3:bc:f0:b0:c2 total_flags=0xa flags_or=0xa flags_and=0xfffffffa authorized=0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.453911: Flush PTKSA cache entry for fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.454001: wpa_driver_nl80211_set_key: ifindex=18 (mld0) alg=0 addr=0x7fa9117940 key_idx=0 set_tx=1 seq_len=0 key_len=0 key_flag=0x20 link_id=-1
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.454026: nl80211: DEL_KEY
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.454094:    addr=fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.454114:    pairwise key
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.454248: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state DISCONNECTED
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.454276: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state INITIALIZE
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.454322: wpa_driver_nl80211_set_key: ifindex=18 (mld0) alg=0 addr=0x7fa9117940 key_idx=0 set_tx=1 seq_len=0 key_len=0 key_flag=0x20 link_id=-1
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.454344: nl80211: DEL_KEY
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.454384:    addr=fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.454403:    pairwise key
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.454529: nl80211: Set STA flags - ifname=mld0 addr=fc:b3:bc:f0:b0:c2 total_flags=0xa flags_or=0x0 flags_and=0xfffffffe authorized=0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.454647: nl80211: Set STA flags - ifname=mld0 addr=fc:b3:bc:f0:b0:c2 total_flags=0xa flags_or=0xa flags_and=0xfffffffa authorized=0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.454782: nl80211: sta_remove -> DEL_STATION mld0 fc:b3:bc:f0:b0:c2 --> 0 (No error information)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.454812: hostapd_ht_operation_update current operation mode=0x13
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.454822: hostapd_ht_operation_update new operation mode=0x13 changes=0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.454832: ap_free_sta: cancel ap_handle_timer for link_id:1 fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.454917: RTM_NEWLINK: ifi_index=18 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.454976: RTM_NEWLINK: ifi_index=18 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.455024: nl80211: Event message available
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.455057: nl80211: BSS Event 59 (NL80211_CMD_FRAME) received for mld0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.455073: nl80211: MLME event 59 (NL80211_CMD_FRAME) on mld0(00:0a:f5:22:12:31) A1=02:03:7f:12:36:36 A2=fc:b3:bc:f0:b0:c2 on link_id=1
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.455096: nl80211: MLME event frame - hexdump(len=36): c0 40 3c 00 02 03 7f 12 36 36 fc b3 bc f0 b0 c2 02 03 7f 12 36 36 f0 3b 01 00 dd 08 00 17 35 01 01 00 00 00
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.455149: nl80211: Frame event
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.455158: nl80211: RX frame da=02:03:7f:12:36:36 sa=fc:b3:bc:f0:b0:c2 bssid=02:03:7f:12:36:36 freq=6295 ssi_signal=0 fc=0x40c0 seq_ctrl=0x3bf0 stype=12 (WLAN_FC_STYPE_DEAUTH) len=36
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.455190: mld0: Event RX_MGMT (18) received
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.455211: mld0: mgmt::deauth
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.455232: mld0: Station fc:b3:bc:f0:b0:c2 trying to deauthenticate, but it is not authenticated
+Thu Nov 13 12:02:11 2025 kern.debug kernel: [41267.036798] MCS: Processing station leave event
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.459162: RTM_NEWLINK: ifi_index=18 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.459238: RTM_NEWLINK: ifi_index=18 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.534865: nl80211: Event message available
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.534934: nl80211: BSS Event 59 (NL80211_CMD_FRAME) received for mld0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.534952: nl80211: MLME event 59 (NL80211_CMD_FRAME) on mld0(00:0a:f5:22:12:31) A1=00:03:7f:12:b1:b1 A2=fc:b3:bc:f0:b0:c2 on link_id=2
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.534976: nl80211: MLME event frame - hexdump(len=30): b0 00 3c 00 00 03 7f 12 b1 b1 fc b3 bc f0 b0 c2 00 03 7f 12 b1 b1 00 3c 00 00 01 00 00 00
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.535018: nl80211: Frame event
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.535028: nl80211: RX frame da=00:03:7f:12:b1:b1 sa=fc:b3:bc:f0:b0:c2 bssid=00:03:7f:12:b1:b1 freq=5180 ssi_signal=0 fc=0xb0 seq_ctrl=0x3c00 stype=11 (WLAN_FC_STYPE_AUTH) len=30
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.535063: mld0: Event RX_MGMT (18) received
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.535085: mgmt::auth
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.535097: authentication: STA=fc:b3:bc:f0:b0:c2 auth_alg=0 auth_transaction=1 status_code=0 wep=0 seq_ctrl=0x3c00
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.535119:   New STA
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.535299: nl80211: sta_remove -> DEL_STATION mld0 fc:b3:bc:f0:b0:c2 --> 0 (No error information)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.535326: nl80211: NL80211_CMD_NEW_STATION STA fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.535384:   * supported rates - hexdump(len=3): 0c 18 30
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.535396:   * capability=0x0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.535407:   * aid=1 (UNASSOC_STA workaround)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.535414:   * listen_interval=0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.535423:   * flags set=0x0 mask=0xa0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.535431:   * mld_link_id=2
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.535550: authentication reply: STA=fc:b3:bc:f0:b0:c2 auth_alg=0 auth_transaction=2 resp=0 (IE len=0) (dbg=handle-auth)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.535570: nl80211: send_mlme - da=fc:b3:bc:f0:b0:c2 sa=00:03:7f:12:b1:b1 bssid=00:03:7f:12:b1:b1 noack=0 freq=0 no_cck=0 offchanok=0 wait_time=0 no_encrypt=0 fc=0xb0 (WLAN_FC_STYPE_AUTH) nlmode=3 link_id=2
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.535597: nl80211: Use link freq=5180 for address 00:03:7f:12:b1:b1
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.535609: nl80211: send_mlme -> send_frame_cmd
+Thu Nov 13 12:02:11 2025 daemon.info hostapd: mld0: STA fc:b3:bc:f0:b0:c2 IEEE 802.11: authenticated
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.535616: nl80211: CMD_FRAME freq=5180 wait=0 no_cck=0 no_ack=0 offchanok=0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.535626: CMD_FRAME - hexdump(len=30): b0 00 00 00 fc b3 bc f0 b0 c2 00 03 7f 12 b1 b1 00 03 7f 12 b1 b1 00 00 00 00 02 00 00 00
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.535930: nl80211: Frame TX command accepted; cookie 0xe58f149efb411a00
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.535992: RTM_NEWLINK: ifi_index=18 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.536060: nl80211: Event message available
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.536091: nl80211: Drv Event 60 (NL80211_CMD_FRAME_TX_STATUS) received for mld0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.536105: nl80211: MLME event 60 (NL80211_CMD_FRAME_TX_STATUS) on mld0(00:0a:f5:22:12:31) A1=fc:b3:bc:f0:b0:c2 A2=00:03:7f:12:b1:b1 on link_id=2
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.536127: nl80211: MLME event frame - hexdump(len=30): b0 00 00 00 fc b3 bc f0 b0 c2 00 03 7f 12 b1 b1 00 03 7f 12 b1 b1 00 00 00 00 02 00 00 00
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.536168: nl80211: Frame TX status event A1=fc:b3:bc:f0:b0:c2 stype=11 cookie=0xe58f149efb411a00 ack=1
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.536191: mld0: Event TX_STATUS (16) received
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.536205: mgmt::auth cb
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.536225: 1763035331.536227: mld0: STA fc:b3:bc:f0:b0:c2 IEEE 802.11: authenticated
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.536270: nl80211: Set STA flags - ifname=mld0 addr=fc:b3:bc:f0:b0:c2 total_flags=0x20 flags_or=0x0 flags_and=0xfffffff0 authorized=0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555275: nl80211: Event message available
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555325: nl80211: BSS Event 59 (NL80211_CMD_FRAME) received for mld0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555341: nl80211: MLME event 59 (NL80211_CMD_FRAME) on mld0(00:0a:f5:22:12:31) A1=00:03:7f:12:b1:b1 A2=fc:b3:bc:f0:b0:c2 on link_id=2
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555365: nl80211: MLME event frame - hexdump(len=244): 20 00 3c 00 00 03 7f 12 b1 b1 fc b3 bc f0 b0 c2 00 03 7f 12 b1 b1 10 3c 11 15 fa 00 00 00 00 00 00 00 00 0c 41 44 5f 34 36 36 5f 31 31 5f 31 32 01 08 8c 12 98 24 b0 48 60 6c 21 02 00 0e 2d 1a e7 09 17 ff ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 30 2a 01 00 00 0f ac 04 01 00 00 0f ac 04 01 00 00 0f ac 08 fc 00 01 00 43 7c 2b f8 b0 72 a4 69 6a ae 1a 22 b6 5d 6c bd 00 0f ac 06 3b 17 81 51 53 54 73 74 75 76 77 78 79 7a 7b 7c 7d 7e 7f 80 81 83 84 85 86 46 05 72 00 00 00 00 7f 0a 04 00 c8 80 01 40 00 c0 00 00 bf 0c f6 79 91 03 fa ff 00 00 fa ff 00 20 dd 07 00 50 f2 02 00 01 00 dd 06 00 17 35 08 01 00 f4 01 20 ff 1e 23 01 78 20 0a c0 ab 0e 30 0e 00 fd 09 8c 0e 0f fe 00 fa ff fa ff fa ff fa ff 61 1c c7 71
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555632: nl80211: Frame event
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555642: nl80211: RX frame da=00:03:7f:12:b1:b1 sa=fc:b3:bc:f0:b0:c2 bssid=00:03:7f:12:b1:b1 freq=5180 ssi_signal=0 fc=0x20 seq_ctrl=0x3c10 stype=2 (WLAN_FC_STYPE_REASSOC_REQ) len=244
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555675: mld0: Event RX_MGMT (18) received
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555695: mgmt::reassoc_req
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555703: reassociation request: STA=fc:b3:bc:f0:b0:c2 capab_info=0x1511 listen_interval=250 current_ap=00:00:00:00:00:00 seq_ctrl=0x3c10
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555732: IEEE 802.11 element parse element found (id=0 elen=12)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555741: IEEE 802.11 element parse element found (id=1 elen=8)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555749: IEEE 802.11 element parse element found (id=33 elen=2)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555757: IEEE 802.11 element parse element found (id=45 elen=26)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555767: IEEE 802.11 element parse element found (id=48 elen=42)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555775: IEEE 802.11 element parse element found (id=59 elen=23)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555804: IEEE 802.11 element parse element found (id=70 elen=5)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555812: IEEE 802.11 element parse element found (id=127 elen=10)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555820: IEEE 802.11 element parse element found (id=191 elen=12)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555828: IEEE 802.11 element parse element found (id=221 elen=7)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555837: IEEE 802.11 element parse element found (id=221 elen=6)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555845: IEEE 802.11 element parse element found (id=244 elen=1)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555853: IEEE 802.11 element parse element found (id=255 elen=30)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555863: WMM IE - hexdump(len=7): 00 50 f2 02 00 01 00
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555880: Validating WMM IE: OUI 00:50:f2  OUI type 2  OUI sub-type 0  version 1  QoS info 0x0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555935: RSN IE: STA PMKID - hexdump(len=16): 43 7c 2b f8 b0 72 a4 69 6a ae 1a 22 b6 5d 6c bd
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.555993: SAE: fc:b3:bc:f0:b0:c2 using PMKSA caching
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.556014:   new AID 3
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.556023: HT: STA fc:b3:bc:f0:b0:c2 HT Capabilities Info: 0x09e7
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.556034: update_sta_ht STA fc:b3:bc:f0:b0:c2 - no greenfield, num of non-gf stations 5
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.556045: hostapd_ht_operation_update current operation mode=0x4
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.556054: hostapd_ht_operation_update new operation mode=0x4 changes=0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.556081: Add associated STA fc:b3:bc:f0:b0:c2 (added_unassoc=1 auth_alg=0 ft_over_ds=0 reassoc=1 authorized=0 ft_tk=0 fils_tk=0)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.556103: nl80211: NL80211_CMD_SET_STATION STA fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.556121:   * supported rates - hexdump(len=8): 8c 12 98 24 b0 48 60 6c
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.556137:   * capability=0x1511
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.556145:   * ht_capabilities - hexdump(len=26): 47 09 17 ff ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.556183:   * vht_capabilities - hexdump(len=12): 76 79 91 03 fa ff 00 00 fa ff 00 20
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.556203:   * he_capab - hexdump(len=29): 01 78 20 0a c0 ab 0e 30 0e 00 fd 09 8c 0e 0f fe 00 fa ff fa ff fa ff fa ff 61 1c c7 71
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.556242:   * aid=3
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.556248:   * listen_interval=250
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.556257:   * flags set=0xb8 mask=0xb8
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.556266:   * qosinfo=0x0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.556273:   * mld_link_id=2
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.556422: nl80211: send_mlme - da=fc:b3:bc:f0:b0:c2 sa=00:03:7f:12:b1:b1 bssid=00:03:7f:12:b1:b1 noack=0 freq=0 no_cck=0 offchanok=0 wait_time=0 no_encrypt=0 fc=0x30 (WLAN_FC_STYPE_REASSOC_RESP) nlmode=3 link_id=2
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.556455: nl80211: Use link freq=5180 for address 00:03:7f:12:b1:b1
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.556466: nl80211: send_mlme -> send_frame_cmd
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.556473: nl80211: CMD_FRAME freq=5180 wait=0 no_cck=0 no_ack=0 offchanok=0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.556484: CMD_FRAME - hexdump(len=231): 30 00 00 00 fc b3 bc f0 b0 c2 00 03 7f 12 b1 b1 00 03 7f 12 b1 b1 00 00 11 00 00 00 03 c0 01 08 8c 12 98 24 b0 48 60 6c 32 01 fb 2d 1a cf 08 03 ff ff ff ff 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 3d 16 24 05 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 bf 0c f6 18 8b 33 aa ff 00 00 aa ff 00 00 c0 05 01 2a 32 fc ff ff 1b 23 0d 01 18 9a 40 18 0c 63 40 09 fc db 9f 1c 11 0e 00 aa ff aa ff aa ff aa ff 00 ff 07 24 f0 3f 00 89 fc ff 7f 0c 04 00 00 02 00 00 00 00 00 40 10 0c 5a 03 24 01 00 f4 02 21 05 ff 12 6c 37 00 80 ff db e0 18 77 00 0e 00 44 44 00 44 44 00 ff 06 6a 00 11 00 00 00 dd 18 00 50 f2 02 01 01 01 00 03 a4 00 00 27 a4 00 00 42 43 5e 00 62 32 2f 00
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.558974: nl80211: Frame TX command accepted; cookie 0xe58f149efb411a00
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.559057: RTM_NEWLINK: ifi_index=18 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.559125: nl80211: Event message available
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.559159: nl80211: Drv Event 103 (NL80211_CMD_VENDOR) received for mld0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.559173: nl80211: Vendor event: wiphy=0 vendor_id=0x1374 subcmd=75
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.559183: nl80211: Vendor data - hexdump(len=28): 08 00 11 00 4a 01 00 00 0b 00 13 00 00 fc b3 bc f0 b0 c2 00 05 00 63 00 02 00 00 00
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.559615: nl80211: Ignore unsupported QCA vendor event 75
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.563068: nl80211: Event message available
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.563108: nl80211: Drv Event 60 (NL80211_CMD_FRAME_TX_STATUS) received for mld0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.563123: nl80211: MLME event 60 (NL80211_CMD_FRAME_TX_STATUS) on mld0(00:0a:f5:22:12:31) A1=fc:b3:bc:f0:b0:c2 A2=00:03:7f:12:b1:b1 on link_id=2
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.563148: nl80211: MLME event frame - hexdump(len=271): 30 00 00 00 fc b3 bc f0 b0 c2 00 03 7f 12 b1 b1 00 03 7f 12 b1 b1 00 10 11 05 00 00 06 00 01 08 8c 12 98 24 b0 48 60 6c 32 01 fb 2d 1a ef 09 03 ff ff ff ff 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 3d 16 24 05 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 7f 0b 04 00 0f 02 00 00 40 40 00 40 10 bf 0c f6 f9 8b 33 aa ff 00 00 aa ff 00 20 c0 05 01 2a 32 fc ff f4 02 21 05 ff 27 23 0d 01 08 1a 40 10 0c 63 40 88 ff 5b 9d 1c 11 0a 00 aa ff aa ff aa ff aa ff 7b 1c c7 71 1c c7 71 1c c7 71 1c c7 71 ff 07 24 f4 3f 00 16 fc ff ff 02 27 03 ff 0e 26 0f 03 a4 ff 27 a4 ff 42 43 ff 62 32 ff dd 17 8c fd f0 01 01 02 01 00 02 01 01 03 03 01 01 00 04 01 01 09 02 0f 0f dd 18 00 50 f2 02 01 01 8f 00 03 a4 00 00 27 a4 00 00 42 43 5e 00 62 32 2f 00 dd 06 50 6f 9a 23 01 04 dd 07 8c fd f0 04 01 01 02
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.563446: nl80211: Frame TX status event A1=fc:b3:bc:f0:b0:c2 stype=3 cookie=0x0 ack=1
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.563475: mld0: Event TX_STATUS (16) received
+Thu Nov 13 12:02:11 2025 daemon.info hostapd: mld0: STA fc:b3:bc:f0:b0:c2 IEEE 802.11: associated (aid 3)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.563493: mgmt::reassoc_resp cb
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.563516: 1763035331.563518: mld0: STA fc:b3:bc:f0:b0:c2 IEEE 802.11: associated (aid 3)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.563636: wpa_driver_nl80211_set_key: ifindex=18 (mld0) alg=0 addr=0x7fa9109140 key_idx=0 set_tx=1 seq_len=0 key_len=0 key_flag=0x20 link_id=-1
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.563664: nl80211: DEL_KEY
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.563715:    addr=fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.563728:    pairwise key
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.563929: nl80211: mld0[18]: set_sta_vlan(fc:b3:bc:f0:b0:c2, ifname=mld0[18], vlan_id=0)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.564034: nl80211: Set STA flags - ifname=mld0 addr=fc:b3:bc:f0:b0:c2 total_flags=0x6a flags_or=0xa flags_and=0xfffffffa authorized=0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.564161: wpa_driver_nl80211_set_key: ifindex=18 (mld0) alg=0 addr=0x7fa9109140 key_idx=0 set_tx=1 seq_len=0 key_len=0 key_flag=0x20 link_id=-1
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.564183: nl80211: DEL_KEY
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.564222:    addr=fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.564235:    pairwise key
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.564426: IEEE 802.1X: Ignore STA - 802.1X not enabled or forced for WPS
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.564463: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state INITIALIZE
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.564507: wpa_driver_nl80211_set_key: ifindex=18 (mld0) alg=0 addr=0x7fa9109140 key_idx=0 set_tx=1 seq_len=0 key_len=0 key_flag=0x20 link_id=-1
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.564529: nl80211: DEL_KEY
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.564570:    addr=fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.564584:    pairwise key
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.564695: nl80211: Set STA flags - ifname=mld0 addr=fc:b3:bc:f0:b0:c2 total_flags=0x6a flags_or=0x0 flags_and=0xfffffffe authorized=0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.564793: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK_GROUP entering state IDLE
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.564848: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state AUTHENTICATION
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.564865: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state AUTHENTICATION2
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.564879: Get randomness: len=32 entropy=16
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.565128: WPA: Assign ANonce - hexdump(len=32): d1 38 1c ea 00 07 0b 70 f0 d9 ba de 95 75 55 d7 e9 e0 ff 0f cc 49 a4 27 70 94 18 45 0b 6e 6c df
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.565180: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state INITPSK
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.565192: No PSK for STA trying to use SAE with PMKSA caching
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.565200: SAE: PMK from PMKSA cache (len=32)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.565210: No PSK for STA trying to use SAE with PMKSA caching
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.565218: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state PTKSTART
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.565243: RSN: Message 1/4 PMKID from PMKSA entry - hexdump(len=16): 43 7c 2b f8 b0 72 a4 69 6a ae 1a 22 b6 5d 6c bd
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.565268: EAPOL-DATA:  - hexdump(len=22): dd 14 00 0f ac 04 43 7c 2b f8 b0 72 a4 69 6a ae 1a 22 b6 5d 6c bd
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.565301: WPA: Send EAPOL(version=0 secure=0 mic=0 ack=1 install=0 pairwise=1 kde_len=22 keyidx=0 encr=0)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.565320: WPA: Replay Counter - hexdump(len=8): 00 00 00 00 00 00 00 01
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.565339: Send EAPOL-Key msg - hexdump(len=121): 02 03 00 75 02 00 88 00 10 00 00 00 00 00 00 00 01 d1 38 1c ea 00 07 0b 70 f0 d9 ba de 95 75 55 d7 e9 e0 ff 0f cc 49 a4 27 70 94 18 45 0b 6e 6c df 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 16 dd 14 00 0f ac 04 43 7c 2b f8 b0 72 a4 69 6a ae 1a 22 b6 5d 6c bd
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.565481: nl80211: Send over control port dest=fc:b3:bc:f0:b0:c2 proto=0x888e len=121 no_encrypt=1
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.565598: nl80211: tx_control_port cookie=0x36
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.565613: WPA: Use EAPOL-Key timeout of 100 ms (retry counter 1)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.565738: nl80211: Event message available
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.565805: nl80211: Drv Event 103 (NL80211_CMD_VENDOR) received for mld0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.565820: nl80211: Vendor event: wiphy=0 vendor_id=0x1374 subcmd=75
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.565829: nl80211: Vendor data - hexdump(len=28): 08 00 11 00 4a 01 00 00 0b 00 13 00 00 fc b3 bc f0 b0 c2 00 05 00 63 00 02 00 00 00
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.566323: nl80211: Ignore unsupported QCA vendor event 75
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.566393: nl80211: Event message available
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.566424: nl80211: Drv Event 103 (NL80211_CMD_VENDOR) received for mld0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.566438: nl80211: Vendor event: wiphy=0 vendor_id=0x1374 subcmd=75
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.566447: nl80211: Vendor data - hexdump(len=48): 08 00 11 00 06 01 00 00 1f 00 13 00 d0 00 3c 00 00 03 7f 12 b1 b1 fc b3 bc f0 b0 c2 00 03 7f 12 b1 b1 20 3c 07 01 00 00 05 00 63 00 02 00 00 00
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.566853: nl80211: Ignore unsupported QCA vendor event 75
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.568125: nl80211: Event message available
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.568171: nl80211: Drv Event 139 (NL80211_CMD_CONTROL_PORT_FRAME_TX_STATUS) received for mld0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.568185: nl80211: Control port TX status (ack=1), cookie=54
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.568204: mld0: Event EAPOL_TX_STATUS (37) received
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.568221: IEEE 802.1X: fc:b3:bc:f0:b0:c2 TX status - version=2 type=3 length=117 - ack=1
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.568235: WPA: EAPOL-Key TX status for STA fc:b3:bc:f0:b0:c2 ack=1
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.568246: WPA: Increase initial EAPOL-Key 1/4 timeout by 1000 ms because of acknowledged frame
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.568481: nl80211: Event message available
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.568517: nl80211: Drv Event 139 (NL80211_CMD_CONTROL_PORT_FRAME_TX_STATUS) received for mld0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.568530: nl80211: Control port TX status (ack=1), cookie=0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.568545: mld0: Event EAPOL_TX_STATUS (37) received
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.568554: Received Eapol Tx status is not for the current outstanding frame - Ignore
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.568564: nl80211: Event message available
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.568589: nl80211: BSS Event 129 (NL80211_CMD_CONTROL_PORT_FRAME) received for mld0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.568609: mld0: Event EAPOL_RX (23) received
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.568619: IEEE 802.1X: 146 bytes from fc:b3:bc:f0:b0:c2 (encrypted=1)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.568632:    IEEE 802.1X: version=1 type=3 length=142
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.568641: WPA: RX EAPOL data - hexdump(len=146): 01 03 00 8e 02 01 08 00 00 00 00 00 00 00 00 00 01 13 be c2 c0 10 bb 6d 62 3c 32 1c f6 d9 3e d9 1e 5f 02 6e c7 2e f4 f6 3a f2 82 e3 79 53 21 eb b6 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 f4 5c 21 4b ef 36 0c 1b d9 cd 2e 8c f4 e5 29 e0 00 2f 30 2a 01 00 00 0f ac 04 01 00 00 0f ac 04 01 00 00 0f ac 08 fc 00 01 00 43 7c 2b f8 b0 72 a4 69 6a ae 1a 22 b6 5d 6c bd 00 0f ac 06 f4 01 20
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.568806: WPA: Received EAPOL-Key from fc:b3:bc:f0:b0:c2 key_info=0x108 type=2 mic_len=16 key_data_length=47
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.568819: WPA: EAPOL-Key header (ending before Key MIC) - hexdump(len=77): 02 01 08 00 00 00 00 00 00 00 00 00 01 13 be c2 c0 10 bb 6d 62 3c 32 1c f6 d9 3e d9 1e 5f 02 6e c7 2e f4 f6 3a f2 82 e3 79 53 21 eb b6 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.569014: WPA: EAPOL-Key Key MIC - hexdump(len=16): f4 5c 21 4b ef 36 0c 1b d9 cd 2e 8c f4 e5 29 e0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.569038: WPA: Received Key Nonce - hexdump(len=32): 13 be c2 c0 10 bb 6d 62 3c 32 1c f6 d9 3e d9 1e 5f 02 6e c7 2e f4 f6 3a f2 82 e3 79 53 21 eb b6
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.569076: WPA: Received Replay Counter - hexdump(len=8): 00 00 00 00 00 00 00 01
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.569132: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state PTKCALCNEGOTIATING
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.569152: WPA: PTK derivation using PRF(SHA256)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.569260: WPA: PTK derivation - A1=00:03:7f:12:b1:b1 A2=fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.569279: WPA: Nonce1 - hexdump(len=32): d1 38 1c ea 00 07 0b 70 f0 d9 ba de 95 75 55 d7 e9 e0 ff 0f cc 49 a4 27 70 94 18 45 0b 6e 6c df
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.569319: WPA: Nonce2 - hexdump(len=32): 13 be c2 c0 10 bb 6d 62 3c 32 1c f6 d9 3e d9 1e 5f 02 6e c7 2e f4 f6 3a f2 82 e3 79 53 21 eb b6
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.569357: WPA: PMK - hexdump(len=32): a9 95 ba 12 68 8c 70 35 76 db d3 8a 1c 5f a1 5a 84 64 34 b7 51 76 2f f7 ff 60 9e ea 61 88 4a 16
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.569395: WPA: PTK - hexdump(len=48): f1 88 4b 65 b3 b4 15 49 dd 37 89 ea 11 c2 d0 55 44 1e 34 1a cc 80 39 6e 62 25 70 25 4e 27 a3 38 4d b1 5b 52 0e c6 48 8d d3 9e 38 a1 bc 6f a8 3e
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.569447: WPA: KCK - hexdump(len=16): f1 88 4b 65 b3 b4 15 49 dd 37 89 ea 11 c2 d0 55
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.569469: WPA: KEK - hexdump(len=16): 44 1e 34 1a cc 80 39 6e 62 25 70 25 4e 27 a3 38
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.569492: WPA: TK - hexdump(len=16): 4d b1 5b 52 0e c6 48 8d d3 9e 38 a1 bc 6f a8 3e
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.569518: WPA: EAPOL-Key MIC using AES-CMAC (AKM-defined - SAE)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.569588: WPA: RSN IE in EAPOL-Key - hexdump(len=44): 30 2a 01 00 00 0f ac 04 01 00 00 0f ac 04 01 00 00 0f ac 08 fc 00 01 00 43 7c 2b f8 b0 72 a4 69 6a ae 1a 22 b6 5d 6c bd 00 0f ac 06
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.569647: WPA: RSNXE in EAPOL-Key - hexdump(len=3): f4 01 20
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.569668: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state PTKCALCNEGOTIATING2
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.569682: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state PTKINITNEGOTIATING
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.572345: EAPOL-DATA:  - hexdump(len=110): 30 14 01 00 00 0f ac 04 01 00 00 0f ac 04 01 00 00 0f ac 08 cc 00 f4 02 21 05 dd 16 00 0f ac 01 01 00 7b 3a 67 85 2c 2f fb c8 b8 ea 1d 54 4a e9 db 0f dd 1c 00 0f ac 09 04 00 00 00 00 00 00 00 73 4b 3e 47 2d 4c e1 6b 3d e6 33 bb d4 8b 51 af dd 1c 00 0f ac 0e 06 00 7e 24 06 00 00 00 b6 9a 09 91 71 64 b1 2c 5d 3e 4f 63 62 b1 ed d6
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.572483: WPA: Send EAPOL(version=0 secure=1 mic=1 ack=1 install=1 pairwise=1 kde_len=110 keyidx=0 encr=1)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.572502: WPA: Replay Counter - hexdump(len=8): 00 00 00 00 00 00 00 02
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.572522: Plaintext EAPOL-Key Key Data (+ padding) - hexdump(len=120): 30 14 01 00 00 0f ac 04 01 00 00 0f ac 04 01 00 00 0f ac 08 cc 00 f4 02 21 05 dd 16 00 0f ac 01 01 00 7b 3a 67 85 2c 2f fb c8 b8 ea 1d 54 4a e9 db 0f dd 1c 00 0f ac 09 04 00 00 00 00 00 00 00 73 4b 3e 47 2d 4c e1 6b 3d e6 33 bb d4 8b 51 af dd 1c 00 0f ac 0e 06 00 7e 24 06 00 00 00 b6 9a 09 91 71 64 b1 2c 5d 3e 4f 63 62 b1 ed d6 dd 00 00 00 00 00 00 00 00 00
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.572659: RSN: AES-WRAP using KEK - hexdump(len=16): 44 1e 34 1a cc 80 39 6e 62 25 70 25 4e 27 a3 38
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.572766: RSN: Encrypted Key Data from AES-WRAP - hexdump(len=120): 99 5b f6 3f f8 b2 e2 a4 d1 ef 84 1e ae 26 ee 3f b2 80 6f 6a 06 fb 09 32 ad 79 ee 1c c6 5a d6 30 9b af b4 83 f9 f1 2c fc c0 be 2d 92 59 5f a0 43 4c f4 95 3b 84 d4 ce f4 fd 19 ba 72 44 f8 48 81 6e 98 8f 74 1b 6c 9d f7 4c 1f c1 ca 38 30 5a 70 04 29 9d 85 a5 4a 5c 83 1d d1 70 bd b0 2c 77 bc c5 15 cc c1 7f a0 66 8f 28 31 32 07 90 7a 1b 28 8a 0b 88 5a c9 e3 b6 5e
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.572892: WPA: EAPOL-Key MIC using AES-CMAC (AKM-defined - SAE)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.572940: Send EAPOL-Key msg - hexdump(len=219): 02 03 00 d7 02 13 c8 00 10 00 00 00 00 00 00 00 02 d1 38 1c ea 00 07 0b 70 f0 d9 ba de 95 75 55 d7 e9 e0 ff 0f cc 49 a4 27 70 94 18 45 0b 6e 6c df 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 50 ad 03 00 00 00 00 00 00 00 00 00 00 00 00 00 79 23 73 26 65 d7 fd 32 bb 9d cb 82 b4 6a 75 c0 00 78 99 5b f6 3f f8 b2 e2 a4 d1 ef 84 1e ae 26 ee 3f b2 80 6f 6a 06 fb 09 32 ad 79 ee 1c c6 5a d6 30 9b af b4 83 f9 f1 2c fc c0 be 2d 92 59 5f a0 43 4c f4 95 3b 84 d4 ce f4 fd 19 ba 72 44 f8 48 81 6e 98 8f 74 1b 6c 9d f7 4c 1f c1 ca 38 30 5a 70 04 29 9d 85 a5 4a 5c 83 1d d1 70 bd b0 2c 77 bc c5 15 cc c1 7f a0 66 8f 28 31 32 07 90 7a 1b 28 8a 0b 88 5a c9 e3 b6 5e
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.573178: nl80211: Send over control port dest=fc:b3:bc:f0:b0:c2 proto=0x888e len=219 no_encrypt=1
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.573290: nl80211: tx_control_port cookie=0x37
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.573309: WPA: Use EAPOL-Key timeout of 100 ms (retry counter 1)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.574530: nl80211: Event message available
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.574570: nl80211: Drv Event 139 (NL80211_CMD_CONTROL_PORT_FRAME_TX_STATUS) received for mld0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.574583: nl80211: Control port TX status (ack=1), cookie=0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.574600: mld0: Event EAPOL_TX_STATUS (37) received
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.574609: Received Eapol Tx status is not for the current outstanding frame - Ignore
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.574619: nl80211: Event message available
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.574643: nl80211: BSS Event 129 (NL80211_CMD_CONTROL_PORT_FRAME) received for mld0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.574661: mld0: Event EAPOL_RX (23) received
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.574671: IEEE 802.1X: 99 bytes from fc:b3:bc:f0:b0:c2 (encrypted=1)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.574683:    IEEE 802.1X: version=1 type=3 length=95
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.574692: WPA: RX EAPOL data - hexdump(len=99): 01 03 00 5f 02 03 08 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 d2 84 35 7e 04 94 37 e2 42 e8 d9 f0 33 0b 4b 3b 00 00
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.574820: WPA: Received EAPOL-Key from fc:b3:bc:f0:b0:c2 key_info=0x308 type=2 mic_len=16 key_data_length=0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.574833: WPA: EAPOL-Key header (ending before Key MIC) - hexdump(len=77): 02 03 08 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.575032: WPA: EAPOL-Key Key MIC - hexdump(len=16): d2 84 35 7e 04 94 37 e2 42 e8 d9 f0 33 0b 4b 3b
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.575056: WPA: Received Key Nonce - hexdump(len=32): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.575182: WPA: Received Replay Counter - hexdump(len=8): 00 00 00 00 00 00 00 02
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.575220: WPA: EAPOL-Key MIC using AES-CMAC (AKM-defined - SAE)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.575277: WPA: fc:b3:bc:f0:b0:c2 WPA_PTK entering state PTKINITDONE
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.575324: wpa_driver_nl80211_set_key: ifindex=18 (mld0) alg=3 addr=0x7fa9109140 key_idx=0 set_tx=1 seq_len=0 key_len=16 key_flag=0x2c link_id=-1
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.575348: nl80211: NEW_KEY
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.575391: nl80211: KEY_DATA - hexdump(len=16): 4d b1 5b 52 0e c6 48 8d d3 9e 38 a1 bc 6f a8 3e
+Thu Nov 13 12:02:11 2025 daemon.info hostapd: mld0: STA fc:b3:bc:f0:b0:c2 RADIUS: starting accounting session F80614B38568DCD4
+Thu Nov 13 12:02:11 2025 daemon.info hostapd: mld0: STA fc:b3:bc:f0:b0:c2 WPA: pairwise key handshake completed (RSN)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.575419:    addr=fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.575430:    pairwise key
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.575697: Added PTKSA cache entry addr=fc:b3:bc:f0:b0:c2 cipher=16
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.575726: nl80211: Set STA flags - ifname=mld0 addr=fc:b3:bc:f0:b0:c2 total_flags=0x6b flags_or=0x1 flags_and=0xffffffff authorized=1
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.576097: mld0: AP-STA-CONNECTED fc:b3:bc:f0:b0:c2 link_id:2
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.576135: 1763035331.576138: mld0: STA fc:b3:bc:f0:b0:c2 RADIUS: starting accounting session F80614B38568DCD4
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.576195: 1763035331.576198: mld0: STA fc:b3:bc:f0:b0:c2 WPA: pairwise key handshake completed (RSN)
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.576266: mld0: EAPOL-4WAY-HS-COMPLETED fc:b3:bc:f0:b0:c2
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.576304: nl80211: Event message available
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.576374: nl80211: Drv Event 139 (NL80211_CMD_CONTROL_PORT_FRAME_TX_STATUS) received for mld0
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.576387: nl80211: Control port TX status (ack=1), cookie=55
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.576403: mld0: Event EAPOL_TX_STATUS (37) received
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.576415: IEEE 802.1X: fc:b3:bc:f0:b0:c2 TX status - version=2 type=3 length=215 - ack=1
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.576430: WPA: EAPOL-Key TX status for STA fc:b3:bc:f0:b0:c2 ack=1
+Thu Nov 13 12:02:11 2025 user.notice root: 1763035331.576541: RTM_NEWLINK: ifi_index=18 ifname=mld0 wext ifi_family=0 ifi_flags=0x11043 ([UP][RUNNING][LOWER_UP])
+Thu Nov 13 12:02:12 2025 user.info nwaios[12420]: [aios_rx.c:37] aios_rx_execute_handler(): Application with PID [25788]/APP_ID[0] requesting inference.
+Thu Nov 13 12:02:12 2025 user.info nwaios[12420]: [aios_inference_director.c:56] aios_inf_parse_msg(): [LocalGateway_CPU0 NP] Processing Execute Request for model_id=0
+Thu Nov 13 12:02:12 2025 user.info nwaios[12420]: [aios_runtime_inf.cpp:147] aios_runtime_inf_execute(): Execute-> executeHandle=0x7f857affe0
+Thu Nov 13 12:02:12 2025 user.info nwaios[12420]: [aios_app_mgr.c:240] aios_app_tx_msg(): Sent Tx Msg[3] to application with PID[25788]/APP_ID[0] successfully.
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.259446: nl80211: Event message available
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.259582: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.259632: nl80211: Event message available
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.259689: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.269562: nl80211: Event message available
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.269626: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.278311: nl80211: Event message available
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.278377: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.278419: nl80211: Event message available
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.278450: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.278480: nl80211: Event message available
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.278506: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.289984: nl80211: Event message available
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.290050: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.299394: nl80211: Event message available
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.299476: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.308013: nl80211: Event message available
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.308080: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.308154: nl80211: Event message available
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.308188: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.318875: nl80211: Event message available
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.318943: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.319020: nl80211: Event message available
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.319053: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.328996: nl80211: Event message available
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.329056: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.329094: nl80211: Event message available
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.329121: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.340007: nl80211: Event message available
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.340075: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.340116: nl80211: Event message available
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.340179: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.340214: nl80211: Event message available
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.340264: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.350742: nl80211: Event message available
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.350807: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.360899: nl80211: Event message available
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.360963: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.368991: nl80211: Event message available
+Thu Nov 13 12:02:13 2025 user.notice root: 1763035333.369060: nl80211: Ignored event 103 (NL80211_CMD_VENDOR) for foreign interface (ifindex 19 wdev 0x0 wiphy -1)

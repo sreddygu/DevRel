@@ -1,0 +1,38 @@
+fw_tx_mgmt_subtype
+    a. The stat fw_tx_mgmt_subtype represents a firmware-level counter that tracks the number of transmitted 802.11 management frames, broken down by subtype.
+    b. The value at each index indicates how many frames of that subtype have been transmitted by the firmware:
+        0  - association_request        : Sent by a client to request association
+        1  - association_response       : Sent by AP in response to association request
+        2  - reassociation_request      : Sent by client to reassociate with AP
+        3  - reassociation_response     : Sent by AP in response to reassociation request
+        4  - probe_request              : Sent by client to discover APs
+        5  - probe_response             : Sent by AP in response to probe request
+        6  - timing_advertisement       : Sent by AP to advertise timing information
+        7  - reserved                   : Not used
+        8  - beacon                     : Periodic broadcast by AP
+        9  - atim                       : Used in ad hoc networks
+        10 - disassociation             : Sent to terminate association
+        11 - authentication             : Sent to initiate authentication
+        12 - deauthentication           : Sent to terminate authentication
+        13 - action                     : Used for various control actions
+        14 - action_no_ack              : Action frame that does not require ACK
+        15 - reserved                   : Not used
+fw_rx_mgmt_subtype
+    a. The stat fw_rx_mgmt_subtype represents a firmware-level counter that tracks the number of received 802.11 management frames, broken down by subtype. 
+    b. Each index corresponds to a specific frame subtype as defined by the IEEE 802.11 standard:
+        0  - association_request        : Received from a client requesting association
+        1  - association_response       : Received from AP in response to association request
+        2  - reassociation_request      : Received from client attempting to reassociate
+        3  - reassociation_response     : Received from AP in response to reassociation request
+        4  - probe_request              : Received from client scanning for APs
+        5  - probe_response             : Received from AP responding to probe request
+        6  - timing_advertisement       : Received from AP advertising timing information
+        7  - reserved                   : Not used
+        8  - beacon                     : Received periodically from APs
+        9  - atim                       : Received in ad hoc networks
+        10 - disassociation             : Received to terminate association
+        11 - authentication             : Received to initiate authentication
+        12 - deauthentication           : Received to terminate authentication
+        13 - action                     : Received for various control actions
+        14 - action_no_ack              : Received action frame that does not require ACK
+        15 - reserved                   : Not used

@@ -1,0 +1,31 @@
+{
+  "host": {
+    "os": "Windows 10",
+    "os_arch": "ARM64",
+    "python": "3.10.10",
+    "python_arch": "AMD64",
+    "python_executable": "C:\\dr_iq8\\gdj_venv2\\Scripts\\python.exe",
+    "free_disk_gb": 50.6,
+    "packages": {
+      "numpy": "2.2.6",
+      "sklearn": "1.7.2",
+      "joblib": "1.6.0",
+      "torch": "2.14.1+cpu",
+      "onnx": "1.23.2",
+      "onnxruntime": "1.23.2"
+    },
+    "audio_players_on_path": [],
+    "camera": "unknown",
+    "audio_sink": "unknown",
+    "onnxruntime": "present"
+  },
+  "unknown": [
+    "camera",
+    "audio_sink",
+    "recognizer_board",
+    "generator"
+  ],
+  "notes": [
+    "Python is AMD64 on an ARM64 machine: running under emulation; expect slower training and different wheels."
+  ]
+}

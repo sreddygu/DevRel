@@ -1,0 +1,61 @@
+{
+  "_comment": "Routing checks for the read-only DevRel onboarding toolset.",
+  "tasks": [
+    {
+      "name": "intake_before_recommendation",
+      "prompt": "I want to run my model on a Qualcomm NPU but I have not said which model or board.",
+      "checks": [
+        {"type": "json_valid"},
+        {"type": "first_tool", "tools": ["devrel_intake"]}
+      ]
+    },
+    {
+      "name": "doctor_for_setup_failure",
+      "prompt": "Check whether this development machine is ready for Qualcomm NPU work.",
+      "checks": [
+        {"type": "json_valid"},
+        {"type": "first_tool", "tools": ["devrel_doctor", "devrel_assess"]}
+      ]
+    },
+    {
+      "name": "detect_local_hardware",
+      "prompt": "Inspect this local machine's CPU, RAM, architecture, GPU, and Qualcomm markers.",
+      "checks": [
+        {"type": "json_valid"},
+        {"type": "first_tool", "tools": ["devrel_hardware_detect", "devrel_assess"]}
+      ]
+    },
+    {
+      "name": "full_readiness_assessment",
+      "prompt": "Assess this Windows machine for a real model bring-up and tell me the blockers.",
+      "checks": [
+        {"type": "json_valid"},
+        {"type": "first_tool", "tools": ["devrel_assess"]}
+      ]
+    },
+    {
+      "name": "local_model_server_health",
+      "prompt": "Check whether the local OpenAI-compatible model server is running and list its models.",
+      "checks": [
+        {"type": "json_valid"},
+        {"type": "first_tool", "tools": ["devrel_model_server", "devrel_assess"]}
+      ]
+    },
+    {
+      "name": "onnx_runtime_selection",
+      "prompt": "I have a vision ONNX model for Snapdragon X Elite. Select a candidate runtime, but do not invent performance numbers.",
+      "checks": [
+        {"type": "json_valid"},
+        {"type": "first_tool", "tools": ["devrel_stack_recommend"]}
+      ]
+    },
+    {
+      "name": "gguf_runtime_selection",
+      "prompt": "Recommend the initial runtime path for a GGUF LLM on a small Linux edge board.",
+      "checks": [
+        {"type": "json_valid"},
+        {"type": "first_tool", "tools": ["devrel_stack_recommend"]}
+      ]
+    }
+  ]
+}

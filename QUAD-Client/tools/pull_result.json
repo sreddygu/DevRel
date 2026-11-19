@@ -1,0 +1,4 @@
+{
+  "isError": true,
+  "result": "1 validation error for call[aihub_select]\nprofile\n  Unexpected keyword argument [type=unexpected_keyword_argument, input_value={'chipset': 'Snapdragon(R... Try cmd.exe or pwsh.\"]}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/unexpected_keyword_argument"
+}

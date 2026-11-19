@@ -1,0 +1,10 @@
+# NPU inference via ONNX Runtime + QNN Execution Provider.
+#
+# IMPORTANT: onnxruntime-qnn bundles BOTH the core ONNX Runtime and the QNN
+# Execution Provider (NPU support). Do NOT also list `onnxruntime` — the two
+# packages overwrite each other's onnxruntime.dll and NPU support silently
+# breaks. Install this into a NATIVE ARM64 Python 3.10–3.12 environment; the
+# QNN wheels do not exist for 3.13+ or for emulated x86-64 Python.
+onnxruntime-qnn==1.24.4
+numpy>=1.24
+Pillow>=10.0

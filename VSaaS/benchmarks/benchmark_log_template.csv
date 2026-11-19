@@ -1,0 +1,2 @@
+model,hardware,backend,latency_ms,throughput_tps,notes
+qwen3_vl_32b_instruct,IQ8,Hydra/AIC100 (OpenAI-compatible),0,0,"fill with measured values"

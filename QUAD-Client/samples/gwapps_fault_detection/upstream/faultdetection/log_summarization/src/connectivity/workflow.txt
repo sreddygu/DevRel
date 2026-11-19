@@ -1,0 +1,79 @@
+1. Guiding Priorities (Signal Weighting & Workflow Defaults)
+
+    • Hostapd-first (but not hostapd-only): Prefer hostapd for AP-side control-plane truth (assoc/auth, deauth/disassoc, SA Query, MLO link transitions).
+    • Treat hostapd events as primary anchors when present.
+    • Do NOT overrule contradictory evidence from driver/kernel/wpasupplicant without analysis; instead lower confidence and call out discrepancies.
+        • KB/DB-first classification: When hostapd signals exist, first classify the issue by matching hostapd messages/sequences to the KB/DB, then form hypotheses.
+        • Stats verification loop: Before finalizing any hypothesis, re-check all relevant stats/counters/telemetry to confirm or downgrade the finding.
+
+2. Ingest Logs and Context
+
+    • Parse the provided logs (hostapd, wpasupplicant, kernel, driver, AP/controller, etc.) in chronological order.
+    • Hostapd-first parsing:
+        • If hostapd logs exist, build the initial event timeline from hostapd (association/auth flows, deauth reason codes, SA Query, MLO link setup/teardown).
+        • Align other sources (wpasupplicant, driver, kernel, controller) to this hostapd timeline to corroborate or surface contradictions.
+            • Extract critical events (association, authentication, deauth/disassoc, beacon loss, SA Query, MLO link setup/teardown, etc.).
+            • Capture environment context: band, role (AP/Client), security (WPA2/WPA3), firmware/driver versions, configuration snippets if present.
+            • If hostapd logs are missing or incomplete, fall back to driver/kernel/controller as anchors and mark confidence accordingly.
+
+3. Cross-Reference with Knowledge Base (KB/DB)
+
+    • For hostapd-anchored timelines, FIRST search the KB/DB using hostapd keywords/error codes/reason codes/event sequences (e.g., specific deauth reasons, SAE states, FT transitions, SA Query outcomes, MLO link failures).
+    • Prioritize KB matches that directly explain the hostapd-observed sequences; record matched entry IDs/URLs.
+    • For non-hostapd-anchored analysis (hostapd absent), search the KB/DB by driver/kernel patterns and then reconcile with other logs.
+    • Quote KB references and cite them when linking to hypotheses.
+    • If no KB entry matches, clearly state that and proceed with a “best effort” analysis (still preserving the hostapd-first lens where applicable).
+
+4. Formulate Symptom Summary
+
+    • Provide a concise one-liner of the main observed issue, anchored to the hostapd event chain when present.
+    • Support with log excerpts + timestamps (hostapd first, then corroborating sources).
+    • Highlight abnormal or repeating patterns (timeouts, retries, mismatched counters, repeated transitions, MLO link flaps).
+
+5. Root Cause Analysis
+
+    • Identify the most likely cause(s) based on the hostapd timeline + KB match.
+    • Require verification against stats before elevating a cause to “High”:
+        • Example stats: auth/assoc success/failure counters, retries, RSSI/SNR, rate control transitions, EAPOL #/timeouts, SA Query counters, MLO per-link state/counters, beacon loss/CCA/PHY error rates, per-TID retries/drops, controller disconnection decisions.
+            • For each cause, explain why it fits (log sequence, flags, counters, KB patterns).
+            • If multiple causes are possible, rank them by likelihood (High/Medium/Low), where “High” = hostapd + KB match + stats alignment.
+            • Explicitly state assumptions if required information is missing (e.g., absent hostapd, incomplete stats).
+
+6. Why This Root Cause Fits
+
+    • Detail the reasoning chain explicitly as: hostapd log → interpretation → KB/DB match → stats confirmation.
+    • Call out anomalies or counter-evidence from driver/kernel/supplicant/controller; explain how they affect confidence.
+    • If contradictions remain unresolved, downgrade likelihood and recommend targeted data collection.
+
+7. Mitigation & Next Steps
+
+    • Suggest immediate low-risk mitigations (config changes, toggles, debug flags), preferring actions aligned with the hostapd-identified pattern.
+    • Recommend targeted verification steps to confirm the hostapd-derived hypothesis:
+        • Enable/raise hostapd debug levels for specific modules (e.g., WPA/SAE/FT/MLO).
+        • Capture hostapdcli state/ALL, wpacli (for client-side corroboration), and driver/kernel ring buffers.
+        • Collect per-link MLO stats and relevant AP/controller telemetry.
+            • If inconclusive, state fallback actions or escalation paths (e.g., reproduce with enhanced tracing, capture over-the-air packets).
+
+8. Open Questions / Missing Data
+
+    • List what is unknown or not inferable from logs (e.g., missing hostapd segment, insufficient counters, absent controller decision logs).
+    • Suggest the additional data that would confirm/refute the root cause (specific hostapd sections, targeted stats, OTA traces).
+
+9. References
+
+    • Provide KB anchors (IDs/URLs) and log file identifiers used in reasoning.
+    • Clearly mark which citations are hostapd-derived vs. other sources.
+
+Appendix A. Signal Weighting (Guidance)
+• Default relative weights when present and time-aligned:
+ hostapd: Strong for AP-side control-plane causality (assoc/auth/SAE/FT/SA Query/MLO)
+ wpasupplicant: Strong for client-side corroboration
+ driver: Medium-strong for PHY/MAC counters and error modes
+ kernel: Medium for transport/ifindex/media events
+ controller/AP-cloud: Medium for policy/steering/disconnect reasons
+• Weights are guidance, not hard rules—contradictory evidence must be surfaced, not suppressed.
+
+Appendix B. Confidence Rules (Short)
+• HIGH: Hostapd sequence matches KB AND stats confirm.
+• MEDIUM: Hostapd sequence suggests cause, partial KB match OR partial stats alignment.
+• LOW: Hostapd absent/inconclusive OR contradictions unresolved OR no KB match and weak stats.

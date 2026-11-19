@@ -1,0 +1,78 @@
+schema_version: "1.0"
+id: "device-connectivity-validation"
+name: "Device Connectivity Validation"
+version: "2.0.0"
+description: "Check TCP reachability to a QLI device without changing network configuration."
+entrypoint: "SKILL.md"
+kind: "mcp-tool-candidate"
+language: "en"
+selection:
+  aliases: ["validate device connectivity", "check QLI network"]
+  triggers: ["Check whether a QLI device is reachable"]
+synapse:
+  layer: "mcp-tool"
+  domain: "qli-linux"
+  owner: "Srinivas Reddy Gudala"
+  backup_owner: "DevRel Developer Experience team"
+  review_cadence: "Each major SDK or QLI device release"
+  visibility: "internal"
+  maturity: "pilot"
+  developer_journey_stage:
+    - "discovery"
+  supported_versions: ["Qualcomm Linux (QLI) 2.0", "QAIRT 2.47.x host runtime"]
+  dependencies:
+    - "qli-linux-domain"
+  classification_note: >
+    Collapsed from foundational skill to MCP tool (2026-10-22).
+    Single deterministic CLI call; no agent reasoning required.
+    Safety rule (do not change network config) is documented in qli-linux-domain context.
+    Expose as MCP tool: connectivity ping-and-report.
+    MCP-first: check the shared MCP inventory before re-implementing.
+  authoritative_docs: ["../../src/qli_device_lifecycle_apps.py"]
+  feedback_channel: >
+    GitHub Issues on the qa-intermediate-curriculum repository (label: synapse-mcp).
+  a2a:
+    role: "tool"
+    accepts_from: ["qli-readiness-agent", "developer-readiness-assessment", "domain-skills"]
+  deprecation_path: >
+    Set maturity: "deprecated" and announce via feedback_channel with 30-day notice.
+contract:
+  prerequisites: ["Target host name or IP address"]
+  inputs: ["Host", "Optional port", "Optional timeout"]
+  outputs: ["Reachability result"]
+  negative_scope:
+    - "Does not modify network configuration under any circumstance"
+    - "Does not attempt reconnection or retry beyond the declared timeout"
+  state_before: "Network path between host and device may or may not be available"
+  state_after: "Network state unchanged; reachability result recorded"
+  validation: ["Connectivity command reports the requested endpoint result"]
+  failure_behavior: "Return reachable: false with error detail; do not silently succeed."
+  known_failure_modes:
+    - "Host unreachable: return reachable: false with error; route to diagnostics"
+    - "Port closed: return reachable: false with port-closed detail"
+  two_config_evidence:
+    - "IQ8 (port 22): Device Connectivity Check Completed, 2026-08-17; reachable again 2026-10-12 (evidence/iq8-2026-10-12/connectivity_precheck.json)"
+    - "IQ9 (port 22): Device Connectivity Check Completed, 2026-08-12 (evidence/iq9_summary_2026-08-12.json)"
+authority:
+  source_docs: "See synapse.authoritative_docs"
+  approved_tools:
+    - "src/qli_device_lifecycle_apps.py connectivity"
+  endpoints:
+    - "SSH (TCP/22) to the approved target device; address supplied at runtime, never stored"
+  provenance: "qa-intermediate-curriculum/projects/qli_dogfooding; run evidence under evidence/<device>-YYYY-MM-DD/"
+control:
+  approval_gates: "See safety.requires_explicit_approval"
+  consequential_actions: []
+  recovery_and_rollback: "Network state unchanged; no rollback needed."
+review_gates:
+  # pilot = gates 1 + 3 met; supported = all six met (Synapse deck slide 6)
+  ownership: "met"
+  scope_and_boundary: "met"
+  validation_evidence: "met"
+  feedback_mechanism: "declared; reader is the named owner"
+  discoverability: "open: not yet listed in product or SDK documentation"
+  lifecycle_commitment: "met"
+project:
+  root_relative_to_skill: "../.."
+safety:
+  default_mode: "non-destructive"

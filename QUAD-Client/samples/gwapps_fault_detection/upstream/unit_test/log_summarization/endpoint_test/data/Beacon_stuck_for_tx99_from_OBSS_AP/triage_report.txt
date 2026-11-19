@@ -1,0 +1,13 @@
+WiFi Connectivity Issue Triage Report
+
+1. What Happened
+
+Observed Symptom
+• STA Unknown is experiencing BEACON_STUCK on WiFi
+
+2. Root Cause Analysis
+
+Primary Suspected Causes (Ranked by Likelihood)
+MEDIUM Likelihood: OBSS Interference on channel 2437
+• The high CCA OBSS percentage (99.72%) on channel 2437 indicates that the channel is occupied by OBSS traffic 99.72% of the time, leading to significant OBSS interference.
+• Evidence: Stats show cca_obss_pct = 99.72% on channel 2437 (severity=HIGH)

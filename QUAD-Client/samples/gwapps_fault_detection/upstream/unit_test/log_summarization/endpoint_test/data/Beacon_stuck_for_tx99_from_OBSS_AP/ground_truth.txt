@@ -1,0 +1,146 @@
+WiFi Connectivity Issue - Beacon Stuck Triage
+Report
+
+1. What Happened
+
+Concise Description
+Primary Symptom: Beacon transmission failure on 2.4GHz AP (wifi0) with 94.74% beacon fail
+rate
+Detection Time: Wed Nov 5 11:12:26 2025
+Anomaly Type: BEACON STUCK - AP unable to transmit beacons within required timing
+constraints
+Supporting Log Evidence
+Driver Anomaly Detection (0_fd_logs.txt):
+Anomaly Type: BEACON STUCK
+Beacon fail rate: 0.947368
+Radio Band 2: Iterations showing rate changes from 0 to high values (850+ at index 5, 551+ at index 28)
+Hardware Queue Statistics (rate_of_change_wifistats.txt - WIFISTAT 3):
+hwq_id = 0 (Beacon Queue)
+mpdu_queued_cnt = 109
+mpdu_tried_cnt = 5
+cmd_result = 0:5, 1:0, 2:0, 3:104 
+Result code 0 (SUCCESS): 5 beacons
+Result code 3 (LIFESPAN_EXPIRY): 104 beacons
+Channel Utilization (rate_of_change_wifistats.txt - WIFISTAT 19):
+Channel 2437 MHz (Channel 6)
+rx_clear: ~99.6% (996460/999211 usec)
+cca_obss: ~99.6% (996517/999211 usec) 
+Context
+Band: 2.4GHz (Channel 6 - 2437 MHz)
+Role: Access Point
+Radio: wifi0
+PHY Resets: 16 warm resets detected
+Security: Not specified in logs
+Firmware/Driver: Qualcomm WIN platform
+
+2. Root Cause Analysis
+
+Primary Suspected Cause (Likelihood: HIGH)
+Channel Access Delay due to High CCA/Channel Congestion
+The beacon transmission failures are caused by extreme channel congestion preventing timely
+channel access. The hardware holds beacons for the maximum 50ms lifespan before expiring them.
+Evidence:
+95.4% beacon lifespan expiry rate (104/109 beacons)
+Channel busy 99.6% of time (rx_clear ~996ms out of 1000ms)
+CCA OBSS (other BSS activity) at 99.6%
+PHY experiencing 16 warm resets likely due to stuck conditions
+Alternative Hypotheses
+Medium Likelihood - PHY/MAC Hardware Issues
+16 PHY warm resets indicate hardware recovery attempts
+Could be symptom rather than cause
+No specific PHY error counters shown
+Low Likelihood - Configuration Issue
+CCA threshold misconfiguration
+Beacon interval settings
+Would need hostapd configuration to confirm
+
+3. Why This Root Cause Fits
+
+Reasoning Chain
+Log Sequence Analysis:
+1. Channel utilization shows 99.6% busy time → extreme congestion
+2. Beacons enqueued to HWQ (109 total) → normal beacon generation
+3. Hardware attempts transmission but cannot get channel access → holds for 50ms max
+4. Lifespan timer expires (104 beacons) → WIFILIFESPAN_EXPIRY_FAIL_E
+5. Only 5 beacons succeed when brief channel access available
+6. System detects pattern → triggers BEACON_STUCK anomaly at 94.74% fail rate
+KB Correlation [[Knowledge: WIN_Connectivity Issues - Wifi Debug handbook|Scan
+Issues|context: Beacon stuck occurs when hardware cannot transmit beacons within timing
+constraints, typically due to channel access delays or hardware issues]]:
+Matches "Delayed Beacon Tx" pattern with lifespan expiry
+Consistent with high CCA threshold impact on beacon latency
+PHY resets align with channel access recovery attempts
+Stats Alignment:
+Beacon success count (5) + lifespan expiry (104) = ~109 queued
+Fail rate calculation: 104/109 = 95.4% matches reported 94.74%
+CCA histogram confirms sustained high channel utilization
+
+4. Mitigation / Next Steps
+
+Immediate Low-Risk Mitigations
+1. Channel Change (Recommended First):
+cfg80211tool wifi0 channel 1 # or 11 for 2.4GHz
+# Restart interface after channel change
+2. Adjust CCA Threshold:
+# Check current CCA threshold
+athdiag --wifi 0 --get --address=0x500158 --quiet
+# Try less sensitive threshold (e.g., -75 dBm)
+cfg80211tool wifi0 cca_threshold -75
+3. Beacon Interval Optimization:
+# Increase beacon interval to reduce airtime
+cfg80211tool ath0 beacon_intval 200 # Default is usually 100ms
+Verification Steps
+1. Enable Enhanced Debug Logging:
+cnss_diag -pc | grep -e "BEACON TX" -e "WOW_BEACON_OFFLOAD_TX"
+cfg80211tool ath0 dbgLVL 0x80c00000
+2. Monitor Beacon Recovery:
+# Real-time beacon stats
+watch -n 1 'wifistats wifi0 3 | grep -A5 "hwq_id = 0"'
+# Check beacon success rate
+wifistats wifi0 20 --wmi
+3. Capture Over-the-Air:
+Sniffer capture on channel 6 to verify beacon presence/absence
+Spectrum analyzer to identify interference sources
+Escalation if Issue Persists
+1. Try MAC/PHY reset:
+wifitool ath0 setUnitTestCmd 0x48 2 1 6 # MAC reset
+wifitool ath0 setUnitTestCmd 0x48 2 1 9 # PHY warm reset
+2. Generate crash dump for deeper analysis:
+cfg80211tool wifi0 set_fw_hang 1
+
+5. Open Questions / Gaps
+
+Missing Information
+Hostapd logs: No hostapd control plane logs to correlate beacon template updates
+Client impact: No wpa_supplicant or client-side logs showing association failures
+Interference source: Need spectrum analysis to identify 2.4GHz interference
+Configuration: Missing wireless config and hostapd.conf for beacon/channel settings
+Timeline: Only single timestamp, need historical pattern
+Suggested Additional Data Collection
+1. Hostapd Debug Logs:
+hostapd -g /var/run/hostapd/global -ddd -P /var/run/hostapd-global.pid -f /tmp/hostapd.log &
+2. Continuous Monitoring:
+# Beacon transmission tracking
+while true; do
+ date
+ wifistats wifi0 19 --vdevid ath0 --wmi
+ sleep 10
+done > /tmp/beacon_monitor.log
+3. Channel Survey:
+iw dev ath0 survey dump
+
+6. References
+
+Knowledge Base References (knowledge.txt)
+• Section 1.1 No/Long interval Beacon|context: Detailed beacon stuck troubleshooting procedures including lifespan expiry analysis
+• Scheduler command status enum definitions (WIFILIFESPAN_EXPIRY_FAIL_E = 3)
+• CCA threshold adjustment procedures for channel access issues
+Log Files and Time Ranges
+• 0_fd_logs.txt: Anomaly detection at Wed Nov 5 11:12:26 2025
+• rate_of_change_wifistats.txt: WiFi statistics snapshot showing cumulative counters
+• Iterations 0-3 showing rate of change patterns
+
+Confidence Level
+MEDIUM-HIGH - Strong correlation between symptoms and channel congestion root cause, but
+missing hostapd logs and client-side validation prevent full HIGH confidence. Stats strongly support
+channel access delay hypothesis

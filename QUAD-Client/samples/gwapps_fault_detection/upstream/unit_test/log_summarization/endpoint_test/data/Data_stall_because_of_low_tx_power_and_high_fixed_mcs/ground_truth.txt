@@ -1,0 +1,144 @@
+WIN Connectivity Issue Triage Report - 6G
+Band Data Stall
+
+1. What Happened
+
+Observed Symptom
+Primary Issue: Data stall anomaly detected on 6G band (wifi1 radio) with severe
+transmission reliability issues.
+Supporting Evidence
+Anomaly Detection: DATA STALL identified at timestamp Wed Nov 12 03:27:57 2025
+Data Retry Rate: 82.05% (0.820513) - critically high retry percentage
+MPDU ACK Failures: 4013 total failures, 96 failures in recent observation window
+Transmission Statistics:
+Hardware Queued PPDUs: 25886
+Successfully Transmitted PPDUs: 22647 (87.49% success rate)
+MPDU ACK Failed: 4013
+ACK RSSI: 58 (indicating weak signal strength)
+Flush Errors:
+Index 5: 7 errors (WIFIFLUSH_RCVD_E)
+Index 38: 2 errors
+Context
+Band: 6GHz
+Role: Access Point
+Radio Interface: wifi1
+Issue Duration: Detected in last 10 iterations with 1 anomaly occurrence
+
+2. Root Cause Analysis
+
+Primary Suspected Cause (HIGH Likelihood)
+Poor Link Quality / Channel Conditions on 6G Band
+Evidence Pattern Match [[Knowledge: WIN_Connectivity Issues - Wifi Debug
+handbook|5.1 Tx path stability|context: Connection stability issues with high tx retry
+matching observed 82% retry rate]]:
+Extremely high retry percentage (82.05%) indicates packets are being transmitted but
+not acknowledged
+MPDU ACK failures (4013) with continuous increments show persistent
+acknowledgment issues
+ACK RSSI of 58 suggests weak signal conditions
+PPDU success rate of 87.49% indicates the hardware is functioning but experiencing
+link quality issues
+Alternative Hypotheses
+Medium Likelihood - Client-Side Issues
+Reasoning: High retry rate could indicate client device moving out of range or
+experiencing reception issues
+Supporting Evidence: Consistent ACK failures without complete connection loss
+Counter Evidence: No beacon miss or disconnection events observed
+Low Likelihood - Hardware Queue Congestion
+Reasoning: Flush errors could indicate queue management issues
+Supporting Evidence: 7 flush errors detected
+Counter Evidence: Relatively low flush error count compared to total transmissions
+
+3. Why This Root Cause Fits
+
+Detailed Reasoning Chain
+1. Pattern Recognition: The combination of high retry rate (82%) with moderate PPDU
+success (87.49%) indicates frames are being transmitted but not reliably acknowledged
+[[Knowledge: WIN_Connectivity Issues - Wifi Debug handbook|5.Connection
+stability|context: Unreliable data communication between AP and STA]]
+2. Signal Quality Indicators:
+ACK RSSI of 58 is relatively weak for 6GHz operation
+6GHz requires better link conditions due to higher path loss
+Matches KB pattern for connection stability issues
+3. Progressive Degradation:
+FD logs show progression from iteration 0-1 (no issues) to iteration 2-3 (significant
+retry activity)
+Indicates gradual degradation rather than sudden failure
+4. Stats Confirmation:
+mpdus_ack_failed = 4013 confirms transmission attempts without acknowledgment
+Rate of change shows 96 new failures, indicating ongoing issue
+No significant RX errors (fw_ring_mpdu_err mostly zeros) suggests TX path
+specific problem
+
+4. Mitigation / Next Steps
+
+Immediate Low-Risk Mitigations
+1. Adjust CCA Threshold (if applicable):
+cfg80211tool wifi1 cca_threshold -65
+2. Check and Optimize TX Power:
+iwconfig ath1 | grep "Tx-Power"
+cfg80211tool ath1 txpow 20 # Adjust if needed
+3. Enable Rate Control Debugging:
+cfg80211tool ath1 dbgLVL 0x80c00000
+Verification Steps
+1. Capture Enhanced Statistics:
+# Beacon statistics
+wifistats wifi1 19 --wmi
+wifistats wifi1 20 --wmi
+# Detailed TX statistics
+wifistats wifi1 3 1
+# PHY layer drops
+wifistats wifi1 37
+2. Monitor Real-time Metrics:
+# Check for RX stuck conditions (6GHz specific)
+devmem 0xCAAA10c # rx busy
+devmem 0xCAAA110 # rx cycle count
+devmem 0xCAAA114 # tx cycle count
+3. Enable Comprehensive Logging:
+cnss_diag -pc | grep -e MGMT_TXRX -e KICKOUT -e CONN_DBG
+Escalation Actions (if issue persists)
+1. PHY/MAC Reset:
+wifitool ath1 setUnitTestCmd 0x48 2 1 6 # MAC reset
+wifitool ath1 setUnitTestCmd 0x48 2 1 9 # PHY warm reset
+2. Capture OTA Sniffer Traces near both AP and affected clients
+3. Generate Crash Dump for deeper analysis:
+cfg80211tool wifi1 set_fw_hang 1
+
+5. Open Questions / Gaps
+
+Missing Information
+Hostapd Logs: No hostapd logs available - would provide control plane visibility for
+auth/assoc/deauth events
+Client-side Logs: No wpa_supplicant or client device logs to correlate behavior
+Environmental Data: No information about number of connected clients or physical
+environment
+Temporal Context: Limited timestamp information to understand issue
+duration/frequency
+Suggested Additional Data Collection
+1. Hostapd Debug Logs:
+hostapd -g /var/run/hostapd/global -ddd -P /var/run/hostapd-global.pid -f /tmp/hostapd.log &
+2. Per-Client Statistics:
+wifistats wifi1 11 --mac <client_mac>
+3. Channel Utilization:
+wifistats wifi1 19 # CCA histogram
+4. Complete Packet Capture:
+pktlogconf -a wifi1 -elite,rcu,rcf -s 30000000
+
+6. References
+
+Knowledge Base References (knowledge.txt)
+• Section 5.Connection: stability|reference: Unreliable data communication patterns and TX path stability
+• Section 5.1 Tx path stability|reference: Tx stuck and data frame drop analysis procedures
+Log Files Analyzed
+• 0_fd_logs.txt: Anomaly detection logs showing DATA STALL at iteration 2-3
+• current_wifistats.txt: Current WiFi statistics snapshot
+• rate_of_change_wifistats.txt: Delta statistics showing 96 new ACK failures
+wifi1: Binary data file (radio interface dump)
+• Time Range
+• Primary anomaly: Wed Nov 12 03:27:57 2025
+• Analysis window: Last 10 iterations of monitoring
+
+Confidence Assessment: MEDIUM - Stats confirm TX reliability issues, but missing
+hostapd logs and client-side data prevent full root cause confirmation. The pattern strongly
+suggests link quality issues on 6GHz band, but environmental factors cannot be ruled out
+without additional data

@@ -1,0 +1,98 @@
+# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+# All rights reserved.
+# Confidential and Proprietary - Qualcomm Technologies, Inc.
+
+# docker-compose-vllm.yml
+# -----------------------
+# Compose file for the log-summarization service with embedded vLLM inference.
+#
+# Usage:
+#   # Build and start (production):
+#   docker compose -f docker-compose-vllm.yml up --build -d
+#
+#   # Dev build (shells retained for debugging):
+#   BUILD_ENV=dev docker compose -f docker-compose-vllm.yml up --build -d
+#
+#   # View logs:
+#   docker compose -f docker-compose-vllm.yml logs -f
+#
+# Required host directories (created automatically if missing):
+#   ${HF_CACHE_HOST_DIR}                  — Hugging Face model cache (persisted)
+#   ${LOG_SUMMARIZATION_HOST_DIR}         — Input/output data directory
+#
+# GPU requirement: NVIDIA GPU with CUDA support + nvidia-container-toolkit
+
+services:
+  app:
+    container_name: AD_LOGS_VLLM
+    image: log-summarization-vllm:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.vllm
+      args:
+        BUILD_ENV: ${BUILD_ENV:-production}
+
+    # ── Port mapping ──────────────────────────────────────────────────────────
+    # Host port 9010 → container port 8000 (gunicorn summarization API)
+    # vLLM port 8001 is internal only (not exposed to host)
+    ports:
+      - "9010:8000"
+
+    # ── Environment ───────────────────────────────────────────────────────────
+    env_file:
+      - .env
+    environment:
+      # vLLM server configuration
+      HF_MODEL_NAME: ${HF_MODEL_NAME:-mistralai/Mistral-7B-Instruct-v0.2}
+      VLLM_PORT: ${VLLM_PORT:-8001}
+      VLLM_MAX_MODEL_LEN: ${VLLM_MAX_MODEL_LEN:-32000}
+      VLLM_GPU_MEMORY_UTIL: ${VLLM_GPU_MEMORY_UTIL:-0.90}
+      VLLM_TENSOR_PARALLEL_SIZE: ${VLLM_TENSOR_PARALLEL_SIZE:-1}
+      VLLM_STARTUP_TIMEOUT_S: ${VLLM_STARTUP_TIMEOUT_S:-600}
+
+      # Hugging Face cache (model weights are downloaded here on first run)
+      HF_CACHE_DIR: /data/models
+      # Set HOME so all ~/.cache/* paths (HF, vLLM, FlashInfer, torch, etc.)
+      # resolve to /data/.cache/* instead of /home/appuser (no-create-home)
+      HOME: /data/models
+      HF_HOME: /data/models
+      VLLM_CACHE_ROOT: /data/models/.vllm_cache
+      HF_HUB_DISABLE_PROGRESS_BARS: "0"
+
+    # ── Volume mounts ─────────────────────────────────────────────────────────
+    volumes:
+      # Persist downloaded model weights across container restarts
+      - ${HF_CACHE_HOST_DIR:-/local/mnt2/jsstephe/logsense_vllm_int/models}:/data/models
+
+      # Input TAR files and output summaries
+      - ${LOG_SUMMARIZATION_HOST_DIR:-/local/mnt/log_summarization_api_data}:/data
+
+      # Mount main.py so code changes take effect after a gunicorn reload
+      # (kill -HUP <gunicorn-master-pid>) without requiring a full image rebuild.
+      # The image ships only main.pyc; this .py mount takes precedence at import time.
+      - ./main.py:/app/main.py:ro
+
+    # ── GPU resources ─────────────────────────────────────────────────────────
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: ${VLLM_TENSOR_PARALLEL_SIZE:-1}
+              capabilities: [gpu]
+
+    # ── Security options ──────────────────────────────────────────────────────
+    security_opt:
+      - no-new-privileges:true
+
+    # ── Health check ──────────────────────────────────────────────────────────
+    # Checks the gunicorn summarization API (not vLLM directly)
+    healthcheck:
+      test: ["CMD", "python3", "-c",
+             "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 660s   # Allow time for model download + vLLM startup
+
+    restart: unless-stopped

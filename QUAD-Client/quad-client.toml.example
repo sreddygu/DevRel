@@ -1,0 +1,25 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# QUAD-Client Configuration File — quad-client.toml
+# ═══════════════════════════════════════════════════════════════════════════
+#
+# Copy manually:  cp quad-client.toml.example quad-client.toml
+#
+# IMPORTANT:
+#   - DO NOT put secrets/API keys here — use .env instead
+#   - quad-client.toml is gitignored
+#   - install.sh reads this file at the end to choose which coding agent to launch
+# ═══════════════════════════════════════════════════════════════════════════
+
+# Coding agent launched at the end of install.sh
+# claude   = Claude Code (default)
+# opencode = opencode CLI
+# codex    = codex CLI
+# opencode/codex fall back to Claude Code if not installed or they fail to
+# launch. Override at install time with  ./install.sh --agent <name>  or the
+# QUAD_CLIENT_DEFAULT_AGENT environment variable.
+# Priority: --agent flag > QUAD_CLIENT_DEFAULT_AGENT env > this file > claude.
+#
+# Selecting opencode also writes an opencode.json (MCP server + instructions);
+# opencode reuses the same .claude/skills + CLAUDE.md, so skill/MCP updates need
+# no reprovisioning.
+default_agent = "claude"

@@ -1,0 +1,74 @@
+schema_version: "1.0"
+id: "diagnostic-log-collection"
+name: "Diagnostic Log Collection"
+version: "1.0.0"
+description: "Collect bounded QLI diagnostics for troubleshooting without changing device state."
+entrypoint: "SKILL.md"
+kind: "domain-skill"
+language: "en"
+selection:
+  aliases: ["collect QLI logs", "device diagnostics"]
+  triggers: ["Collect diagnostics after a QLI workflow failure"]
+synapse:
+  layer: "domain"
+  domain: "qli-linux"
+  owner: "Srinivas Reddy Gudala"
+  backup_owner: "DevRel Developer Experience team"
+  review_cadence: "Each major SDK or QLI device release"
+  visibility: "internal"
+  maturity: "pilot"
+  developer_journey_stage:
+    - "platform-experience"
+  supported_versions: ["Qualcomm Linux (QLI) 2.0", "QAIRT 2.47.x host runtime"]
+  dependencies:
+    - "qli-linux-domain"
+  authoritative_docs: ["../../src/qli_debug_deploy_apps.py"]
+  feedback_channel: >
+    GitHub Issues on the qa-intermediate-curriculum repository (label: synapse-domain).
+  a2a:
+    role: "skill"
+    accepts_from: ["qli-readiness-agent", "developer-readiness-assessment"]
+  deprecation_path: >
+    Set maturity: "deprecated" and announce via feedback_channel with 30-day notice.
+contract:
+  prerequisites: ["Access to the intended diagnostic context"]
+  inputs: ["Optional log priority", "Optional line limit"]
+  outputs: ["Bounded diagnostic output"]
+  negative_scope:
+    - "Does not modify device state or restart services"
+    - "Does not provide root-cause analysis — returns raw bounded logs only"
+    - "Does not persist secrets or personal data"
+  state_before: "Device is accessible; a failure or suspect condition has been identified"
+  state_after: "Bounded log captured; device state unchanged"
+  validation: ["Diagnostic command return code and capture scope are recorded"]
+  failure_behavior: "Record access error; do not fabricate log content or infer causes without evidence."
+  known_failure_modes:
+    - "Access denied: record error; escalate to qli-readiness-agent for guidance"
+    - "Log capture exceeds line limit: truncate and record truncation in output"
+  two_config_evidence:
+    - "IQ8 (QLI 2.0): Log Based Diagnostics Completed with bounded journald capture, 2026-08-17 (evidence/iq8-2026-08-17/deep/health.txt)"
+    - "IQ9 (QLI 2.0): Log Based Diagnostics Completed with bounded journald capture, 2026-08-12 (evidence/iq9_deep_2026-08-12/log_diagnostics.txt)"
+authority:
+  source_docs: "See synapse.authoritative_docs"
+  approved_tools:
+    - "src/qli_debug_deploy_apps.py"
+  endpoints:
+    - "SSH (TCP/22) to the approved target device; address supplied at runtime, never stored"
+  provenance: "qa-intermediate-curriculum/projects/qli_dogfooding; run evidence under evidence/<device>-YYYY-MM-DD/"
+control:
+  approval_gates: "See safety.requires_explicit_approval"
+  consequential_actions: []
+  recovery_and_rollback: "Read-only; no rollback needed."
+review_gates:
+  # pilot = gates 1 + 3 met; supported = all six met (Synapse deck slide 6)
+  ownership: "met"
+  scope_and_boundary: "met"
+  validation_evidence: "met"
+  feedback_mechanism: "declared; reader is the named owner"
+  discoverability: "open: not yet listed in product or SDK documentation"
+  lifecycle_commitment: "met"
+project:
+  root_relative_to_skill: "../.."
+safety:
+  default_mode: "non-destructive"
+  secrets_policy: "Redact credentials, tokens, private endpoints, and personal data before persistence."

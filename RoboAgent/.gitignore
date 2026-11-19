@@ -1,0 +1,42 @@
+# Local model artifacts (large and machine-specific)
+/models/
+*.pte
+*.pt
+*.pth
+*.onnx
+*.gguf
+
+# Locally built QNN host and runner binaries
+/RelWithDebInfo/
+/qnn_*.exe
+
+# Generated runtime state and diagnostics
+/.roboagent-runtime/
+/logs/*
+!/logs/README.md
+
+# Local Pi state; project-specific skills under .pi/skills remain tracked
+/.pi/sessions/
+/.pi/state/
+/.pi/history/
+
+# Dependencies and virtual environments
+/node_modules/
+/.venv/
+/.venv_x64/
+/.venv_qairt/
+__pycache__/
+*.py[cod]
+
+# Test and tool caches
+/.pytest_cache/
+/.mypy_cache/
+/.ruff_cache/
+/coverage/
+.coverage
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo

@@ -1,0 +1,16 @@
+WiFi Connectivity Issue Triage Report
+
+1. What Happened
+
+Observed Symptom
+• STA Unknown is experiencing DATA_STALL on WiFi
+
+2. Root Cause Analysis
+
+Primary Suspected Causes (Ranked by Likelihood)
+MEDIUM Likelihood: High data retry percentage causing data stall
+• The high data retry percentage indicates that the AP is experiencing frequent data retransmissions, which can lead to data stalls.
+• Evidence: Stats show data_retry_pct = 0.820513
+MEDIUM Likelihood: Tx data frame drop
+• The high number of data frame retransmissions suggests that data frames are being dropped during transmission, which can contribute to data stalls.
+• Evidence: Stats show tx_xretry = 96

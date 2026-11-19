@@ -1,0 +1,76 @@
+schema_version: "1.0"
+id: "qli-linux-domain"
+name: "QLI Linux Domain"
+version: "2.0.0"
+description: "Context document providing supported-device, platform, safety, and evidence constraints for QLI Linux device skills."
+entrypoint: "SKILL.md"
+kind: "context-document"
+language: "en"
+usage:
+  load_as: "system-prompt-injection or referenced document — not a selectable skill"
+  inject_before:
+    - "All domain-layer QLI skills"
+    - "The developer-readiness-assessment journey skill"
+  note: >
+    Reclassified from domain-skill to context-document (2026-10-22).
+    This file never executes — it documents constraints that shape how skills
+    behave. Load it as injected context; do not present it as a selectable skill.
+capabilities:
+  - "Supported-device and platform context"
+  - "QLI safety and evidence policy"
+  - "Skill selection constraints"
+synapse:
+  layer: "context"
+  domain: "qli-linux"
+  owner: "Srinivas Reddy Gudala"
+  backup_owner: "DevRel Developer Experience team"
+  review_cadence: "Each major SDK or QLI device release"
+  visibility: "internal"
+  maturity: "pilot"
+  developer_journey_stage:
+    - "discovery"
+    - "enablement"
+    - "platform-experience"
+  supported_versions: ["Qualcomm Linux (QLI) 2.0", "QAIRT 2.47.x host runtime"]
+  dependencies: []
+  supported_devices:
+    - "IQ8"
+    - "IQ9"
+    - "Linux-based QLI targets with equivalent tools"
+  supported_platforms:
+    - "Qualcomm Linux"
+  authoritative_docs:
+    - "../../README.md"
+    - "references/domain-support.md"
+  feedback_channel: >
+    GitHub Issues on the qa-intermediate-curriculum repository (label: synapse-context).
+  deprecation_path: >
+    Set maturity: "deprecated" and announce via feedback_channel with 30-day notice.
+    All skills that inject this document must be updated to reference the replacement.
+authority:
+  source_docs: "See synapse.authoritative_docs"
+  approved_tools: []
+  endpoints: []
+  provenance: "qa-intermediate-curriculum/projects/qli_dogfooding; run evidence under evidence/<device>-YYYY-MM-DD/"
+control:
+  approval_gates: "See safety.requires_explicit_approval"
+  consequential_actions: []
+  recovery_and_rollback: "Not executable. Revert to the previous document version if a change is wrong."
+review_gates:
+  # pilot = gates 1 + 3 met; supported = all six met (Synapse deck slide 6)
+  ownership: "met"
+  scope_and_boundary: "met: supported devices, platforms, and safety gates declared"
+  validation_evidence: "n/a: context document, not executable"
+  feedback_mechanism: "declared; reader is the named owner"
+  discoverability: "open: not yet listed in product or SDK documentation"
+  lifecycle_commitment: "met"
+project:
+  root_relative_to_skill: "../.."
+safety:
+  default_mode: "non-destructive"
+  requires_explicit_approval:
+    - "Flashing or recovery"
+    - "Network configuration changes"
+    - "Controlled crash testing"
+    - "Overwriting deliverables"
+  secrets_policy: "Never persist credentials, tokens, private keys, or passwords."

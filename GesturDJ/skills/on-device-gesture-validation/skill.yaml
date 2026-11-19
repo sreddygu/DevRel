@@ -1,0 +1,76 @@
+schema_version: "1.0"
+id: "on-device-gesture-validation"
+name: "On-Device Gesture Validation"
+version: "0.2.0"
+description: "On the machine that will run the recognizer, measure whether the exported model matches the original, keeps its held-out accuracy, and meets the recognition latency budget."
+entrypoint: "SKILL.md"
+kind: "domain-skill"
+language: "en"
+selection:
+  aliases: ["gesture validation", "recognizer latency", "onnx parity check"]
+  triggers: ["Is my gesture model working on the board", "Is gesture recognition fast enough", "Validate the exported gesture model"]
+synapse:
+  layer: "domain"
+  domain: "gesturdj"
+  owner: "Srinivas Reddy Gudala"
+  backup_owner: "TBD: community maintainers (see finding F20 in ../../GESTURDJ_SYNAPSE_SKILLS.md)"
+  review_cadence: "Each ONNX Runtime or PyTorch major release, or Ventuno Q image release"
+  visibility: "public"
+  maturity: "proposed"
+  supported_versions: ["Arduino Ventuno Q (Ubuntu): not yet tested", "Windows PC, Python 3.10, numpy 2.2, scikit-learn 1.7, torch 2.14, onnx 1.23, onnxruntime 1.23 (tested 2026-11-05)"]
+  feedback_channel: >
+    TBD: Developer Portal community channel. Until it exists, GitHub Issues on the
+    qa-intermediate-curriculum repository (label: synapse-gesturdj).
+  deprecation_path: >
+    Set maturity: "deprecated" and announce via feedback_channel with 30-day notice;
+    point to the replacement skill.
+  developer_journey_stage: ["enablement", "platform-experience"]
+  dependencies: ["gesture-event-contract", "p3-self-service-boundaries", "model-export-and-deployment"]
+  authoritative_docs: ["../../GESTURDJ_SYNAPSE_SKILLS.md", "../../gesture_scripts/README.md", "../../gesture_scripts/validate_onnx.py"]
+  a2a:
+    role: "skill"
+    accepts_from: ["gesturdj-agent", "gesturdj-build-journey"]
+contract:
+  prerequisites: ["Packaged model files from model-export-and-deployment on the target", "The dataset folder (or a copy of it) on the target", "numpy and onnxruntime on the target; torch only if the parity check is wanted"]
+  inputs: ["Model folder", "Dataset folder", "Seed and held-out fraction used in training", "Latency budget for recognition alone (default 50 ms of the 200 ms gesture-to-sound budget)"]
+  outputs: ["onnx-validation.json: held-out accuracy (with sample count), parity (max abs logit difference), latency p50/p95/max", "A verdict: pass | fail, naming the failed check"]
+  negative_scope:
+    - "Does not retrain, edit or re-export the model"
+    - "Does not measure audio, mixer or end-to-end gesture-to-sound latency (live-mixer-and-latency-validation, planned)"
+    - "Does not claim a result for a machine it was not run on"
+  validation:
+    - "parity max abs logit difference <= 1e-3 (skipped with --no_parity where torch is absent; say it was skipped)"
+    - "held-out accuracy computed with the same seed/split as training and reported with its sample count"
+    - "latency p95 <= budget over at least 300 single-sample runs including preprocessing"
+  failure_behavior: "Report which check failed with its number; a parity failure blocks deployment; do not loosen the tolerance or budget to pass."
+  known_failure_modes:
+    - "A different seed or test_size than training evaluates on samples the model trained on and inflates accuracy"
+    - "Parity needs torch, which cannot be imported safely on a Ventuno Q: validate parity on the PC, then run --no_parity on the board"
+    - "Emulated Python on an ARM64 PC (this PC) is slower than native; numbers from it are not a Ventuno Q prediction"
+  two_config_evidence:
+    - "PC (Windows ARM64 host, x64 Python 3.10 under emulation, clean venv), 2026-11-05: parity 1.19e-06, held-out accuracy 1.0 on 30 samples, latency p50 0.17 ms / p95 0.75 ms against a 50 ms budget (evidence/pc-run/onnx-validation.json)"
+    - "PC torch-free environment (numpy + onnxruntime only), 2026-11-05: parity skipped, accuracy 1.0, p95 0.31 ms (evidence/pc-run/onnx-validation-torchfree.json)"
+    - "Qualcomm IQ8 board (aarch64, Qualcomm Linux 2.0, Python 3.14.4, ONNX Runtime 1.31.1, no torch), 2026-11-10: parity skipped, accuracy 1.0 on 30 samples, latency p50 0.228 ms / p95 0.282 ms against a 50 ms budget (evidence/iq8-run/onnx-validation.json)"
+    - "Ventuno Q: not run"
+authority:
+  source_docs: "See synapse.authoritative_docs"
+  approved_tools: ["gesture_scripts/validate_onnx.py"]
+  endpoints: []
+  provenance: "projects/gesture_recognition (gesture_scripts/); PC run evidence under evidence/pc-run/"
+control:
+  approval_gates: "See safety.requires_explicit_approval"
+  consequential_actions: []
+  recovery_and_rollback: "Read-only; no rollback needed."
+review_gates:
+  # pilot = gates 1 + 3 met; supported = all six met
+  ownership: "met: named owner; backup owner open (F20)"
+  scope_and_boundary: "met: see negative_scope"
+  validation_evidence: "partial: 2 PC configurations run (with and without torch); Ventuno Q not run"
+  feedback_mechanism: "open: community channel not yet defined"
+  discoverability: "open: not yet on the Developer Portal"
+  lifecycle_commitment: "open: community maintenance model undefined (F20)"
+project:
+  root_relative_to_skill: "../.."
+safety:
+  default_mode: "non-destructive"
+  secrets_policy: "Never persist credentials, tokens, private keys, or passwords. Read them from environment variables; redact before logging."

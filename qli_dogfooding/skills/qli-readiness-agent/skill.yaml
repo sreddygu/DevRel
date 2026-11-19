@@ -1,0 +1,170 @@
+schema_version: "1.0"
+id: "qli-readiness-agent"
+name: "QLI Readiness Agent"
+version: "1.0.0"
+description: >
+  Agent-layer coordinator for QLI device readiness. Interprets developer intent,
+  selects the smallest safe skill path, presents a plan before consequential actions,
+  enforces approval gates, checkpoints execution, and routes failures to recovery.
+entrypoint: "SKILL.md"
+kind: "agent-skill"
+language: "en"
+
+synapse:
+  layer: "agent"
+  domain: "qli-linux"
+  owner: "Srinivas Reddy Gudala"
+  backup_owner: "DevRel Developer Experience team"
+  review_cadence: "Each major SDK or QLI device release"
+  visibility: "internal"
+  maturity: "pilot"
+  developer_journey_stage:
+    - "discovery"
+    - "enablement"
+    - "platform-experience"
+  supported_versions: ["Qualcomm Linux (QLI) 2.0", "QAIRT 2.47.x host runtime"]
+  dependencies:
+    - "qli-linux-domain"
+    - "developer-readiness-assessment"
+    - "domain skills"
+    - "MCP tools"
+  authoritative_docs:
+    - "../../README.md"
+    - "../developer-readiness-assessment/SKILL.md"
+    - "../../docs/synapse-guide.md"
+  feedback_channel: >
+    GitHub Issues on the qa-intermediate-curriculum repository (label: synapse-agent).
+    For internal gaps, use the DevRel intake form.
+  a2a:
+    role: "orchestrator"
+    accepts_from: ["developer-harness", "ci-runner"]
+    delegates_to: ["developer-readiness-assessment", "domain-skills", "mcp-tools"]
+    communication_metadata:
+      protocol: "A2A"
+      message_format: "intent + context bundle"
+      checkpoint_format: "approved-plan + execution-log"
+  deprecation_path: >
+    Mark maturity: "deprecated" in this skill.yaml and the journey skill.
+    Announce via the feedback_channel with a minimum 30-day notice.
+    Provide a migration note pointing to the replacement agent.
+
+selection:
+  aliases:
+    - "QLI readiness agent"
+    - "device readiness coordinator"
+    - "Synapse QLI agent"
+  triggers:
+    - "Start or resume a QLI device readiness assessment"
+    - "Select the right skill for a QLI developer request"
+    - "Enforce safety gates and approval checkpoints during QLI validation"
+    - "Route a failed QLI operation to recovery"
+
+responsibilities:
+  - "Interpret developer intent and identify the required outcome"
+  - "Inject qli-linux-domain context before any skill runs"
+  - "Select the smallest safe path: prefer MCP tools over domain skills over the journey"
+  - "Present a structured plan and obtain approval before any consequential action"
+  - "Checkpoint execution state after each step so work can resume on failure"
+  - "Route validation failures to diagnostic-log-collection and propose recovery"
+  - "Validate the final outcome against declared skill contracts before reporting success"
+  - "Never report success for an unverified result"
+
+not_responsible_for:
+  - "Implementing device operations (delegated to domain skills and MCP tools)"
+  - "Owning readiness evidence format (defined by qli-linux-domain context)"
+  - "Executing shell commands directly (mediated through skill and tool contracts)"
+  - "Governance decisions on external exposure (AI Council boundary)"
+
+composition:
+  context_documents:
+    - "qli-linux-domain"
+  journey_skills:
+    - "developer-readiness-assessment"
+  domain_skills:
+    - "host-environment-validation"
+    - "device-identity-discovery"
+    - "baseline-evidence-collection"
+    - "ai-model-execution"
+    - "diagnostic-log-collection"
+  mcp_tools:
+    - "device-connectivity-validation"
+    - "ai-inference-benchmark"
+    - "readiness-report-generation"
+
+approval_gates:
+  - action: "Any destructive or state-changing operation"
+    gate: "Present plan, state before/after, wait for explicit user approval"
+  - action: "Flash or recovery"
+    gate: "Explicit user confirmation required; abort if not received"
+  - action: "Wi-Fi switching or static-IP activation"
+    gate: "Explicit user confirmation required"
+  - action: "Overwriting an existing workbook or report"
+    gate: "Explicit user confirmation required"
+
+failure_behavior:
+  on_skill_failure: "Collect diagnostics via diagnostic-log-collection; propose recovery action; do not silently continue"
+  on_gate_rejection: "Stop the current branch; explain what was blocked and why; offer alternative"
+  on_unverified_outcome: "Do not report success; surface the gap and request guidance"
+  on_missing_prerequisite: "Invoke host-environment-validation or device-identity-discovery to resolve before proceeding"
+
+contract:
+  prerequisites:
+    - "Developer intent statement"
+    - "Target device host or label"
+    - "QLI Linux context injected (qli-linux-domain)"
+  inputs:
+    - "Developer intent"
+    - "Device context (host, label, release)"
+    - "Scope constraints (single workflow vs. full assessment)"
+  outputs:
+    - "Approved execution plan"
+    - "Step-by-step checkpoint log"
+    - "Validated outcome or explicit recovery action"
+  negative_scope:
+    - "Does not perform device operations itself — all execution is delegated"
+    - "Does not bypass approval gates under any circumstance"
+    - "Does not interpret ambiguous intent silently — surfaces ambiguity to the developer"
+  validation:
+    - "Every delegated skill returns a validated result or an explicit failure"
+    - "Approval gates are recorded in the checkpoint log"
+    - "No outcome is reported as complete without matching evidence"
+  two_config_evidence:
+    - "IQ9 (v73, QLI 2.0): delegated path evidenced through baseline, AI execution, and benchmark, 2026-08-12"
+    - "IQ8 (v75, QLI 2.0): skill executed by a hosting agent 2026-10-26: connectivity, host validation, baseline, NPU execution, benchmark all PASS; static-IP request held at the approval gate, network verified unchanged (evidence/iq8-2026-10-26/agent_run/checkpoint_log.md)"
+  known_failure_modes:
+    - "SSH unreachable: routes to device-connectivity-validation, then diagnostic-log-collection"
+    - "Model runner missing: routes to host-environment-validation, surfaces gap"
+    - "Approval gate timeout: halts execution, logs state, waits for user resume"
+    - "Deliverable overwrite blocked: requests explicit approval before retrying"
+
+authority:
+  source_docs: "See synapse.authoritative_docs"
+  approved_tools:
+    - "Delegates only; executes nothing directly"
+  endpoints:
+    - "None directly; delegated skills declare their own"
+  provenance: "qa-intermediate-curriculum/projects/qli_dogfooding; run evidence under evidence/<device>-YYYY-MM-DD/"
+control:
+  approval_gates: "See safety.requires_explicit_approval"
+  consequential_actions:
+    - "Approves or rejects consequential actions requested by delegated skills"
+  recovery_and_rollback: "On failure: diagnostic-log-collection, then a proposed recovery action; resume from checkpoint log."
+review_gates:
+  # pilot = gates 1 + 3 met; supported = all six met (Synapse deck slide 6)
+  ownership: "met"
+  scope_and_boundary: "met"
+  validation_evidence: "met: executed end-to-end by a hosting agent on IQ8 2026-10-26 (evidence/iq8-2026-10-26/agent_run/); static-IP approval gate held; 14 protocol gaps logged for v1.1"
+  feedback_mechanism: "declared; reader is the named owner"
+  discoverability: "open: not yet listed in product or SDK documentation"
+  lifecycle_commitment: "met"
+project:
+  root_relative_to_skill: "../.."
+
+safety:
+  default_mode: "non-destructive"
+  requires_explicit_approval:
+    - "Flashing or recovery"
+    - "Wi-Fi switching or static-IP activation"
+    - "Controlled crash testing"
+    - "Overwriting device or user deliverables"
+  secrets_policy: "Never persist credentials, tokens, private keys, or passwords. Redact before logging."

@@ -1,0 +1,124 @@
+schema_version: "1.0"
+id: "developer-readiness-assessment"
+name: "Developer Readiness Assessment"
+version: "1.1.0"
+description: "Assess developer readiness across device lifecycle, connectivity, media, storage, AI, agents, debugging, deployment, evidence, workbook, and report workflows."
+entrypoint: "SKILL.md"
+kind: "procedural-skill"
+language: "en"
+synapse:
+  layer: "journey"
+  domain: "qli-linux"
+  owner: "Srinivas Reddy Gudala"
+  backup_owner: "DevRel Developer Experience team"
+  review_cadence: "Each major SDK or QLI device release"
+  visibility: "internal"
+  maturity: "pilot"
+  developer_journey_stage:
+    - "discovery"
+    - "enablement"
+    - "platform-experience"
+  supported_versions: ["Qualcomm Linux (QLI) 2.0", "QAIRT 2.47.x host runtime"]
+  dependencies:
+    - "qli-linux-domain"
+    - "domain skills and MCP tools listed in composition"
+  authoritative_docs:
+    - "../../README.md"
+    - "references/assessment-playbook.md"
+    - "references/status-and-evidence.md"
+  feedback_channel: >
+    GitHub Issues on the qa-intermediate-curriculum repository (label: synapse-journey).
+    For internal gaps, use the DevRel intake form.
+  a2a:
+    role: "skill"
+    accepts_from: ["qli-readiness-agent"]
+    delegates_to: ["domain-skills", "mcp-tools"]
+  deprecation_path: >
+    Set maturity: "deprecated" and announce via feedback_channel with 30-day notice.
+  composition:
+    context_documents:
+      - "qli-linux-domain"
+    domain_skills:
+      - "host-environment-validation"
+      - "device-identity-discovery"
+      - "baseline-evidence-collection"
+      - "ai-model-execution"
+      - "diagnostic-log-collection"
+    mcp_tools:
+      - "device-connectivity-validation"
+      - "ai-inference-benchmark"
+      - "readiness-report-generation"
+compatibility:
+  framework: "agnostic"
+  model_requirements:
+    - "Can follow structured instructions"
+    - "Can read local files"
+    - "Can execute or request execution of shell commands"
+  optional_capabilities:
+    - "SSH or remote-command tools"
+    - "Spreadsheet editing"
+    - "Word document automation"
+selection:
+  aliases:
+    - "developer readiness"
+    - "device readiness assessment"
+    - "device dogfooding"
+    - "QLI dogfooding"
+    - "edge device validation"
+  triggers:
+    - "Assess a new device or software image"
+    - "Run or rerun device dogfooding workflows"
+    - "Validate networking, audio, camera, storage, AI, agents, debugging, or deployment"
+    - "Create or synchronize a readiness workbook and report"
+    - "Compare readiness results across devices"
+    - "Triage partial, blocked, or failed readiness activities"
+capabilities:
+  - "Baseline device evidence collection"
+  - "51-workflow readiness orchestration"
+  - "Safety gating for destructive or connectivity-risk operations"
+  - "Status and evidence normalization"
+  - "Workbook and Word report generation"
+  - "Cross-device comparison and rerun planning"
+resources:
+  instructions: "SKILL.md"
+  workflow_map: "references/workflow-map.md"
+  playbook: "references/assessment-playbook.md"
+  evidence_rules: "references/status-and-evidence.md"
+  integration: "references/framework-integration.md"
+  validator: "scripts/inspect_toolkit.py"
+authority:
+  source_docs: "See synapse.authoritative_docs"
+  approved_tools:
+    - "src/*.py workflow modules"
+    - "scripts/*.py and scripts/*.ps1 automation"
+  endpoints:
+    - "SSH (TCP/22) to the approved target device; address supplied at runtime, never stored"
+  provenance: "qa-intermediate-curriculum/projects/qli_dogfooding; run evidence under evidence/<device>-YYYY-MM-DD/"
+control:
+  approval_gates: "See safety.requires_explicit_approval"
+  consequential_actions:
+    - "Flashing or recovery"
+    - "Wi-Fi switching or static-IP activation"
+    - "Controlled crash testing"
+    - "Overwriting device or user deliverables"
+  recovery_and_rollback: "Connectivity changes need a rollback plan and alternate access path first (qli_network_apps.py DHCP restore). Flash/recovery follows the assessment playbook."
+review_gates:
+  # pilot = gates 1 + 3 met; supported = all six met (Synapse deck slide 6)
+  ownership: "met"
+  scope_and_boundary: "met"
+  validation_evidence: "met: IQ9 full assessment 2026-08-12 (36 Completed); IQ8 deep rerun 2026-10-26 (28 Completed, 2 Partial, 8 Blocked by missing camera sensor/LLM); remaining Not Tested are approval-gated (flash, Wi-Fi, static IP)"
+  feedback_mechanism: "declared; reader is the named owner"
+  discoverability: "open: not yet listed in product or SDK documentation"
+  lifecycle_commitment: "met"
+project:
+  root_relative_to_skill: "../.."
+  source_directory: "../../src"
+  automation_directory: "../../scripts"
+safety:
+  default_mode: "non-destructive"
+  requires_explicit_approval:
+    - "Flashing or recovery"
+    - "Wi-Fi switching or static-IP activation"
+    - "Controlled crash testing"
+    - "Overwriting device or user deliverables"
+  secrets_policy: "Never persist credentials, tokens, private keys, or passwords."

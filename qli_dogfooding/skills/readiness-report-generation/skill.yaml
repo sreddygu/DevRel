@@ -1,0 +1,89 @@
+schema_version: "1.0"
+id: "readiness-report-generation"
+name: "Readiness Report Generation"
+version: "2.0.0"
+description: "Generate synchronized QLI readiness summary, workbook, and report deliverables from verified evidence."
+entrypoint: "SKILL.md"
+kind: "mcp-tool-candidate"
+language: "en"
+selection:
+  aliases: ["create readiness report", "generate QLI workbook"]
+  triggers: ["Create readiness deliverables from verified QLI evidence"]
+synapse:
+  layer: "mcp-tool"
+  domain: "qli-linux"
+  owner: "Srinivas Reddy Gudala"
+  backup_owner: "DevRel Developer Experience team"
+  review_cadence: "Each major SDK or QLI device release"
+  visibility: "internal"
+  maturity: "pilot"
+  developer_journey_stage:
+    - "platform-experience"
+  supported_versions: ["Qualcomm Linux (QLI) 2.0", "QAIRT 2.47.x host runtime"]
+  dependencies:
+    - "qli-linux-domain"
+    - "baseline-evidence-collection"
+  classification_note: >
+    Collapsed from foundational skill to MCP tool (2026-10-22).
+    Three-script pipeline (build_qli_device_summary → create_qli_device_workbook →
+    create_qli_device_report) is deterministic once summary JSON exists.
+    No agent judgment required. Document the sequence in the assessment playbook;
+    expose the pipeline as an MCP tool.
+    MCP-first: check the shared MCP inventory before re-implementing.
+  authoritative_docs:
+    - "../../scripts/build_qli_device_summary.py"
+    - "../../scripts/create_qli_device_workbook.py"
+    - "../../scripts/create_qli_device_report.ps1"
+  feedback_channel: >
+    GitHub Issues on the qa-intermediate-curriculum repository (label: synapse-mcp).
+  a2a:
+    role: "tool"
+    accepts_from: ["qli-readiness-agent", "developer-readiness-assessment"]
+  deprecation_path: >
+    Set maturity: "deprecated" and announce via feedback_channel with 30-day notice.
+contract:
+  prerequisites: ["Verified baseline and deep evidence", "Approved output paths"]
+  inputs: ["Device metadata", "Evidence paths", "Optional verified result overrides"]
+  outputs: ["Summary JSON", "Workbook", "Word report"]
+  negative_scope:
+    - "Does not validate or modify evidence — summary reflects evidence as-is"
+    - "Does not overwrite existing deliverables without explicit approval"
+  state_before: "Evidence files exist at declared paths; output directory is writable"
+  state_after: "Summary JSON, workbook, and Word report written to output directory"
+  validation: ["Status totals and completed records reconcile across all deliverables"]
+  failure_behavior: "Record which pipeline step failed and its error; do not produce partial deliverables silently."
+  known_failure_modes:
+    - "Evidence path missing: surface path error; do not run pipeline on empty input"
+    - "Overwrite blocked: gate requires explicit approval before retrying"
+    - "Word COM unavailable: report limitation; produce JSON and workbook only"
+  two_config_evidence:
+    - "IQ8: summary JSON 2026-08-17 (evidence/iq8-2026-08-17/summary.json); workbook resources/QLI_Dogfooding_Hub_completed_2026-08-11.xlsx; report render check resources/QLI_Dogfooding_on_IQ8_render_check.pdf"
+    - "IQ9: full pipeline run 2026-10-26 from 2026-08-12 evidence; summary, workbook, and Word report reconcile (36/3/2/1/8/1) (evidence/iq9-2026-10-26-report/)"
+authority:
+  source_docs: "See synapse.authoritative_docs"
+  approved_tools:
+    - "scripts/build_qli_device_summary.py"
+    - "scripts/create_qli_device_workbook.py"
+    - "scripts/create_qli_device_report.ps1"
+  endpoints:
+    - "None; runs on the host only"
+  provenance: "qa-intermediate-curriculum/projects/qli_dogfooding; run evidence under evidence/<device>-YYYY-MM-DD/"
+control:
+  approval_gates: "See safety.requires_explicit_approval"
+  consequential_actions:
+    - "Writes summary JSON, workbook, and Word report"
+    - "Overwrites existing deliverables (approval-gated)"
+  recovery_and_rollback: "Regenerate from evidence; existing deliverables are never overwritten without approval."
+review_gates:
+  # pilot = gates 1 + 3 met; supported = all six met (Synapse deck slide 6)
+  ownership: "met"
+  scope_and_boundary: "met"
+  validation_evidence: "met: IQ8 and IQ9 pipelines, status totals reconciled across deliverables"
+  feedback_mechanism: "declared; reader is the named owner"
+  discoverability: "open: not yet listed in product or SDK documentation"
+  lifecycle_commitment: "met"
+project:
+  root_relative_to_skill: "../.."
+safety:
+  default_mode: "non-destructive"
+  requires_explicit_approval: ["Overwriting an existing workbook or report"]

@@ -1,0 +1,30 @@
+{
+  "runs": 3,
+  "trials_each": 12,
+  "rate": 48000,
+  "stream_latency_ms": 20,
+  "hw_queue_ms_assumed": 52.7,
+  "warm_stream_ms": {
+    "p50_range": [
+      36.8,
+      37.8
+    ],
+    "p95_range": [
+      44.1,
+      47.9
+    ],
+    "max": 59.4
+  },
+  "per_gesture_player_ms_warm_device": {
+    "p50_range": [
+      116.1,
+      132.3
+    ],
+    "p95_range": [
+      144.9,
+      151.6
+    ],
+    "max": 152.8
+  },
+  "note": "software path to a null sink (recorder with 10 ms chunks); add the hardware queue for the path to the converter; per-gesture player here starts on an already-running sound server, not a cold ALSA device (that adds the device open, see hw-latency.json); not acoustic"
+}

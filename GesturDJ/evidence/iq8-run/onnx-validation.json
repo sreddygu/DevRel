@@ -1,0 +1,22 @@
+{
+  "platform": "Linux aarch64",
+  "python": "3.14.4",
+  "onnxruntime": "1.31.1",
+  "samples": 150,
+  "accuracy": {
+    "heldout_samples": 30,
+    "accuracy": 1.0
+  },
+  "parity": {
+    "skipped": true
+  },
+  "latency_ms": {
+    "p50": 0.228,
+    "p95": 0.282,
+    "max": 4.341,
+    "budget": 50.0,
+    "ok": true,
+    "runs": 300
+  },
+  "ok": true
+}

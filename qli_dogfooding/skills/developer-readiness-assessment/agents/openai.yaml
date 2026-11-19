@@ -1,0 +1,4 @@
+interface:
+  display_name: "Developer Readiness Assessment"
+  short_description: "Assess device readiness across 51 workflows"
+  default_prompt: "Use $developer-readiness-assessment to plan and execute a safe dogfooding readiness assessment for this device."

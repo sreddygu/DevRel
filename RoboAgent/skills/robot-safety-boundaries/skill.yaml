@@ -1,0 +1,29 @@
+schema_version: "1.0"
+id: "robot-safety-boundaries"
+name: "RoboAgent Safety Boundaries"
+version: "0.1.0"
+description: "Inject RoboAgent's read-only-first policy and interactive approval boundaries."
+entrypoint: "SKILL.md"
+kind: "context-skill"
+language: "en"
+selection:
+  aliases: ["RoboAgent safety", "RoboAgent approval policy"]
+  triggers: ["Any RoboAgent request"]
+synapse:
+  layer: "context"
+  domain: "roboagent"
+  owner: "P3 portfolio maintainers"
+  review_cadence: "Each tool-policy or runtime update"
+  visibility: "public"
+  maturity: "pilot"
+  developer_journey_stage: ["enablement", "platform-experience"]
+  authoritative_docs: ["../../AGENTS.md", "../../.pi/skills/roboagent-pi/SKILL.md"]
+contract:
+  inputs: ["RoboAgent request context"]
+  outputs: ["Applicable safety and approval constraints"]
+  negative_scope: ["Does not grant mutation authority", "Does not override project safety guidance"]
+  validation: ["Every mutation or host-control action is explicitly approved"]
+safety:
+  default_mode: "non-destructive"
+  requires_explicit_approval: ["Writing files", "Applying patches", "Running commands", "Starting or restarting the host", "Enabling mutation tools"]
+  secrets_policy: "Never store credentials, tokens, private keys, or private endpoints."

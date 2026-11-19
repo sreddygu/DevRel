@@ -1,0 +1,163 @@
+WIN Connectivity Issues Triage Report
+
+1. What Happened
+
+Observed Symptom
+Primary Issue: Complete data stall detected on WiFi1 (6G band)
+Detection Time: Sun Oct 12 15:57:54 2025
+Severity: Critical - 98.15% data retry rate indicating near-total transmission failure
+Supporting Log Evidence
+Fault Detection System Alert
+Anomaly Type: DATA STALL
+Data retry PCT: 0.981485 (98.15%)
+Anomaly detected on band: 6G
+Timestamp: Sun Oct 12 15:57:54 2025
+[[Knowledge: WIN_Connectivity Issues - Wifi Debug handbook|rule:"5.Connection
+stability - Data Stall"|context:The fault detection system identified a critical data stall
+condition on the 6G band with retry rate exceeding 98%, matching the knowledge base
+pattern for connection stability issues]]
+TX Statistics (wifi1wifistats1.txt)
+hw_queued = 25549
+ppdu_ok = 14412
+tx_xretry = 6920 (excessive retries)
+hw_paused = 6436
+hw_flush = 2216
+mpdu_count_tqm = 634
+HW Queue Analysis (wifi1wifistats3.txt)
+hwq_id = 0 (Beacon Queue)
+user_ack_failure = 11306
+mpdu_tried_cnt = 11306
+mpdu_queued_cnt = 11306
+Rate Control Statistics (wifi1wifistats9.txt)
+rts_cnt = 7985
+rts_success = 1105 (13.8% success rate)
+Legacy OFDM 6 Mbps: 11486 (fallback to lowest rate)
+ack_rssi = 39
+Environment Context
+Band: 6G (WiFi1)
+Role: Access Point
+Firmware: WLAN.WBE.1.6.r1
+Chip: WKK
+Security: Not specified in logs (likely WPA3 for 6G)
+
+2. Root Cause Analysis
+
+Primary Root Cause: Channel Access Failure with Severe Interference
+[HIGH Confidence]
+Why this matches:
+The combination of 98% retry rate with 13.8% RTS success directly maps to the KB
+section on "5.1 Tx path stability - Tx stuck"
+Pattern matches "excessive retry" kickout reason
+(WMI_PEER_STA_KICKOUT_REASON_XRETRY)
+HW flush count (2216) indicates frames expired due to lifespan
+(WIFILIFESPAN_EXPIRY_FAIL_E = 3)
+KB Correlation: [[Knowledge: WIN_Connectivity Issues - Wifi Debug
+handbook|rule:"Check if Channel access delay is causing beacon tx expiration or
+latency"|context:The high hw_flush count and tx_xretry values match the pattern for
+channel access delays causing transmission failures, as documented in the beacon
+delay section]]
+Alternative Hypotheses
+Medium Likelihood: CCA Threshold Misconfiguration
+ACK RSSI (39) significantly higher than RX RSSI (-55 dBm) suggests asymmetric
+link
+Could indicate CCA threshold too sensitive, causing false busy detection
+KB Reference: "Check CCA threshold value" guidance in beacon delay
+troubleshooting
+Low Likelihood: Hardware/PHY Issue
+No phy_warm_reset increments reported
+RX path appears functional (rssi_in_dbm = -55)
+Less likely but cannot rule out without PHY reset statistics
+
+3. Why This Root Cause Fits
+
+Specific Reasoning Chain
+1. Channel Access Failure Pattern
+RTS Success Rate: 13.8% → Channel severely congested or interference
+present
+Matches KB pattern: rts_cnt = 7985, rts_success = 1105
+2. Transmission Queue Behavior
+HW Paused: 6436 times → Scheduler repeatedly halting transmission
+HW Flush: 2216 → Frames expiring before transmission (50ms lifespan)
+Maps to scheduler result code 3 (WIFILIFESPAN_EXPIRY_FAIL_E)
+3. Rate Fallback Evidence
+11,486 frames transmitted at 6 Mbps (lowest OFDM rate)
+Only 2,408 frames using higher MCS rates
+Classic interference/poor channel response pattern
+4. Beacon Transmission Failure
+Beacon queue shows 11,306 ACK failures
+Critical as beacon failures cause client disconnections
+Matches KB: "beacon drop due to expiration to send over the air"
+Stats Verification
+TX Success Rate: 56.41% (14412/25549) - Well below acceptable threshold
+Data Retry: 98.15% - Catastrophic retry rate
+RTS Protection: Failed 86.16% of attempts - Channel access severely impaired
+
+4. Mitigation / Next Steps
+
+Immediate Actions (Low Risk)
+1. Adjust CCA Threshold (Per KB recommendation)
+cfg80211tool wifi1 cca_threshold -65
+2. Enable Enhanced Debug Logging
+cfg80211tool ath1 csl 1
+cfg80211tool ath1 dbgLVL 0x80c00000
+cnss_diag -pc | grep -e MGMT_TXRX -e KICKOUT -e BEACON
+3. Check for PHY Warm Resets
+wifistats wifi1 5 | grep phy_warm_reset
+Verification Steps
+1. Monitor Beacon Transmission Recovery
+wifistats wifi1 19 --wmi # Per-VAP beacon stats
+wifistats wifi1 20 --wmi # Per-radio beacon stats
+2. Capture Enhanced Packet Logs
+pktlogconf -a wifi1 -elite,rcu,rcf -s 30000000
+3. Check CCA Histogram
+wifistats wifi1 19 # CCA histogram analysis
+Escalation Actions
+If issue persists after CCA adjustment:
+1. Perform PHY/MAC Reset
+wifitool ath1 setUnitTestCmd 0x48 2 1 6 # MAC reset
+wifitool ath1 setUnitTestCmd 0x48 2 1 9 # PHY warm reset
+2. Channel Change
+Move to different 6G channel to avoid interference
+Consider DFS channels if available
+3. Capture OTA Traces
+Deploy sniffer on affected 6G channel
+Correlate with pktlog for frame-level analysis
+
+5. Open Questions / Gaps
+
+Missing Information
+1. Hostapd Logs: No hostapd logs provided - would show client
+association/disconnection events
+2. Kernel/dmesg Logs: Missing system logs that might show driver errors
+3. Client-side Logs: No wpa_supplicant logs to understand client perspective
+4. Channel Information: Current operating channel and bandwidth not specified
+5. PHY Reset Statistics: Need wifistats wifi1 5 output to check warm reset history
+6. Interference Source: No spectral scan or ACS data to identify interference
+Suggested Additional Data Collection
+# Collect comprehensive diagnostics
+hostapd_cli all_sta
+iw dev ath1 info
+iw dev ath1 survey dump
+wifistats wifi1 5 --wmi # PHY reset reasons
+wifistats wifi1 37 # PHY layer drops
+devmem 0xCAAA10c # 5G RX busy register
+
+6. References
+
+Knowledge Base References (knowledge.txt)
+• Section:"5.1 Tx path stability"|context:Comprehensive TX stuck and retry analysis procedures
+• Section:"1.1 No/Long interval beacon"|context:Beacon transmission failure patterns and mitigation
+• Section:"Check CCA threshold value"|context:Channel Clear Assessment adjustment procedures
+Log Files Analyzed
+• pktlog_xretry_sudden_increase_wifi1.txt: Packet log showing excessive retry patterns
+• wifi1wifistats[1,3,9,10].txt: Comprehensive WiFi statistics snapshots
+• 7_fd_logs.txt: Fault detection system anomaly report
+• Time Range: Snapshot taken at Sun Oct 12 15:57:54 2025
+
+Confidence Assessment
+Overall Confidence: HIGH (85%)
+Reasoning: Multiple independent indicators converge on channel access failure
+Stats Alignment: TX retry, RTS failure, and HW flush metrics all correlate
+KB Match: Strong correlation with documented TX stuck patterns
+Report Generated: Using WIN Connectivity Issues Workflow Analysis Framework:
+Unified Execution Framework with mandatory verification

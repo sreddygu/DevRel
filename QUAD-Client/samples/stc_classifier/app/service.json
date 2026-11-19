@@ -1,0 +1,22 @@
+{
+  "name": "stc_classifier",
+  "type": "native",
+  "binary": "/usr/bin/stc_classifier",
+  "args": [],
+  "restart_policy": "on-failure",
+  "restart_delay_ms": 5000,
+  "keepalive_interval_ms": 5000,
+  "keepalive_threshold_ms": 25000,
+  "license_features": ["smart_traffic_classifier"],
+  "nwaios": {
+    "model_path": "/var/run/nwaios/stc_classifier/m.bin",
+    "compute_engine": "aim_htp"
+  },
+  "metadata": {
+    "generated_by": "QUAD codegen (modular scaffold)",
+    "source_model": "/host/stc_classifier.bin",
+    "target_arch": "aarch64-openwrt-linux",
+    "task": "smart_traffic_classifier_5class",
+    "class_labels": ["video", "voip", "web", "iot", "bulk"]
+  }
+}

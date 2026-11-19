@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "description": "P3 Synapse Skills enablement registry for independent projects in this directory.",
+  "references": {
+    "qli_dogfooding": "qli_dogfooding/skills/README.md",
+    "gesturdj": "GesturDJ/GESTURDJ_SYNAPSE_SKILLS.md"
+  },
+  "shared_profiles": {
+    "p3-core": ["p3-project-onboarding", "p3-evidence-and-compatibility", "p3-release-bundle-preparation", "p3-public-asset-license-review"],
+    "p3-device": ["p3-project-onboarding", "p3-evidence-and-compatibility", "p3-release-bundle-preparation", "p3-public-asset-license-review", "p3-device-readiness"]
+  },
+  "projects": [
+    {"directory": "qli_dogfooding", "status": "enabled", "shared_profile": "p3-device", "catalog": "qli_dogfooding/skills/README.md", "enabled_skill_count": 11, "next_skills": []},
+    {"directory": "GesturDJ", "status": "enabled", "shared_profile": "p3-device", "catalog": "GesturDJ/skills/synapse-skill-catalog.json", "enabled_skill_count": 15, "next_skills": []},
+    {"directory": "AI-Across-Devices", "status": "proposed", "shared_profile": "p3-device", "next_skills": ["cross-device-context", "session-handoff-journey", "local-sync-validation"]},
+    {"directory": "AURA", "status": "enabled", "shared_profile": "p3-device", "catalog": "AURA/skills/README.md", "enabled_skill_count": 3, "next_skills": []},
+    {"directory": "Developer-Journey", "status": "proposed", "shared_profile": "p3-core", "next_skills": ["developer-journey-mapping", "experience-evidence-review", "journey-report-generation"]},
+    {"directory": "Edge-AI-for-Everyone", "status": "proposed", "shared_profile": "p3-device", "next_skills": ["edge-ai-environment-setup", "model-path-selection", "edge-demo-validation"]},
+    {"directory": "EdgeAgent", "status": "enabled", "shared_profile": "p3-device", "catalog": "EdgeAgent/skills/README.md", "enabled_skill_count": 3, "next_skills": []},
+    {"directory": "LLM", "status": "proposed", "shared_profile": "p3-device", "next_skills": ["local-llm-runtime-setup", "model-inference-validation", "npu-inference-benchmark"]},
+    {"directory": "mojo-max-int", "status": "proposed", "shared_profile": "p3-core", "next_skills": ["mojo-project-setup", "kernel-performance-validation", "build-artifact-verification"]},
+    {"directory": "Multiverse-of-Developers", "status": "proposed", "shared_profile": "p3-core", "next_skills": ["developer-persona-mapping", "experience-composition", "portfolio-demo-validation"]},
+    {"directory": "QUAD-Client", "status": "enabled", "shared_profile": "p3-device", "catalog": "QUAD-Client/skills/README.md", "enabled_skill_count": 3, "next_skills": []},
+    {"directory": "RoboAgent", "status": "enabled", "shared_profile": "p3-device", "catalog": "RoboAgent/skills/README.md", "enabled_skill_count": 3, "next_skills": []},
+    {"directory": "sinewave", "status": "proposed", "shared_profile": "p3-core", "next_skills": ["audio-signal-generation", "waveform-output-validation"]},
+    {"directory": "VSaaS", "status": "enabled", "shared_profile": "p3-device", "catalog": "VSaaS/skills/README.md", "enabled_skill_count": 3, "next_skills": []},
+    {"directory": "wake_word", "status": "proposed", "shared_profile": "p3-device", "next_skills": ["wake-word-data-capture", "keyword-model-training", "onnx-streaming-validation"]},
+    {"directory": "Wearable-AI", "status": "proposed", "shared_profile": "p3-device", "next_skills": ["wearable-sensing-context", "tiny-model-gating", "hub-handoff-validation"]},
+    {"directory": "XR-Experiences", "status": "proposed", "shared_profile": "p3-device", "next_skills": ["spatial-scene-pipeline", "grounded-xr-assistance", "xr-proxy-validation"]}
+  ],
+  "shared_skill_adoption": {
+    "p3-project-onboarding": ["AI-Across-Devices", "AURA", "Developer-Journey", "Edge-AI-for-Everyone", "EdgeAgent", "GesturDJ", "LLM", "mojo-max-int", "Multiverse-of-Developers", "qli_dogfooding", "QUAD-Client", "RoboAgent", "sinewave", "VSaaS", "wake_word", "Wearable-AI", "XR-Experiences"],
+    "p3-evidence-and-compatibility": ["AI-Across-Devices", "AURA", "Developer-Journey", "Edge-AI-for-Everyone", "EdgeAgent", "GesturDJ", "LLM", "mojo-max-int", "Multiverse-of-Developers", "qli_dogfooding", "QUAD-Client", "RoboAgent", "sinewave", "VSaaS", "wake_word", "Wearable-AI", "XR-Experiences"],
+    "p3-release-bundle-preparation": ["AI-Across-Devices", "AURA", "Developer-Journey", "Edge-AI-for-Everyone", "EdgeAgent", "GesturDJ", "LLM", "mojo-max-int", "Multiverse-of-Developers", "qli_dogfooding", "QUAD-Client", "RoboAgent", "sinewave", "VSaaS", "wake_word", "Wearable-AI", "XR-Experiences"],
+    "p3-public-asset-license-review": ["AI-Across-Devices", "AURA", "Developer-Journey", "Edge-AI-for-Everyone", "EdgeAgent", "GesturDJ", "LLM", "mojo-max-int", "Multiverse-of-Developers", "qli_dogfooding", "QUAD-Client", "RoboAgent", "sinewave", "VSaaS", "wake_word", "Wearable-AI", "XR-Experiences"],
+    "p3-device-readiness": ["AI-Across-Devices", "AURA", "Edge-AI-for-Everyone", "EdgeAgent", "GesturDJ", "LLM", "qli_dogfooding", "QUAD-Client", "RoboAgent", "VSaaS", "wake_word", "Wearable-AI", "XR-Experiences"]
+  }
+}

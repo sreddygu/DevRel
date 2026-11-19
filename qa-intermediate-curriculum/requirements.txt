@@ -1,0 +1,18 @@
+# Recommended Python: 3.11.15
+# Create venv: python3.11 -m venv .venv && source .venv/bin/activate
+# Install: pip install -r requirements.txt
+#
+# Notes:
+# - `torch` wheels may be platform-specific; if pip fails, install PyTorch per your OS/device guidance, then re-run.
+numpy
+scipy
+librosa
+sounddevice
+scikit-learn
+matplotlib
+joblib
+msgpack
+onnxruntime
+notebook
+ipykernel
+torch

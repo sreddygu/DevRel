@@ -1,0 +1,18 @@
+uname: Linux 6.18.21-g7368c42b9cca-dirty aarch64
+os: Qualcomm Linux Reference Distro 2.0
+ 08:00:19 up 44 min,  2 users,  load average: 0.82, 0.54, 0.26
+external aborts since boot: 0
+Mem:           11093        2935        4338          33        4034        8157
+adsp: running
+gpdsp0: running
+cdsp: running
+dit_server: 284936 bytes
+bb0ab797185c
+hexagon-v75
+libQnnHtp.so
+libQnnHtpV75Stub.so
+libQnnHtpV75.so
+libQnnHtpV75Skel.so
+ctx_45s: 2151 MB, 4 binaries, 4 ok markers
+ctx_45s_w8a16: 1098 MB, 4 binaries, 4 ok markers
+1

@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__quad__hardware_detect",
+      "mcp__quad__convert_model",
+      "mcp__quad__profile_workload",
+      "mcp__quad__orchestrate_workload",
+      "mcp__quad__generate_code"
+    ]
+  },
+  "mcpServers": {
+    "quad": {
+      "command": "python",
+      "args": ["-m", "quad.mcp.server"],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "QUAD_ADAPTER_MODE": "mock"
+      }
+    }
+  }
+}

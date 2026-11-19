@@ -1,0 +1,31 @@
+schema_version: "1.0"
+id: "robot-runtime-discovery"
+name: "RoboAgent Runtime Discovery"
+version: "0.1.0"
+description: "Inspect RoboAgent QNN and Pi readiness without changing the host environment by default."
+entrypoint: "SKILL.md"
+kind: "domain-skill"
+language: "en"
+selection:
+  aliases: ["check RoboAgent runtime", "discover RoboAgent host"]
+  triggers: ["Is RoboAgent ready to run", "Check my QNN and Pi setup"]
+synapse:
+  layer: "domain"
+  domain: "roboagent"
+  owner: "P3 portfolio maintainers"
+  review_cadence: "Each QNN SDK, Pi launcher, or model update"
+  visibility: "public"
+  maturity: "pilot"
+  developer_journey_stage: ["enablement"]
+  dependencies: ["p3-device-readiness", "p3-evidence-and-compatibility"]
+  authoritative_docs: ["../../AGENTS.md", "../../README.md", "../../tools/pi/README.md"]
+contract:
+  prerequisites: ["RoboAgent source checkout"]
+  inputs: ["Optional approved runtime-start request"]
+  outputs: ["Readiness record", "Observed recovery state", "Known gaps"]
+  negative_scope: ["Does not modify QNN environment", "Does not start or restart the host without approval"]
+  validation: ["Readiness record distinguishes observed facts from unknown fields"]
+safety:
+  default_mode: "non-destructive"
+  requires_explicit_approval: ["Starting Pi or the model host", "Restarting the model host", "Changing QNN environment variables", "Copying model artifacts"]
+  secrets_policy: "Do not record credentials, tokens, private keys, or private model locations."

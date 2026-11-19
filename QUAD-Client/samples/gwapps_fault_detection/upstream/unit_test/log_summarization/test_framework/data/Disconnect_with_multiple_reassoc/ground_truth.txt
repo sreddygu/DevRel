@@ -1,0 +1,149 @@
+WIN Connectivity Issues Triage Report
+
+1. What Happened
+
+Observed Symptom
+MLO station experiencing rapid connection cycling with ~1 second connection
+duration
+Station MAC: fc:b3:bc:f0:b0:c2
+Interface: mld0 (Multi-Link Device)
+Band: 6GHz (link_id:1 @ 6295 MHz) and 5GHz (link_id:2 @ 5180 MHz)
+Security: WPA3-SAE
+Pattern: Successful 4-way handshake followed by immediate disconnection
+Failure Type: FAIL TO CONNECT (per FD logs anomaly detection)
+Timeline Evidence
+12:02:08.184 - AP-STA-CONNECTED (link_id:1)
+12:02:08.184 - EAPOL-4WAY-HS-COMPLETED
+12:02:09.172 - AP-STA-DISCONNECTED (link_id:1) [Duration: 0.988s]
+12:02:09.269 - STA re-authenticated
+12:02:09.312 - AP-STA-CONNECTED (link_id:2)
+12:02:10.312 - AP-STA-DISCONNECTED (link_id:2) [Duration: 1.000s]
+12:02:10.437 - STA re-authenticated
+12:02:10.479 - AP-STA-CONNECTED (link_id:1)
+12:02:11.454 - AP-STA-DISCONNECTED (link_id:1) [Duration: 0.974s]
+Environment Context
+Driver/Hostapd: nl80211 driver interface
+MLO Configuration: Multi-link operation with 2 links (5GHz and 6GHz)
+Anomaly Detection: 3 anomalies in last 10 iterations on wifi1 (6G band)
+
+2. Root Cause Analysis
+
+Primary Hypothesis (HIGH Likelihood)
+Driver-initiated disconnection due to MLO link management failure
+Evidence Supporting This:
+1. Hostapd logs show driver-initiated DEL_STATION event:
+nl80211: Drv Event 20 (NL80211_CMD_DEL_STATION) received
+This precedes the hostapd disassociation message
+[[Knowledge: WIN_Connectivity Issues - Wifi Debug handbook|Disconnection
+initiated by AP|quote:"AP sends Deauth/Disassoc to STA"|context:The
+DEL_STATION event from driver indicates AP-side initiated disconnection]]
+2. Consistent ~1 second connection duration:
+Connection durations: 0.988s, 1.000s, 0.974s
+Suggests timer-based disconnection mechanism
+Not random failures
+3. MLO link alternation pattern:
+Disconnections alternate between link_id:1 (6G) and link_id:2 (5G)
+Indicates MLO coordination issue
+Alternative Hypothesis (MEDIUM Likelihood)
+TX path issues causing station kickout
+Evidence:
+WiFiStats showing TX anomalies:
+mpdus_ack_failed = 134
+tx_xretry = 133
+hw_flush = 269
+flush_errs = 254 (error code 38)
+mpdu_requeued = 3588
+[[Knowledge: WIN_Connectivity Issues - Wifi Debug handbook|Tx path
+stability|quote:"Check FW/HW data frame tx status"|context:High TX retry and flush
+errors can trigger station kickout due to excessive retries]]
+Alternative Hypothesis (LOW Likelihood)
+Client-side deauth after connection
+Evidence against this:
+Hostapd shows: Station fc:b3:bc:f0:b0:c2 trying to deauthenticate, but it
+is not authenticated
+Deauth frame arrives AFTER the DEL_STATION event
+Indicates client responding to disconnection, not initiating it
+
+3. Why This Root Cause Fits
+
+Reasoning Chain
+1. Driver initiates disconnection → DEL_STATION event (timestamp:
+1763035329.171982)
+2. Hostapd processes event → Logs disassociation (timestamp:
+1763035329.172055)
+3. Client receives notification → Sends deauth frame (timestamp:
+1763035329.173356)
+4. AP rejects deauth → "trying to deauthenticate, but it is not authenticated"
+KB Correlation
+The pattern matches [[Knowledge: WIN_Connectivity Issues - Wifi Debug
+handbook|Disconnection initiated by AP|quote:"kickout STA"|context:The workflow
+indicates checking for inactive time, excessive retry, or other AP-initiated kickout
+reasons]]:
+Consistent timing suggests policy/timer trigger
+Not beacon miss (too fast)
+Not key update failure (4-way handshake completes)
+Likely MLO-specific timer or state machine issue
+Stats Verification
+Auth/Assoc counters: 56 auth frames, 9 reassoc responses → Multiple
+reconnection attempts confirmed
+No decrypt errors: Not visible in provided logs
+TX issues present: But not definitive cause (could be symptom)
+
+4. Mitigation / Next Steps
+
+Immediate Actions
+1. Disable MLO temporarily:
+cfg80211tool mld0 mlo_mode 0 # Disable MLO to test single-link stability
+2. Enable detailed MLO debugging:
+cfg80211tool mld0 dbgLVL 0x80ce0000 # MLME debug
+cfg80211tool mld0 qdf_cv_lvl 0x68000a # State machine debug
+cfg80211tool mld0 csl 1 # Console logs
+3. Capture driver disconnect reasons:
+cnss_diag -pc | grep -e VDEV_MGR_AP_KEEPALIVE -e STA_KICKOUT -e CONN_DBG
+Verification Steps
+1. Check MLO timer configuration:
+cat /proc/wifi*/ic_config | grep -i ml_probe
+cfg80211tool mld0 get_inact # Check inactivity timer
+2. Monitor per-link statistics:
+wifistats wifi1 11 --mac fc:b3:bc:f0:b0:c2 # Per-STA stats
+apstats -v -i mld0 -L 1 # Link 1 stats
+apstats -v -i mld0 -L 2 # Link 2 stats
+3. Capture OTA with sniffer on both 5GHz and 6GHz to verify:
+Presence of management frames
+Timing of disconnection
+Any missing frames
+
+5. Open Questions / Gaps
+
+Missing Information
+1. Driver kickout reason code - Need WMI_PEER_STA_KICKOUT_REASON from cnss_diag
+2. MLO configuration parameters - Need wireless config and hostapd.conf
+3. Inactivity timer values - Need cfg80211tool mld0 get_inact output
+4. Per-link failure statistics - Need complete apstats for both links
+Suggested Data Collection
+# Comprehensive MLO debug package
+cfg80211tool mld0 sm_history # State machine history
+cfg80211tool mld0 ser_history 1 1 # Serialization history
+wifistats wifi1 11 --mac fc:b3:bc:f0:b0:c2 | grep -i time # Timing info
+cat /etc/config/wireless # Configuration
+hostapd_cli -i mld0 all_sta # Station details
+
+6. References
+
+Knowledge Base References (knowledge.txt)
+Section 7.1 Disconnection initiated by AP
+Section 5.1 Tx path stability
+MLO-specific debugging|quote:"MLO self-roaming"|context:Section 6.3 covers MLO-specific roaming and state issues
+Log Files Analyzed
+syslog.txt: Lines 1-1500 (timestamps 12:02:08-12:02:13)
+2_fd_logs.txt: Anomaly detection iterations 0-3
+rate_of_change_wifistats.txt: WiFiStat 1 counters
+Time Range
+Primary analysis window: Thu Nov 13 12:02:08-12:02:13 2025
+Connection cycling period: ~1 second intervals
+Total observation: 8 connection attempts in 5 seconds
+
+Confidence Level: MEDIUM-HIGH
+Hostapd sequence clearly shows driver-initiated disconnection
+MLO-specific behavior evident from link alternation
+Missing definitive kickout reason reduces confidence to medium-high

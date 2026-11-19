@@ -1,0 +1,30 @@
+{
+  "providers": {
+    "aura-geniex": {
+      "baseUrl": "http://127.0.0.1:18181/v1",
+      "api": "openai-completions",
+      "apiKey": "local",
+      "compat": {
+        "supportsDeveloperRole": false,
+        "supportsReasoningEffort": false,
+        "supportsStrictMode": false
+      },
+      "models": [
+        {
+          "id": "google/gemma-4-E4B-it-qat-q4_0-gguf:Q4_0",
+          "name": "Gemma 4 E4B (GenieX NPU)",
+          "reasoning": false,
+          "input": ["text"],
+          "contextWindow": 4096,
+          "maxTokens": 1024,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0
+          }
+        }
+      ]
+    }
+  }
+}

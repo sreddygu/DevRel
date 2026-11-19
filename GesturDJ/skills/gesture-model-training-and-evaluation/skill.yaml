@@ -1,0 +1,76 @@
+schema_version: "1.0"
+id: "gesture-model-training-and-evaluation"
+name: "Gesture Model Training and Evaluation"
+version: "0.2.0"
+description: "Train the gesture recognizer (scikit-learn baseline or PyTorch), read the held-out result honestly, and decide whether to deploy, collect more data, or change the approach."
+entrypoint: "SKILL.md"
+kind: "domain-skill"
+language: "en"
+selection:
+  aliases: ["train gesture model", "gesture training", "evaluate gesture model"]
+  triggers: ["Train my gesture model", "Is my gesture model good enough", "Why is my gesture accuracy low"]
+synapse:
+  layer: "domain"
+  domain: "gesturdj"
+  owner: "Srinivas Reddy Gudala"
+  backup_owner: "TBD: community maintainers (see finding F20 in ../../GESTURDJ_SYNAPSE_SKILLS.md)"
+  review_cadence: "Each ONNX Runtime or PyTorch major release, or Ventuno Q image release"
+  visibility: "public"
+  maturity: "proposed"
+  supported_versions: ["Arduino Ventuno Q (Ubuntu): not yet tested", "Windows PC, Python 3.10, numpy 2.2, scikit-learn 1.7, torch 2.14, onnx 1.23, onnxruntime 1.23 (tested 2026-11-05)"]
+  feedback_channel: >
+    TBD: Developer Portal community channel. Until it exists, GitHub Issues on the
+    qa-intermediate-curriculum repository (label: synapse-gesturdj).
+  deprecation_path: >
+    Set maturity: "deprecated" and announce via feedback_channel with 30-day notice;
+    point to the replacement skill.
+  developer_journey_stage: ["enablement"]
+  dependencies: ["gesture-event-contract", "p3-self-service-boundaries", "gesture-dataset-preparation"]
+  authoritative_docs: ["../../GESTURDJ_SYNAPSE_SKILLS.md", "../../gesture_scripts/README.md", "../../gesture_scripts/train_gesture.py", "../../gesture_scripts/train_gesture_pytorch.py"]
+  a2a:
+    role: "skill"
+    accepts_from: ["gesturdj-agent", "gesturdj-build-journey"]
+contract:
+  prerequisites: ["dataset-report.json with ok=true from gesture-dataset-preparation", "numpy, scikit-learn and (for the PyTorch path) torch importable on the host"]
+  inputs: ["Dataset folder", "Approach: sklearn baseline | PyTorch", "Output folder", "Seed (default 0)", "Held-out fraction (default 0.2)"]
+  outputs: ["sklearn: gesture_model.joblib + gesture_labels.json", "PyTorch: gesture_model.pt + gesture_config.json + gesture_labels.json", "Held-out accuracy with its sample count", "A decision: deploy | collect more data | change approach"]
+  negative_scope:
+    - "Does not export to ONNX or copy anything to a board (model-export-and-deployment)"
+    - "Does not run training on a Ventuno Q"
+    - "Does not report accuracy without the number of held-out samples"
+  validation:
+    - "Held-out accuracy and held-out sample count are both reported"
+    - "The PyTorch path is used if the model is going to a board (only that path exports to ONNX)"
+  failure_behavior: "Report the traceback tail and which approach failed; do not retry with different settings silently."
+  known_failure_modes:
+    - "Small held-out sets are noisy: 30 samples means each sample is 3.3 points of accuracy"
+    - "train_gesture_pytorch.py shuffles for the split but does not stratify by label; a small set can leave a class out of the held-out data"
+    - "The scikit-learn baseline scored 0.70 where PyTorch scored 1.00 on the same synthetic data: they are not interchangeable, and only the PyTorch path reaches ONNX"
+    - "requirements files are unpinned: a fresh install moved from torch 2.9/onnx 1.18 to torch 2.14/onnx 1.23 within weeks; record versions with the model (evidence/pc-run/00_package_versions.txt)"
+  two_config_evidence:
+    - "PC (Windows ARM64 host, x64 Python 3.10 under emulation, clean venv), 2026-11-05: sklearn held-out accuracy 0.70, PyTorch test_acc 1.000 on 30 held-out samples, 20 epochs (evidence/pc-run/04a_train_sklearn.log, 04b_train_pytorch.log)"
+    - "Second configuration: not run (no real IMU data; no Ventuno Q training, which is not intended)"
+authority:
+  source_docs: "See synapse.authoritative_docs"
+  approved_tools: ["gesture_scripts/train_gesture.py", "gesture_scripts/train_gesture_pytorch.py"]
+  endpoints: []
+  provenance: "projects/gesture_recognition (gesture_scripts/); PC run evidence under evidence/pc-run/"
+control:
+  approval_gates: "See safety.requires_explicit_approval"
+  consequential_actions: ["Writes model files into the chosen output folder"]
+  recovery_and_rollback: "Delete the output folder this skill created."
+review_gates:
+  # pilot = gates 1 + 3 met; supported = all six met
+  ownership: "met: named owner; backup owner open (F20)"
+  scope_and_boundary: "met: see negative_scope"
+  validation_evidence: "partial: 1 of 2 configurations run (PC, synthetic data only)"
+  feedback_mechanism: "open: community channel not yet defined"
+  discoverability: "open: not yet on the Developer Portal"
+  lifecycle_commitment: "open: community maintenance model undefined (F20)"
+project:
+  root_relative_to_skill: "../.."
+safety:
+  default_mode: "non-destructive"
+  requires_explicit_approval:
+    - "Overwriting an existing model folder"
+  secrets_policy: "Never persist credentials, tokens, private keys, or passwords. Read them from environment variables; redact before logging."

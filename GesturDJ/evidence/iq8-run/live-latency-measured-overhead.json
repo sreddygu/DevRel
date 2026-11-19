@@ -1,0 +1,24 @@
+{
+  "runs": 200,
+  "windows": 150,
+  "player": "aplay",
+  "buffer_ms": 134,
+  "budget_ms": 200.0,
+  "inference_ms": {
+    "p50": 0.76,
+    "p95": 3.37,
+    "max": 8.72
+  },
+  "mix_ms": {
+    "p50": 3.92,
+    "p95": 10.62,
+    "max": 14.03
+  },
+  "gesture_to_sound_estimate_ms": {
+    "p50": 139.24,
+    "p95": 145.3,
+    "max": 151.32
+  },
+  "ok": true,
+  "note": "estimate = inference + mix + player start + configured buffer; not measured at a speaker; no real gestures"
+}

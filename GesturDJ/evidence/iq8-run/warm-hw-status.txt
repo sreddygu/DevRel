@@ -1,0 +1,3 @@
+before: closed
+warm stream: device RUNNING after 136 ms; queued delay 1504 frames = 31.3 ms
+still: state: RUNNING | delay 1121

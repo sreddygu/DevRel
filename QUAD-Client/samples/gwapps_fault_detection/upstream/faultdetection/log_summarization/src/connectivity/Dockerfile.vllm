@@ -1,0 +1,140 @@
+# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+# All rights reserved.
+# Confidential and Proprietary - Qualcomm Technologies, Inc.
+
+# syntax=docker/dockerfile:1.4
+#
+# Dockerfile.vllm
+# ---------------
+# Multi-stage build for the log-summarization service with an embedded vLLM
+# inference server.
+#
+# Stage 1 (builder):
+#   - Installs Cython + gcc to compile assets.pyx → assets.so
+#   - Compiles all Python source files to .pyc bytecode
+#   - Removes .py sources, .pyx source, and IP .txt files
+#
+# Stage 2 (final):
+#   - Copies only compiled artifacts from builder
+#   - Installs runtime Python deps + vLLM
+#   - Applies security hardening (non-root user, optional shell removal)
+#
+# Build:
+#   docker build --build-arg BUILD_ENV=production \
+#     -f Dockerfile.vllm -t log-summarization-vllm:latest .
+#
+# Run (standalone):
+#   docker run --gpus all -p 9010:8000 \
+#     -v /local/mnt/hf_model_cache:/root/.cache/huggingface \
+#     -v /local/mnt/log_summarization_api_data:/data \
+#     --env-file .env \
+#     log-summarization-vllm:latest
+
+ARG BUILD_ENV=production
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Stage 1 — Builder
+# ─────────────────────────────────────────────────────────────────────────────
+FROM docker-registry.qualcomm.com/library/vllm/vllm-openai:latest AS builder
+
+WORKDIR /build
+
+# Install build-time tools: gcc, python3-dev, Cython
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends gcc python3-dev && \
+    rm -rf /var/lib/apt/lists/* && \
+    pip install --no-cache-dir "cython>=3.0" setuptools
+
+# Install application runtime dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy all application source files
+COPY . .
+
+# ── Step 1: Compile assets.pyx → assets.cpython-3X-*.so ─────────────────────
+# This embeds knowledge_base.txt content as a compiled binary constant.
+# The .pyx source and .txt files are removed after compilation.
+RUN python3 setup_assets.py build_ext --inplace && \
+    echo "==> Compiled assets:" && ls -lh assets*.so
+
+# ── Step 2: Compile all Python source to .pyc bytecode ───────────────────────
+# -b  : write .pyc files next to the .py files (not in __pycache__)
+# -q  : quiet (suppress per-file output)
+# entrypoint_vllm.py is kept as .py so the ENTRYPOINT can reference it by name
+RUN python3 -m compileall -b -q . && \
+    echo "==> Python compilation complete"
+
+# ── Step 3: Remove .py source files (keep entrypoint_vllm.py for ENTRYPOINT) ─
+RUN find . -name "*.py" \
+    ! -name "entrypoint_vllm.py" \
+    ! -name "gunicorn_conf.py" \
+    -delete && \
+    echo "==> .py sources removed"
+
+# ── Step 4: Remove IP text assets and Cython build artifacts ─────────────────
+RUN rm -f knowledge_base.txt \
+          connectivity_issue_error_classification.txt \
+          wifistats_definition.txt \
+          workflow.txt \
+          assets.pyx \
+          setup_assets.py \
+          setup_assets.pyc && \
+    rm -rf build/ && \
+    echo "==> IP assets and build artifacts removed"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Stage 2 — Final image
+# ─────────────────────────────────────────────────────────────────────────────
+FROM docker-registry.qualcomm.com/library/vllm/vllm-openai:latest AS final
+ARG BUILD_ENV=production
+
+WORKDIR /app
+
+# Install runtime Python dependencies (no gcc, no Cython)
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt && \
+    rm requirements.txt
+
+# Copy compiled application artifacts from builder
+# This includes: *.pyc, assets.so, entrypoint_vllm.py, gunicorn_conf.py, etc.
+# Does NOT include: *.py sources, *.txt IP files, *.pyx, build/
+COPY --from=builder /build /app
+
+# ── Security hardening ────────────────────────────────────────────────────────
+# Production: remove interactive shells to prevent `docker exec container bash`
+# /bin/sh is retained (required by system tools); only interactive shells removed
+RUN if [ "$BUILD_ENV" = "production" ]; then \
+        sh_real=$(readlink -f /bin/sh 2>/dev/null || echo ""); \
+        for shell in /bin/bash /usr/bin/bash /bin/dash /usr/bin/dash \
+                     /usr/bin/zsh /bin/zsh; do \
+            if [ -f "$shell" ]; then \
+                shell_real=$(readlink -f "$shell" 2>/dev/null || echo ""); \
+                if [ -n "$shell_real" ] && [ "$shell_real" = "$sh_real" ]; then \
+                    echo "Skipped $shell (backing binary for /bin/sh)"; \
+                else \
+                    rm -f "$shell" && echo "Removed $shell" || true; \
+                fi; \
+            fi; \
+        done; \
+    fi
+
+# Create a non-root user for running the service
+RUN groupadd --system appgroup 2>/dev/null || true && \
+    useradd --system --gid appgroup --uid 10001 --create-home appuser 2>/dev/null || true
+
+# Create data directory and set ownership
+ARG LOG_SUMMARIZATION_DATA_DIR=/data
+RUN mkdir -p "${LOG_SUMMARIZATION_DATA_DIR}" "${LOG_SUMMARIZATION_DATA_DIR}/hf_cache" && \
+    chown -R appuser:appgroup "${LOG_SUMMARIZATION_DATA_DIR}" /app
+
+# ── Ports ─────────────────────────────────────────────────────────────────────
+# 8000 — gunicorn (summarization API, exposed to host)
+# 8001 — vLLM OpenAI-compatible server (internal only)
+EXPOSE 8000 8001
+
+USER appuser
+
+# ── Entrypoint ────────────────────────────────────────────────────────────────
+# Pure Python startup: launches vLLM, waits for health, then exec's gunicorn
+ENTRYPOINT ["python3", "/app/entrypoint_vllm.py"]

@@ -1,0 +1,50 @@
+# Python-generated files
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local environments and secrets
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+
+# Device-validation output and historical evidence
+audit/
+evidence/
+rerun_*/
+resources/
+reference/
+scripts/legacy_iq8/
+
+# Generated reports and binary artifacts
+*.xls
+*.xlsx
+*.doc
+*.docx
+*.pdf
+*.wav
+*.raw
+*.dlc
+*.onnx
+*.bin
+*.mjpg
+*.jpg
+*.jpeg
+*.png
+*.log
+*.pid
+
+# Editor and operating-system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+*.swp

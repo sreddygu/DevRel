@@ -1,0 +1,14 @@
+WiFi Connectivity Issue Triage Report
+
+1. What Happened
+
+Observed Symptom
+• STA fc:b3:bc:f0:b0:c2 is experiencing DISCONNECT on WiFi
+
+2. Root Cause Analysis
+
+Primary Suspected Causes (Ranked by Likelihood)
+HIGH Likelihood: AP-initiated disconnect due to STA's deauth attempt
+• The AP detected a deauth frame from the STA (fc:b3:bc:f0:b0:c2) and initiated a disconnect by issuing a DEL_STATION command before receiving the STA's deauth frame. This indicates that the AP took the initiative to disconnect the STA, likely due to the STA's attempt to deauthenticate.
+• Evidence: - RX DEAUTH frame from STA
+- AP issued DEL_STATION before receiving deauth from STA

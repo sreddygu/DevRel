@@ -1,0 +1,23 @@
+.venv/
+.venv_devrel/
+.venv_devrel_npu/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.log
+*.gguf
+*.onnx
+*.dlc
+*.bin
+*.raw
+
+# Local workspaces and non-source evidence
+backup/
+workspace/
+platformValidator/
+WORKSPACE_AUDIT_*.md
+devrel_runtime/samples/mobilenetv2/npu_*/
+
+# Local environment files (keep documented examples)
+.env
+.env.local

@@ -1,0 +1,79 @@
+{
+  "_comment": "Named argument presets for agent.py. Select one with --profile <name> (e.g. --profile xelite-npu). Any field is optional; omitted fields fall back to env vars then built-in defaults. Precedence: explicit CLI flag > profile > env var > default. Naming: <device>-<cpu|npu>. CPU = llama.cpp GGUF server on :8080; NPU = genie_server.py shim over QAIRT/Genie on :8081. The short aliases cpu/npu/iq9 are kept for backward compatibility with the docs.",
+  "profiles": {
+    "cpu": {
+      "description": "ALIAS -> local llama.cpp GGUF on CPU (:8080). Generic default.",
+      "base_url": "http://127.0.0.1:8080",
+      "model": "gemma-4-E4B-it-Q4_K_M.gguf",
+      "compact_system_prompt": false
+    },
+    "npu": {
+      "description": "ALIAS -> X Elite Hexagon NPU via Genie (:8081).",
+      "base_url": "http://127.0.0.1:8081",
+      "model": "qwen3-4b-genie",
+      "compact_system_prompt": true
+    },
+    "iq9": {
+      "description": "ALIAS -> iq9-npu (kept so `--profile iq9` in the docs keeps working).",
+      "base_url": "http://127.0.0.1:8081",
+      "model": "qwen3-4b-instruct-2507-genie",
+      "compact_system_prompt": true
+    },
+
+    "xelite-cpu": {
+      "description": "X Elite host -- llama.cpp Gemma-4 E4B GGUF on CPU (:8080).",
+      "base_url": "http://127.0.0.1:8080",
+      "model": "gemma-4-E4B-it-Q4_K_M.gguf",
+      "compact_system_prompt": false
+    },
+    "xelite-npu": {
+      "description": "X Elite host -- Qwen3-4B Genie bundle on the Hexagon NPU (HTP v73, :8081).",
+      "base_url": "http://127.0.0.1:8081",
+      "model": "qwen3-4b-genie",
+      "compact_system_prompt": true
+    },
+
+    "iq9-cpu": {
+      "description": "IQ9 (QCS9075) -- llama.cpp Gemma-4 12B QAT GGUF on CPU (:8080).",
+      "base_url": "http://127.0.0.1:8080",
+      "model": "gemma-4-12B-it-qat-UD-Q4_K_XL.gguf",
+      "compact_system_prompt": false
+    },
+    "iq9-npu": {
+      "description": "IQ9 (QCS9075) -- Qwen3-4B-Instruct-2507 Genie bundle on the Hexagon NPU (HTP v73; reused X Elite bundle, soc_model patched 60->77) (:8081).",
+      "base_url": "http://127.0.0.1:8081",
+      "model": "qwen3-4b-instruct-2507-genie",
+      "compact_system_prompt": true
+    },
+
+    "iq9-gemma4-npu": {
+      "description": "IQ9 (QCS9075, HTP v73) -- Gemma-4-E4B-it w4a16 Genie bundle on the Hexagon NPU via genie_server.py (:8081). Native AI Hub qcs9075 bundle (RUNTIME_GENIE, QAIRT 2.45); genie-t2t-run runtime from QAIRT 2.47.1 aarch64-oe-linux. Use --chat-template gemma. Drive from PC via --base-url http://<IQ9_IP>:8081.",
+      "base_url": "http://127.0.0.1:8081",
+      "model": "gemma-4-e4b-genie",
+      "compact_system_prompt": true
+    },
+
+    "iq8-aura-cpu": {
+      "description": "IQ8 QCS8275 using the preinstalled AURA llama.cpp Qwen2.5 0.5B model on CPU (:8080). Use explicit tool instructions for best results.",
+      "base_url": "http://127.0.0.1:8080",
+      "model": "/opt/aura-llm/qwen2.5-0.5b.gguf",
+      "compact_system_prompt": true,
+      "max_steps": 5,
+      "max_tokens": 256,
+      "temperature": 0,
+      "timeout": 120
+    },
+    "iq8-cpu": {
+      "description": "IQ8 (~11 GiB RAM) -- llama.cpp Gemma-4 E4B GGUF on CPU (:8080). The tightest-RAM target; E4B is the proven-safe fit.",
+      "base_url": "http://127.0.0.1:8080",
+      "model": "gemma-4-E4B-it-Q4_K_M.gguf",
+      "compact_system_prompt": false
+    },
+    "iq8-npu": {
+      "description": "IQ8 (QCS8275, soc_id 675, HTP v75) NPU -- PENDING: no Genie bundle built yet. NPU verified healthy (qnn-platform-validator DSP Passed) but needs a v75-compiled bundle; the IQ9 v73 soc_model-patch trick does NOT work (arch mismatch). Update model once a v75 bundle is exported and served on :8081.",
+      "base_url": "http://127.0.0.1:8081",
+      "model": "llama-3.2-1b-genie",
+      "compact_system_prompt": true
+    }
+  }
+}

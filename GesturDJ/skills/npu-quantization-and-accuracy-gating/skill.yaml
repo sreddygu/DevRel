@@ -1,0 +1,77 @@
+schema_version: "1.0"
+id: "npu-quantization-and-accuracy-gating"
+name: "NPU Quantization and Accuracy Gating"
+version: "0.1.0"
+description: "Decide whether a quantized (int8) or mixed-precision version of the music model is accurate enough to use, by comparing its output on a fixed test case with the fp32 reference, before any song is generated."
+entrypoint: "SKILL.md"
+kind: "domain-skill"
+language: "en"
+selection:
+  aliases: ["accuracy gate", "int8 gate", "quantization check"]
+  triggers: ["Is the int8 model good enough", "Gate the mixed precision model", "Compare fp16 and int8 output"]
+synapse:
+  layer: "domain"
+  domain: "gesturdj"
+  owner: "Srinivas Reddy Gudala"
+  backup_owner: "TBD: community maintainers (see finding F20 in ../../GESTURDJ_SYNAPSE_SKILLS.md)"
+  review_cadence: "Each ONNX Runtime major release or Ventuno Q image release"
+  visibility: "public"
+  maturity: "proposed"
+  supported_versions: ["Qualcomm IQ8 (Qualcomm Linux 2.0, HTP v75)", "QAIRT 2.51 on a Windows x64 PC with WSL", "Arduino Ventuno Q: not run"]
+  feedback_channel: >
+    TBD: Developer Portal community channel. Until it exists, GitHub Issues on the
+    qa-intermediate-curriculum repository (label: synapse-gesturdj).
+  deprecation_path: >
+    Set maturity: "deprecated" and announce via feedback_channel with 30-day notice;
+    point to the replacement skill.
+  developer_journey_stage: ["enablement"]
+  dependencies: ["gesture-event-contract", "p3-self-service-boundaries", "device-and-host-discovery", "music-model-npu-deployment"]
+  authoritative_docs: ["../../DIFFRHYTHM_IQ8.md", "../../diffrhythm_npu_scripts/README.md"]
+  a2a:
+    role: "skill"
+    accepts_from: ["gesturdj-agent"]
+contract:
+  prerequisites: ["music-model-npu-deployment passed", "An fp32 reference output for the same test case", "Context binaries for each precision to compare"]
+  inputs: ["Context folder or four folders (one per graph) to mix precisions", "The test case", "The fp32 reference", "Thresholds (default 0.99 usable, 0.999 as good as fp16)"]
+  outputs: ["Cosine similarity and max absolute error against the reference", "A verdict: as good as fp16, usable (listen), or too lossy"]
+  negative_scope:
+    - "Does not quantize or calibrate"
+    - "Does not judge how the music sounds"
+    - "Does not lower a threshold to pass"
+  validation:
+    - "Cosine is at least 0.99 to proceed to a song"
+    - "Cosine at least 0.999 is reported as as good as fp16"
+    - "The output and reference have the same number of values"
+  failure_behavior: "Below 0.99, say the setup is too lossy and do not generate a song; between 0.99 and 0.999, generate but say it needs a listen."
+  known_failure_modes:
+    - "All-int8 graphs take fp32 inputs: run make_fp32_case.py first, or gate_board asserts on the size mismatch"
+    - "All-int8 fails the gate (cosine 0.763 at 44.6 s): keep the first and last graphs in fp16"
+    - "Cosine can hide a few large local errors: also read the max absolute error"
+    - "Only the w8a16 scheme (int8 weights, 16-bit activations) works on this model"
+  two_config_evidence:
+    - "Qualcomm IQ8, 2026-11-10, 44.6 s graphs vs fp32 PyTorch reference: fp16 cosine 0.99999, max abs error 0.164; mixed (fp16 ends, int8 middle) cosine 0.99986, max abs error 0.431; both verdict as good as fp16 (evidence/iq8-run/npu-accuracy-gate.log)"
+    - "All-int8 graphs, fp32 copy of the test case: cosine 0.763, max abs error 9.695, verdict too lossy, do not generate (same log)"
+    - "Ventuno Q: not run"
+authority:
+  source_docs: "See synapse.authoritative_docs"
+  approved_tools: ["diffrhythm_npu_scripts/gate_board.py", "diffrhythm_npu_scripts/cosine_vs_ref.py", "diffrhythm_npu_scripts/make_fp32_case.py"]
+  endpoints: ["SSH (TCP/22) to a board the developer owns; address supplied at runtime, never stored"]
+  provenance: "academy/GesturDJ; IQ8 runs under evidence/iq8-run/"
+control:
+  approval_gates: "See safety.requires_explicit_approval"
+  consequential_actions: ["Running the graphs on the NPU"]
+  recovery_and_rollback: "Read-only for the model; the gate writes one output file."
+review_gates:
+  # pilot = gates 1 + 3 met; supported = all six met
+  ownership: "met: named owner; backup owner open (F20)"
+  scope_and_boundary: "met: see negative_scope"
+  validation_evidence: "open: one IQ8; two configurations gated; no listening comparison recorded here"
+  feedback_mechanism: "open: community channel not yet defined"
+  discoverability: "open: not yet on the Developer Portal"
+  lifecycle_commitment: "open: community maintenance model undefined (F20)"
+project:
+  root_relative_to_skill: "../.."
+safety:
+  default_mode: "non-destructive"
+  requires_explicit_approval: ["Rebooting a board"]
+  secrets_policy: "Never persist credentials, tokens, private keys, or passwords. Read them from environment variables; redact before logging."

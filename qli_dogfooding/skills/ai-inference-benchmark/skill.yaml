@@ -1,0 +1,80 @@
+schema_version: "1.0"
+id: "ai-inference-benchmark"
+name: "AI Inference Benchmark"
+version: "2.0.0"
+description: "Measure a discovered QLI model command with explicit warmup and iteration settings."
+entrypoint: "SKILL.md"
+kind: "mcp-tool-candidate"
+language: "en"
+selection:
+  aliases: ["benchmark QLI model", "measure inference"]
+  triggers: ["Benchmark a model on a QLI target"]
+synapse:
+  layer: "mcp-tool"
+  domain: "qli-linux"
+  owner: "Srinivas Reddy Gudala"
+  backup_owner: "DevRel Developer Experience team"
+  review_cadence: "Each major SDK or QLI device release"
+  visibility: "internal"
+  maturity: "pilot"
+  developer_journey_stage:
+    - "platform-experience"
+  supported_versions: ["Qualcomm Linux (QLI) 2.0", "QAIRT 2.47.x host runtime"]
+  dependencies:
+    - "qli-linux-domain"
+    - "ai-model-execution"
+  classification_note: >
+    Collapsed from foundational skill to MCP tool (2026-10-22).
+    One-step deterministic tool invocation; prerequisite check and evidence-separation
+    rule belong in documentation. Benchmark timing is a fact, not a judgment.
+    MCP-first: check the shared MCP inventory before re-implementing.
+  authoritative_docs: ["../../src/qli_ai_apps.py"]
+  feedback_channel: >
+    GitHub Issues on the qa-intermediate-curriculum repository (label: synapse-mcp).
+  a2a:
+    role: "tool"
+    accepts_from: ["qli-readiness-agent", "developer-readiness-assessment"]
+  deprecation_path: >
+    Set maturity: "deprecated" and announce via feedback_channel with 30-day notice.
+contract:
+  prerequisites: ["Validated model runner command"]
+  inputs: ["Runner command", "Iterations", "Warmup", "Optional timeout"]
+  outputs: ["Benchmark timing result"]
+  negative_scope:
+    - "Does not validate the runner command — prerequisite of the caller"
+    - "Does not modify model files or runtime state"
+    - "Does not interpret benchmark results — returns raw timing facts only"
+  state_before: "Runner command is validated and executable; device is idle"
+  state_after: "Benchmark timing recorded; model and device state unchanged"
+  validation: ["Runner identity, settings, return code, and timing are recorded"]
+  failure_behavior: "Record return code and error output; do not fabricate timing."
+  known_failure_modes:
+    - "Runner exits non-zero: record error output; do not report partial timing"
+    - "Timeout exceeded: record timeout event; return no timing result"
+    - "NPU wall-clock inflated by per-process HTP init/finalize (~540 ms on IQ8); report profiler execute time for NPU throughput"
+  two_config_evidence:
+    - "IQ9 (v73, QLI 2.0): Inference Timing Benchmark Completed, QNN HTP profile retained, 2026-08-12 (evidence/iq9_deep_2026-08-12/qnn_profile.txt)"
+    - "IQ8 (v75, QLI 2.0): 10 iterations on NPU and CPU, rc=0; profiler execute 5.2 ms NPU vs 40.1 ms CPU, 2026-10-26 (evidence/iq8-2026-10-26/deep/benchmark*.json, *_profile.txt)"
+authority:
+  source_docs: "See synapse.authoritative_docs"
+  approved_tools:
+    - "src/qli_ai_apps.py benchmark"
+  endpoints:
+    - "SSH (TCP/22) to the approved target device; address supplied at runtime, never stored"
+  provenance: "qa-intermediate-curriculum/projects/qli_dogfooding; run evidence under evidence/<device>-YYYY-MM-DD/"
+control:
+  approval_gates: "See safety.requires_explicit_approval"
+  consequential_actions: []
+  recovery_and_rollback: "Model and device state unchanged; rerun on failure."
+review_gates:
+  # pilot = gates 1 + 3 met; supported = all six met (Synapse deck slide 6)
+  ownership: "met"
+  scope_and_boundary: "met"
+  validation_evidence: "met: IQ8 NPU+CPU and IQ9 NPU"
+  feedback_mechanism: "declared; reader is the named owner"
+  discoverability: "open: not yet listed in product or SDK documentation"
+  lifecycle_commitment: "met"
+project:
+  root_relative_to_skill: "../.."
+safety:
+  default_mode: "non-destructive"

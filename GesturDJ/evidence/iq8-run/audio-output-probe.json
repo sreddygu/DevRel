@@ -1,0 +1,68 @@
+{
+  "sinks": [
+    "**** List of PLAYBACK Hardware Devices ****",
+    "card 0: MONACOEVK [MONACO-EVK], device 0: MultiMedia1 Playback (*) []",
+    "  Subdevices: 1/1",
+    "  Subdevice #0: subdevice #0"
+  ],
+  "players_on_path": [
+    "aplay",
+    "paplay",
+    "pw-play",
+    "gst-play-1.0"
+  ],
+  "clip_ms": 100,
+  "runs": 5,
+  "variants": [
+    {
+      "variant": "aplay default buffer",
+      "exit_codes": [
+        0
+      ],
+      "overhead_ms_median": 159.0,
+      "overhead_ms_max": 237.3
+    },
+    {
+      "variant": "aplay 40 ms buffer",
+      "exit_codes": [
+        0
+      ],
+      "overhead_ms_median": 112.3,
+      "overhead_ms_max": 134.1
+    },
+    {
+      "variant": "paplay default",
+      "exit_codes": [
+        0
+      ],
+      "overhead_ms_median": 173.3,
+      "overhead_ms_max": 177.9
+    },
+    {
+      "variant": "paplay 40 ms",
+      "exit_codes": [
+        0
+      ],
+      "overhead_ms_median": 151.7,
+      "overhead_ms_max": 159.8
+    },
+    {
+      "variant": "pw-play default",
+      "exit_codes": [
+        0
+      ],
+      "overhead_ms_median": 129.5,
+      "overhead_ms_max": 146.1
+    },
+    {
+      "variant": "pw-play 40 ms",
+      "exit_codes": [
+        0
+      ],
+      "overhead_ms_median": 132.9,
+      "overhead_ms_max": 135.4
+    }
+  ],
+  "best_variant": "aplay 40 ms buffer",
+  "note": "overhead = wall time minus clip length; includes player start-up and buffer drain; not measured at a speaker"
+}

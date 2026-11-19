@@ -1,0 +1,14 @@
+WiFi Connectivity Issue Triage Report
+
+1. What Happened
+
+Observed Symptom
+• STA fc:b3:bc:f0:b0:c2 is experiencing DISCONNECT on WiFi
+
+2. Root Cause Analysis
+
+Primary Suspected Causes (Ranked by Likelihood)
+HIGH Likelihood: AP-initiated disconnect due to incorrect client MAC address
+• The AP's decision to issue a DEL_STATION command without receiving a deauth frame from the client indicates that the AP believed the client was no longer authorized to access the network. This could be due to an incorrect MAC address being associated with the client in the AP's configuration or in the RADIUS server's records.
+• Evidence: - AP issued DEL_STATION command for client MAC address fc:b3:bc:f0:b0:c2
+- AP did not receive a deauth frame from the client before issuing the DEL_STATION command

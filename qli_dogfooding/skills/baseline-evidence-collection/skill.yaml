@@ -1,0 +1,77 @@
+schema_version: "1.0"
+id: "baseline-evidence-collection"
+name: "Baseline Evidence Collection"
+version: "1.0.0"
+description: "Collect non-destructive SSH evidence for a QLI device readiness assessment."
+entrypoint: "SKILL.md"
+kind: "domain-skill"
+language: "en"
+selection:
+  aliases: ["collect QLI evidence", "baseline device validation"]
+  triggers: ["Collect baseline readiness evidence from a QLI device"]
+synapse:
+  layer: "domain"
+  domain: "qli-linux"
+  owner: "Srinivas Reddy Gudala"
+  backup_owner: "DevRel Developer Experience team"
+  review_cadence: "Each major SDK or QLI device release"
+  visibility: "internal"
+  maturity: "pilot"
+  developer_journey_stage:
+    - "discovery"
+  supported_versions: ["Qualcomm Linux (QLI) 2.0", "QAIRT 2.47.x host runtime"]
+  dependencies:
+    - "qli-linux-domain"
+    - "device-connectivity-validation"
+    - "device-identity-discovery"
+  authoritative_docs: ["../../scripts/qli_device_validation.py"]
+  feedback_channel: >
+    GitHub Issues on the qa-intermediate-curriculum repository (label: synapse-domain).
+  a2a:
+    role: "skill"
+    accepts_from: ["qli-readiness-agent", "developer-readiness-assessment"]
+  deprecation_path: >
+    Set maturity: "deprecated" and announce via feedback_channel with 30-day notice.
+contract:
+  prerequisites: ["SSH access", "Device label", "Device/date-specific output directory"]
+  inputs: ["Host", "Optional SSH user and host key", "Output path"]
+  outputs: ["Baseline evidence JSON"]
+  negative_scope:
+    - "Does not modify device state or configuration"
+    - "Does not collect deep-workflow or per-application evidence (separate domain skills)"
+    - "Does not store credentials in the evidence output"
+  state_before: "Device is reachable via SSH; output directory exists and is writable"
+  state_after: "Baseline evidence JSON written to output path; device state unchanged"
+  validation: ["Output JSON exists and contains the requested device evidence"]
+  failure_behavior: "Record SSH error and partial output; do not fabricate evidence fields."
+  known_failure_modes:
+    - "SSH failure: log error; route to device-connectivity-validation for triage"
+    - "Output directory missing: surface path error; do not create silently"
+  two_config_evidence:
+    - "IQ8 (QLI 2.0): baseline JSON with 13 checks, 2026-08-17 and 2026-10-26 (evidence/iq8-2026-10-26/baseline.json)"
+    - "IQ9 (QLI 2.0): baseline JSON with 13 checks, 2026-08-12 (evidence/iq9_validation_2026-08-12.json)"
+authority:
+  source_docs: "See synapse.authoritative_docs"
+  approved_tools:
+    - "scripts/qli_device_validation.py"
+  endpoints:
+    - "SSH (TCP/22) to the approved target device; address supplied at runtime, never stored"
+  provenance: "qa-intermediate-curriculum/projects/qli_dogfooding; run evidence under evidence/<device>-YYYY-MM-DD/"
+control:
+  approval_gates: "See safety.requires_explicit_approval"
+  consequential_actions:
+    - "Writes evidence files under evidence/<device>-YYYY-MM-DD/"
+  recovery_and_rollback: "Read-only on the device. Delete the dated evidence directory to discard a bad run."
+review_gates:
+  # pilot = gates 1 + 3 met; supported = all six met (Synapse deck slide 6)
+  ownership: "met"
+  scope_and_boundary: "met"
+  validation_evidence: "met"
+  feedback_mechanism: "declared; reader is the named owner"
+  discoverability: "open: not yet listed in product or SDK documentation"
+  lifecycle_commitment: "met"
+project:
+  root_relative_to_skill: "../.."
+safety:
+  default_mode: "non-destructive"
+  secrets_policy: "Never write SSH passwords, private keys, tokens, or private endpoints to evidence."

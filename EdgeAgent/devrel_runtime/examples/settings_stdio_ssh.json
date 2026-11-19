@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__devrel__hardware_detect",
+      "mcp__devrel__convert_model",
+      "mcp__devrel__profile_workload",
+      "mcp__devrel__orchestrate_workload",
+      "mcp__devrel__generate_code"
+    ]
+  },
+  "mcpServers": {
+    "devrel": {
+      "command": "ssh",
+      "args": [
+        "-p", "22",
+        "-i", "/home/alice/.ssh/devrel_lab_key",
+        "-o", "BatchMode=yes",
+        "-o", "ServerAliveInterval=30",
+        "alice@lab.example.com",
+        "python -m devrel.mcp.server"
+      ]
+    }
+  }
+}

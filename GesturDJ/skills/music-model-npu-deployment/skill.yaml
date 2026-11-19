@@ -1,0 +1,78 @@
+schema_version: "1.0"
+id: "music-model-npu-deployment"
+name: "Music Model NPU Deployment"
+version: "0.1.0"
+description: "Check that a board is ready to run the DiffRhythm transformer on its NPU (OS, NPU firmware running, runtime libraries, compiled context binaries, no stale server) and that the four chained graphs load and run."
+entrypoint: "SKILL.md"
+kind: "domain-skill"
+language: "en"
+selection:
+  aliases: ["deploy music model to NPU", "DiffRhythm on IQ8", "npu readiness"]
+  triggers: ["Can my board generate music on its NPU", "Set up DiffRhythm on the IQ8", "Why will the NPU not load"]
+synapse:
+  layer: "domain"
+  domain: "gesturdj"
+  owner: "Srinivas Reddy Gudala"
+  backup_owner: "TBD: community maintainers (see finding F20 in ../../GESTURDJ_SYNAPSE_SKILLS.md)"
+  review_cadence: "Each ONNX Runtime major release or Ventuno Q image release"
+  visibility: "public"
+  maturity: "proposed"
+  supported_versions: ["Qualcomm IQ8 (Qualcomm Linux 2.0, HTP v75)", "QAIRT 2.51 on a Windows x64 PC with WSL", "Arduino Ventuno Q: not run"]
+  feedback_channel: >
+    TBD: Developer Portal community channel. Until it exists, GitHub Issues on the
+    qa-intermediate-curriculum repository (label: synapse-gesturdj).
+  deprecation_path: >
+    Set maturity: "deprecated" and announce via feedback_channel with 30-day notice;
+    point to the replacement skill.
+  developer_journey_stage: ["enablement", "platform-experience"]
+  dependencies: ["gesture-event-contract", "p3-self-service-boundaries", "device-and-host-discovery"]
+  authoritative_docs: ["../../DIFFRHYTHM_IQ8.md", "../../diffrhythm_npu_scripts/README.md", "../../diffrhythm_iq8_npu_int8_45s.ipynb"]
+  a2a:
+    role: "skill"
+    accepts_from: ["gesturdj-agent"]
+contract:
+  prerequisites: ["A device profile naming an NPU board as the generator", "The QAIRT runtime on the board", "Context binaries compiled for the board's HTP version"]
+  inputs: ["Board address and host key (environment variables)", "Context binary folders", "The fixed test case"]
+  outputs: ["npu-deployment-preflight.txt: OS, NPU firmware state, runtime libraries, binaries and markers, aborts since boot, stale server count", "Load time and per-pass time from the gate run"]
+  negative_scope:
+    - "Does not export, convert or quantize the model"
+    - "Does not reboot the board"
+    - "Does not generate a song"
+  validation:
+    - "cdsp (NPU firmware) reports running"
+    - "All four context binaries exist with their .ok markers"
+    - "No dit_server is already running"
+    - "The gate run loads all four graphs and completes two passes"
+  failure_behavior: "Stop at the first failed check and name it; if a stale dit_server exists or the load hangs, say the NPU may be wedged and that only a reboot clears it, and ask before rebooting."
+  known_failure_modes:
+    - "An intermittent kernel memory fault can reset the board while graphs load (see DIFFRHYTHM_IQ8.md)"
+    - "A hung NPU call cannot be killed and wedges the NPU until reboot"
+    - "Context binaries are tied to the HTP version: v75 binaries do not load on another version"
+    - "Needs the bundled runtime copied to the board; the image has no QAIRT of its own"
+  two_config_evidence:
+    - "Qualcomm IQ8 board (HTP v75), 2026-11-10: cdsp running, 0 external aborts since boot, 4 fp16 and 4 int8 binaries with markers, no stale server (evidence/iq8-run/npu-deployment-preflight.txt)"
+    - "Same board, gate runs: fp16 graphs load in 3.9 s and run a pass in 3.7 s; mixed graphs load in 2.2 s and run a pass in 2.5 s (evidence/iq8-run/npu-accuracy-gate.log)"
+    - "Ventuno Q (same Dragonwing IQ8 family on its product page): not run"
+authority:
+  source_docs: "See synapse.authoritative_docs"
+  approved_tools: ["diffrhythm_npu_scripts/gate_board.py"]
+  endpoints: ["SSH (TCP/22) to a board the developer owns; address supplied at runtime, never stored"]
+  provenance: "academy/GesturDJ; IQ8 runs under evidence/iq8-run/"
+control:
+  approval_gates: "See safety.requires_explicit_approval"
+  consequential_actions: ["Running the graphs on the NPU"]
+  recovery_and_rollback: "Gate runs are read-only for the model. If the NPU wedges, the board must be rebooted (needs approval)."
+review_gates:
+  # pilot = gates 1 + 3 met; supported = all six met
+  ownership: "met: named owner; backup owner open (F20)"
+  scope_and_boundary: "met: see negative_scope"
+  validation_evidence: "open: one IQ8, one session; the intermittent memory fault was not provoked; not a Ventuno Q"
+  feedback_mechanism: "open: community channel not yet defined"
+  discoverability: "open: not yet on the Developer Portal"
+  lifecycle_commitment: "open: community maintenance model undefined (F20)"
+project:
+  root_relative_to_skill: "../.."
+safety:
+  default_mode: "non-destructive"
+  requires_explicit_approval: ["Rebooting a board", "Copying runtime files to a board"]
+  secrets_policy: "Never persist credentials, tokens, private keys, or passwords. Read them from environment variables; redact before logging."

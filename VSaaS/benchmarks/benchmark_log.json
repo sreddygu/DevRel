@@ -1,0 +1,34 @@
+{
+  "project": "VSaaS Functional Prototype",
+  "phase": "Prototype",
+  "edge_device": "IQ8 EVK",
+  "edge_os": "Ubuntu 24.04.4 LTS",
+  "submission_date": "2026-06-01",
+  "benchmarks": [
+    {
+      "name": "metadata_capture",
+      "description": "Edge camera capture + Cloud API ingest",
+      "model": "ONNX YOLOv8n / ffmpeg testsrc fallback / QNN YOLOv8n w8a8 DLC (models/yolov8_det_w8a8/yolov8_det_w8a8.dlc)",
+      "backend": "ffmpeg + FastAPI",
+      "latency_ms": 230,
+      "throughput_tps": 4.5,
+      "notes": "2s clip / 5s emit, metadata-only upload, qmmf + testsrc runs"
+    },
+    {
+      "name": "query_summary",
+      "description": "Cloud query summarization call (SparQ Hydra)",
+      "model": "qwen3_vl_32b_instruct",
+      "backend": "Hydra/AIC100 (OpenAI-compatible)",
+      "latency_ms": 120,
+      "throughput_tps": 1.1,
+      "notes": "LLM call fell back on 403 w/o valid QAIC/APIGEE token"
+    }
+  ],
+  "notes": [
+    "Events + clip paths stored in data/recordings and data/events.db",
+    "Replay helper scripts/replay_events.py repopulates the cloud store",
+    "Logs: ~/projects/VSaaS/logs/cloud_replay.log and logs/edge_e2e_csi.log"
+  ],
+  "repo_link": "https://github.qualcomm.com/sreddygu/academy/tree/main/VSaaS",
+  "public_repo": false
+}

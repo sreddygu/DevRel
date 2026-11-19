@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VSaaS Insights</title>
+    <style>
+      :root {
+        --bg: #0b1020;
+        --panel: #121a33;
+        --panel-2: #0f1730;
+        --text: #e8ecff;
+        --muted: #a7b0d9;
+        --border: rgba(255, 255, 255, 0.12);
+        --user: #2b63ff;
+        --assistant: #202a52;
+        --danger: #ff4d4d;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        background: radial-gradient(1000px 600px at 20% 0%, #16204b 0%, var(--bg) 60%);
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
+          "Segoe UI Emoji";
+      }
+      .wrap {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 22px 16px 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        height: 100%;
+        box-sizing: border-box;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      h1 {
+        margin: 0;
+        font-size: 18px;
+        letter-spacing: 0.2px;
+      }
+      .status {
+        font-size: 12px;
+        color: var(--muted);
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .badge {
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.04);
+        padding: 6px 10px;
+        border-radius: 999px;
+      }
+      .panel {
+        border: 1px solid var(--border);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+        border-radius: 14px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        flex: 1;
+      }
+      .messages {
+        padding: 14px;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-height: 0;
+      }
+      .msg {
+        max-width: 86%;
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        line-height: 1.35;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+      .msg.user {
+        align-self: flex-end;
+        background: rgba(43, 99, 255, 0.18);
+        border-color: rgba(43, 99, 255, 0.35);
+      }
+      .msg.assistant {
+        align-self: flex-start;
+        background: rgba(32, 42, 82, 0.55);
+      }
+      .msg.meta {
+        align-self: center;
+        max-width: 100%;
+        font-size: 12px;
+        color: var(--muted);
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .controls {
+        padding: 12px;
+        border-top: 1px solid var(--border);
+        background: rgba(0, 0, 0, 0.08);
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      label {
+        font-size: 12px;
+        color: var(--muted);
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+      }
+      input[type="number"] {
+        width: 84px;
+      }
+      input[type="number"],
+      textarea {
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text);
+        border-radius: 10px;
+        padding: 10px;
+        font-size: 14px;
+        outline: none;
+      }
+      textarea {
+        width: 100%;
+        resize: vertical;
+        min-height: 46px;
+        max-height: 180px;
+        box-sizing: border-box;
+      }
+      button {
+        border: 1px solid rgba(43, 99, 255, 0.55);
+        background: rgba(43, 99, 255, 0.22);
+        color: var(--text);
+        border-radius: 10px;
+        padding: 10px 12px;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      button:disabled {
+        cursor: not-allowed;
+        opacity: 0.55;
+      }
+      .danger {
+        color: var(--danger);
+      }
+      .hint {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      a {
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <h1>VSaaS Insights</h1>
+        <div class="status">
+          <span class="badge" id="health">checking /health…</span>
+          <span class="badge" id="llm">LLM: unknown</span>
+          <span class="badge" id="fallback">Fallback: unknown</span>
+        </div>
+      </header>
+
+      <div class="panel">
+        <div class="messages" id="messages"></div>
+        <div class="controls">
+          <div class="row">
+            <label><input type="checkbox" id="includeEvents" checked />Include recent events</label>
+            <label>Max events <input type="number" id="maxEvents" min="0" max="200" value="20" /></label>
+            <label>Max tokens <input type="number" id="maxTokens" min="16" max="2048" value="384" /></label>
+            <label>Temp <input type="number" id="temperature" min="0" max="2" step="0.1" value="0.2" /></label>
+            <label><input type="checkbox" id="useFallbackSummary" checked />Structured fallback summary</label>
+            <button id="clear">Clear</button>
+          </div>
+          <textarea
+            id="input"
+            placeholder="Ask about events, dwell, PPE, intrusion, or camera health… (Enter to send, Shift+Enter for newline)"
+          ></textarea>
+          <div class="row">
+            <button id="send">Send</button>
+            <div class="hint">
+              API: <code>POST /chat</code> · Raw events: <a href="/events?limit=10" target="_blank" rel="noreferrer">/events</a> · Supports dwell/PPE/intrusion context
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const messagesEl = document.getElementById("messages");
+      const inputEl = document.getElementById("input");
+      const sendBtn = document.getElementById("send");
+      const clearBtn = document.getElementById("clear");
+      const healthEl = document.getElementById("health");
+      const llmEl = document.getElementById("llm");
+      const fallbackEl = document.getElementById("fallback");
+
+      const includeEventsEl = document.getElementById("includeEvents");
+        const maxEventsEl = document.getElementById("maxEvents");
+        const maxTokensEl = document.getElementById("maxTokens");
+        const temperatureEl = document.getElementById("temperature");
+        const useFallbackEl = document.getElementById("useFallbackSummary");
+
+        let chat = [
+        {
+          role: "assistant",
+          content:
+            "Ask VSaaS Insights about cameras, dwell/PPE/intrusion signals, or other recent VSaaS events (e.g. “summarize last 10”, “any high severity?”, “what cameras are active?”).",
+        },
+      ];
+
+      function addMessage(role, content) {
+        const div = document.createElement("div");
+        div.className = `msg ${role}`;
+        div.textContent = content;
+        messagesEl.appendChild(div);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      }
+
+      function addMeta(content, danger = false) {
+        const div = document.createElement("div");
+        div.className = `msg meta${danger ? " danger" : ""}`;
+        div.textContent = content;
+        messagesEl.appendChild(div);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      }
+
+      function renderAll() {
+        messagesEl.innerHTML = "";
+        for (const m of chat) addMessage(m.role, m.content);
+      }
+
+      async function checkHealth() {
+        try {
+          const res = await fetch("/health");
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const obj = await res.json();
+          healthEl.textContent = `ok · ts_ms=${obj.ts_ms}`;
+        } catch (e) {
+          healthEl.textContent = "health check failed";
+          healthEl.classList.add("danger");
+        }
+      }
+
+      async function send() {
+        const text = inputEl.value.trim();
+        if (!text) return;
+
+        chat.push({ role: "user", content: text });
+        addMessage("user", text);
+        inputEl.value = "";
+        sendBtn.disabled = true;
+        addMeta("Thinking…");
+
+        const body = {
+          messages: chat.filter((m) => m.role !== "meta"),
+          include_events: includeEventsEl.checked,
+          max_events: Number(maxEventsEl.value || 20),
+          max_tokens: Number(maxTokensEl.value || 384),
+          temperature: Number(temperatureEl.value || 0.2),
+          use_fallback_summary: Boolean(useFallbackEl.checked),
+        };
+
+        try {
+          const res = await fetch("/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body),
+          });
+          const obj = await res.json();
+
+          // Remove "Thinking…" meta bubble
+          messagesEl.lastChild && messagesEl.removeChild(messagesEl.lastChild);
+
+          if (!res.ok) {
+            addMeta(`Error: ${obj.detail || "request failed"}`, true);
+            sendBtn.disabled = false;
+            return;
+          }
+
+          const reply = String(obj.reply || "").trim() || "(empty reply)";
+          chat.push({ role: "assistant", content: reply });
+          addMessage("assistant", reply);
+
+          llmEl.textContent = `LLM: ${obj.llm_used ? "on" : "off"} · events=${obj.events_included ?? "-"}`;
+          fallbackEl.textContent = `Fallback: ${obj.fallback_used ? "on" : "off"}`;
+          fallbackEl.classList.toggle("danger", Boolean(obj.fallback_used));
+
+          if (obj.llm_error) {
+            addMeta(`LLM error: ${obj.llm_error}`, true);
+          }
+          if (obj.telemetry_summary) {
+            addMeta(`Telemetry: ${obj.telemetry_summary}`);
+          }
+          if (Array.isArray(obj.telemetry_details)) {
+            obj.telemetry_details.forEach((line) => line && addMeta(line));
+          }
+        } catch (e) {
+          messagesEl.lastChild && messagesEl.removeChild(messagesEl.lastChild);
+          addMeta(`Network error: ${e}`, true);
+        } finally {
+          sendBtn.disabled = false;
+          inputEl.focus();
+        }
+      }
+
+      clearBtn.addEventListener("click", () => {
+        chat = chat.filter((m) => m.role === "assistant").slice(0, 1);
+        renderAll();
+        llmEl.textContent = "LLM: unknown";
+        fallbackEl.textContent = "Fallback: unknown";
+        inputEl.focus();
+      });
+
+      sendBtn.addEventListener("click", send);
+      inputEl.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && !e.shiftKey) {
+          e.preventDefault();
+          send();
+        }
+      });
+
+      renderAll();
+      checkHealth();
+      setInterval(checkHealth, 5000);
+    </script>
+  </body>
+</html>

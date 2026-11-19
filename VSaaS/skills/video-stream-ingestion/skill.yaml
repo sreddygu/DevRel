@@ -1,0 +1,31 @@
+schema_version: "1.0"
+id: "video-stream-ingestion"
+name: "VSaaS Video Stream Ingestion"
+version: "0.1.0"
+description: "Validate VSaaS simulated or approved camera ingestion with privacy-aware evidence."
+entrypoint: "SKILL.md"
+kind: "domain-skill"
+language: "en"
+selection:
+  aliases: ["ingest VSaaS video", "start VSaaS edge stream"]
+  triggers: ["Start VSaaS simulation", "Connect VSaaS to a camera"]
+synapse:
+  layer: "domain"
+  domain: "vsaas"
+  owner: "P3 portfolio maintainers"
+  review_cadence: "Each camera, edge-runtime, or API release"
+  visibility: "public"
+  maturity: "pilot"
+  developer_journey_stage: ["enablement", "platform-experience"]
+  dependencies: ["p3-device-readiness", "p3-evidence-and-compatibility"]
+  authoritative_docs: ["../../README.md", "../../scripts/run_edge_sim.sh", "../../scripts/run_edge_camera.sh"]
+contract:
+  prerequisites: ["VSaaS source checkout", "Approved source and retention decision for camera mode"]
+  inputs: ["Simulation or camera mode", "Runtime-supplied source settings"]
+  outputs: ["Ingestion result", "Redacted event-count record", "Known gaps"]
+  negative_scope: ["Does not open a camera without approval", "Does not retain or upload raw video by default"]
+  validation: ["Selected edge script reports its outcome", "Evidence labels simulated versus camera-derived events"]
+safety:
+  default_mode: "non-destructive"
+  requires_explicit_approval: ["Installing dependencies", "Opening a camera", "Using an RTSP source", "Uploading data to a remote endpoint"]
+  secrets_policy: "Never store camera credentials, RTSP URLs, private endpoints, or raw video in evidence."

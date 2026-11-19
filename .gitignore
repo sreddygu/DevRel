@@ -1,0 +1,63 @@
+# Workspace and editor state
+.vscode/
+__pycache__/
+**/__pycache__/
+.git_disabled/
+qa-intermediate-curriculum.worktrees/
+
+# Python environments and tooling caches
+.venv/
+venv/
+env/
+**/.venv/
+**/.venv_*/
+**/venv/
+**/env/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+*.py[cod]
+
+# Secrets and machine-local configuration
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+
+# Generated files and diagnostics
+*.log
+*.log.*
+*.db
+*.sqlite
+*.sqlite3
+*.pid
+build/
+dist/
+**/build/
+**/dist/
+
+# Downloaded models, runtime bundles, and datasets
+AURA/models/
+AURA/artifacts/
+AURA/bin/
+LLM/models/
+LLM/genie_bundle/
+LLM/llama.cpp-win-arm64/
+LLM/llm_venv/
+wake_word/output/
+wake_word/speech_commands_hey_dragon/
+GesturDJ/diffrhythm_outputs/
+VSaaS/models/
+VSaaS/llama.cpp/
+*.executed.ipynb
+
+# External checkout; manage separately as a submodule if required.
+GesturDJ/ACE-Step/
+
+# Locally generated project material
+QUAD-Client/backups/
+QUAD-Client/deliverables/
+QUAD-Client/export_assets/
+QUAD-Client/quad_artifacts/

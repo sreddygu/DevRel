@@ -1,0 +1,16 @@
+WiFi Connectivity Issue Triage Report
+
+1. What Happened
+
+Observed Symptom
+• STA Unknown is experiencing DATA_STALL on WiFi
+
+2. Root Cause Analysis
+
+Primary Suspected Causes (Ranked by Likelihood)
+MEDIUM Likelihood: Tx stuck due to low RTS success rate
+• The low RTS success rate indicates that the AP cannot obtain CTS responses, severely impairing channel access and causing the data stall.
+• Evidence: Stats show rts_success_rate = 13.8% on mac_id 0 (86.2% failure rate) [severity: HIGH]
+MEDIUM Likelihood: 4-Way Handshaking failure
+• The logs do not provide any clear indication of a 4-Way Handshaking failure.
+• Evidence: Insufficient evidence to determine root cause

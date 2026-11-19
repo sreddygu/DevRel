@@ -1,0 +1,22 @@
+{
+  "platform": "Windows AMD64",
+  "python": "3.10.10",
+  "onnxruntime": "1.23.2",
+  "samples": 150,
+  "accuracy": {
+    "heldout_samples": 30,
+    "accuracy": 1.0
+  },
+  "parity": {
+    "skipped": true
+  },
+  "latency_ms": {
+    "p50": 0.184,
+    "p95": 0.31,
+    "max": 2.194,
+    "budget": 50.0,
+    "ok": true,
+    "runs": 300
+  },
+  "ok": true
+}

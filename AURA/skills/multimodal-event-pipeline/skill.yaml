@@ -1,0 +1,31 @@
+schema_version: "1.0"
+id: "multimodal-event-pipeline"
+name: "AURA Multimodal Event Pipeline"
+version: "0.1.0"
+description: "Validate AURA perception and memory event handling with scoped, privacy-aware evidence."
+entrypoint: "SKILL.md"
+kind: "domain-skill"
+language: "en"
+selection:
+  aliases: ["validate AURA events", "test AURA perception pipeline"]
+  triggers: ["Validate AURA vision and speech events", "Check AURA memory pipeline"]
+synapse:
+  layer: "domain"
+  domain: "aura"
+  owner: "P3 portfolio maintainers"
+  review_cadence: "Each perception-model or event-contract release"
+  visibility: "public"
+  maturity: "pilot"
+  developer_journey_stage: ["platform-experience"]
+  dependencies: ["aura-agent-orchestration", "p3-evidence-and-compatibility"]
+  authoritative_docs: ["../../README.md", "../../tests/test_vision.py", "../../tests/test_speech.py", "../../tests/test_memory.py"]
+contract:
+  prerequisites: ["Completed AURA runtime setup", "Selected pipeline stages"]
+  inputs: ["Synthetic or approved input", "Optional approved sensor source"]
+  outputs: ["Focused test result", "Redacted event-pipeline evidence record"]
+  negative_scope: ["Does not open sensors without approval", "Does not retain personal sensor data by default"]
+  validation: ["Focused vision, speech, memory, and smoke tests complete", "Evidence labels the source and target"]
+safety:
+  default_mode: "non-destructive"
+  requires_explicit_approval: ["Opening a camera", "Opening a microphone", "Persisting sensor data", "Sending event data to a remote endpoint"]
+  secrets_policy: "Redact personal data, credentials, endpoints, and private model paths."

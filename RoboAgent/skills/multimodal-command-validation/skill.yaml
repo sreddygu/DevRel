@@ -1,0 +1,31 @@
+schema_version: "1.0"
+id: "multimodal-command-validation"
+name: "RoboAgent Multimodal Command Validation"
+version: "0.1.0"
+description: "Evaluate RoboAgent responses and proposed tool calls with deterministic, grounded checks."
+entrypoint: "SKILL.md"
+kind: "domain-skill"
+language: "en"
+selection:
+  aliases: ["evaluate RoboAgent", "validate RoboAgent tool call"]
+  triggers: ["Check a RoboAgent response", "Validate RoboAgent command output"]
+synapse:
+  layer: "domain"
+  domain: "roboagent"
+  owner: "P3 portfolio maintainers"
+  review_cadence: "Each model, protocol, or tool-contract update"
+  visibility: "public"
+  maturity: "pilot"
+  developer_journey_stage: ["platform-experience"]
+  dependencies: ["robot-runtime-discovery", "robot-safety-boundaries", "p3-evidence-and-compatibility"]
+  authoritative_docs: ["../../AGENTS.md", "../../.pi/skills/roboagent-evaluation/SKILL.md", "../../tools/pi/test-roboagent-protocol.ps1"]
+contract:
+  prerequisites: ["Observed runtime readiness", "Approved host if protocol evaluation is requested"]
+  inputs: ["Deterministic evaluation prompt", "Optional approved host session"]
+  outputs: ["Response-quality record", "Tool-validation decision", "Latency/context evidence"]
+  negative_scope: ["Does not execute arbitrary model output", "Does not enable mutation tools by default"]
+  validation: ["Evaluation result records grounding and tool decision", "Unsupported or malformed tool requests are rejected"]
+safety:
+  default_mode: "non-destructive"
+  requires_explicit_approval: ["Starting a host session", "Running protocol tests", "Enabling mutation tools", "Executing a validated command"]
+  secrets_policy: "Do not record prompts or logs containing credentials, private keys, or personal data."

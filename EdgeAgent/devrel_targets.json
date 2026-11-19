@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0-local",
+  "policy": {
+    "network_scope": "loopback-only",
+    "allowed_hosts": ["127.0.0.1", "localhost", "::1"],
+    "remote_actions": "explicit-user-invocation-only"
+  },
+  "targets": [
+    {
+      "id": "local-cpu",
+      "runtime": "llama.cpp",
+      "profile": "cpu",
+      "base_url": "http://127.0.0.1:8080",
+      "models_path": "/v1/models",
+      "chat_path": "/v1/chat/completions"
+    },
+    {
+      "id": "local-npu",
+      "runtime": "QAIRT Genie",
+      "profile": "npu",
+      "model": "qwen3-4b-genie",
+      "base_url": "http://127.0.0.1:8081",
+      "models_path": "/v1/models",
+      "chat_path": "/v1/chat/completions"
+    },
+    {
+      "id": "local-agent-app",
+      "runtime": "Flask",
+      "base_url": "http://127.0.0.1:8090",
+      "info_path": "/api/info",
+      "tools_path": "/api/tools",
+      "profiles_path": "/api/profiles"
+    }
+  ]
+}

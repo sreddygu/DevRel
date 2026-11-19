@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__quad__hardware_detect",
+      "mcp__quad__convert_model",
+      "mcp__quad__profile_workload",
+      "mcp__quad__orchestrate_workload",
+      "mcp__quad__generate_code",
+      "mcp__quad__aihub_select",
+      "Bash(quad-client *)",
+      "Bash(quad-client.exe *)"
+    ]
+  },
+  "mcpServers": {
+    "quad": {
+      "command": "C:\\work\\QUAD\\QUAD\\.venv\\Scripts\\python.exe",
+      "args": [
+        "-u",
+        "-m",
+        "quad.mcp.server"
+      ],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "QUAD_ADAPTER_MODE": "real"
+      },
+      "transport": {
+        "type": "http",
+        "url": "http://10.227.21.202:8000/mcp",
+        "headers": {
+          "Authorization": "Bearer ${env:QUAD_MCP_TOKEN}"
+        }
+      }
+    }
+  },
+  "defaultMode": "bypassPermissions"
+}

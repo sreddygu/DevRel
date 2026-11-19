@@ -1,0 +1,31 @@
+schema_version: "1.0"
+id: "agent-tool-contract-validation"
+name: "EdgeAgent Tool Contract Validation"
+version: "0.1.0"
+description: "Validate an EdgeAgent MCP transport contract before it is installed."
+entrypoint: "SKILL.md"
+kind: "domain-skill"
+language: "en"
+selection:
+  aliases: ["validate EdgeAgent MCP transport", "test EdgeAgent connection"]
+  triggers: ["Check whether my EdgeAgent MCP connection works", "Validate EdgeAgent tool configuration"]
+synapse:
+  layer: "domain"
+  domain: "edge-agent"
+  owner: "P3 portfolio maintainers"
+  review_cadence: "Each transport or CLI release"
+  visibility: "public"
+  maturity: "pilot"
+  developer_journey_stage: ["enablement", "platform-experience"]
+  dependencies: ["edge-agent-runtime-setup", "p3-evidence-and-compatibility"]
+  authoritative_docs: ["../../devrel_runtime/src/devrel_client/cli.py", "../../devrel_runtime/tests/test_cli.py", "../../devrel_runtime/tests/test_connection.py"]
+contract:
+  prerequisites: ["Completed runtime setup", "Runtime-supplied transport settings"]
+  inputs: ["Transport type", "Endpoint or SSH information", "Optional authentication reference"]
+  outputs: ["Redacted preview result", "Connection-test result", "Focused test result"]
+  negative_scope: ["Does not write settings files", "Does not weaken authentication or networking controls"]
+  validation: ["Preview renders a supported transport", "connect-test reports success or a non-zero failure", "Focused pytest command passes"]
+safety:
+  default_mode: "non-destructive"
+  requires_explicit_approval: ["Sending authentication tokens", "Starting or changing a remote service", "Writing MCP client configuration"]
+  secrets_policy: "Never record authentication values, private keys, or private endpoint details."

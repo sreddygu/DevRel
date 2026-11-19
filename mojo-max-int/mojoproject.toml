@@ -1,0 +1,8 @@
+[project]
+name = "mojo-max-int"
+version = "0.1.0"
+description = "Mojo + MAX inference on Qualcomm IQ devices (ARM CPU + Hexagon NPU via Genie)"
+requires-python = ">=3.10"
+
+[dependencies]
+max = "*"

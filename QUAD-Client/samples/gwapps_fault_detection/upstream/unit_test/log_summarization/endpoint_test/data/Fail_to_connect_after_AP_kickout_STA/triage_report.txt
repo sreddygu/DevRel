@@ -1,0 +1,13 @@
+WiFi Connectivity Issue Triage Report
+
+1. What Happened
+
+Observed Symptom
+• STA Unknown is experiencing FAIL_TO_CONNECT on WiFi
+
+2. Root Cause Analysis
+
+Primary Suspected Causes (Ranked by Likelihood)
+HIGH Likelihood: MFP SA Query blocking reconnection after AP kickout
+• The logs show multiple SA query events, indicating that the MFP SA Query process is preventing the client from reconnecting to the network after being kicked out by the AP.
+• Evidence: The issue type is 'mfp_sa_query' and the description is 'MFP SA Query blocking reconnection after AP kickout'.

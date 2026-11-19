@@ -1,0 +1,160 @@
+schema_version: "1.0"
+catalog: "qli-linux-mcp-tools"
+description: >
+  MCP tool specifications for deterministic QLI operations.
+  These were collapsed from foundational skills (2026-10-22).
+  Register them in the shared MCP inventory before implementing elsewhere.
+  MCP-first: if a tool already exists in the inventory, reuse it.
+
+tools:
+
+  - id: "qli_connectivity_check"
+    name: "QLI Device Connectivity Check"
+    description: "Check TCP reachability to a QLI device without changing network configuration."
+    collapsed_from: "device-connectivity-validation"
+    implementation: "src/qli_device_lifecycle_apps.py"
+    command: "py -3 src/qli_device_lifecycle_apps.py connectivity"
+    input_schema:
+      type: object
+      properties:
+        host:
+          type: string
+          description: "Device hostname or IP address"
+        port:
+          type: integer
+          default: 22
+          description: "TCP port to probe"
+        timeout:
+          type: number
+          default: 5.0
+          description: "Timeout in seconds"
+      required: ["host"]
+    output_schema:
+      type: object
+      properties:
+        reachable:
+          type: boolean
+        host:
+          type: string
+        port:
+          type: integer
+        latency_ms:
+          type: number
+        error:
+          type: string
+    safety:
+      side_effects: none
+      destructive: false
+      requires_approval: false
+    mcp_inventory_note: >
+      Expose as an MCP tool. Check the shared MCP inventory first — if an
+      equivalent connectivity-check tool exists, use it instead of registering
+      this one. Safety rule (do not change network config) is enforced by
+      the QLI Linux context document.
+
+  - id: "qli_inference_benchmark"
+    name: "QLI AI Inference Benchmark"
+    description: "Run a model benchmark on a QLI target and return timing results."
+    collapsed_from: "ai-inference-benchmark"
+    implementation: "src/qli_ai_apps.py"
+    command: "py -3 src/qli_ai_apps.py benchmark"
+    input_schema:
+      type: object
+      properties:
+        runner_command:
+          type: string
+          description: "Validated model runner command (e.g. qnn-net-run with flags)"
+        iterations:
+          type: integer
+          default: 10
+          description: "Number of inference iterations"
+        warmup:
+          type: integer
+          default: 2
+          description: "Warmup iterations (excluded from timing)"
+        timeout:
+          type: number
+          default: 120.0
+          description: "Per-iteration timeout in seconds"
+      required: ["runner_command"]
+    output_schema:
+      type: object
+      properties:
+        runner_identity:
+          type: string
+        iterations:
+          type: integer
+        warmup:
+          type: integer
+        mean_ms:
+          type: number
+        min_ms:
+          type: number
+        max_ms:
+          type: number
+        return_code:
+          type: integer
+    safety:
+      side_effects: "Read-only device I/O; does not modify model or device state"
+      destructive: false
+      requires_approval: false
+    mcp_inventory_note: >
+      Expose as an MCP tool. Benchmark timing is a fact, not a judgment.
+      Check inventory — a generic inference benchmark tool may already exist.
+
+  - id: "qli_readiness_report"
+    name: "QLI Readiness Report Generation"
+    description: >
+      Run the three-step report pipeline: normalize evidence into summary JSON,
+      populate the Excel workbook, generate the Word report.
+    collapsed_from: "readiness-report-generation"
+    pipeline:
+      - step: "build_summary"
+        command: "py -3 scripts/build_qli_device_summary.py"
+        description: "Normalize baseline + deep evidence into unified summary JSON"
+      - step: "create_workbook"
+        command: "py -3 scripts/create_qli_device_workbook.py"
+        description: "Populate Excel workbook from summary"
+      - step: "create_report"
+        command: "pwsh scripts/create_qli_device_report.ps1"
+        description: "Generate Word readiness report from summary"
+    input_schema:
+      type: object
+      properties:
+        evidence_dir:
+          type: string
+          description: "Path to device/date-specific evidence directory"
+        output_dir:
+          type: string
+          description: "Where to write deliverables (workbook, report)"
+        device_label:
+          type: string
+          description: "Human-readable device identifier for the deliverable headers"
+        overwrite:
+          type: boolean
+          default: false
+          description: "Overwrite existing workbook or report (requires approval)"
+      required: ["evidence_dir", "output_dir", "device_label"]
+    output_schema:
+      type: object
+      properties:
+        summary_json:
+          type: string
+          description: "Path to generated summary JSON"
+        workbook:
+          type: string
+          description: "Path to generated Excel workbook"
+        report:
+          type: string
+          description: "Path to generated Word report"
+        status_totals:
+          type: object
+          description: "Workflow status counts from the summary"
+    safety:
+      side_effects: "Writes files to output_dir; overwrites require explicit approval"
+      destructive: false
+      requires_approval: "Only when overwrite=true"
+    mcp_inventory_note: >
+      Expose as an MCP tool. The three-script pipeline is deterministic once
+      summary JSON exists. Check the shared MCP inventory for a generic
+      report-generation tool before registering this one.

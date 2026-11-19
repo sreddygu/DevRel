@@ -1,0 +1,33 @@
+{
+  "data_dir": "C:\\dr_iq8\\gdj_work\\data",
+  "total_samples": 150,
+  "labels": {
+    "circle": {
+      "count": 50,
+      "length_min": 63,
+      "length_median": 101,
+      "length_max": 155,
+      "non_finite_files": 0,
+      "flat_files": 0
+    },
+    "left": {
+      "count": 50,
+      "length_min": 60,
+      "length_median": 116,
+      "length_max": 160,
+      "non_finite_files": 0,
+      "flat_files": 0
+    },
+    "right": {
+      "count": 50,
+      "length_min": 60,
+      "length_median": 95,
+      "length_max": 158,
+      "non_finite_files": 0,
+      "flat_files": 0
+    }
+  },
+  "errors": [],
+  "warnings": [],
+  "ok": true
+}

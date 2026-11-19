@@ -1,0 +1,13 @@
+# Keep the build context tiny -- only the agent sources need to ship.
+__pycache__/
+*.pyc
+*.log
+.venv/
+.venv_devrel/
+.venv_devrel_npu/
+genie_bundle/
+*.gguf
+backup/
+devrel_runtime/
+platformValidator/
+workspace/

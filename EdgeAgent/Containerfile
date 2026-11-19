@@ -1,0 +1,31 @@
+# Containerfile -- run the tiny tool-using agent (agent.py) in a container.
+#
+# Theme of this project is PORTABILITY: write the agent once, run it unchanged
+# on the Snapdragon X Elite host, then on the IQ8 and IQ9 edge devices. This
+# image is the next layer of that story -- ONE arm64 image that runs on all
+# three (all are aarch64 Linux); only the AGENT_BASE_URL env (or --base-url)
+# changes per device.
+#
+# The agent is stdlib-only (urllib/json/argparse/subprocess), so there are NO
+# pip installs -- the image is just python:slim + the agent sources.
+#
+# Build:  podman build -t edge-agent .
+# Run:    podman run --rm -it --network=host edge-agent -v "What is 2^10?"
+# (--network=host lets 127.0.0.1:8080 inside the container reach the host's
+#  llama.cpp server. See README "Run the agent in a Podman container".)
+
+FROM python:3.12-slim
+
+WORKDIR /app
+
+# Agent sources only. The model is NOT bundled -- the agent speaks HTTP to a
+# separately-run llama.cpp server (on the host or another device).
+COPY agent.py genie_server.py eval_agent.py eval_tasks.json agent_profiles.json __init__.py ./
+
+# Default server URL; override with -e AGENT_BASE_URL=... or --base-url.
+ENV AGENT_BASE_URL=http://127.0.0.1:8080
+
+# Prompt and flags after the image name are passed straight to agent.py, e.g.
+#   podman run ... edge-agent -v "What time is it?"
+#   podman run ... edge-agent --base-url http://<IQ8_IP>:8080 "Read /etc/hostname"
+ENTRYPOINT ["python3", "agent.py"]

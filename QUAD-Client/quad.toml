@@ -1,0 +1,39 @@
+# QUAD-Client configuration.
+
+[adapters.ai_hub]
+api_key_env = "QAI_HUB_API_KEY"
+base_url = "https://app.aihub.qualcomm.com/api/v1"
+
+# Dragonwing IQ-9075 EVK (SoC QCS9075) -- SSH is the validated, default
+# transport (~95% of workflows; see docs/debugging/IQ9075_adb_investigation.md).
+# host/user below reference .env_boards via ${env:VAR} (the same expansion
+# pattern .claude/settings.json uses for QUAD_MCP_TOKEN) -- no literal
+# IP/credentials are committed here.
+#
+# SETUP (fresh clone): copy .env_boards.example -> .env_boards (gitignored,
+# never committed) and set these two vars -- this stanza will not resolve to
+# a real host/user without them:
+#   IQ9075_HOST=<board IP, e.g. 10.73.92.162>
+#   IQ9075_SSH_USER=root
+# Then, in the SAME shell session, before running /quad-detect or any SSH
+# probe against this target: `set -a; source .env_boards 2>/dev/null; set +a`
+# (see the "Mandatory ordering" note in .claude/skills/quad-detect/SKILL.md
+# step 3 -- skipping this silently resolves host/user to empty strings, not
+# an error).
+#
+# CAVEAT: this board is currently password-auth (IQ9075_SSH_PASSWORD in
+# .env_boards, connected via plink -- see CLAUDE.md's "Board connect
+# (IQ-9075)"). src/quad_mcp_client/local/board/ssh.py hardcodes
+# BatchMode=yes (key-only) for its ssh/scp wrapper, so `board_profile.py
+# --transport ssh` will still fail auth against this target until a key is
+# provisioned on the board. This stanza is sufficient for /quad-detect's
+# quad.toml-based target discovery; it does not yet make board_profile.py's
+# ssh transport usable end-to-end for this board.
+[target.iq-9075]
+board = "iq-9075"
+soc = "qcs9075"
+hexagon = "v73"
+
+[target.iq-9075.ssh]
+host = "${env:IQ9075_HOST}"
+user = "${env:IQ9075_SSH_USER}"

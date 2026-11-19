@@ -1,0 +1,125 @@
+schema_version: "1.0"
+id: "gesturdj-agent"
+name: "GesturDJ Agent"
+version: "0.1.0"
+description: >
+  Agent-layer coordinator for GesturDJ. Interprets developer intent, selects the
+  smallest safe skill path, keeps the live path within its latency budget and the
+  background music path optional, enforces approval gates, checkpoints execution,
+  and routes failures to recovery.
+entrypoint: "SKILL.md"
+kind: "agent-skill"
+language: "en"
+synapse:
+  layer: "agent"
+  domain: "gesturdj"
+  owner: "Srinivas Reddy Gudala"
+  backup_owner: "TBD: community maintainers (see finding F20 in ../../GESTURDJ_SYNAPSE_SKILLS.md)"
+  review_cadence: "Each ONNX Runtime major release or Ventuno Q image release"
+  visibility: "public"
+  maturity: "proposed"
+  supported_versions: ["Arduino Ventuno Q (Ubuntu)", "ONNX Runtime CPU", "Windows or Linux host with Python 3.10+"]
+  feedback_channel: >
+    TBD: Developer Portal community channel. Until it exists, GitHub Issues on the
+    qa-intermediate-curriculum repository (label: synapse-gesturdj).
+  deprecation_path: >
+    Set maturity: "deprecated" and announce via feedback_channel with 30-day notice;
+    point to the replacement skill.
+  developer_journey_stage: ["discovery", "enablement", "platform-experience"]
+  dependencies: ["gesture-event-contract", "p3-self-service-boundaries", "gesturdj-build-journey", "device-and-host-discovery", "gesture-dataset-preparation", "gesture-model-training-and-evaluation", "model-export-and-deployment", "on-device-gesture-validation", "gesture-to-live-mix-design", "audio-output-integration", "live-mixer-and-latency-validation", "music-model-npu-deployment", "npu-quantization-and-accuracy-gating", "library-generation-and-quality-evaluation"]
+  authoritative_docs: ["../../GESTURDJ_SYNAPSE_SKILLS.md", "../../gesture_scripts/README.md", "../../gesture_scripts/ventunoq.md"]
+  a2a:
+    role: "orchestrator"
+    accepts_from: ["developer-harness"]
+    delegates_to: ["gesturdj-build-journey", "domain-skills", "mcp-tools"]
+    communication_metadata:
+      protocol: "A2A"
+      message_format: "intent + context bundle"
+      checkpoint_format: "approved-plan + execution-log"
+selection:
+  aliases: ["GesturDJ agent", "gesture music coordinator"]
+  triggers:
+    - "Make my gestures play music"
+    - "Set up GesturDJ on my board or PC"
+    - "Add or change a gesture mapping"
+    - "Why is GesturDJ laggy"
+responsibilities:
+  - "Interpret developer intent and identify the required outcome"
+  - "Inject gesture-event-contract and p3-self-service-boundaries before any skill runs"
+  - "Run device-and-host-discovery first; plan around the hardware the developer actually has, with PC as the generator fallback"
+  - "Select the smallest safe path: MCP tool over domain skill over journey"
+  - "Keep generation on the background path; never put it on the live path"
+  - "Present a plan and obtain approval before any consequential action"
+  - "Checkpoint after each step so work can resume"
+  - "Route failures to diagnostics and propose recovery; never report success for an unverified result"
+not_responsible_for:
+  - "Implementing device operations (delegated to skills and tools)"
+  - "Pose/camera recognition (planned, not implemented; see skills/README.md)"
+  - "Training hyperparameters, musical taste, hardware repair"
+  - "Licensing decisions for models, data or music (the developer owns them)"
+composition:
+  context_documents: ["gesture-event-contract", "p3-self-service-boundaries"]
+  journey_skills: ["gesturdj-build-journey"]
+  domain_skills: ["device-and-host-discovery", "gesture-dataset-preparation", "gesture-model-training-and-evaluation", "model-export-and-deployment", "on-device-gesture-validation", "gesture-to-live-mix-design", "audio-output-integration", "live-mixer-and-latency-validation", "music-model-npu-deployment", "npu-quantization-and-accuracy-gating", "library-generation-and-quality-evaluation"]
+  mcp_tools: ["discover_host", "make_synthetic_dataset", "check_dataset", "export_onnx", "onnx_predict", "validate_onnx", "live_mixer", "probe_audio_output", "validate_live_latency", "cosine_vs_ref", "evaluate_clip_library", "probe_hw_latency", "probe_warm_stream"]
+approval_gates:
+  - action: "Writing to a board (scp, package install, flashing)"
+    gate: "Present plan and state before/after; wait for explicit approval"
+  - action: "Opening a camera or recording the developer's sensor data"
+    gate: "Explicit approval; say where data is stored"
+  - action: "Downloading a model or dataset"
+    gate: "Show the source and its license; wait for approval"
+  - action: "Overwriting an existing model, mix map or clip library"
+    gate: "Explicit approval"
+  - action: "Rebooting a board"
+    gate: "Explicit approval; abort if not received"
+failure_behavior:
+  on_skill_failure: "Collect diagnostics; propose a recovery action; do not silently continue"
+  on_gate_rejection: "Stop the branch; explain what was blocked; offer an alternative"
+  on_unverified_outcome: "Do not report success; surface the gap and ask for guidance"
+  on_missing_prerequisite: "Run device-and-host-discovery to resolve before proceeding"
+contract:
+  prerequisites: ["Developer intent statement", "Which devices the developer owns (or none)"]
+  inputs: ["Developer intent", "Device profile", "Scope (single skill vs full build)"]
+  outputs: ["Approved execution plan", "Step-by-step checkpoint log", "Validated outcome or explicit recovery action"]
+  negative_scope:
+    - "Does not run device commands itself; it delegates to skills and tools"
+    - "Does not store credentials"
+  validation: ["Each delegated skill's own validation passed before the next step starts"]
+  failure_behavior: "See failure_behavior above."
+  known_failure_modes:
+    - "Developer expects live generation: explain the hybrid design before planning"
+    - "Developer assumes the ONNX model needs no packaging: a copied .onnx alone, or a script importing torch, fails on a torch-free board (see model-export-and-deployment)"
+    - "No generator hardware: place generation on the PC and say how long it takes"
+  two_config_evidence:
+    - "Run by a coding assistant acting as the hosting agent on an IQ8, 2026-11-10: nine checkpoints, one blocked action and its recovery (evidence/iq8-run/agent-run-log.md). One run, one assistant, no automated router"
+    - "Delegated steps 1-5 were also run by hand on a PC 2026-11-05 (evidence/pc-run/)"
+authority:
+  source_docs: "See synapse.authoritative_docs"
+  approved_tools: ["gesturdj-build-journey", "device-and-host-discovery", "gesture-dataset-preparation", "gesture-model-training-and-evaluation", "model-export-and-deployment", "on-device-gesture-validation", "gesture-to-live-mix-design", "audio-output-integration", "live-mixer-and-latency-validation", "music-model-npu-deployment", "npu-quantization-and-accuracy-gating", "library-generation-and-quality-evaluation"]
+  endpoints: ["SSH (TCP/22) to a board the developer owns; address supplied at runtime, never stored"]
+  provenance: "academy/GesturDJ; no run evidence yet"
+control:
+  approval_gates: "See approval_gates"
+  consequential_actions:
+    - "Approves or rejects consequential actions requested by delegated skills"
+  recovery_and_rollback: "On failure: collect diagnostics, propose recovery, resume from checkpoint log."
+review_gates:
+  # pilot = gates 1 + 3 met; supported = all six met
+  ownership: "met: named owner; backup owner open (F20)"
+  scope_and_boundary: "met: see negative_scope"
+  validation_evidence: "partly met: one assistant-run journey on an IQ8 with a checkpoint log; no automated router; not a Ventuno Q"
+  feedback_mechanism: "open: community channel not yet defined"
+  discoverability: "open: not yet on the Developer Portal"
+  lifecycle_commitment: "open: community maintenance model undefined (F20)"
+project:
+  root_relative_to_skill: "../.."
+safety:
+  default_mode: "non-destructive"
+  requires_explicit_approval:
+    - "Writing to a board"
+    - "Opening a camera or recording sensor data"
+    - "Downloading models or datasets"
+    - "Overwriting developer files"
+    - "Rebooting a board"
+  secrets_policy: "Never persist credentials, tokens, private keys, or passwords. Read them from environment variables; redact before logging."
