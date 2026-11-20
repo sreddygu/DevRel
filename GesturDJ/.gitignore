@@ -3,7 +3,6 @@
 *.mp3
 *.flac
 *.raw
-diffrhythm_outputs/
 
 # Model files and build output (rebuilt by the notebook)
 *.dlc

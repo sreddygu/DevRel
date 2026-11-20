@@ -1,0 +1,23 @@
+schema_version: "1.0"
+id: "evidence-and-compatibility"
+name: "P3 Evidence and Compatibility"
+version: "1.0.0"
+description: "Capture reproducible P3 evidence and supported-environment declarations."
+entrypoint: "SKILL.md"
+kind: "domain-skill"
+language: "en"
+synapse:
+  layer: "domain"
+  domain: "p3-portfolio"
+  owner: "P3 portfolio maintainers"
+  review_cadence: "Each release or support-matrix change"
+  visibility: "public"
+  maturity: "pilot"
+  developer_journey_stage: ["enablement", "platform-experience"]
+contract:
+  inputs: ["Documented validation command", "Target environment", "Output path"]
+  outputs: ["Evidence record", "Compatibility declaration", "Known exclusions"]
+  negative_scope: ["Does not fabricate evidence", "Does not expose secrets or personal data"]
+safety:
+  default_mode: "non-destructive"
+  secrets_policy: "Redact credentials, private endpoints, and personal data before publication."

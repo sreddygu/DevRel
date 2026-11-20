@@ -1,0 +1,209 @@
+{
+  "manifestVersion": 1,
+  "sources": [
+    {
+      "comment": "External repo — another team's full skills repo",
+      "type": "repo",
+      "repo": "qualcomm-partner/partner-skills",
+      "ref": "main"
+    },
+    {
+      "comment": "Team folder inside this same repo — repo omitted, resolved from context",
+      "type": "folder",
+      "path": "teams/connectivity"
+    },
+    {
+      "comment": "Team folder inside this same repo",
+      "type": "folder",
+      "path": "teams/hardware"
+    },
+    {
+      "comment": "Folder inside a different repo — explicit repo required",
+      "type": "folder",
+      "repo": "qualcomm-developer/platform-repo",
+      "ref": "v2",
+      "path": "embedded/skills"
+    }
+  ],
+  "skills": [
+    {
+      "comment": "Multi-version skill. v1 targets the SDK v1 generation (qli-1.8, QIMPSDK CORE 2.x) and lives on the release/1.x branch; v2 targets the SDK v2 generation (qli-2.0, QIMPSDK CORE 3.x) on main. A user on SDK v1 is offered v1; a user on SDK v2 is offered v2. Versions are listed oldest -> newest; the server auto-picks the newest compatible one.",
+      "name": "gpio-controller",
+      "displayName": "GPIO Controller",
+      "owner": "qualcomm-developer",
+      "description": "Control GPIO pins on Qualcomm embedded boards — read/write digital I/O, configure pull resistors, and set up interrupt handlers.",
+      "agents": ["claude", "codex"],
+      "category": "hardware",
+      "tags": ["gpio", "hardware", "embedded", "iot", "pins", "digital-io"],
+      "useCases": [
+        "Toggle an LED connected to a GPIO pin",
+        "Read a button or sensor state",
+        "Set up edge-triggered interrupts on a GPIO line"
+      ],
+      "license": "MIT",
+      "homepage": "https://github.com/qualcomm-developer/qualcomm-skills",
+      "triggers": [{"action": "suggest-install", "tool": "list_devices"}],
+      "versions": [
+        {
+          "comment": "Older generation — for devices on the SDK v1 / qli-1.8 line. Files live on the release/1.x branch.",
+          "version": "1.4.0",
+          "ref": "release/1.x",
+          "path": "skills/gpio-controller",
+          "docPath": "skills/gpio-controller/SKILL.md",
+          "files": ["skills/gpio-controller/**"],
+          "description": "Control GPIO pins on Qualcomm embedded boards (SDK v1 / QIMPSDK CORE 2.x API).",
+          "compatibility": {
+            "hostOs": ["linux", "windows", "macos"],
+            "devkits": ["qcs9075-iq-9075-evk", "qcs6490-rb3gen2-core-kit"],
+            "targetOs": [
+              {
+                "os": "qualcomm_linux",
+                "variant": "qualcomm-linux-proprietary",
+                "minVersion": "qli-1.8",
+                "maxVersion": "qli-1.8"
+              }
+            ],
+            "sdks": [
+              {
+                "id": "QIMPSDK CORE",
+                "minVersion": "2.0.1",
+                "maxVersion": "2.2.1"
+              }
+            ]
+          }
+        },
+        {
+          "comment": "Current generation — for devices on the SDK v2 / qli-2.0 line. Files live on main (default ref, so ref is omitted).",
+          "version": "2.0.0",
+          "path": "skills/gpio-controller",
+          "docPath": "skills/gpio-controller/SKILL.md",
+          "files": ["skills/gpio-controller/**"],
+          "description": "Control GPIO pins on Qualcomm embedded boards (SDK v2 / QIMPSDK CORE 3.x API).",
+          "compatibility": {
+            "hostOs": ["linux", "windows", "macos"],
+            "devkits": ["qcs9075-iq-9075-evk", "qcs6490-rb3gen2-core-kit"],
+            "targetOs": [
+              {
+                "os": "qualcomm_linux",
+                "variant": "qualcomm-linux-proprietary",
+                "minVersion": "qli-2.0"
+              }
+            ],
+            "sdks": [{"id": "QIMPSDK CORE", "minVersion": "3.0.0"}]
+          }
+        }
+      ]
+    },
+    {
+      "comment": "Single-version skill — the common case. One entry in versions[].",
+      "name": "wifi-manager",
+      "displayName": "Wi-Fi Manager",
+      "owner": "qualcomm-developer",
+      "description": "Manage Wi-Fi connections using wpa_supplicant or NetworkManager — scan for networks, connect with WPA2/WPA3, and monitor link quality.",
+      "agents": ["claude"],
+      "category": "connectivity",
+      "tags": [
+        "wifi",
+        "networking",
+        "wpa-supplicant",
+        "network-manager",
+        "wireless"
+      ],
+      "useCases": [
+        "Connect to a WPA2 or WPA3 protected network",
+        "Scan and list visible access points",
+        "Check current link quality and RSSI",
+        "Automate network reconnection on boot"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/qualcomm-developer/qualcomm-skills",
+      "triggers": [
+        {"action": "suggest-install", "tool": "list_wifi_networks"},
+        {"action": "suggest-install", "tool": "connect_wifi"},
+        {"action": "suggest-uninstall", "tool": "disconnect_wifi"}
+      ],
+      "versions": [
+        {
+          "version": "1.2.0",
+          "path": "skills/wifi-manager",
+          "docPath": "skills/wifi-manager/SKILL.md",
+          "files": ["skills/wifi-manager/**"],
+          "compatibility": {
+            "hostOs": ["linux", "windows", "macos"],
+            "devkits": [
+              "qcs9075-iq-9075-evk",
+              "qcs6490-rb3gen2-core-kit",
+              "qcs6490-rb3gen2-vision-kit"
+            ],
+            "targetOs": [
+              {
+                "os": "qualcomm_linux",
+                "variant": "qualcomm-linux-proprietary",
+                "minVersion": "qli-1.8"
+              },
+              {
+                "os": "ubuntu",
+                "variant": "ubuntu-server",
+                "minVersion": "24.04-x12"
+              }
+            ],
+            "sdks": [
+              {"id": "QIMPSDK EVK", "minVersion": "2.2.1"},
+              {"id": "QIMPSDK CORE", "minVersion": "2.2.1"}
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "comment": "Single-version, SDK-agnostic skill — omits the sdks axis entirely.",
+      "name": "uart-bridge",
+      "displayName": "UART Serial Bridge",
+      "owner": "qualcomm-developer",
+      "description": "Set up and communicate over UART serial ports — configure baud rate, parity, and flow control, and send/receive raw bytes or ASCII lines.",
+      "agents": ["claude", "codex"],
+      "category": "hardware",
+      "tags": [
+        "uart",
+        "serial",
+        "hardware",
+        "embedded",
+        "communication",
+        "rs232"
+      ],
+      "useCases": [
+        "Open a UART port at a specific baud rate",
+        "Send and receive ASCII commands over serial",
+        "Configure hardware flow control (RTS/CTS)",
+        "Log serial output to a file"
+      ],
+      "license": "MIT",
+      "triggers": [],
+      "versions": [
+        {
+          "version": "0.9.1",
+          "path": "skills/uart-bridge",
+          "docPath": "skills/uart-bridge/SKILL.md",
+          "files": ["skills/uart-bridge/**"],
+          "minIdeVersion": "1.5.0",
+          "compatibility": {
+            "hostOs": ["linux", "windows"],
+            "devkits": ["qcs9075-iq-9075-evk", "qcs6490-rb3gen2-core-kit"],
+            "targetOs": [
+              {
+                "os": "qualcomm_linux",
+                "variant": "qualcomm-linux-proprietary",
+                "minVersion": "qli-2.0"
+              },
+              {
+                "os": "qualcomm_linux",
+                "variant": "qualcomm-linux-open-source",
+                "minVersion": "qli-2.0"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
