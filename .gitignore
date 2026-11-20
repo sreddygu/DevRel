@@ -18,6 +18,12 @@ env/
 **/.pytest_cache/
 **/.mypy_cache/
 **/.ruff_cache/
+**/.ipynb_checkpoints/
+**/.tox/
+**/.nox/
+**/htmlcov/
+**/*.egg-info/
+**/node_modules/
 *.py[cod]
 
 # Secrets and machine-local configuration
@@ -39,6 +45,10 @@ build/
 dist/
 **/build/
 **/dist/
+**/CMakeFiles/
+**/CMakeCache.txt
+**/cmake_install.cmake
+**/compile_commands.json
 
 # Downloaded models, runtime bundles, and datasets
 AURA/models/
@@ -62,8 +72,17 @@ RoboAgent/qnn_*_runner.exe
 RoboAgent/qnn_llm_host.exe
 *.executed.ipynb
 
-# External checkout; manage separately as a submodule if required.
-GesturDJ/ACE-Step/
+# ACE-Step source is versioned with GesturDJ. These are local models, generated
+# outputs, converter environments, and native build products.
+GesturDJ/ACE-Step/.qairt-converter-venv/
+GesturDJ/ACE-Step/data/iq8/
+GesturDJ/ACE-Step/data/models/
+GesturDJ/ACE-Step/data/outputs/
+GesturDJ/ACE-Step/data/results/
+GesturDJ/ACE-Step/data/tmp/
+GesturDJ/ACE-Step/iq8_bounded_dit_server
+GesturDJ/ACE-Step/xelite_qnn_runner/build-agent/
+GesturDJ/ACE-Step/xelite_qnn_runner/build-host/
 
 # Locally generated project material
 QUAD-Client/backups/
