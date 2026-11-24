@@ -85,9 +85,9 @@ When a proposed skill is ready, add it independently inside its project:
 
 Use the QLI and GesturDJ implementations as the canonical references:
 
-- [`qli_dogfooding/skills/README.md`](qli_dogfooding/skills/README.md) shows
+- [`qli_dogfooding/skills/README.md`](../qli_dogfooding/skills/README.md) shows
   agent, context, domain, journey, and MCP-tool layers.
-- [`GesturDJ/GESTURDJ_SYNAPSE_SKILLS.md`](GesturDJ/GESTURDJ_SYNAPSE_SKILLS.md)
+- [`GesturDJ/GESTURDJ_SYNAPSE_SKILLS.md`](../GesturDJ/GESTURDJ_SYNAPSE_SKILLS.md)
   shows a project catalog with P3 self-service boundaries and validation.
 
 ## Enablement Gate

@@ -26,33 +26,32 @@ synapse:
     point to the replacement skill.
   developer_journey_stage: ["platform-experience"]
   dependencies: ["gesture-event-contract", "p3-self-service-boundaries", "device-and-host-discovery", "gesture-to-live-mix-design", "music-model-npu-deployment", "npu-quantization-and-accuracy-gating"]
-  authoritative_docs: ["../../DIFFRHYTHM_IQ8.md", "../../diffrhythm_iq8_npu_int8_45s.ipynb", "../../diffrhythm_npu_scripts/README.md"]
+  authoritative_docs: ["../../ACE-Step/README.md", "../../ACE-Step/IQ8_NPU_WAV_STATUS.md", "../../ACE-Step/IQ8_SSH_RUNBOOK.md"]
   a2a:
     role: "skill"
     accepts_from: ["gesturdj-agent"]
 contract:
-  prerequisites: ["npu-quantization-and-accuracy-gating passed for the chosen setup", "Style prompts and lyrics (valid LRC: ascending timestamps, no empty lines, last line is an end marker)"]
-  inputs: ["Style prompts", "Lyrics file", "Sampler steps (16 gives about 5 minutes per clip on the IQ8)", "Context folders"]
-  outputs: ["One wav per prompt, 44.6 s", "clip-library-report.json: per-clip measures and library checks", "A pass or fail for the set"]
+  prerequisites: ["npu-quantization-and-accuracy-gating passed for the qualified ACE-Step setup", "Instrumental prompt compatible with the static six-token condition"]
+  inputs: ["Instrumental prompt", "Sampler steps (27 is the quality baseline)", "Qualified ACE-Step contexts"]
+  outputs: ["One 10.031021-second WAV per prompt", "WAV-header and board-health validation", "A qualified or failed generation gate"]
   negative_scope:
     - "Never on the live path: a clip takes minutes"
-    - "Does not say a clip sounds good: it checks for broken clips only"
+    - "Does not say a clip sounds good: it checks only the qualified runtime contract"
     - "Does not choose music for the developer's taste"
   validation:
-    - "Each clip is at least 20 s, finite, not clipped (over 0.1 percent of samples), not mostly silent (over 30 percent), without DC offset"
-    - "The set shares one sample rate and its loudness spread is at most 8 dB"
-  failure_behavior: "Name the clip and the failed check; regenerate that clip with another prompt or step count; never drop the check to pass."
+    - "Each WAV is exactly 10.031021 seconds, stereo, 48 kHz, and 16-bit PCM"
+    - "Every qualified NPU batch has cosine at least 0.999 and no external-abort events"
+  failure_behavior: "Name the failed batch or runtime check; do not weaken the qualification gate."
   known_failure_modes:
-    - "A broken lyrics file (empty line) makes the text step crash"
-    - "The last lyric line is not sung; it marks the end"
+    - "Lyrics or variable-length conditions violate the static encoder contract"
     - "A board reset during generation: the pipeline retries after the board returns"
-    - "Passing the objective checks does not mean the music is good"
+    - "Passing runtime qualification does not mean the music is good"
   two_config_evidence:
-    - "Qualcomm IQ8, 2026-11-10: two clips generated from new style prompts (electronic: 9.9 min wall, NPU 79.9 s; ambient: 12.2 min wall, NPU 81.2 s) and one earlier clip, 3 clips of 44.6 s evaluated: all pass, loudness spread 3.3 dB, loop seams 3.9, 11.0 and 16.7 dB, so none loops cleanly (evidence/iq8-run/clip-library-report.json)"
+    - "Qualcomm IQ8, 2026-11-20: 27-step instrumental ACE-Step run completed in 552.8 seconds with zero external-abort events; all six qualified batches exceeded 0.999 cosine (ACE-Step/IQ8_NPU_WAV_STATUS.md)"
     - "Ventuno Q: not run"
 authority:
   source_docs: "See synapse.authoritative_docs"
-  approved_tools: ["diffrhythm_iq8_npu_int8_45s.ipynb", "diffrhythm_npu_scripts/evaluate_clip_library.py"]
+  approved_tools: ["ACE-Step/data/iq8/runner/run_iq8_controlmaster_wav.sh", "ACE-Step/data/iq8/runner/ace_step_iq8_infer.py"]
   endpoints: ["SSH (TCP/22) to a board the developer owns; address supplied at runtime, never stored"]
   provenance: "academy/GesturDJ; IQ8 runs under evidence/iq8-run/"
 control:

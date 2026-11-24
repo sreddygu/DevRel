@@ -26,35 +26,34 @@ synapse:
     point to the replacement skill.
   developer_journey_stage: ["enablement"]
   dependencies: ["gesture-event-contract", "p3-self-service-boundaries", "device-and-host-discovery", "music-model-npu-deployment"]
-  authoritative_docs: ["../../DIFFRHYTHM_IQ8.md", "../../diffrhythm_npu_scripts/README.md"]
+  authoritative_docs: ["../../ACE-Step/README.md", "../../ACE-Step/IQ8_NPU_WAV_STATUS.md"]
   a2a:
     role: "skill"
     accepts_from: ["gesturdj-agent"]
 contract:
-  prerequisites: ["music-model-npu-deployment passed", "An fp32 reference output for the same test case", "Context binaries for each precision to compare"]
-  inputs: ["Context folder or four folders (one per graph) to mix precisions", "The test case", "The fp32 reference", "Thresholds (default 0.99 usable, 0.999 as good as fp16)"]
-  outputs: ["Cosine similarity and max absolute error against the reference", "A verdict: as good as fp16, usable (listen), or too lossy"]
+  prerequisites: ["music-model-npu-deployment passed", "Qualified ACE-Step contexts", "The qualified instrumental test request"]
+  inputs: ["Qualified ACE-Step contexts", "The static-shape instrumental test request", "Cosine threshold (0.999)"]
+  outputs: ["Cosine similarity for each of six batches", "A qualified or failed verdict"]
   negative_scope:
     - "Does not quantize or calibrate"
     - "Does not judge how the music sounds"
     - "Does not lower a threshold to pass"
   validation:
-    - "Cosine is at least 0.99 to proceed to a song"
-    - "Cosine at least 0.999 is reported as as good as fp16"
-    - "The output and reference have the same number of values"
-  failure_behavior: "Below 0.99, say the setup is too lossy and do not generate a song; between 0.99 and 0.999, generate but say it needs a listen."
+    - "Every batch has cosine at least 0.999"
+    - "The request uses the qualified static tensor shapes"
+    - "The run completes with zero external-abort events"
+  failure_behavior: "Below 0.999, name the failed batch and do not generate a song."
   known_failure_modes:
-    - "All-int8 graphs take fp32 inputs: run make_fp32_case.py first, or gate_board asserts on the size mismatch"
-    - "All-int8 fails the gate (cosine 0.763 at 44.6 s): keep the first and last graphs in fp16"
-    - "Cosine can hide a few large local errors: also read the max absolute error"
-    - "Only the w8a16 scheme (int8 weights, 16-bit activations) works on this model"
+    - "Lyrics or variable-length conditions violate the static encoder contract"
+    - "A changed context or quantization requires full six-batch requalification"
+    - "A tensor-size mismatch means the request is outside the qualified contract"
   two_config_evidence:
-    - "Qualcomm IQ8, 2026-11-10, 44.6 s graphs vs fp32 PyTorch reference: fp16 cosine 0.99999, max abs error 0.164; mixed (fp16 ends, int8 middle) cosine 0.99986, max abs error 0.431; both verdict as good as fp16 (evidence/iq8-run/npu-accuracy-gate.log)"
-    - "All-int8 graphs, fp32 copy of the test case: cosine 0.763, max abs error 9.695, verdict too lossy, do not generate (same log)"
+    - "Qualcomm IQ8, 2026-11-20: all six ACE-Step batches exceeded 0.999 cosine during the qualified 27-step instrumental run (ACE-Step/IQ8_NPU_WAV_STATUS.md)"
+    - "ACE-Step static contexts: only the documented tensor shapes and instrumental condition are qualified (ACE-Step/README.md)"
     - "Ventuno Q: not run"
 authority:
   source_docs: "See synapse.authoritative_docs"
-  approved_tools: ["diffrhythm_npu_scripts/gate_board.py", "diffrhythm_npu_scripts/cosine_vs_ref.py", "diffrhythm_npu_scripts/make_fp32_case.py"]
+  approved_tools: ["ACE-Step/data/iq8/runner/run_iq8_controlmaster_wav.sh", "ACE-Step/data/iq8/runner/ace_step_iq8_infer.py"]
   endpoints: ["SSH (TCP/22) to a board the developer owns; address supplied at runtime, never stored"]
   provenance: "academy/GesturDJ; IQ8 runs under evidence/iq8-run/"
 control:

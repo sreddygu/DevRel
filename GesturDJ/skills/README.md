@@ -27,7 +27,7 @@ What each skill is for, what has been run and where, and its status. Evidence fo
 | Domain | [`library-generation-and-quality-evaluation`](library-generation-and-quality-evaluation/SKILL.md) | Generate clips in the background, check them | 3 clips pass; loop seams 4-17 dB | Ran |
 | Context | [`gesture-event-contract`](gesture-event-contract/SKILL.md) | Injected: the one event both sensing paths emit | Applied in the agent run | Done |
 | Context | [`p3-self-service-boundaries`](p3-self-service-boundaries/SKILL.md) | Injected: public tools only, community support, ask before changing devices | Applied in the agent run | Done |
-| MCP tools | [`mcp-tools.yaml`](mcp-tools.yaml) | 13 deterministic tools wrapping [`gesture_scripts/`](../gesture_scripts/) and [`diffrhythm_npu_scripts/`](../diffrhythm_npu_scripts/) | Each cites its evidence file; run on the IQ8 (`export_onnx` on the PC only) | Ran |
+| MCP tools | [`mcp-tools.yaml`](mcp-tools.yaml) | 11 deterministic tools wrapping [`gesture_scripts/`](../gesture_scripts/) | Each cites its evidence file; run on the IQ8 (`export_onnx` on the PC only) | Ran |
 
 ## Planned (not written)
 

@@ -99,26 +99,6 @@ tools:
     safety: {side_effects: "starts a local audio player process", destructive: false, requires_approval: false}
     evidence: "evidence/iq8-run/live-latency-measured-overhead.json"
 
-  - id: "cosine_vs_ref"
-    name: "Score an NPU Output Against the Reference"
-    description: "Cosine similarity and max absolute error of an NPU output against the fp32 PyTorch reference, with a verdict. Exit 1 if below the minimum cosine."
-    implementation: "diffrhythm_npu_scripts/cosine_vs_ref.py"
-    command: "python3 diffrhythm_npu_scripts/cosine_vs_ref.py <npu_output.raw> <ref_v.f32> [--frames 960] [--min_cos 0.99]"
-    input_schema: {type: object, properties: {npu_output: {type: string}, reference: {type: string}, frames: {type: integer}, min_cos: {type: number}}, required: [npu_output, reference]}
-    output_schema: {type: object, properties: {cosine: {type: number}, max_abs_err: {type: number}, verdict: {type: string}, ok: {type: boolean}}}
-    safety: {side_effects: none, destructive: false, requires_approval: false}
-    evidence: "evidence/iq8-run/npu-accuracy-gate.log"
-
-  - id: "evaluate_clip_library"
-    name: "Evaluate Generated Clips"
-    description: "Objective checks per clip (length, finite, clipping, silence, DC offset, loop seam) and per library (one sample rate, loudness spread). Exit 1 on any failure."
-    implementation: "diffrhythm_npu_scripts/evaluate_clip_library.py"
-    command: "python diffrhythm_npu_scripts/evaluate_clip_library.py <clip.wav>... [--out clip-library-report.json]"
-    input_schema: {type: object, properties: {clips: {type: array}, max_spread_db: {type: number}}, required: [clips]}
-    output_schema: {type: object, properties: {clips: {type: array}, library_fails: {type: array}, ok: {type: boolean}}}
-    safety: {side_effects: none, destructive: false, requires_approval: false}
-    evidence: "evidence/iq8-run/clip-library-report.json"
-
   - id: "probe_hw_latency"
     name: "Probe Driver-Level Audio Start Latency"
     description: "Start each player on a cold audio device and poll the ALSA PCM status until it is RUNNING; report time to RUNNING plus the hardware queue as the first-sound estimate. Driver level, not acoustic."

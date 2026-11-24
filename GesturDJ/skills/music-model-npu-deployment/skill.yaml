@@ -26,36 +26,36 @@ synapse:
     point to the replacement skill.
   developer_journey_stage: ["enablement", "platform-experience"]
   dependencies: ["gesture-event-contract", "p3-self-service-boundaries", "device-and-host-discovery"]
-  authoritative_docs: ["../../DIFFRHYTHM_IQ8.md", "../../diffrhythm_npu_scripts/README.md", "../../diffrhythm_iq8_npu_int8_45s.ipynb"]
+  authoritative_docs: ["../../ACE-Step/README.md", "../../ACE-Step/IQ8_NPU_WAV_STATUS.md", "../../ACE-Step/IQ8_SSH_RUNBOOK.md"]
   a2a:
     role: "skill"
     accepts_from: ["gesturdj-agent"]
 contract:
-  prerequisites: ["A device profile naming an NPU board as the generator", "The QAIRT runtime on the board", "Context binaries compiled for the board's HTP version"]
-  inputs: ["Board address and host key (environment variables)", "Context binary folders", "The fixed test case"]
-  outputs: ["npu-deployment-preflight.txt: OS, NPU firmware state, runtime libraries, binaries and markers, aborts since boot, stale server count", "Load time and per-pass time from the gate run"]
+  prerequisites: ["A device profile naming an NPU board as the generator", "The QAIRT runtime on the board", "Qualified ACE-Step contexts for the board's HTP version"]
+  inputs: ["Board address and host key (environment variables)", "Qualified ACE-Step contexts", "The documented instrumental smoke request"]
+  outputs: ["NPU preflight result: firmware state, runtime libraries, context readiness, abort count, and stale-server state", "Six-batch ACE-Step smoke-validation result"]
   negative_scope:
     - "Does not export, convert or quantize the model"
     - "Does not reboot the board"
     - "Does not generate a song"
   validation:
     - "cdsp (NPU firmware) reports running"
-    - "All four context binaries exist with their .ok markers"
-    - "No dit_server is already running"
-    - "The gate run loads all four graphs and completes two passes"
+    - "All six qualified ACE-Step batches are available"
+    - "No ACE-Step server is already running"
+    - "The smoke run completes all six batches without an external abort"
   failure_behavior: "Stop at the first failed check and name it; if a stale dit_server exists or the load hangs, say the NPU may be wedged and that only a reboot clears it, and ask before rebooting."
   known_failure_modes:
-    - "An intermittent kernel memory fault can reset the board while graphs load (see DIFFRHYTHM_IQ8.md)"
+    - "An intermittent kernel memory fault can reset the board while batches load"
     - "A hung NPU call cannot be killed and wedges the NPU until reboot"
     - "Context binaries are tied to the HTP version: v75 binaries do not load on another version"
     - "Needs the bundled runtime copied to the board; the image has no QAIRT of its own"
   two_config_evidence:
-    - "Qualcomm IQ8 board (HTP v75), 2026-11-10: cdsp running, 0 external aborts since boot, 4 fp16 and 4 int8 binaries with markers, no stale server (evidence/iq8-run/npu-deployment-preflight.txt)"
-    - "Same board, gate runs: fp16 graphs load in 3.9 s and run a pass in 3.7 s; mixed graphs load in 2.2 s and run a pass in 2.5 s (evidence/iq8-run/npu-accuracy-gate.log)"
+    - "Qualcomm IQ8 board (HTP v75), 2026-11-20: cdsp running and zero external aborts before generation (ACE-Step/IQ8_NPU_WAV_STATUS.md)"
+    - "Same board: the six ACE-Step batches all exceeded the 0.999 cosine gate during the qualified 27-step run (ACE-Step/IQ8_NPU_WAV_STATUS.md)"
     - "Ventuno Q (same Dragonwing IQ8 family on its product page): not run"
 authority:
   source_docs: "See synapse.authoritative_docs"
-  approved_tools: ["diffrhythm_npu_scripts/gate_board.py"]
+  approved_tools: ["ACE-Step/data/iq8/runner/run_iq8_controlmaster_wav.sh", "ACE-Step/data/iq8/runner/ace_step_iq8_infer.py"]
   endpoints: ["SSH (TCP/22) to a board the developer owns; address supplied at runtime, never stored"]
   provenance: "academy/GesturDJ; IQ8 runs under evidence/iq8-run/"
 control:

@@ -8,23 +8,24 @@ version: 0.1.0
 
 Back to the [GesturDJ README](../../README.md).
 
-Use after `device-and-host-discovery` names an NPU board as the generator. The model is the
-DiffRhythm transformer split into four chained graphs; how it is built is in
-[`DIFFRHYTHM_IQ8.md`](../../DIFFRHYTHM_IQ8.md) and the demo notebook
-[`diffrhythm_iq8_npu_int8_45s.ipynb`](../../diffrhythm_iq8_npu_int8_45s.ipynb). This skill checks
-that a board is ready and the graphs load.
+Use after `device-and-host-discovery` names an NPU board as the generator. The
+supported model is ACE-Step, which runs all 24 DiT blocks as six chained
+four-block batches. Follow [`ACE-Step/README.md`](../../ACE-Step/README.md) and
+[`ACE-Step/IQ8_SSH_RUNBOOK.md`](../../ACE-Step/IQ8_SSH_RUNBOOK.md) to prepare the
+board and host.
 
 ## Preflight (read-only)
 
-On the board: OS and kernel; each remote processor state (`/sys/class/remoteproc/*`, `cdsp` must say
-`running`); runtime libraries for the board's HTP version (here v75); the `dit_server` binary;
-each context folder has four `segN.bin` files with their `segN.ok` markers; external aborts since boot
-(`dmesg`); and no `dit_server` already running.
+On the board: OS and kernel; each remote processor state (`/sys/class/remoteproc/*`,
+`cdsp` must say `running`); runtime libraries for the board's HTP version (here
+v75); the ACE-Step server; each qualified context; external aborts since boot
+(`dmesg`); and no stale server.
 
 ## Load check
 
-Run the fixed test case through the four graphs ([`gate_board.py`](../../diffrhythm_npu_scripts/gate_board.py)).
-Two passes must complete.
+Run the qualified ACE-Step smoke validation from
+[`ACE-Step/README.md`](../../ACE-Step/README.md). The host-to-IQ8 bridge must
+complete all six batches without an external abort.
 
 ## Measured (Qualcomm IQ8, HTP v75)
 
@@ -32,14 +33,11 @@ Two passes must complete.
 | --- | --- |
 | Remote processors | adsp, gpdsp0, cdsp all running |
 | External aborts since boot | 0 |
-| fp16 binaries | 4 of 4 with markers, 2151 MB |
-| int8 (w8a16) binaries | 4 of 4 with markers, 1098 MB |
+| ACE-Step NPU batches | 6 chained four-block batches |
 | Stale server | none |
-| fp16 graphs | load 3.9 s, pass 3.7 s |
-| Mixed graphs | load 2.2 s, pass 2.5 s |
+| Qualified cosine gate | at least 0.999 for every batch |
 
-Evidence: [`npu-deployment-preflight.txt`](../../evidence/iq8-run/npu-deployment-preflight.txt),
-[`npu-accuracy-gate.log`](../../evidence/iq8-run/npu-accuracy-gate.log).
+Evidence: [`ACE-Step/IQ8_NPU_WAV_STATUS.md`](../../ACE-Step/IQ8_NPU_WAV_STATUS.md).
 
 ## Rules
 
@@ -48,4 +46,5 @@ Evidence: [`npu-deployment-preflight.txt`](../../evidence/iq8-run/npu-deployment
 - Binaries built for one HTP version do not load on another.
 - The Ventuno Q uses the same Dragonwing IQ8 family on its product page. That is a reason to try, not a result.
 
-Complete when the preflight is clean and two passes ran, or a failed check is named.
+Complete when the preflight is clean and all six batches complete, or a failed
+check is named.

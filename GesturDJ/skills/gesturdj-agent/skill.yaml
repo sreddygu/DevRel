@@ -61,7 +61,7 @@ composition:
   context_documents: ["gesture-event-contract", "p3-self-service-boundaries"]
   journey_skills: ["gesturdj-build-journey"]
   domain_skills: ["device-and-host-discovery", "gesture-dataset-preparation", "gesture-model-training-and-evaluation", "model-export-and-deployment", "on-device-gesture-validation", "gesture-to-live-mix-design", "audio-output-integration", "live-mixer-and-latency-validation", "music-model-npu-deployment", "npu-quantization-and-accuracy-gating", "library-generation-and-quality-evaluation"]
-  mcp_tools: ["discover_host", "make_synthetic_dataset", "check_dataset", "export_onnx", "onnx_predict", "validate_onnx", "live_mixer", "probe_audio_output", "validate_live_latency", "cosine_vs_ref", "evaluate_clip_library", "probe_hw_latency", "probe_warm_stream"]
+  mcp_tools: ["discover_host", "make_synthetic_dataset", "check_dataset", "export_onnx", "onnx_predict", "validate_onnx", "live_mixer", "probe_audio_output", "validate_live_latency", "probe_hw_latency", "probe_warm_stream"]
 approval_gates:
   - action: "Writing to a board (scp, package install, flashing)"
     gate: "Present plan and state before/after; wait for explicit approval"
