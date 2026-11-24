@@ -15,10 +15,6 @@
     },
     {
       "type": "folder",
-      "path": "qli_dogfooding"
-    },
-    {
-      "type": "folder",
       "path": "QUAD-Client"
     },
     {
@@ -31,80 +27,6 @@
     }
   ],
   "skills": [
-    {
-      "name": "project-onboarding",
-      "displayName": "Public Project Onboarding",
-      "owner": "sreddygu",
-      "description": "Classify a hardware or AI sample project and choose the safest way to publish it for independent developers (hobbyists, students and makers): source skill pack, starter kit, or device-ready release kit.",
-      "agents": [
-        "claude",
-        "codex",
-        "cursor"
-      ],
-      "category": "general",
-      "tags": [
-        "onboarding",
-        "release-readiness",
-        "project",
-        "open-source",
-        "release"
-      ],
-      "useCases": [
-        "I'm starting a new Qualcomm edge AI sample project. Which public delivery model should I use?",
-        "Review my project's README and tell me whether it is ready to share publicly",
-        "Move my project from preview to a starter kit and list what is still missing",
-        "Which skills should this project provide next?"
-      ],
-      "license": "Apache-2.0",
-      "homepage": "https://github.com/sreddygu/DevRel/tree/main/skills",
-      "versions": [
-        {
-          "version": "1.0.0",
-          "path": "skills/project-onboarding",
-          "docPath": "skills/project-onboarding/SKILL.md",
-          "files": [
-            "skills/project-onboarding/**"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "evidence-and-compatibility",
-      "displayName": "Validation Evidence and Compatibility Notes",
-      "owner": "sreddygu",
-      "description": "Record reproducible validation evidence for a project workflow and document which devices, operating systems and SDK versions are supported or excluded, so public claims match what was actually tested.",
-      "agents": [
-        "claude",
-        "codex",
-        "cursor"
-      ],
-      "category": "general",
-      "tags": [
-        "validation",
-        "compatibility",
-        "evidence",
-        "open-source",
-        "release"
-      ],
-      "useCases": [
-        "Write up what I validated on my board and which environments are not covered",
-        "Can I claim my demo works on IQ-9075? Check the evidence first",
-        "Create a compatibility table for my release",
-        "Decide whether this workflow has enough evidence to be promoted from preview to stable"
-      ],
-      "license": "Apache-2.0",
-      "homepage": "https://github.com/sreddygu/DevRel/tree/main/skills",
-      "versions": [
-        {
-          "version": "1.0.0",
-          "path": "skills/evidence-and-compatibility",
-          "docPath": "skills/evidence-and-compatibility/SKILL.md",
-          "files": [
-            "skills/evidence-and-compatibility/**"
-          ]
-        }
-      ]
-    },
     {
       "name": "release-bundle-preparation",
       "displayName": "Public Release Bundle Preparation",
