@@ -1,3 +1,9 @@
+---
+name: robot-runtime-discovery
+description: "Inspect whether the QNN runtime and the Pi coding assistant are ready for RoboAgent on a Windows on Snapdragon PC, without changing the machine by default."
+version: 0.1.0
+---
+
 # RoboAgent Runtime Discovery
 
 Inspect the local RoboAgent runtime before starting a model or enabling tools.

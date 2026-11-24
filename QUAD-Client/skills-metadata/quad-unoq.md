@@ -1,11 +1,11 @@
 ---
 name: quad-unoq
-description: "Use when the user asks to interact with Arduino UNO Q / QCS2210 board -- configure, flash, deploy, debug, monitor, profile, extract logs, check status, update firmware, run stability/performance/power tests, or develop applications targeting UNO-Q family boards. Triggers on \"uno-q\", \"unoq\", \"arduino\", \"qcs2210\", \"board status\", \"flash firmware\", \"target device\", \"on-device testing\"."
+description: "Configure, flash, deploy, debug, monitor and profile an Arduino UNO Q (QCS2210) board, extract logs and check its status."
 ---
 
-# Quad Unoq
+# Arduino UNO Q Board Control
 
-Use when the user asks to interact with Arduino UNO Q / QCS2210 board -- configure, flash, deploy, debug, monitor, profile, extract logs, check status, update firmware, run stability/performance/power tests, or develop applications targeting UNO-Q family boards. Triggers on "uno-q", "unoq", "arduino", "qcs2210", "board status", "flash firmware", "target device", "on-device testing".
+Configure, flash, deploy, debug, monitor and profile an Arduino UNO Q (QCS2210) board, extract logs and check its status.
 
 ## Catalog
 
@@ -14,10 +14,17 @@ Use when the user asks to interact with Arduino UNO Q / QCS2210 board -- configu
 - **Category:** `general`
 - **Version:** `0.1.0`
 - **Agents:** `claude`, `codex`, `cursor`
-- **Tags:** `academy`, `quad-client`, `edge-ai`
+- **Tags:** `quad-client`, `edge-ai`, `quad`, `unoq`, `qualcomm-ai`, `mcp`, `npu`, `snapdragon-x-elite`, `qairt`
+- **License:** `Apache-2.0`
+- **Compatibility:** host OS `windows`, `linux`
+- **Requirements:** Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows
+- **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../.claude/skills/quad-unoq/SKILL.md)
 
 ## Use Cases
 
-- Quad Unoq
+- Flash firmware to my Arduino UNO Q
+- Check the board status of my UNO Q
+- Deploy and test my model on the UNO Q
+- Extract logs from my UNO Q

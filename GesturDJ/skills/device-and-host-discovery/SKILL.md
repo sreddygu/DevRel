@@ -1,3 +1,9 @@
+---
+name: device-and-host-discovery
+description: "Read-only discovery of your PC and target board for GesturDJ (a gesture-controlled DJ demo): what hardware is present and where each stage (sensing, recognition, music generation) will run."
+version: 0.1.0
+---
+
 # Device and Host Discovery
 
 Back to the [GesturDJ README](../../README.md).

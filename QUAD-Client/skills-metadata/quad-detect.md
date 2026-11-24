@@ -1,11 +1,11 @@
 ---
 name: quad-detect
-description: "Use when the user asks \"what hardware do I have\", \"is this a Snapdragon\", \"do I have an NPU\", \"what's on this machine\", \"what targets are connected\", \"probe my UNO Q\", \"probe my IQ-9075\", or invokes /quad-detect. Probes the local host AND any reachable target devices -- USB-attached boards via adb, plus SSH targets configured in quad.toml -- rendering chipset, CPU/GPU/NPU, RAM, runtimes, and SDK status for each. Fully probe-driven: reads the target's own device-tree/SoC strings, never assumes a specific board."
+description: "Probe the local machine and any reachable devices (USB boards via adb, SSH targets in quad.toml) and report chipset, CPU/GPU/NPU, RAM, runtimes and SDK status."
 ---
 
-# Quad Detect
+# QUAD Hardware Detection
 
-Use when the user asks "what hardware do I have", "is this a Snapdragon", "do I have an NPU", "what's on this machine", "what targets are connected", "probe my UNO Q", "probe my IQ-9075", or invokes /quad-detect. Probes the local host AND any reachable target devices -- USB-attached boards via adb, plus SSH targets configured in quad.toml -- rendering chipset, CPU/GPU/NPU, RAM, runtimes, and SDK status for each. Fully probe-driven: reads the target's own device-tree/SoC strings, never assumes a specific board.
+Probe the local machine and any reachable devices (USB boards via adb, SSH targets in quad.toml) and report chipset, CPU/GPU/NPU, RAM, runtimes and SDK status.
 
 ## Catalog
 
@@ -14,10 +14,17 @@ Use when the user asks "what hardware do I have", "is this a Snapdragon", "do I 
 - **Category:** `general`
 - **Version:** `0.1.0`
 - **Agents:** `claude`, `codex`, `cursor`
-- **Tags:** `academy`, `quad-client`, `edge-ai`
+- **Tags:** `quad-client`, `edge-ai`, `quad`, `detect`, `qualcomm-ai`, `mcp`, `npu`, `snapdragon-x-elite`, `qairt`
+- **License:** `Apache-2.0`
+- **Compatibility:** host OS `windows`, `linux`
+- **Requirements:** Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows
+- **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../.claude/skills/quad-detect/SKILL.md)
 
 ## Use Cases
 
-- Quad Detect
+- What hardware do I have?
+- Do I have an NPU on this machine?
+- Probe my IQ-9075 board over SSH
+- What targets are connected right now?

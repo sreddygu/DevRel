@@ -1,3 +1,9 @@
+---
+name: ai-inference-benchmark
+description: "Benchmark a model command found on a Qualcomm Linux (QLI) device with explicit warm-up and iteration counts."
+version: 2.0.0
+---
+
 # AI Inference Benchmark
 
 Measure a model only after it has executed successfully on the target.

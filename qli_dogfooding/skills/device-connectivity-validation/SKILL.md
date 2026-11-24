@@ -1,3 +1,9 @@
+---
+name: device-connectivity-validation
+description: "Check TCP reachability of a Qualcomm Linux (QLI) device at a host and port you supply, without changing network configuration."
+version: 2.0.0
+---
+
 # Device Connectivity Validation
 
 Check reachability before remote QLI work without changing device networking.

@@ -1,3 +1,9 @@
+---
+name: model-export-and-deployment
+description: "Export a trained PyTorch gesture model to a single-file ONNX model that a board without PyTorch can load, prove it matches the original and package it."
+version: 0.2.0
+---
+
 # Model Export and Deployment
 
 Back to the [GesturDJ README](../../README.md).

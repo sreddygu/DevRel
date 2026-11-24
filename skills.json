@@ -1,204 +1,229 @@
 {
-    "manifestVersion":  1,
-    "sources":  [
-                    {
-                        "type":  "folder",
-                        "path":  "AURA"
-                    },
-                    {
-                        "type":  "folder",
-                        "path":  "EdgeAgent"
-                    },
-                    {
-                        "type":  "folder",
-                        "path":  "GesturDJ"
-                    },
-                    {
-                        "type":  "folder",
-                        "path":  "qli_dogfooding"
-                    },
-                    {
-                        "type":  "folder",
-                        "path":  "QUAD-Client"
-                    },
-                    {
-                        "type":  "folder",
-                        "path":  "RoboAgent"
-                    },
-                    {
-                        "type":  "folder",
-                        "path":  "VSaaS"
-                    }
-                ],
-    "skills":  [
-                   {
-                       "name":  "project-onboarding",
-                       "displayName":  "P3 Project Onboarding",
-                       "owner":  "sreddygu",
-                       "description":  "Classify a portfolio project for independent P3 developers and establish a safe public delivery lane.",
-                       "category":  "general",
-                       "tags":  [
-                                    "devrel",
-                                    "p3",
-                                    "onboarding",
-                                    "release-readiness"
-                                ],
-                       "useCases":  [
-                                        "Start a P3 project",
-                                        "Review project readiness",
-                                        "Choose a public delivery lane"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "1.0.0",
-                                            "path":  "skills/project-onboarding",
-                                            "docPath":  "skills/project-onboarding/SKILL.md",
-                                            "files":  [
-                                                          "skills/project-onboarding/**"
-                                                      ]
-                                        }
-                                    ],
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ]
-                   },
-                   {
-                       "name":  "evidence-and-compatibility",
-                       "displayName":  "P3 Evidence and Compatibility",
-                       "owner":  "sreddygu",
-                       "description":  "Capture reproducible P3 validation evidence and document supported and excluded environments.",
-                       "category":  "general",
-                       "tags":  [
-                                    "devrel",
-                                    "p3",
-                                    "validation",
-                                    "compatibility",
-                                    "evidence"
-                                ],
-                       "useCases":  [
-                                        "Validate a project workflow",
-                                        "Publish a demo claim",
-                                        "Decide whether a release can be promoted"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "1.0.0",
-                                            "path":  "skills/evidence-and-compatibility",
-                                            "docPath":  "skills/evidence-and-compatibility/SKILL.md",
-                                            "files":  [
-                                                          "skills/evidence-and-compatibility/**"
-                                                      ]
-                                        }
-                                    ],
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ]
-                   },
-                   {
-                       "name":  "release-bundle-preparation",
-                       "displayName":  "P3 Release Bundle Preparation",
-                       "owner":  "sreddygu",
-                       "description":  "Prepare and validate a public P3 release bundle with evidence, compatibility data, checksums, and rollback instructions.",
-                       "category":  "devtools",
-                       "tags":  [
-                                    "devrel",
-                                    "p3",
-                                    "release",
-                                    "bundle",
-                                    "semver"
-                                ],
-                       "useCases":  [
-                                        "Publish a P3 release",
-                                        "Promote a preview to stable",
-                                        "Validate release metadata"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "1.0.0",
-                                            "path":  "skills/release-bundle-preparation",
-                                            "docPath":  "skills/release-bundle-preparation/SKILL.md",
-                                            "files":  [
-                                                          "skills/release-bundle-preparation/**"
-                                                      ]
-                                        }
-                                    ],
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ]
-                   },
-                   {
-                       "name":  "public-asset-license-review",
-                       "displayName":  "P3 Public Asset License Review",
-                       "owner":  "sreddygu",
-                       "description":  "Review source, model, data, binary, and documentation assets before public P3 distribution.",
-                       "category":  "general",
-                       "tags":  [
-                                    "devrel",
-                                    "p3",
-                                    "license",
-                                    "assets",
-                                    "distribution"
-                                ],
-                       "useCases":  [
-                                        "Add a dependency",
-                                        "Review a model checkpoint",
-                                        "Prepare downloadable release assets"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "1.0.0",
-                                            "path":  "skills/public-asset-license-review",
-                                            "docPath":  "skills/public-asset-license-review/SKILL.md",
-                                            "files":  [
-                                                          "skills/public-asset-license-review/**"
-                                                      ]
-                                        }
-                                    ],
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ]
-                   },
-                   {
-                       "name":  "device-readiness",
-                       "displayName":  "P3 Device Readiness",
-                       "owner":  "sreddygu",
-                       "description":  "Establish whether a publicly obtainable hardware target is ready for a documented P3 workflow.",
-                       "category":  "hardware",
-                       "tags":  [
-                                    "devrel",
-                                    "p3",
-                                    "device",
-                                    "readiness",
-                                    "validation"
-                                ],
-                       "useCases":  [
-                                        "Check a public hardware target",
-                                        "Validate device support",
-                                        "Prepare for a device workflow"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "1.0.0",
-                                            "path":  "skills/device-readiness",
-                                            "docPath":  "skills/device-readiness/SKILL.md",
-                                            "files":  [
-                                                          "skills/device-readiness/**"
-                                                      ]
-                                        }
-                                    ],
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ]
-                   }
-               ]
+  "manifestVersion": 1,
+  "sources": [
+    {
+      "type": "folder",
+      "path": "AURA"
+    },
+    {
+      "type": "folder",
+      "path": "EdgeAgent"
+    },
+    {
+      "type": "folder",
+      "path": "GesturDJ"
+    },
+    {
+      "type": "folder",
+      "path": "qli_dogfooding"
+    },
+    {
+      "type": "folder",
+      "path": "QUAD-Client"
+    },
+    {
+      "type": "folder",
+      "path": "RoboAgent"
+    },
+    {
+      "type": "folder",
+      "path": "VSaaS"
+    }
+  ],
+  "skills": [
+    {
+      "name": "project-onboarding",
+      "displayName": "Public Project Onboarding",
+      "owner": "sreddygu",
+      "description": "Classify a hardware or AI sample project and choose the safest way to publish it for independent developers (hobbyists, students and makers): source skill pack, starter kit, or device-ready release kit.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "general",
+      "tags": [
+        "onboarding",
+        "release-readiness",
+        "project",
+        "open-source",
+        "release"
+      ],
+      "useCases": [
+        "I'm starting a new Qualcomm edge AI sample project. Which public delivery model should I use?",
+        "Review my project's README and tell me whether it is ready to share publicly",
+        "Move my project from preview to a starter kit and list what is still missing",
+        "Which skills should this project provide next?"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/skills",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "path": "skills/project-onboarding",
+          "docPath": "skills/project-onboarding/SKILL.md",
+          "files": [
+            "skills/project-onboarding/**"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "evidence-and-compatibility",
+      "displayName": "Validation Evidence and Compatibility Notes",
+      "owner": "sreddygu",
+      "description": "Record reproducible validation evidence for a project workflow and document which devices, operating systems and SDK versions are supported or excluded, so public claims match what was actually tested.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "general",
+      "tags": [
+        "validation",
+        "compatibility",
+        "evidence",
+        "open-source",
+        "release"
+      ],
+      "useCases": [
+        "Write up what I validated on my board and which environments are not covered",
+        "Can I claim my demo works on IQ-9075? Check the evidence first",
+        "Create a compatibility table for my release",
+        "Decide whether this workflow has enough evidence to be promoted from preview to stable"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/skills",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "path": "skills/evidence-and-compatibility",
+          "docPath": "skills/evidence-and-compatibility/SKILL.md",
+          "files": [
+            "skills/evidence-and-compatibility/**"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "release-bundle-preparation",
+      "displayName": "Public Release Bundle Preparation",
+      "owner": "sreddygu",
+      "description": "Prepare and validate a public release bundle for a sample project: evidence, compatibility data, checksums, semantic version and rollback instructions.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "devtools",
+      "tags": [
+        "release",
+        "bundle",
+        "semver",
+        "preparation",
+        "open-source"
+      ],
+      "useCases": [
+        "Package my project as a public release with checksums and rollback steps",
+        "Promote my preview release to stable and validate the release metadata",
+        "Check that my release bundle has version, license and evidence files",
+        "What do I need before I publish v1.0.0 of this starter kit?"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/skills",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "path": "skills/release-bundle-preparation",
+          "docPath": "skills/release-bundle-preparation/SKILL.md",
+          "files": [
+            "skills/release-bundle-preparation/**"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "public-asset-license-review",
+      "displayName": "Public Asset License Review",
+      "owner": "sreddygu",
+      "description": "Review the licenses of source code, models, datasets, binaries and documents before a project is distributed publicly, and flag anything that cannot be redistributed.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "general",
+      "tags": [
+        "license",
+        "assets",
+        "distribution",
+        "public",
+        "asset",
+        "review",
+        "open-source",
+        "release"
+      ],
+      "useCases": [
+        "Can I publish this model checkpoint with my project?",
+        "Review the licenses of my new Python dependency before I add it",
+        "List every asset in my release bundle and its license",
+        "Check which files in this repo must not be redistributed"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/skills",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "path": "skills/public-asset-license-review",
+          "docPath": "skills/public-asset-license-review/SKILL.md",
+          "files": [
+            "skills/public-asset-license-review/**"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "device-readiness",
+      "displayName": "Hardware Target Readiness Check",
+      "owner": "sreddygu",
+      "description": "Check whether a publicly available Qualcomm development board is ready for a documented project workflow: reachable, identified, correct OS image and required tools present.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "hardware",
+      "tags": [
+        "device",
+        "readiness",
+        "validation",
+        "open-source",
+        "release"
+      ],
+      "useCases": [
+        "Is my dev board ready to run this sample?",
+        "Check that my board is reachable and running a supported OS image before I deploy",
+        "What is missing on my device for this workflow?",
+        "Validate my hardware target before I publish the demo"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/skills",
+      "triggers": [
+        {
+          "action": "suggest-install",
+          "tool": "get_active_device"
+        }
+      ],
+      "versions": [
+        {
+          "version": "1.0.0",
+          "path": "skills/device-readiness",
+          "docPath": "skills/device-readiness/SKILL.md",
+          "files": [
+            "skills/device-readiness/**"
+          ]
+        }
+      ]
+    }
+  ]
 }

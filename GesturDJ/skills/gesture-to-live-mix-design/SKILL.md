@@ -1,3 +1,9 @@
+---
+name: gesture-to-live-mix-design
+description: "Design how a recognized gesture changes music live (clip, tempo, volume, filter, layers) with debounce and a latency budget."
+version: 0.1.0
+---
+
 # Gesture to Live Mix Design
 
 Back to the [GesturDJ README](../../README.md).

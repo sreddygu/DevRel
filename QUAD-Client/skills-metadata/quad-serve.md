@@ -1,11 +1,11 @@
 ---
 name: quad-serve
-description: "Use when the user asks to \"start an inference server\", \"expose the model as an HTTP API\", \"deploy to production\", or invokes /quad-serve. Walks through `quad serve` setup, endpoint usage, and load testing."
+description: "Walk through `quad serve`: start a local inference server, call its endpoint and load-test it."
 ---
 
-# Quad Serve
+# QUAD Inference Server
 
-Use when the user asks to "start an inference server", "expose the model as an HTTP API", "deploy to production", or invokes /quad-serve. Walks through `quad serve` setup, endpoint usage, and load testing.
+Walk through `quad serve`: start a local inference server, call its endpoint and load-test it.
 
 ## Catalog
 
@@ -14,10 +14,17 @@ Use when the user asks to "start an inference server", "expose the model as an H
 - **Category:** `devtools`
 - **Version:** `0.1.0`
 - **Agents:** `claude`, `codex`, `cursor`
-- **Tags:** `academy`, `quad-client`, `edge-ai`
+- **Tags:** `quad-client`, `edge-ai`, `quad`, `serve`, `qualcomm-ai`, `mcp`, `npu`, `snapdragon-x-elite`, `qairt`
+- **License:** `Apache-2.0`
+- **Compatibility:** host OS `windows`, `linux`
+- **Requirements:** Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows
+- **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../.claude/skills/quad-serve/SKILL.md)
 
 ## Use Cases
 
-- Quad Serve
+- Start an inference server for my model
+- Expose the model as an HTTP API
+- Load test my local endpoint
+- Prepare this model for production serving

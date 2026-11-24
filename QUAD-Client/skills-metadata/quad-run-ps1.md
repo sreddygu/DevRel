@@ -1,11 +1,11 @@
 ---
 name: quad-run-ps1
-description: "Use when the user asks to \"add a run script\", \"create run.ps1\", \"set up dependencies for this app\", or invokes /quad-run-ps1. Also apply automatically whenever creating or scaffolding any new QUAD application or sample."
+description: "Create a run.ps1 that sets up dependencies for a QUAD application and runs it on Windows; applied automatically when scaffolding a new QUAD application or sample."
 ---
 
-# Quad Run Ps1
+# QUAD run.ps1 Generator
 
-Use when the user asks to "add a run script", "create run.ps1", "set up dependencies for this app", or invokes /quad-run-ps1. Also apply automatically whenever creating or scaffolding any new QUAD application or sample.
+Create a run.ps1 that sets up dependencies for a QUAD application and runs it on Windows; applied automatically when scaffolding a new QUAD application or sample.
 
 ## Catalog
 
@@ -14,10 +14,17 @@ Use when the user asks to "add a run script", "create run.ps1", "set up dependen
 - **Category:** `devtools`
 - **Version:** `0.1.0`
 - **Agents:** `claude`, `codex`, `cursor`
-- **Tags:** `academy`, `quad-client`, `edge-ai`
+- **Tags:** `quad-client`, `edge-ai`, `quad`, `run`, `ps1`, `qualcomm-ai`, `mcp`, `npu`, `snapdragon-x-elite`, `qairt`
+- **License:** `Apache-2.0`
+- **Compatibility:** host OS `windows`
+- **Requirements:** Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows
+- **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../.claude/skills/quad-run-ps1/SKILL.md)
 
 ## Use Cases
 
-- Quad Run Ps1
+- Add a run script to my app
+- Create run.ps1 for this sample
+- Set up dependencies for this app on Windows
+- Make my QUAD sample start with one command

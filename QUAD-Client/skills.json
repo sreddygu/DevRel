@@ -1,695 +1,1109 @@
 {
-    "manifestVersion":  1,
-    "skills":  [
-                   {
-                       "name":  "client-inference-validation",
-                       "displayName":  "QUAD-Client Inference Validation",
-                       "owner":  "sreddygu",
-                       "description":  "Validate an approved QUAD-Client inference workflow with target-specific evidence.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "hardware",
-                       "tags":  [
-                                    "academy",
-                                    "quad-client",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "QUAD-Client Inference Validation"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  "skills/client-inference-validation",
-                                            "docPath":  "skills/client-inference-validation/SKILL.md",
-                                            "files":  [
-                                                          "skills/client-inference-validation/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "device-target-configuration",
-                       "displayName":  "QUAD-Client Device Target Configuration",
-                       "owner":  "sreddygu",
-                       "description":  "Discover and document an approved QUAD target without changing device state by default.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "hardware",
-                       "tags":  [
-                                    "academy",
-                                    "quad-client",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "QUAD-Client Device Target Configuration"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  "skills/device-target-configuration",
-                                            "docPath":  "skills/device-target-configuration/SKILL.md",
-                                            "files":  [
-                                                          "skills/device-target-configuration/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "quad-client-installation",
-                       "displayName":  "QUAD-Client Installation",
-                       "owner":  "sreddygu",
-                       "description":  "Prepare and validate QUAD-Client transport selection without installing MCP settings by default.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "devtools",
-                       "tags":  [
-                                    "academy",
-                                    "quad-client",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "QUAD-Client Installation"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  "skills/quad-client-installation",
-                                            "docPath":  "skills/quad-client-installation/SKILL.md",
-                                            "files":  [
-                                                          "skills/quad-client-installation/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "quad-app-builder",
-                       "displayName":  "Quad App Builder",
-                       "owner":  "sreddygu",
-                       "description":  "Use when the user asks \"build an app\", \"create a QUAD application\", \"scaffold an inference app\", \"I want to build a vision/LLM/ASR app on Snapdragon\", \"create a production inference pipeline\", or invokes /quad-app-builder. Guides through the full lifecycle â€” requirements, implementation, testing, hardening, documentation, and git push.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "devtools",
-                       "tags":  [
-                                    "academy",
-                                    "quad-client",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "Quad App Builder"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  ".claude/skills/quad-app-builder",
-                                            "docPath":  ".claude/skills/quad-app-builder/SKILL.md",
-                                            "files":  [
-                                                          ".claude/skills/quad-app-builder/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "quad-app-document",
-                       "displayName":  "Quad App Document",
-                       "owner":  "sreddygu",
-                       "description":  "Use when the user asks \"generate documentation\", \"create docs for this app\", \"write architecture doc\", \"create a Word document for this project\", \"document this application\", or invokes /quad-app-document. Generates ARCHITECTURE.md and app_documentation.docx for any QUAD application directory.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "general",
-                       "tags":  [
-                                    "academy",
-                                    "quad-client",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "Quad App Document"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  ".claude/skills/quad-app-document",
-                                            "docPath":  ".claude/skills/quad-app-document/SKILL.md",
-                                            "files":  [
-                                                          ".claude/skills/quad-app-document/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "quad-build-npu-bundle",
-                       "displayName":  "Quad Build Npu Bundle",
-                       "owner":  "sreddygu",
-                       "description":  "Use when the user wants to \"build an NPU LLM bundle\", \"export a Llama/Qwen model for the Hexagon NPU\", \"download a model for the npu provider\", \"get a model onto the X-Elite NPU\", \"the Download NPU bundle button can\u0027t run here\", or invokes /quad-build-npu-bundle. Builds an AI Hub Models Genie bundle on a non-arm64 host (WSL / x86 / macOS / Linux) and stages it onto the Snapdragon X-Elite where it runs.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "hardware",
-                       "tags":  [
-                                    "academy",
-                                    "quad-client",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "Quad Build Npu Bundle"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  ".claude/skills/quad-build-npu-bundle",
-                                            "docPath":  ".claude/skills/quad-build-npu-bundle/SKILL.md",
-                                            "files":  [
-                                                          ".claude/skills/quad-build-npu-bundle/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "quad-codegen",
-                       "displayName":  "Quad Codegen",
-                       "owner":  "sreddygu",
-                       "description":  "Use when the user asks to \"generate inference code\", \"write a C++ app for this model\", \"give me Python boilerplate\", \"create an Android JNI binding\", or invokes /quad-codegen. Picks the right (platform, language, sdk) combo and emits compilable code.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "devtools",
-                       "tags":  [
-                                    "academy",
-                                    "quad-client",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "Quad Codegen"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  ".claude/skills/quad-codegen",
-                                            "docPath":  ".claude/skills/quad-codegen/SKILL.md",
-                                            "files":  [
-                                                          ".claude/skills/quad-codegen/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "quad-configure",
-                       "displayName":  "Quad Configure",
-                       "owner":  "sreddygu",
-                       "description":  "Interactive QUAD configuration wizard â€” asks questions about SDK paths, hardware, and secrets, then writes quad.toml and .env. Invoke before first use or when changing hardware/SDK setup.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "devtools",
-                       "tags":  [
-                                    "academy",
-                                    "quad-client",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "Quad Configure"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  ".claude/skills/quad-configure",
-                                            "docPath":  ".claude/skills/quad-configure/SKILL.md",
-                                            "files":  [
-                                                          ".claude/skills/quad-configure/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "quad-convert",
-                       "displayName":  "Quad Convert",
-                       "owner":  "sreddygu",
-                       "description":  "Use when the user asks to \"convert a model\", \"compile this ONNX\", \"quantize my PyTorch model\", \"convert to QNN/SNPE\", or invokes /quad-convert. Walks through model conversion with calibration data + image format guidance.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "devtools",
-                       "tags":  [
-                                    "academy",
-                                    "quad-client",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "Quad Convert"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  ".claude/skills/quad-convert",
-                                            "docPath":  ".claude/skills/quad-convert/SKILL.md",
-                                            "files":  [
-                                                          ".claude/skills/quad-convert/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "quad-deploy",
-                       "displayName":  "Quad Deploy",
-                       "owner":  "sreddygu",
-                       "description":  "Use when the user asks to \"deploy a model to my Android phone\", \"push to Arduino\", \"deploy to Snapdragon target\", or invokes /quad-deploy. Walks through deploy.sh + remote profiling.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "devtools",
-                       "tags":  [
-                                    "academy",
-                                    "quad-client",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "Quad Deploy"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  ".claude/skills/quad-deploy",
-                                            "docPath":  ".claude/skills/quad-deploy/SKILL.md",
-                                            "files":  [
-                                                          ".claude/skills/quad-deploy/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "quad-detect",
-                       "displayName":  "Quad Detect",
-                       "owner":  "sreddygu",
-                       "description":  "Use when the user asks \"what hardware do I have\", \"is this a Snapdragon\", \"do I have an NPU\", \"what\u0027s on this machine\", \"what targets are connected\", \"probe my UNO Q\", \"probe my IQ-9075\", or invokes /quad-detect. Probes the local host AND any reachable target devices -- USB-attached boards via adb, plus SSH targets configured in quad.toml -- rendering chipset, CPU/GPU/NPU, RAM, runtimes, and SDK status for each. Fully probe-driven: reads the target\u0027s own device-tree/SoC strings, never assumes a specific board.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "general",
-                       "tags":  [
-                                    "academy",
-                                    "quad-client",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "Quad Detect"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  ".claude/skills/quad-detect",
-                                            "docPath":  ".claude/skills/quad-detect/SKILL.md",
-                                            "files":  [
-                                                          ".claude/skills/quad-detect/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "quad-doctor",
-                       "displayName":  "Quad Doctor",
-                       "owner":  "sreddygu",
-                       "description":  "Use when the user asks \"is QUAD set up correctly\", \"diagnose my install\", \"why isn\u0027t real mode working\", \"check the SDK\", or invokes /quad-doctor. Runs the local diagnostic suite and explains each warning + the exact fix.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "devtools",
-                       "tags":  [
-                                    "academy",
-                                    "quad-client",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "Quad Doctor"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  ".claude/skills/quad-doctor",
-                                            "docPath":  ".claude/skills/quad-doctor/SKILL.md",
-                                            "files":  [
-                                                          ".claude/skills/quad-doctor/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "quad-executorch",
-                       "displayName":  "Quad Executorch",
-                       "owner":  "sreddygu",
-                       "description":  "Use when the user asks to \"export a PyTorch model to ExecuTorch\", \"make a .pte\", \"run my PyTorch model on the NPU via ExecuTorch\", \"use the ExecuTorch QNN backend\", or invokes /quad-executorch. Drives the PyTorchâ†’.pteâ†’profileâ†’runner flow against a QUAD MCP server and points at the executorch_mobilenet sample.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "general",
-                       "tags":  [
-                                    "academy",
-                                    "quad-client",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "Quad Executorch"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  ".claude/skills/quad-executorch",
-                                            "docPath":  ".claude/skills/quad-executorch/SKILL.md",
-                                            "files":  [
-                                                          ".claude/skills/quad-executorch/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "quad-npu-prereqs",
-                       "displayName":  "Quad Npu Prereqs",
-                       "owner":  "sreddygu",
-                       "description":  "Use when the user wants to \"develop on Snapdragon\", \"build for the NPU\", \"run a model on the Hexagon NPU\", \"set up NPU prerequisites\", \"configure my AI Hub Models token\", \"install onnxruntime-qnn / onnxruntime-genai\", or invokes /quad-npu-prereqs. Detects the host arch + target, reviews the AI Hub Models token + NPU pip wheels + env/config prerequisites with the user, then provisions them so the Snapdragon developer workflow is seamless.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "hardware",
-                       "tags":  [
-                                    "academy",
-                                    "quad-client",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "Quad Npu Prereqs"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  ".claude/skills/quad-npu-prereqs",
-                                            "docPath":  ".claude/skills/quad-npu-prereqs/SKILL.md",
-                                            "files":  [
-                                                          ".claude/skills/quad-npu-prereqs/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "quad-orchestrate",
-                       "displayName":  "Quad Orchestrate",
-                       "owner":  "sreddygu",
-                       "description":  "Use when the user asks to \"allocate across CPU/GPU/NPU\", \"compare power modes\", \"where should this op run\", or invokes /quad-orchestrate. Compares performance/balanced/efficiency modes side-by-side with tip recommendations.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "general",
-                       "tags":  [
-                                    "academy",
-                                    "quad-client",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "Quad Orchestrate"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  ".claude/skills/quad-orchestrate",
-                                            "docPath":  ".claude/skills/quad-orchestrate/SKILL.md",
-                                            "files":  [
-                                                          ".claude/skills/quad-orchestrate/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "quad-profile",
-                       "displayName":  "Quad Profile",
-                       "owner":  "sreddygu",
-                       "description":  "Use when the user asks to \"profile a model\", \"find bottlenecks\", \"measure NPU latency\", \"run linting\" or \"QHAS profile\", or invokes /quad-profile. Picks the right profiling level + renders a rich latency/utilisation summary.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "devtools",
-                       "tags":  [
-                                    "academy",
-                                    "quad-client",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "Quad Profile"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  ".claude/skills/quad-profile",
-                                            "docPath":  ".claude/skills/quad-profile/SKILL.md",
-                                            "files":  [
-                                                          ".claude/skills/quad-profile/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "quad-pte-run",
-                       "displayName":  "Quad Pte Run",
-                       "owner":  "sreddygu",
-                       "description":  "Use when the user asks to \"run a .pte\", \"run my ExecuTorch model\", \"profile a .pte\", \"deploy a .pte to my device\", or invokes /quad-pte-run. Runs/profiles an ExecuTorch .pte on the host or describes the on-device runner invocation.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "devtools",
-                       "tags":  [
-                                    "academy",
-                                    "quad-client",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "Quad Pte Run"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  ".claude/skills/quad-pte-run",
-                                            "docPath":  ".claude/skills/quad-pte-run/SKILL.md",
-                                            "files":  [
-                                                          ".claude/skills/quad-pte-run/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "quad-qnn-runtime-debug",
-                       "displayName":  "Quad Qnn Runtime Debug",
-                       "owner":  "sreddygu",
-                       "description":  "Use when the user is debugging a QNN/QAIRT runtime failure on already-compiled artifacts -- \"QNN backend won\u0027t initialize\", \"unable to find a valid interface\", \"QNN_BACKEND_ERROR_CANNOT_INITIALIZE\", \"GPU_ERROR_DOES_NOT_EXIST\", \"qnn-net-run fails\", \"my .bin/.dlc won\u0027t load\", \"backend initialization failure\", or invokes /quad-qnn-runtime-debug. Diagnoses backend-init, ABI/version, symbol-resolution, and input-contract failures at the dynamic-loader level rather than trusting generic QNN error strings.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "hardware",
-                       "tags":  [
-                                    "academy",
-                                    "quad-client",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "Quad Qnn Runtime Debug"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  ".claude/skills/quad-qnn-runtime-debug",
-                                            "docPath":  ".claude/skills/quad-qnn-runtime-debug/SKILL.md",
-                                            "files":  [
-                                                          ".claude/skills/quad-qnn-runtime-debug/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "quad-quickstart",
-                       "displayName":  "Quad Quickstart",
-                       "owner":  "sreddygu",
-                       "description":  "Use when the user asks to \"get started with QUAD\", \"set up Qualcomm AI\", \"configure my Snapdragon laptop for QUAD\", or invokes /quad-quickstart. Walks through hardware detection, SDK check, MCP server connectivity, and sample inference end-to-end.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "general",
-                       "tags":  [
-                                    "academy",
-                                    "quad-client",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "Quad Quickstart"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  ".claude/skills/quad-quickstart",
-                                            "docPath":  ".claude/skills/quad-quickstart/SKILL.md",
-                                            "files":  [
-                                                          ".claude/skills/quad-quickstart/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "quad-recommend",
-                       "displayName":  "Quad Recommend",
-                       "owner":  "sreddygu",
-                       "description":  "Use when the user asks \"what\u0027s the best way to deploy this model on Snapdragon\", \"recommend an approach\", \"should I use INT4 or INT8\", \"NPU or GPU\", or invokes /quad-recommend. Synthesises model + target + use case into specific recommendations.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "general",
-                       "tags":  [
-                                    "academy",
-                                    "quad-client",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "Quad Recommend"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  ".claude/skills/quad-recommend",
-                                            "docPath":  ".claude/skills/quad-recommend/SKILL.md",
-                                            "files":  [
-                                                          ".claude/skills/quad-recommend/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "quad-run-ps1",
-                       "displayName":  "Quad Run Ps1",
-                       "owner":  "sreddygu",
-                       "description":  "Use when the user asks to \"add a run script\", \"create run.ps1\", \"set up dependencies for this app\", or invokes /quad-run-ps1. Also apply automatically whenever creating or scaffolding any new QUAD application or sample.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "devtools",
-                       "tags":  [
-                                    "academy",
-                                    "quad-client",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "Quad Run Ps1"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  ".claude/skills/quad-run-ps1",
-                                            "docPath":  ".claude/skills/quad-run-ps1/SKILL.md",
-                                            "files":  [
-                                                          ".claude/skills/quad-run-ps1/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "quad-serve",
-                       "displayName":  "Quad Serve",
-                       "owner":  "sreddygu",
-                       "description":  "Use when the user asks to \"start an inference server\", \"expose the model as an HTTP API\", \"deploy to production\", or invokes /quad-serve. Walks through `quad serve` setup, endpoint usage, and load testing.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "devtools",
-                       "tags":  [
-                                    "academy",
-                                    "quad-client",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "Quad Serve"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  ".claude/skills/quad-serve",
-                                            "docPath":  ".claude/skills/quad-serve/SKILL.md",
-                                            "files":  [
-                                                          ".claude/skills/quad-serve/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "quad-unoq",
-                       "displayName":  "Quad Unoq",
-                       "owner":  "sreddygu",
-                       "description":  "Use when the user asks to interact with Arduino UNO Q / QCS2210 board -- configure, flash, deploy, debug, monitor, profile, extract logs, check status, update firmware, run stability/performance/power tests, or develop applications targeting UNO-Q family boards. Triggers on \"uno-q\", \"unoq\", \"arduino\", \"qcs2210\", \"board status\", \"flash firmware\", \"target device\", \"on-device testing\".",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "general",
-                       "tags":  [
-                                    "academy",
-                                    "quad-client",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "Quad Unoq"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  ".claude/skills/quad-unoq",
-                                            "docPath":  ".claude/skills/quad-unoq/SKILL.md",
-                                            "files":  [
-                                                          ".claude/skills/quad-unoq/**"
-                                                      ]
-                                        }
-                                    ]
-                   }
-               ]
+  "manifestVersion": 1,
+  "skills": [
+    {
+      "name": "client-inference-validation",
+      "displayName": "QUAD Inference Validation",
+      "owner": "sreddygu",
+      "description": "Validate a model inference workflow run through the QUAD client (Qualcomm AI MCP server client) and keep evidence that separates local simulation from execution observed on a device.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "hardware",
+      "tags": [
+        "quad-client",
+        "edge-ai",
+        "client",
+        "inference",
+        "validation",
+        "qualcomm-ai",
+        "mcp",
+        "npu",
+        "snapdragon-x-elite",
+        "qairt"
+      ],
+      "useCases": [
+        "Run an inference validation for my model with QUAD and keep the evidence",
+        "Measure NPU latency for this model on my Snapdragon X Elite PC",
+        "Was this result simulated or measured on the device?",
+        "Benchmark CPU versus NPU with the QUAD sample"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/QUAD-Client",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "QUAD-Client/skills/client-inference-validation",
+          "docPath": "QUAD-Client/skills/client-inference-validation/SKILL.md",
+          "files": [
+            "QUAD-Client/skills/client-inference-validation/**"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "device-target-configuration",
+      "displayName": "QUAD Device Target Setup",
+      "owner": "sreddygu",
+      "description": "Discover and document an approved device target for the QUAD client (IQ-9075 board over SSH, Android over adb) without changing the device by default.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "hardware",
+      "tags": [
+        "quad-client",
+        "edge-ai",
+        "device",
+        "target",
+        "configuration",
+        "qualcomm-ai",
+        "mcp",
+        "npu",
+        "snapdragon-x-elite",
+        "qairt"
+      ],
+      "useCases": [
+        "Add my IQ-9075 board as a QUAD target over SSH",
+        "Document the device target QUAD will deploy to",
+        "Check the target configuration before I deploy a model",
+        "Which QUAD transport should I use for my board?"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/QUAD-Client",
+      "triggers": [
+        {
+          "action": "suggest-install",
+          "tool": "get_active_device"
+        }
+      ],
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "QUAD-Client/skills/device-target-configuration",
+          "docPath": "QUAD-Client/skills/device-target-configuration/SKILL.md",
+          "files": [
+            "QUAD-Client/skills/device-target-configuration/**"
+          ],
+          "compatibility": {
+            "devkits": [
+              "qcs9075-iq-9075-evk"
+            ],
+            "targetOs": [
+              {
+                "os": "qualcomm_linux",
+                "variant": "qualcomm-linux-proprietary",
+                "minVersion": "qli-2.0",
+                "maxVersion": "qli-2.0"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "quad-client-installation",
+      "displayName": "QUAD Client Installation",
+      "owner": "sreddygu",
+      "description": "Install and validate the QUAD client (quad-mcp-client) and choose how it reaches the QUAD server (hosted URL, SSH or local), without changing MCP settings by default.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "devtools",
+      "tags": [
+        "quad-client",
+        "edge-ai",
+        "quad",
+        "client",
+        "installation",
+        "qualcomm-ai",
+        "mcp",
+        "npu",
+        "snapdragon-x-elite",
+        "qairt"
+      ],
+      "useCases": [
+        "Install the QUAD client and connect it to my QUAD server",
+        "Which transport should I choose: hosted, SSH or local?",
+        "Validate my QUAD client installation",
+        "Why can't Claude Code reach my QUAD server?"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/QUAD-Client",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "QUAD-Client/skills/quad-client-installation",
+          "docPath": "QUAD-Client/skills/quad-client-installation/SKILL.md",
+          "files": [
+            "QUAD-Client/skills/quad-client-installation/**"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "quad-app-builder",
+      "displayName": "QUAD Application Builder",
+      "owner": "sreddygu",
+      "description": "Guide the full lifecycle of a Snapdragon AI application: requirements, implementation, testing, hardening, documentation and git push.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "devtools",
+      "tags": [
+        "quad-client",
+        "edge-ai",
+        "quad",
+        "app",
+        "builder",
+        "qualcomm-ai",
+        "mcp",
+        "npu",
+        "snapdragon-x-elite",
+        "qairt"
+      ],
+      "useCases": [
+        "Build a vision app on Snapdragon with QUAD",
+        "Create a QUAD application that runs an LLM on the NPU",
+        "Scaffold an inference app and test it end to end",
+        "I want to build an ASR app on my Snapdragon X Elite laptop"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/QUAD-Client",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "QUAD-Client/.claude/skills/quad-app-builder",
+          "docPath": "QUAD-Client/.claude/skills/quad-app-builder/SKILL.md",
+          "files": [
+            "QUAD-Client/.claude/skills/quad-app-builder/**"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "quad-app-document",
+      "displayName": "QUAD Application Documentation Generator",
+      "owner": "sreddygu",
+      "description": "Generate ARCHITECTURE.md and a Word document (app_documentation.docx) for any QUAD application directory.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "general",
+      "tags": [
+        "quad-client",
+        "edge-ai",
+        "quad",
+        "app",
+        "document",
+        "qualcomm-ai",
+        "mcp",
+        "npu",
+        "snapdragon-x-elite",
+        "qairt"
+      ],
+      "useCases": [
+        "Generate documentation for this QUAD app",
+        "Write an architecture doc for my application",
+        "Create a Word document describing this project",
+        "Document how my app uses the NPU"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/QUAD-Client",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "QUAD-Client/.claude/skills/quad-app-document",
+          "docPath": "QUAD-Client/.claude/skills/quad-app-document/SKILL.md",
+          "files": [
+            "QUAD-Client/.claude/skills/quad-app-document/**"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "quad-build-npu-bundle",
+      "displayName": "NPU LLM Bundle Builder",
+      "owner": "sreddygu",
+      "description": "Build an AI Hub Genie bundle for a large language model on a non-ARM64 host (WSL, x86, macOS or Linux) and copy it to a Snapdragon X Elite PC where it runs on the Hexagon NPU.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "hardware",
+      "tags": [
+        "quad-client",
+        "edge-ai",
+        "quad",
+        "build",
+        "npu",
+        "bundle",
+        "qualcomm-ai",
+        "mcp",
+        "snapdragon-x-elite",
+        "qairt"
+      ],
+      "useCases": [
+        "Build an NPU bundle for Llama on my x86 machine",
+        "Export a Qwen model for the Hexagon NPU",
+        "Download a model for the NPU provider and stage it on my Snapdragon PC",
+        "Prepare a Genie bundle in WSL"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/QUAD-Client",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "QUAD-Client/.claude/skills/quad-build-npu-bundle",
+          "docPath": "QUAD-Client/.claude/skills/quad-build-npu-bundle/SKILL.md",
+          "files": [
+            "QUAD-Client/.claude/skills/quad-build-npu-bundle/**"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "linux",
+              "windows",
+              "macos"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "quad-codegen",
+      "displayName": "QUAD Inference Code Generator",
+      "owner": "sreddygu",
+      "description": "Pick the right platform, language and SDK combination for a model and generate compilable inference code.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "devtools",
+      "tags": [
+        "quad-client",
+        "edge-ai",
+        "quad",
+        "codegen",
+        "qualcomm-ai",
+        "mcp",
+        "npu",
+        "snapdragon-x-elite",
+        "qairt"
+      ],
+      "useCases": [
+        "Generate inference code for my model",
+        "Write a C++ app for this QNN model",
+        "Give me Python boilerplate to run this model on the NPU",
+        "Create an Android JNI binding for my model"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/QUAD-Client",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "QUAD-Client/.claude/skills/quad-codegen",
+          "docPath": "QUAD-Client/.claude/skills/quad-codegen/SKILL.md",
+          "files": [
+            "QUAD-Client/.claude/skills/quad-codegen/**"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "quad-configure",
+      "displayName": "QUAD Configuration Wizard",
+      "owner": "sreddygu",
+      "description": "Interactive wizard that asks about SDK paths, hardware and secrets, then writes quad.toml and .env. Run before first use or when hardware or SDK setup changes.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "devtools",
+      "tags": [
+        "quad-client",
+        "edge-ai",
+        "quad",
+        "configure",
+        "qualcomm-ai",
+        "mcp",
+        "npu",
+        "snapdragon-x-elite",
+        "qairt"
+      ],
+      "useCases": [
+        "Configure QUAD for the first time",
+        "Set my QAIRT SDK path and target hardware for QUAD",
+        "Generate quad.toml and .env for my project",
+        "I changed my SDK location. Update the QUAD configuration"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/QUAD-Client",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "QUAD-Client/.claude/skills/quad-configure",
+          "docPath": "QUAD-Client/.claude/skills/quad-configure/SKILL.md",
+          "files": [
+            "QUAD-Client/.claude/skills/quad-configure/**"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "quad-convert",
+      "displayName": "QUAD Model Conversion",
+      "owner": "sreddygu",
+      "description": "Walk through converting a model for Snapdragon (ONNX or PyTorch to QNN or SNPE), including calibration data and image format guidance.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "devtools",
+      "tags": [
+        "quad-client",
+        "edge-ai",
+        "quad",
+        "convert",
+        "qualcomm-ai",
+        "mcp",
+        "npu",
+        "snapdragon-x-elite",
+        "qairt"
+      ],
+      "useCases": [
+        "Convert my ONNX model to run on the NPU",
+        "Quantize my PyTorch model with calibration data",
+        "Compile this model to QNN",
+        "What calibration images format does the converter need?"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/QUAD-Client",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "QUAD-Client/.claude/skills/quad-convert",
+          "docPath": "QUAD-Client/.claude/skills/quad-convert/SKILL.md",
+          "files": [
+            "QUAD-Client/.claude/skills/quad-convert/**"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "quad-deploy",
+      "displayName": "QUAD Model Deployment",
+      "owner": "sreddygu",
+      "description": "Deploy a converted model to a target device (Android phone, Arduino board or Snapdragon target) with deploy.sh and run remote profiling.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "devtools",
+      "tags": [
+        "quad-client",
+        "edge-ai",
+        "quad",
+        "deploy",
+        "qualcomm-ai",
+        "mcp",
+        "npu",
+        "snapdragon-x-elite",
+        "qairt"
+      ],
+      "useCases": [
+        "Deploy my model to my Android phone",
+        "Push this model to my Snapdragon target and profile it",
+        "Deploy to my IQ-9075 board",
+        "Run the deploy script and collect remote profiling results"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/QUAD-Client",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "QUAD-Client/.claude/skills/quad-deploy",
+          "docPath": "QUAD-Client/.claude/skills/quad-deploy/SKILL.md",
+          "files": [
+            "QUAD-Client/.claude/skills/quad-deploy/**"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "quad-detect",
+      "displayName": "QUAD Hardware Detection",
+      "owner": "sreddygu",
+      "description": "Probe the local machine and any reachable devices (USB boards via adb, SSH targets in quad.toml) and report chipset, CPU/GPU/NPU, RAM, runtimes and SDK status.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "general",
+      "tags": [
+        "quad-client",
+        "edge-ai",
+        "quad",
+        "detect",
+        "qualcomm-ai",
+        "mcp",
+        "npu",
+        "snapdragon-x-elite",
+        "qairt"
+      ],
+      "useCases": [
+        "What hardware do I have?",
+        "Do I have an NPU on this machine?",
+        "Probe my IQ-9075 board over SSH",
+        "What targets are connected right now?"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/QUAD-Client",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "QUAD-Client/.claude/skills/quad-detect",
+          "docPath": "QUAD-Client/.claude/skills/quad-detect/SKILL.md",
+          "files": [
+            "QUAD-Client/.claude/skills/quad-detect/**"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "quad-doctor",
+      "displayName": "QUAD Install Diagnostics",
+      "owner": "sreddygu",
+      "description": "Run the local diagnostic suite for a QUAD install and explain each warning with the exact fix.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "devtools",
+      "tags": [
+        "quad-client",
+        "edge-ai",
+        "quad",
+        "doctor",
+        "qualcomm-ai",
+        "mcp",
+        "npu",
+        "snapdragon-x-elite",
+        "qairt"
+      ],
+      "useCases": [
+        "Is QUAD set up correctly?",
+        "Diagnose my QUAD install",
+        "Why isn't real mode working?",
+        "Check my SDK setup for QUAD"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/QUAD-Client",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "QUAD-Client/.claude/skills/quad-doctor",
+          "docPath": "QUAD-Client/.claude/skills/quad-doctor/SKILL.md",
+          "files": [
+            "QUAD-Client/.claude/skills/quad-doctor/**"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "quad-executorch",
+      "displayName": "QUAD ExecuTorch Export and Run",
+      "owner": "sreddygu",
+      "description": "Drive the PyTorch to .pte to profile to runner flow with a QUAD MCP server, using the executorch_mobilenet sample as the reference.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "general",
+      "tags": [
+        "quad-client",
+        "edge-ai",
+        "quad",
+        "executorch",
+        "qualcomm-ai",
+        "mcp",
+        "npu",
+        "snapdragon-x-elite",
+        "qairt"
+      ],
+      "useCases": [
+        "Export my PyTorch model to ExecuTorch",
+        "Make a .pte file and run it on the NPU",
+        "Profile my ExecuTorch model with QUAD",
+        "Follow the executorch_mobilenet sample for my own model"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/QUAD-Client",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "QUAD-Client/.claude/skills/quad-executorch",
+          "docPath": "QUAD-Client/.claude/skills/quad-executorch/SKILL.md",
+          "files": [
+            "QUAD-Client/.claude/skills/quad-executorch/**"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "quad-npu-prereqs",
+      "displayName": "QUAD NPU Prerequisites Setup",
+      "owner": "sreddygu",
+      "description": "Detect the host architecture and target, review the AI Hub token, NPU wheels and environment prerequisites with you, then provision what is missing for Snapdragon NPU development.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "hardware",
+      "tags": [
+        "quad-client",
+        "edge-ai",
+        "quad",
+        "npu",
+        "prereqs",
+        "qualcomm-ai",
+        "mcp",
+        "snapdragon-x-elite",
+        "qairt"
+      ],
+      "useCases": [
+        "Set up my machine to develop for the Hexagon NPU",
+        "What prerequisites do I need to run a model on the NPU?",
+        "Configure my AI Hub token and NPU wheels",
+        "Prepare my Snapdragon laptop for NPU builds"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/QUAD-Client",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "QUAD-Client/.claude/skills/quad-npu-prereqs",
+          "docPath": "QUAD-Client/.claude/skills/quad-npu-prereqs/SKILL.md",
+          "files": [
+            "QUAD-Client/.claude/skills/quad-npu-prereqs/**"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "quad-orchestrate",
+      "displayName": "QUAD CPU/GPU/NPU Allocation Advisor",
+      "owner": "sreddygu",
+      "description": "Compare performance, balanced and efficiency modes side by side and recommend where each operation should run across CPU, GPU and NPU.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "general",
+      "tags": [
+        "quad-client",
+        "edge-ai",
+        "quad",
+        "orchestrate",
+        "qualcomm-ai",
+        "mcp",
+        "npu",
+        "snapdragon-x-elite",
+        "qairt"
+      ],
+      "useCases": [
+        "Allocate this model across CPU, GPU and NPU",
+        "Compare power modes for my workload",
+        "Where should this op run?",
+        "Which mode gives the best latency per watt?"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/QUAD-Client",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "QUAD-Client/.claude/skills/quad-orchestrate",
+          "docPath": "QUAD-Client/.claude/skills/quad-orchestrate/SKILL.md",
+          "files": [
+            "QUAD-Client/.claude/skills/quad-orchestrate/**"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "quad-profile",
+      "displayName": "QUAD Model Profiler",
+      "owner": "sreddygu",
+      "description": "Pick the right profiling level and show a summary of latency and utilisation, including bottlenecks and QHAS profiling.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "devtools",
+      "tags": [
+        "quad-client",
+        "edge-ai",
+        "quad",
+        "profile",
+        "qualcomm-ai",
+        "mcp",
+        "npu",
+        "snapdragon-x-elite",
+        "qairt"
+      ],
+      "useCases": [
+        "Profile my model and find bottlenecks",
+        "Measure NPU latency for this model",
+        "Run QHAS profiling",
+        "Lint my model for NPU-unfriendly ops"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/QUAD-Client",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "QUAD-Client/.claude/skills/quad-profile",
+          "docPath": "QUAD-Client/.claude/skills/quad-profile/SKILL.md",
+          "files": [
+            "QUAD-Client/.claude/skills/quad-profile/**"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "quad-pte-run",
+      "displayName": "QUAD ExecuTorch .pte Runner",
+      "owner": "sreddygu",
+      "description": "Run or profile an ExecuTorch .pte file on the host, or describe how to invoke the on-device runner.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "devtools",
+      "tags": [
+        "quad-client",
+        "edge-ai",
+        "quad",
+        "pte",
+        "run",
+        "qualcomm-ai",
+        "mcp",
+        "npu",
+        "snapdragon-x-elite",
+        "qairt"
+      ],
+      "useCases": [
+        "Run my .pte on this machine",
+        "Profile my ExecuTorch model",
+        "Deploy a .pte to my device and run it",
+        "Show the runner command for the board"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/QUAD-Client",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "QUAD-Client/.claude/skills/quad-pte-run",
+          "docPath": "QUAD-Client/.claude/skills/quad-pte-run/SKILL.md",
+          "files": [
+            "QUAD-Client/.claude/skills/quad-pte-run/**"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "quad-qnn-runtime-debug",
+      "displayName": "QNN Runtime Failure Debugging",
+      "owner": "sreddygu",
+      "description": "Diagnose Qualcomm AI (QNN/QAIRT) runtime failures on already-compiled models: backend initialisation, ABI or version mismatch, symbol resolution and input contract errors.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "hardware",
+      "tags": [
+        "quad-client",
+        "edge-ai",
+        "quad",
+        "qnn",
+        "runtime",
+        "debug",
+        "qualcomm-ai",
+        "mcp",
+        "npu",
+        "snapdragon-x-elite",
+        "qairt"
+      ],
+      "useCases": [
+        "QNN backend won't initialize. What is wrong?",
+        "Unable to find a valid interface provider",
+        "My model fails to load with a symbol error on the NPU",
+        "Check for an SDK version mismatch between my model and runtime"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/QUAD-Client",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "QUAD-Client/.claude/skills/quad-qnn-runtime-debug",
+          "docPath": "QUAD-Client/.claude/skills/quad-qnn-runtime-debug/SKILL.md",
+          "files": [
+            "QUAD-Client/.claude/skills/quad-qnn-runtime-debug/**"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "quad-quickstart",
+      "displayName": "QUAD Quickstart",
+      "owner": "sreddygu",
+      "description": "Guided first run: hardware detection, SDK check, MCP server connectivity and a sample inference, end to end.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "general",
+      "tags": [
+        "quad-client",
+        "edge-ai",
+        "quad",
+        "quickstart",
+        "qualcomm-ai",
+        "mcp",
+        "npu",
+        "snapdragon-x-elite",
+        "qairt"
+      ],
+      "useCases": [
+        "Get me started with QUAD",
+        "Set up Qualcomm AI on my Snapdragon laptop",
+        "Run the first sample inference on my NPU",
+        "Check everything is connected before I start"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/QUAD-Client",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "QUAD-Client/.claude/skills/quad-quickstart",
+          "docPath": "QUAD-Client/.claude/skills/quad-quickstart/SKILL.md",
+          "files": [
+            "QUAD-Client/.claude/skills/quad-quickstart/**"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "quad-recommend",
+      "displayName": "QUAD Deployment Recommendations",
+      "owner": "sreddygu",
+      "description": "Combine model, target and use case into specific deployment recommendations, such as NPU or GPU and INT4 or INT8.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "general",
+      "tags": [
+        "quad-client",
+        "edge-ai",
+        "quad",
+        "recommend",
+        "qualcomm-ai",
+        "mcp",
+        "npu",
+        "snapdragon-x-elite",
+        "qairt"
+      ],
+      "useCases": [
+        "What's the best way to deploy this model on Snapdragon?",
+        "Should I use INT4 or INT8?",
+        "NPU or GPU for my LLM?",
+        "Recommend an approach for a real-time vision model"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/QUAD-Client",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "QUAD-Client/.claude/skills/quad-recommend",
+          "docPath": "QUAD-Client/.claude/skills/quad-recommend/SKILL.md",
+          "files": [
+            "QUAD-Client/.claude/skills/quad-recommend/**"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "quad-run-ps1",
+      "displayName": "QUAD run.ps1 Generator",
+      "owner": "sreddygu",
+      "description": "Create a run.ps1 that sets up dependencies for a QUAD application and runs it on Windows; applied automatically when scaffolding a new QUAD application or sample.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "devtools",
+      "tags": [
+        "quad-client",
+        "edge-ai",
+        "quad",
+        "run",
+        "ps1",
+        "qualcomm-ai",
+        "mcp",
+        "npu",
+        "snapdragon-x-elite",
+        "qairt"
+      ],
+      "useCases": [
+        "Add a run script to my app",
+        "Create run.ps1 for this sample",
+        "Set up dependencies for this app on Windows",
+        "Make my QUAD sample start with one command"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/QUAD-Client",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "QUAD-Client/.claude/skills/quad-run-ps1",
+          "docPath": "QUAD-Client/.claude/skills/quad-run-ps1/SKILL.md",
+          "files": [
+            "QUAD-Client/.claude/skills/quad-run-ps1/**"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "windows"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "quad-serve",
+      "displayName": "QUAD Inference Server",
+      "owner": "sreddygu",
+      "description": "Walk through `quad serve`: start a local inference server, call its endpoint and load-test it.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "devtools",
+      "tags": [
+        "quad-client",
+        "edge-ai",
+        "quad",
+        "serve",
+        "qualcomm-ai",
+        "mcp",
+        "npu",
+        "snapdragon-x-elite",
+        "qairt"
+      ],
+      "useCases": [
+        "Start an inference server for my model",
+        "Expose the model as an HTTP API",
+        "Load test my local endpoint",
+        "Prepare this model for production serving"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/QUAD-Client",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "QUAD-Client/.claude/skills/quad-serve",
+          "docPath": "QUAD-Client/.claude/skills/quad-serve/SKILL.md",
+          "files": [
+            "QUAD-Client/.claude/skills/quad-serve/**"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "quad-unoq",
+      "displayName": "Arduino UNO Q Board Control",
+      "owner": "sreddygu",
+      "description": "Configure, flash, deploy, debug, monitor and profile an Arduino UNO Q (QCS2210) board, extract logs and check its status.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "general",
+      "tags": [
+        "quad-client",
+        "edge-ai",
+        "quad",
+        "unoq",
+        "qualcomm-ai",
+        "mcp",
+        "npu",
+        "snapdragon-x-elite",
+        "qairt"
+      ],
+      "useCases": [
+        "Flash firmware to my Arduino UNO Q",
+        "Check the board status of my UNO Q",
+        "Deploy and test my model on the UNO Q",
+        "Extract logs from my UNO Q"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/QUAD-Client",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "QUAD-Client/.claude/skills/quad-unoq",
+          "docPath": "QUAD-Client/.claude/skills/quad-unoq/SKILL.md",
+          "files": [
+            "QUAD-Client/.claude/skills/quad-unoq/**"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
+        }
+      ]
+    }
+  ]
 }

@@ -1,3 +1,9 @@
+---
+name: npu-quantization-and-accuracy-gating
+description: "Decide whether an int8 or mixed-precision version of the music model is accurate enough to use by comparing it with a reference using cosine similarity and rejecting versions that fall below threshold."
+version: 0.1.0
+---
+
 # NPU Quantization and Accuracy Gating
 
 Back to the [GesturDJ README](../../README.md).

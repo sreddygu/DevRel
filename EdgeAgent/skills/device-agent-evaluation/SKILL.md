@@ -1,3 +1,9 @@
+---
+name: device-agent-evaluation
+description: "Run an approved evaluation of the EdgeAgent tool-using LLM agent on a Snapdragon X Elite PC or IQ8/IQ9 board and record target-specific results."
+version: 0.1.0
+---
+
 # EdgeAgent Device Agent Evaluation
 
 Produce an evidence-backed EdgeAgent evaluation for a user-approved target

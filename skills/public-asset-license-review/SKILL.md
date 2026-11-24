@@ -1,10 +1,10 @@
 ---
 name: public-asset-license-review
-description: Review source, model, data, binary, and documentation assets before public P3 distribution. Use when adding a dependency, model checkpoint, dataset, generated artifact, or downloadable release asset.
+description: Review source, model, data, binary, and documentation assets before public distribution. Use when adding a dependency, model checkpoint, dataset, generated artifact, or downloadable release asset.
 version: 1.0.0
 ---
 
-# P3 Public Asset and License Review
+# Public Asset and License Review
 
 1. Inventory each asset’s source, version, checksum, and license or terms.
 2. Mark whether the asset may be redistributed, must be downloaded by the

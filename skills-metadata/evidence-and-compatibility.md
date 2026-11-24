@@ -1,11 +1,11 @@
 ---
 name: evidence-and-compatibility
-description: "Capture reproducible P3 validation evidence and document supported and excluded environments."
+description: "Record reproducible validation evidence for a project workflow and document which devices, operating systems and SDK versions are supported or excluded, so public claims match what was actually tested."
 ---
 
-# P3 Evidence and Compatibility
+# Validation Evidence and Compatibility Notes
 
-Capture reproducible P3 validation evidence and document supported and excluded environments.
+Record reproducible validation evidence for a project workflow and document which devices, operating systems and SDK versions are supported or excluded, so public claims match what was actually tested.
 
 ## Catalog
 
@@ -14,12 +14,16 @@ Capture reproducible P3 validation evidence and document supported and excluded 
 - **Category:** `general`
 - **Version:** `1.0.0`
 - **Agents:** `claude`, `codex`, `cursor`
-- **Tags:** `devrel`, `p3`, `validation`, `compatibility`, `evidence`
+- **Tags:** `validation`, `compatibility`, `evidence`, `open-source`, `release`
+- **License:** `Apache-2.0`
+- **Compatibility:** portable (no hardware constraint declared)
+- **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../skills/evidence-and-compatibility/SKILL.md)
 
 ## Use Cases
 
-- Validate a project workflow
-- Publish a demo claim
-- Decide whether a release can be promoted
+- Write up what I validated on my board and which environments are not covered
+- Can I claim my demo works on IQ-9075? Check the evidence first
+- Create a compatibility table for my release
+- Decide whether this workflow has enough evidence to be promoted from preview to stable

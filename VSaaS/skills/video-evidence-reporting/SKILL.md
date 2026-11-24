@@ -1,3 +1,9 @@
+---
+name: video-evidence-reporting
+description: "Create reviewable, redacted reports from video analytics event records (metadata only, no raw video), and label every claim as simulated, host-observed or target-observed."
+version: 0.1.0
+---
+
 # VSaaS Video Evidence Reporting
 
 Prepare a reviewable report from VSaaS event records without exporting raw video

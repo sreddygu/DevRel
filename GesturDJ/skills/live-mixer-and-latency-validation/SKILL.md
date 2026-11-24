@@ -1,3 +1,9 @@
+---
+name: live-mixer-and-latency-validation
+description: "Replay many gestures through the recognizer, mix map and audio player and check the estimated gesture-to-sound delay against a 200 ms budget."
+version: 0.1.0
+---
+
 # Live Mixer and Latency Validation
 
 Back to the [GesturDJ README](../../README.md).

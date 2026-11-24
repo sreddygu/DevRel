@@ -1,3 +1,9 @@
+---
+name: gesturdj-build-journey
+description: "Take a developer from no setup to a gesture recognizer that is trained, exported and validated on the machine that will run it, with a gesture-to-music mapping designed."
+version: 0.1.0
+---
+
 # GesturDJ Build Journey
 
 Back to the [GesturDJ README](../../README.md).

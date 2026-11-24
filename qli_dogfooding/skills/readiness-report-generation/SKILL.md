@@ -1,3 +1,9 @@
+---
+name: readiness-report-generation
+description: "Generate a matching readiness summary, workbook and report for a Qualcomm Linux (QLI) device from verified evidence."
+version: 2.0.0
+---
+
 # Readiness Report Generation
 
 Create deliverables only from verified evidence and approved output paths.

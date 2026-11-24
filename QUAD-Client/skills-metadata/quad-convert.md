@@ -1,11 +1,11 @@
 ---
 name: quad-convert
-description: "Use when the user asks to \"convert a model\", \"compile this ONNX\", \"quantize my PyTorch model\", \"convert to QNN/SNPE\", or invokes /quad-convert. Walks through model conversion with calibration data + image format guidance."
+description: "Walk through converting a model for Snapdragon (ONNX or PyTorch to QNN or SNPE), including calibration data and image format guidance."
 ---
 
-# Quad Convert
+# QUAD Model Conversion
 
-Use when the user asks to "convert a model", "compile this ONNX", "quantize my PyTorch model", "convert to QNN/SNPE", or invokes /quad-convert. Walks through model conversion with calibration data + image format guidance.
+Walk through converting a model for Snapdragon (ONNX or PyTorch to QNN or SNPE), including calibration data and image format guidance.
 
 ## Catalog
 
@@ -14,10 +14,17 @@ Use when the user asks to "convert a model", "compile this ONNX", "quantize my P
 - **Category:** `devtools`
 - **Version:** `0.1.0`
 - **Agents:** `claude`, `codex`, `cursor`
-- **Tags:** `academy`, `quad-client`, `edge-ai`
+- **Tags:** `quad-client`, `edge-ai`, `quad`, `convert`, `qualcomm-ai`, `mcp`, `npu`, `snapdragon-x-elite`, `qairt`
+- **License:** `Apache-2.0`
+- **Compatibility:** host OS `windows`, `linux`
+- **Requirements:** Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows
+- **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../.claude/skills/quad-convert/SKILL.md)
 
 ## Use Cases
 
-- Quad Convert
+- Convert my ONNX model to run on the NPU
+- Quantize my PyTorch model with calibration data
+- Compile this model to QNN
+- What calibration images format does the converter need?

@@ -1,3 +1,9 @@
+---
+name: gesture-event-contract
+description: "The single event format that every gesture sensor (accelerometer or camera pose) must emit so that the recognizer, mixer and music path work with either."
+version: 0.1.0
+---
+
 # Gesture Event Contract (context document)
 
 Back to the [GesturDJ README](../../README.md).

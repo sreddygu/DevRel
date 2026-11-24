@@ -1,3 +1,9 @@
+---
+name: diagnostic-log-collection
+description: "Collect bounded logs and diagnostics from a Qualcomm Linux (QLI) device after a failed workflow, without changing device state."
+version: 1.0.0
+---
+
 # Diagnostic Log Collection
 
 Collect the smallest useful diagnostic window after a workflow fails or blocks.

@@ -1,3 +1,9 @@
+---
+name: client-inference-validation
+description: "Validate a model inference workflow run through the QUAD client (Qualcomm AI MCP server client) and keep evidence that separates local simulation from execution observed on a device."
+version: 0.1.0
+---
+
 # QUAD-Client Inference Validation
 
 Validate a QNN inference workflow through QUAD-Client and retain evidence that

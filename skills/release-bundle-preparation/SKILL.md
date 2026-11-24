@@ -1,10 +1,10 @@
 ---
 name: release-bundle-preparation
-description: Prepare and validate a public P3 release bundle with a version, compatibility data, checksums, evidence, safety gates, and rollback instructions. Use when publishing or promoting an incubating, preview, stable, or LTS project release.
+description: Prepare and validate a public release bundle with a version, compatibility data, checksums, evidence, safety gates, and rollback instructions. Use when publishing or promoting an incubating, preview, stable, or LTS project release.
 version: 1.0.0
 ---
 
-# P3 Release Bundle Preparation
+# Release Bundle Preparation
 
 1. Choose a SemVer version and release channel according to
    `references/P3_DELIVERY_MODELS.md`; do not overwrite an existing release artifact.

@@ -1,11 +1,11 @@
 ---
 name: p3-self-service-boundaries
-description: "What an independent developer can assume: public tools only, self-service, community support."
+description: "Context rules for independent developers (hobbyists, students and makers): use public tools only, work self-service, expect community support, and ask before changing a device."
 ---
 
-# P3 Self-Service Boundaries
+# Independent Developer Self-Service Rules
 
-What an independent developer can assume: public tools only, self-service, community support.
+Context rules for independent developers (hobbyists, students and makers): use public tools only, work self-service, expect community support, and ask before changing a device.
 
 ## Catalog
 
@@ -14,10 +14,17 @@ What an independent developer can assume: public tools only, self-service, commu
 - **Category:** `general`
 - **Version:** `0.1.0`
 - **Agents:** `claude`, `codex`, `cursor`
-- **Tags:** `academy`, `gesturdj`, `edge-ai`
+- **Tags:** `gesturdj`, `edge-ai`, `self`, `service`, `boundaries`, `gesture-recognition`, `music`, `npu`, `iq8`
+- **License:** `Apache-2.0`
+- **Compatibility:** portable (no hardware constraint declared)
+- **Requirements:** Python 3.10+; PC and Qualcomm IQ8 board (Qualcomm Linux 2.0); QAIRT for the NPU music path
+- **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../skills/p3-self-service-boundaries/SKILL.md)
 
 ## Use Cases
 
-- P3 Self-Service Boundaries
+- What can an independent developer assume about this workflow?
+- Confirm my workflow uses only publicly available tools
+- When should the assistant ask before changing my device?
+- What support can I expect for this sample?

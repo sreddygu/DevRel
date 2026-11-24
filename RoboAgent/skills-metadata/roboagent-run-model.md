@@ -1,11 +1,11 @@
 ---
 name: roboagent-run-model
-description: "Run a QNN .pte model on this Windows-on-Snapdragon device â€” simple op tests via qnn_executor_runner, or LLMs via qnn_llama_runner. Use when validating a model, benchmarking tok/s, or debugging a runner failure."
+description: "Run a QNN .pte model on a Windows on Snapdragon device: simple operator tests with qnn_executor_runner, or LLMs with qnn_llama_runner."
 ---
 
-# Roboagent Run Model
+# Run a QNN Model on Windows on Snapdragon
 
-Run a QNN .pte model on this Windows-on-Snapdragon device â€” simple op tests via qnn_executor_runner, or LLMs via qnn_llama_runner. Use when validating a model, benchmarking tok/s, or debugging a runner failure.
+Run a QNN .pte model on a Windows on Snapdragon device: simple operator tests with qnn_executor_runner, or LLMs with qnn_llama_runner.
 
 ## Catalog
 
@@ -14,10 +14,17 @@ Run a QNN .pte model on this Windows-on-Snapdragon device â€” simple op tes
 - **Category:** `hardware`
 - **Version:** `0.1.0`
 - **Agents:** `claude`, `codex`, `cursor`
-- **Tags:** `academy`, `roboagent`, `edge-ai`
+- **Tags:** `roboagent`, `edge-ai`, `run`, `model`, `llm`, `executorch`, `qnn`, `windows-on-snapdragon`, `gemma`
+- **License:** `Apache-2.0`
+- **Compatibility:** host OS `windows`
+- **Requirements:** Snapdragon X (SC8380XP) Windows on ARM device; QAIRT 2.47; no adb or cross-compile
+- **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../.claude/skills/run-model/SKILL.md)
 
 ## Use Cases
 
-- Roboagent Run Model
+- Run this .pte model on my Snapdragon PC
+- Benchmark LLM tokens per second with qnn_llama_runner
+- Debug a qnn_executor_runner failure
+- Validate my QNN model with a simple op test

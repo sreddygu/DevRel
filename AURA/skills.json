@@ -1,95 +1,169 @@
 {
-    "manifestVersion":  1,
-    "skills":  [
-                   {
-                       "name":  "aura-agent-orchestration",
-                       "displayName":  "AURA Agent Orchestration",
-                       "owner":  "sreddygu",
-                       "description":  "Prepare and inspect an AURA milestone runtime without activating device services by default.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "general",
-                       "tags":  [
-                                    "academy",
-                                    "aura",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "AURA Agent Orchestration"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  "skills/aura-agent-orchestration",
-                                            "docPath":  "skills/aura-agent-orchestration/SKILL.md",
-                                            "files":  [
-                                                          "skills/aura-agent-orchestration/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "multimodal-event-pipeline",
-                       "displayName":  "AURA Multimodal Event Pipeline",
-                       "owner":  "sreddygu",
-                       "description":  "Validate AURA perception and memory event handling with scoped, privacy-aware evidence.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "general",
-                       "tags":  [
-                                    "academy",
-                                    "aura",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "AURA Multimodal Event Pipeline"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  "skills/multimodal-event-pipeline",
-                                            "docPath":  "skills/multimodal-event-pipeline/SKILL.md",
-                                            "files":  [
-                                                          "skills/multimodal-event-pipeline/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "on-device-action-validation",
-                       "displayName":  "AURA On-Device Action Validation",
-                       "owner":  "sreddygu",
-                       "description":  "Validate AURA action policy and safety limits before approved device actions.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "hardware",
-                       "tags":  [
-                                    "academy",
-                                    "aura",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "AURA On-Device Action Validation"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  "skills/on-device-action-validation",
-                                            "docPath":  "skills/on-device-action-validation/SKILL.md",
-                                            "files":  [
-                                                          "skills/on-device-action-validation/**"
-                                                      ]
-                                        }
-                                    ]
-                   }
-               ]
+  "manifestVersion": 1,
+  "skills": [
+    {
+      "name": "aura-agent-orchestration",
+      "displayName": "AURA Runtime Setup and Milestone Selection",
+      "owner": "sreddygu",
+      "description": "Prepare AURA, an on-device physical-AI agent (camera, microphone, memory and local LLM) for Arduino VENTUNO Q and Qualcomm IQ8, and pick the smallest milestone to run, without starting device services by default.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "general",
+      "tags": [
+        "aura",
+        "edge-ai",
+        "agent",
+        "orchestration",
+        "ai-agent",
+        "physical-ai",
+        "on-device-ai",
+        "iq8",
+        "ventuno-q"
+      ],
+      "useCases": [
+        "Set up the AURA on-device agent on my IQ8 board",
+        "Which AURA milestone should I build first: vision, speech, memory or agent?",
+        "Install only the AURA vision extra and run the tests",
+        "Show my AURA configuration and what optional components are missing"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/AURA",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "AURA/skills/aura-agent-orchestration",
+          "docPath": "AURA/skills/aura-agent-orchestration/SKILL.md",
+          "files": [
+            "AURA/skills/aura-agent-orchestration/**"
+          ],
+          "compatibility": {
+            "devkits": [
+              "qcs8275-iq-8275-evk-pro"
+            ],
+            "targetOs": [
+              {
+                "os": "qualcomm_linux",
+                "variant": "qualcomm-linux-proprietary",
+                "minVersion": "qli-2.0",
+                "maxVersion": "qli-2.0"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "multimodal-event-pipeline",
+      "displayName": "AURA Camera and Microphone Event Validation",
+      "owner": "sreddygu",
+      "description": "Validate how the AURA on-device agent turns camera and microphone input into events and stores them in memory, with evidence that avoids saving raw images or audio.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "general",
+      "tags": [
+        "aura",
+        "edge-ai",
+        "multimodal",
+        "event",
+        "pipeline",
+        "ai-agent",
+        "physical-ai",
+        "on-device-ai",
+        "iq8",
+        "ventuno-q"
+      ],
+      "useCases": [
+        "Check that AURA detects a person in a camera frame and records an event",
+        "Validate speech events from the microphone without storing the audio",
+        "Verify AURA's memory entries for the last perception run",
+        "Produce privacy-safe evidence of my AURA perception pipeline"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/AURA",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "AURA/skills/multimodal-event-pipeline",
+          "docPath": "AURA/skills/multimodal-event-pipeline/SKILL.md",
+          "files": [
+            "AURA/skills/multimodal-event-pipeline/**"
+          ],
+          "compatibility": {
+            "devkits": [
+              "qcs8275-iq-8275-evk-pro"
+            ],
+            "targetOs": [
+              {
+                "os": "qualcomm_linux",
+                "variant": "qualcomm-linux-proprietary",
+                "minVersion": "qli-2.0",
+                "maxVersion": "qli-2.0"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "on-device-action-validation",
+      "displayName": "AURA Device Action Safety Check",
+      "owner": "sreddygu",
+      "description": "Check the AURA agent's action policy and safety limits before it is allowed to perform an approved action on a device.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "hardware",
+      "tags": [
+        "aura",
+        "edge-ai",
+        "device",
+        "action",
+        "validation",
+        "ai-agent",
+        "physical-ai",
+        "on-device-ai",
+        "iq8",
+        "ventuno-q"
+      ],
+      "useCases": [
+        "Verify AURA cannot take an action outside its allowed list",
+        "Test the safety limits before I let AURA control a device",
+        "Dry-run an AURA action and show which policy approves it",
+        "Which AURA actions need my explicit approval?"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/AURA",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "AURA/skills/on-device-action-validation",
+          "docPath": "AURA/skills/on-device-action-validation/SKILL.md",
+          "files": [
+            "AURA/skills/on-device-action-validation/**"
+          ],
+          "compatibility": {
+            "devkits": [
+              "qcs8275-iq-8275-evk-pro"
+            ],
+            "targetOs": [
+              {
+                "os": "qualcomm_linux",
+                "variant": "qualcomm-linux-proprietary",
+                "minVersion": "qli-2.0",
+                "maxVersion": "qli-2.0"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
 }

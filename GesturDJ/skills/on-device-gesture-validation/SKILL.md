@@ -1,3 +1,9 @@
+---
+name: on-device-gesture-validation
+description: "On the machine that will run the recognizer, check that the exported model matches the original, keeps its accuracy on held-out data and runs fast enough."
+version: 0.2.0
+---
+
 # On-Device Gesture Validation
 
 Back to the [GesturDJ README](../../README.md).

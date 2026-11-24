@@ -1,0 +1,712 @@
+{
+  "project-onboarding": {
+    "displayName": "Public Project Onboarding",
+    "description": "Classify a hardware or AI sample project and choose the safest way to publish it for independent developers (hobbyists, students and makers): source skill pack, starter kit, or device-ready release kit.",
+    "useCases": [
+      "I'm starting a new Qualcomm edge AI sample project. Which public delivery model should I use?",
+      "Review my project's README and tell me whether it is ready to share publicly",
+      "Move my project from preview to a starter kit and list what is still missing",
+      "Which skills should this project provide next?"
+    ]
+  },
+  "evidence-and-compatibility": {
+    "displayName": "Validation Evidence and Compatibility Notes",
+    "description": "Record reproducible validation evidence for a project workflow and document which devices, operating systems and SDK versions are supported or excluded, so public claims match what was actually tested.",
+    "useCases": [
+      "Write up what I validated on my board and which environments are not covered",
+      "Can I claim my demo works on IQ-9075? Check the evidence first",
+      "Create a compatibility table for my release",
+      "Decide whether this workflow has enough evidence to be promoted from preview to stable"
+    ]
+  },
+  "release-bundle-preparation": {
+    "displayName": "Public Release Bundle Preparation",
+    "description": "Prepare and validate a public release bundle for a sample project: evidence, compatibility data, checksums, semantic version and rollback instructions.",
+    "useCases": [
+      "Package my project as a public release with checksums and rollback steps",
+      "Promote my preview release to stable and validate the release metadata",
+      "Check that my release bundle has version, license and evidence files",
+      "What do I need before I publish v1.0.0 of this starter kit?"
+    ]
+  },
+  "public-asset-license-review": {
+    "displayName": "Public Asset License Review",
+    "description": "Review the licenses of source code, models, datasets, binaries and documents before a project is distributed publicly, and flag anything that cannot be redistributed.",
+    "useCases": [
+      "Can I publish this model checkpoint with my project?",
+      "Review the licenses of my new Python dependency before I add it",
+      "List every asset in my release bundle and its license",
+      "Check which files in this repo must not be redistributed"
+    ]
+  },
+  "device-readiness": {
+    "displayName": "Hardware Target Readiness Check",
+    "description": "Check whether a publicly available Qualcomm development board is ready for a documented project workflow: reachable, identified, correct OS image and required tools present.",
+    "useCases": [
+      "Is my dev board ready to run this sample?",
+      "Check that my board is reachable and running a supported OS image before I deploy",
+      "What is missing on my device for this workflow?",
+      "Validate my hardware target before I publish the demo"
+    ]
+  },
+  "aura-agent-orchestration": {
+    "displayName": "AURA Runtime Setup and Milestone Selection",
+    "description": "Prepare AURA, an on-device physical-AI agent (camera, microphone, memory and local LLM) for Arduino VENTUNO Q and Qualcomm IQ8, and pick the smallest milestone to run, without starting device services by default.",
+    "useCases": [
+      "Set up the AURA on-device agent on my IQ8 board",
+      "Which AURA milestone should I build first: vision, speech, memory or agent?",
+      "Install only the AURA vision extra and run the tests",
+      "Show my AURA configuration and what optional components are missing"
+    ]
+  },
+  "multimodal-event-pipeline": {
+    "displayName": "AURA Camera and Microphone Event Validation",
+    "description": "Validate how the AURA on-device agent turns camera and microphone input into events and stores them in memory, with evidence that avoids saving raw images or audio.",
+    "useCases": [
+      "Check that AURA detects a person in a camera frame and records an event",
+      "Validate speech events from the microphone without storing the audio",
+      "Verify AURA's memory entries for the last perception run",
+      "Produce privacy-safe evidence of my AURA perception pipeline"
+    ]
+  },
+  "on-device-action-validation": {
+    "displayName": "AURA Device Action Safety Check",
+    "description": "Check the AURA agent's action policy and safety limits before it is allowed to perform an approved action on a device.",
+    "useCases": [
+      "Verify AURA cannot take an action outside its allowed list",
+      "Test the safety limits before I let AURA control a device",
+      "Dry-run an AURA action and show which policy approves it",
+      "Which AURA actions need my explicit approval?"
+    ]
+  },
+  "agent-tool-contract-validation": {
+    "displayName": "EdgeAgent MCP Connection Check",
+    "description": "Validate the MCP client configuration that EdgeAgent (a small tool-using LLM agent for local and edge devices) generates for a chosen transport, and confirm a failed connection is reported, before anything is installed.",
+    "useCases": [
+      "Preview the MCP configuration EdgeAgent will write for my transport",
+      "Test the connection to my EdgeAgent MCP server before I install it",
+      "Why does my MCP client fail to connect to EdgeAgent?",
+      "Run the EdgeAgent CLI connection tests"
+    ]
+  },
+  "device-agent-evaluation": {
+    "displayName": "EdgeAgent On-Device Evaluation",
+    "description": "Run an approved evaluation of the EdgeAgent tool-using LLM agent on a Snapdragon X Elite PC or IQ8/IQ9 board and record target-specific results.",
+    "useCases": [
+      "Evaluate EdgeAgent with the local model on my IQ9 board",
+      "Compare EdgeAgent tool-use accuracy on CPU and NPU",
+      "Record latency and tool-call results for EdgeAgent on this device",
+      "Run the EdgeAgent evaluation and save the evidence"
+    ]
+  },
+  "edge-agent-runtime-setup": {
+    "displayName": "EdgeAgent Runtime Setup",
+    "description": "Prepare and inspect the EdgeAgent runtime (llama.cpp CPU backend or Genie NPU backend) on a Snapdragon X Elite PC or IQ8/IQ9 board without changing MCP client settings by default.",
+    "useCases": [
+      "Set up EdgeAgent with a local llama.cpp server",
+      "Point EdgeAgent at the Genie NPU backend on my Snapdragon X Elite PC",
+      "Check whether EdgeAgent can reach its model server on my IQ8",
+      "What do I need installed to run EdgeAgent on an IQ9 board?"
+    ]
+  },
+  "audio-output-integration": {
+    "displayName": "Board Audio Output Latency Check",
+    "description": "Find a board's audio sink and players, measure how much delay each player adds, and pick the setting a live music path should use.",
+    "useCases": [
+      "Which audio player should GesturDJ use on my IQ8 board?",
+      "Why is there a delay before sound plays on my board?",
+      "Measure aplay, paplay and pw-play latency on this device",
+      "Is audio output working on the board?"
+    ]
+  },
+  "device-and-host-discovery": {
+    "displayName": "GesturDJ Device and Host Discovery",
+    "description": "Read-only discovery of your PC and target board for GesturDJ (a gesture-controlled DJ demo): what hardware is present and where each stage (sensing, recognition, music generation) will run.",
+    "useCases": [
+      "Find out what hardware I have for the GesturDJ demo",
+      "Detect my IQ8 board, its sensors and audio devices",
+      "Where should the gesture recognizer and music model run on my setup?",
+      "Is my host ready to run GesturDJ?"
+    ]
+  },
+  "gesturdj-agent": {
+    "displayName": "GesturDJ Assistant",
+    "description": "Coordinates the GesturDJ gesture-to-music skills: understands your request, picks the smallest safe path, keeps the live path within its latency budget, asks approval before consequential steps and recovers from failures.",
+    "useCases": [
+      "Build a gesture-controlled DJ on my IQ8 board",
+      "Check whether my gesture recognizer is ready for the board",
+      "Run the GesturDJ pipeline and stop at the first failed check",
+      "What should I do next in the GesturDJ build?"
+    ]
+  },
+  "gesturdj-build-journey": {
+    "displayName": "GesturDJ Step-by-Step Build",
+    "description": "Take a developer from no setup to a gesture recognizer that is trained, exported and validated on the machine that will run it, with a gesture-to-music mapping designed.",
+    "useCases": [
+      "Walk me through building GesturDJ from scratch",
+      "Train, export and validate a gesture model on my board",
+      "Rerun the GesturDJ build steps after I changed the dataset",
+      "Where did my GesturDJ build fail and why?"
+    ]
+  },
+  "gesture-dataset-preparation": {
+    "displayName": "Gesture Dataset Preparation",
+    "description": "Choose and prepare a labelled motion dataset for gesture recognition (synthetic, public or your own capture), check its quality and split it for training.",
+    "useCases": [
+      "Prepare a synthetic accelerometer dataset for gesture recognition",
+      "Check my gesture recordings for class imbalance and bad samples",
+      "Split my motion data into train and held-out sets",
+      "Which gesture dataset should I start with?"
+    ]
+  },
+  "gesture-event-contract": {
+    "displayName": "Gesture Event Format",
+    "description": "The single event format that every gesture sensor (accelerometer or camera pose) must emit so that the recognizer, mixer and music path work with either.",
+    "useCases": [
+      "Define the event my gesture sensor must emit",
+      "Add a camera gesture source without changing the mixer",
+      "Check a gesture event against the GesturDJ event format",
+      "What fields does a gesture event need?"
+    ]
+  },
+  "gesture-model-training-and-evaluation": {
+    "displayName": "Gesture Model Training and Evaluation",
+    "description": "Train a gesture recognizer (scikit-learn baseline or PyTorch), read the held-out result honestly and decide whether it is good enough to export.",
+    "useCases": [
+      "Train a gesture classifier on my accelerometer data",
+      "Is my model's held-out accuracy good enough or just overfitting?",
+      "Compare the scikit-learn baseline with a PyTorch model",
+      "Show the confusion matrix for my gesture model"
+    ]
+  },
+  "gesture-to-live-mix-design": {
+    "displayName": "Gesture-to-Music Mapping Design",
+    "description": "Design how a recognized gesture changes music live (clip, tempo, volume, filter, layers) with debounce and a latency budget.",
+    "useCases": [
+      "Map a swipe gesture to a tempo change with debounce",
+      "Design a mix map for five gestures and check its latency budget",
+      "Which music controls should each gesture trigger?",
+      "Why does my gesture trigger the wrong clip twice?"
+    ]
+  },
+  "library-generation-and-quality-evaluation": {
+    "displayName": "Background Music Clip Generation and Quality Check",
+    "description": "Generate music clips in the background from style prompts with an on-device music model, then check each clip and the whole set with objective measurements such as loop seams.",
+    "useCases": [
+      "Generate a few instrumental clips from style prompts for my DJ library",
+      "Check whether my generated clips loop cleanly",
+      "Evaluate the quality of a generated clip set",
+      "Generate clips in the background without affecting the live path"
+    ]
+  },
+  "live-mixer-and-latency-validation": {
+    "displayName": "Live Mixer Latency Validation",
+    "description": "Replay many gestures through the recognizer, mix map and audio player and check the estimated gesture-to-sound delay against a 200 ms budget.",
+    "useCases": [
+      "Does my gesture-to-sound latency stay within 200 ms?",
+      "Replay 100 gestures and report p50 and p95 latency",
+      "Compare spawning a player per gesture with a warm output stream",
+      "Find which stage of the live path uses the most latency"
+    ]
+  },
+  "model-export-and-deployment": {
+    "displayName": "Gesture Model ONNX Export and Packaging",
+    "description": "Export a trained PyTorch gesture model to a single-file ONNX model that a board without PyTorch can load, prove it matches the original and package it.",
+    "useCases": [
+      "Export my gesture model to ONNX for the IQ8 board",
+      "Check that the ONNX output matches the PyTorch model",
+      "Package the model so a torch-free board can run it",
+      "Copy the exported model to my device"
+    ]
+  },
+  "music-model-npu-deployment": {
+    "displayName": "Music Model NPU Readiness (IQ8)",
+    "description": "Check that an IQ8 board is ready to run the DiffRhythm/ACE-Step music transformer on its NPU: OS image, NPU firmware, runtime libraries and compiled model graphs.",
+    "useCases": [
+      "Is my IQ8 board ready to run the music model on its NPU?",
+      "Check NPU firmware and runtime libraries before I deploy the music model",
+      "Why do the NPU graphs fail to load on my board?",
+      "Run the preflight checks for ACE-Step on the IQ8 NPU"
+    ]
+  },
+  "npu-quantization-and-accuracy-gating": {
+    "displayName": "NPU Quantization Accuracy Gate",
+    "description": "Decide whether an int8 or mixed-precision version of the music model is accurate enough to use by comparing it with a reference using cosine similarity and rejecting versions that fall below threshold.",
+    "useCases": [
+      "Is my int8 music model accurate enough compared to fp16?",
+      "Compare mixed-precision and all-int8 outputs against the reference",
+      "Which layers should stay in fp16 to keep accuracy?",
+      "Accept or reject this quantized model with a cosine threshold"
+    ]
+  },
+  "on-device-gesture-validation": {
+    "displayName": "On-Device Gesture Model Validation",
+    "description": "On the machine that will run the recognizer, check that the exported model matches the original, keeps its accuracy on held-out data and runs fast enough.",
+    "useCases": [
+      "Validate my exported gesture model on the IQ8 board",
+      "Measure inference latency of the gesture model on the device",
+      "Does the on-device model match the PC result?",
+      "Run the held-out accuracy check on the board"
+    ]
+  },
+  "p3-self-service-boundaries": {
+    "displayName": "Independent Developer Self-Service Rules",
+    "description": "Context rules for independent developers (hobbyists, students and makers): use public tools only, work self-service, expect community support, and ask before changing a device.",
+    "useCases": [
+      "What can an independent developer assume about this workflow?",
+      "Confirm my workflow uses only publicly available tools",
+      "When should the assistant ask before changing my device?",
+      "What support can I expect for this sample?"
+    ]
+  },
+  "client-inference-validation": {
+    "displayName": "QUAD Inference Validation",
+    "description": "Validate a model inference workflow run through the QUAD client (Qualcomm AI MCP server client) and keep evidence that separates local simulation from execution observed on a device.",
+    "useCases": [
+      "Run an inference validation for my model with QUAD and keep the evidence",
+      "Measure NPU latency for this model on my Snapdragon X Elite PC",
+      "Was this result simulated or measured on the device?",
+      "Benchmark CPU versus NPU with the QUAD sample"
+    ]
+  },
+  "device-target-configuration": {
+    "displayName": "QUAD Device Target Setup",
+    "description": "Discover and document an approved device target for the QUAD client (IQ-9075 board over SSH, Android over adb) without changing the device by default.",
+    "useCases": [
+      "Add my IQ-9075 board as a QUAD target over SSH",
+      "Document the device target QUAD will deploy to",
+      "Check the target configuration before I deploy a model",
+      "Which QUAD transport should I use for my board?"
+    ]
+  },
+  "quad-client-installation": {
+    "displayName": "QUAD Client Installation",
+    "description": "Install and validate the QUAD client (quad-mcp-client) and choose how it reaches the QUAD server (hosted URL, SSH or local), without changing MCP settings by default.",
+    "useCases": [
+      "Install the QUAD client and connect it to my QUAD server",
+      "Which transport should I choose: hosted, SSH or local?",
+      "Validate my QUAD client installation",
+      "Why can't Claude Code reach my QUAD server?"
+    ]
+  },
+  "quad-app-builder": {
+    "displayName": "QUAD Application Builder",
+    "description": "Guide the full lifecycle of a Snapdragon AI application: requirements, implementation, testing, hardening, documentation and git push.",
+    "useCases": [
+      "Build a vision app on Snapdragon with QUAD",
+      "Create a QUAD application that runs an LLM on the NPU",
+      "Scaffold an inference app and test it end to end",
+      "I want to build an ASR app on my Snapdragon X Elite laptop"
+    ]
+  },
+  "quad-app-document": {
+    "displayName": "QUAD Application Documentation Generator",
+    "description": "Generate ARCHITECTURE.md and a Word document (app_documentation.docx) for any QUAD application directory.",
+    "useCases": [
+      "Generate documentation for this QUAD app",
+      "Write an architecture doc for my application",
+      "Create a Word document describing this project",
+      "Document how my app uses the NPU"
+    ]
+  },
+  "quad-build-npu-bundle": {
+    "displayName": "NPU LLM Bundle Builder",
+    "description": "Build an AI Hub Genie bundle for a large language model on a non-ARM64 host (WSL, x86, macOS or Linux) and copy it to a Snapdragon X Elite PC where it runs on the Hexagon NPU.",
+    "useCases": [
+      "Build an NPU bundle for Llama on my x86 machine",
+      "Export a Qwen model for the Hexagon NPU",
+      "Download a model for the NPU provider and stage it on my Snapdragon PC",
+      "Prepare a Genie bundle in WSL"
+    ]
+  },
+  "quad-codegen": {
+    "displayName": "QUAD Inference Code Generator",
+    "description": "Pick the right platform, language and SDK combination for a model and generate compilable inference code.",
+    "useCases": [
+      "Generate inference code for my model",
+      "Write a C++ app for this QNN model",
+      "Give me Python boilerplate to run this model on the NPU",
+      "Create an Android JNI binding for my model"
+    ]
+  },
+  "quad-configure": {
+    "displayName": "QUAD Configuration Wizard",
+    "description": "Interactive wizard that asks about SDK paths, hardware and secrets, then writes quad.toml and .env. Run before first use or when hardware or SDK setup changes.",
+    "useCases": [
+      "Configure QUAD for the first time",
+      "Set my QAIRT SDK path and target hardware for QUAD",
+      "Generate quad.toml and .env for my project",
+      "I changed my SDK location. Update the QUAD configuration"
+    ]
+  },
+  "quad-convert": {
+    "displayName": "QUAD Model Conversion",
+    "description": "Walk through converting a model for Snapdragon (ONNX or PyTorch to QNN or SNPE), including calibration data and image format guidance.",
+    "useCases": [
+      "Convert my ONNX model to run on the NPU",
+      "Quantize my PyTorch model with calibration data",
+      "Compile this model to QNN",
+      "What calibration images format does the converter need?"
+    ]
+  },
+  "quad-deploy": {
+    "displayName": "QUAD Model Deployment",
+    "description": "Deploy a converted model to a target device (Android phone, Arduino board or Snapdragon target) with deploy.sh and run remote profiling.",
+    "useCases": [
+      "Deploy my model to my Android phone",
+      "Push this model to my Snapdragon target and profile it",
+      "Deploy to my IQ-9075 board",
+      "Run the deploy script and collect remote profiling results"
+    ]
+  },
+  "quad-detect": {
+    "displayName": "QUAD Hardware Detection",
+    "description": "Probe the local machine and any reachable devices (USB boards via adb, SSH targets in quad.toml) and report chipset, CPU/GPU/NPU, RAM, runtimes and SDK status.",
+    "useCases": [
+      "What hardware do I have?",
+      "Do I have an NPU on this machine?",
+      "Probe my IQ-9075 board over SSH",
+      "What targets are connected right now?"
+    ]
+  },
+  "quad-doctor": {
+    "displayName": "QUAD Install Diagnostics",
+    "description": "Run the local diagnostic suite for a QUAD install and explain each warning with the exact fix.",
+    "useCases": [
+      "Is QUAD set up correctly?",
+      "Diagnose my QUAD install",
+      "Why isn't real mode working?",
+      "Check my SDK setup for QUAD"
+    ]
+  },
+  "quad-executorch": {
+    "displayName": "QUAD ExecuTorch Export and Run",
+    "description": "Drive the PyTorch to .pte to profile to runner flow with a QUAD MCP server, using the executorch_mobilenet sample as the reference.",
+    "useCases": [
+      "Export my PyTorch model to ExecuTorch",
+      "Make a .pte file and run it on the NPU",
+      "Profile my ExecuTorch model with QUAD",
+      "Follow the executorch_mobilenet sample for my own model"
+    ]
+  },
+  "quad-npu-prereqs": {
+    "displayName": "QUAD NPU Prerequisites Setup",
+    "description": "Detect the host architecture and target, review the AI Hub token, NPU wheels and environment prerequisites with you, then provision what is missing for Snapdragon NPU development.",
+    "useCases": [
+      "Set up my machine to develop for the Hexagon NPU",
+      "What prerequisites do I need to run a model on the NPU?",
+      "Configure my AI Hub token and NPU wheels",
+      "Prepare my Snapdragon laptop for NPU builds"
+    ]
+  },
+  "quad-orchestrate": {
+    "displayName": "QUAD CPU/GPU/NPU Allocation Advisor",
+    "description": "Compare performance, balanced and efficiency modes side by side and recommend where each operation should run across CPU, GPU and NPU.",
+    "useCases": [
+      "Allocate this model across CPU, GPU and NPU",
+      "Compare power modes for my workload",
+      "Where should this op run?",
+      "Which mode gives the best latency per watt?"
+    ]
+  },
+  "quad-profile": {
+    "displayName": "QUAD Model Profiler",
+    "description": "Pick the right profiling level and show a summary of latency and utilisation, including bottlenecks and QHAS profiling.",
+    "useCases": [
+      "Profile my model and find bottlenecks",
+      "Measure NPU latency for this model",
+      "Run QHAS profiling",
+      "Lint my model for NPU-unfriendly ops"
+    ]
+  },
+  "quad-pte-run": {
+    "displayName": "QUAD ExecuTorch .pte Runner",
+    "description": "Run or profile an ExecuTorch .pte file on the host, or describe how to invoke the on-device runner.",
+    "useCases": [
+      "Run my .pte on this machine",
+      "Profile my ExecuTorch model",
+      "Deploy a .pte to my device and run it",
+      "Show the runner command for the board"
+    ]
+  },
+  "quad-qnn-runtime-debug": {
+    "displayName": "QNN Runtime Failure Debugging",
+    "description": "Diagnose Qualcomm AI (QNN/QAIRT) runtime failures on already-compiled models: backend initialisation, ABI or version mismatch, symbol resolution and input contract errors.",
+    "useCases": [
+      "QNN backend won't initialize. What is wrong?",
+      "Unable to find a valid interface provider",
+      "My model fails to load with a symbol error on the NPU",
+      "Check for an SDK version mismatch between my model and runtime"
+    ]
+  },
+  "quad-quickstart": {
+    "displayName": "QUAD Quickstart",
+    "description": "Guided first run: hardware detection, SDK check, MCP server connectivity and a sample inference, end to end.",
+    "useCases": [
+      "Get me started with QUAD",
+      "Set up Qualcomm AI on my Snapdragon laptop",
+      "Run the first sample inference on my NPU",
+      "Check everything is connected before I start"
+    ]
+  },
+  "quad-recommend": {
+    "displayName": "QUAD Deployment Recommendations",
+    "description": "Combine model, target and use case into specific deployment recommendations, such as NPU or GPU and INT4 or INT8.",
+    "useCases": [
+      "What's the best way to deploy this model on Snapdragon?",
+      "Should I use INT4 or INT8?",
+      "NPU or GPU for my LLM?",
+      "Recommend an approach for a real-time vision model"
+    ]
+  },
+  "quad-run-ps1": {
+    "displayName": "QUAD run.ps1 Generator",
+    "description": "Create a run.ps1 that sets up dependencies for a QUAD application and runs it on Windows; applied automatically when scaffolding a new QUAD application or sample.",
+    "useCases": [
+      "Add a run script to my app",
+      "Create run.ps1 for this sample",
+      "Set up dependencies for this app on Windows",
+      "Make my QUAD sample start with one command"
+    ]
+  },
+  "quad-serve": {
+    "displayName": "QUAD Inference Server",
+    "description": "Walk through `quad serve`: start a local inference server, call its endpoint and load-test it.",
+    "useCases": [
+      "Start an inference server for my model",
+      "Expose the model as an HTTP API",
+      "Load test my local endpoint",
+      "Prepare this model for production serving"
+    ]
+  },
+  "quad-unoq": {
+    "displayName": "Arduino UNO Q Board Control",
+    "description": "Configure, flash, deploy, debug, monitor and profile an Arduino UNO Q (QCS2210) board, extract logs and check its status.",
+    "useCases": [
+      "Flash firmware to my Arduino UNO Q",
+      "Check the board status of my UNO Q",
+      "Deploy and test my model on the UNO Q",
+      "Extract logs from my UNO Q"
+    ]
+  },
+  "multimodal-command-validation": {
+    "displayName": "RoboAgent Response and Tool-Call Validation",
+    "description": "Evaluate the responses and proposed tool calls of RoboAgent (a local Gemma 4 robot assistant running on Windows on Snapdragon) with deterministic, grounded checks.",
+    "useCases": [
+      "Check whether RoboAgent's tool call is valid and grounded",
+      "Validate RoboAgent responses against the test cases",
+      "Which RoboAgent answers failed the checks and why?",
+      "Score a RoboAgent run without using another model"
+    ]
+  },
+  "robot-runtime-discovery": {
+    "displayName": "RoboAgent Runtime Check",
+    "description": "Inspect whether the QNN runtime and the Pi coding assistant are ready for RoboAgent on a Windows on Snapdragon PC, without changing the machine by default.",
+    "useCases": [
+      "Is my Snapdragon PC ready to run RoboAgent?",
+      "Check the QNN runtime and Pi installation for RoboAgent",
+      "What is missing before I can start the RoboAgent host?",
+      "Inspect my RoboAgent environment without changing anything"
+    ]
+  },
+  "robot-safety-boundaries": {
+    "displayName": "RoboAgent Safety Rules",
+    "description": "Context rules for RoboAgent: read-only first, and interactive approval before any action that changes state.",
+    "useCases": [
+      "Apply the read-only-first policy to this RoboAgent request",
+      "Ask for my approval before an action changes anything",
+      "Check a RoboAgent command against its safety rules",
+      "Which RoboAgent actions need approval?"
+    ]
+  },
+  "roboagent-run-model": {
+    "displayName": "Run a QNN Model on Windows on Snapdragon",
+    "description": "Run a QNN .pte model on a Windows on Snapdragon device: simple operator tests with qnn_executor_runner, or LLMs with qnn_llama_runner.",
+    "useCases": [
+      "Run this .pte model on my Snapdragon PC",
+      "Benchmark LLM tokens per second with qnn_llama_runner",
+      "Debug a qnn_executor_runner failure",
+      "Validate my QNN model with a simple op test"
+    ]
+  },
+  "roboagent-setup": {
+    "displayName": "ExecuTorch QNN Build Setup on Windows on Snapdragon",
+    "description": "Set up the ExecuTorch and QNN backend build environment natively on Windows on Snapdragon ARM64 (no cross-compile, no adb: the device is both host and target).",
+    "useCases": [
+      "Set up the ExecuTorch QNN build environment on my Snapdragon PC",
+      "Check prerequisites before building a QNN runner",
+      "Prepare this device as both host and target for QNN",
+      "What do I install before building ExecuTorch with the QNN backend?"
+    ]
+  },
+  "roboagent-evaluation": {
+    "displayName": "RoboAgent Gemma 4 Evaluation",
+    "description": "Evaluate response quality, latency and tool use of the local Gemma 4 model used by RoboAgent.",
+    "useCases": [
+      "Evaluate Gemma 4 response quality on my device",
+      "Measure Gemma 4 latency and tokens per second",
+      "Check Gemma 4 tool-use behaviour",
+      "Compare two Gemma 4 runs"
+    ]
+  },
+  "roboagent-pi": {
+    "displayName": "Use Pi with the Local Gemma 4 Model",
+    "description": "Use the Pi coding assistant with the local RoboAgent Gemma 4 provider and safe workspace tools.",
+    "useCases": [
+      "Start Pi with the local Gemma 4 provider",
+      "Run Pi with safe workspace tools only",
+      "Connect Pi to the on-device model",
+      "Switch Pi tool modes"
+    ]
+  },
+  "roboagent-qnn": {
+    "displayName": "Local Gemma 4 QNN Host Operation",
+    "description": "Run and troubleshoot the local Gemma 4 ExecuTorch QNN model host on Windows on Snapdragon, including context recovery.",
+    "useCases": [
+      "Start the local Gemma 4 QNN host",
+      "Troubleshoot the QNN host on my Snapdragon PC",
+      "Restart the on-device Gemma 4 server",
+      "Recover from a QNN context error"
+    ]
+  },
+  "video-evidence-reporting": {
+    "displayName": "Video Event Evidence Report",
+    "description": "Create reviewable, redacted reports from video analytics event records (metadata only, no raw video), and label every claim as simulated, host-observed or target-observed.",
+    "useCases": [
+      "Generate an evidence report from my detection events",
+      "Redact personal data in the event export",
+      "Show where each event came from and how it was produced",
+      "Create a report I can share without raw video"
+    ]
+  },
+  "video-stream-ingestion": {
+    "displayName": "Video Stream Ingestion Check",
+    "description": "Validate simulated or approved camera ingestion for VSaaS (a privacy-first edge video analytics prototype) with privacy-aware evidence.",
+    "useCases": [
+      "Check that the simulated camera stream is ingested correctly",
+      "Validate my approved RTSP camera with VSaaS",
+      "Confirm only metadata leaves the edge device",
+      "Run the ingestion test on my IQ8"
+    ]
+  },
+  "vision-model-validation": {
+    "displayName": "Edge Vision Model Validation",
+    "description": "Validate an ONNX or QNN object detector (for example YOLOv8) used by VSaaS and record results labelled by backend and target.",
+    "useCases": [
+      "Validate my YOLOv8 ONNX detector",
+      "Run the QNN YOLOv8 DLC on my IQ8 and record the result",
+      "Compare ONNX CPU and QNN results on the same video",
+      "Which backend and target produced this detection result?"
+    ]
+  },
+  "ai-inference-benchmark": {
+    "displayName": "Qualcomm Linux AI Inference Benchmark",
+    "description": "Benchmark a model command found on a Qualcomm Linux (QLI) device with explicit warm-up and iteration counts.",
+    "useCases": [
+      "Benchmark the sample model on my IQ9 board",
+      "Measure inference latency with 10 warm-up runs and 100 iterations",
+      "How fast does this model run on my device?",
+      "Compare benchmark results before and after changing the model"
+    ]
+  },
+  "ai-model-execution": {
+    "displayName": "Qualcomm Linux AI Model Run",
+    "description": "Run a model command discovered on a Qualcomm Linux (QLI) device against a supplied image and capture the parsed result.",
+    "useCases": [
+      "Run image classification on my IQ8 with this picture",
+      "Execute the sample model on my board and save the output",
+      "Does the AI runtime on my device produce a valid result?",
+      "Parse the model output from my last run"
+    ]
+  },
+  "baseline-evidence-collection": {
+    "displayName": "Qualcomm Linux Device Baseline Collection",
+    "description": "Collect read-only evidence over SSH about a Qualcomm Linux (QLI) device (OS, hardware, services) as the baseline for a readiness assessment.",
+    "useCases": [
+      "Collect baseline information from my IQ9 over SSH",
+      "Capture the state of my device before I change anything",
+      "Gather evidence for a readiness assessment",
+      "What is installed on my QLI device?"
+    ]
+  },
+  "developer-readiness-assessment": {
+    "displayName": "Qualcomm Linux Developer Readiness Assessment",
+    "description": "Assess whether a Qualcomm Linux (QLI) board is ready for development across device lifecycle, connectivity, media, storage, AI, debugging and deployment, and produce a workbook and report.",
+    "useCases": [
+      "Assess whether my IQ8 is ready for development",
+      "Run a full readiness assessment on my IQ9 board",
+      "Rerun only the connectivity checks",
+      "Compare two readiness runs and produce a report"
+    ]
+  },
+  "device-connectivity-validation": {
+    "displayName": "Qualcomm Linux Device Connectivity Check",
+    "description": "Check TCP reachability of a Qualcomm Linux (QLI) device at a host and port you supply, without changing network configuration.",
+    "useCases": [
+      "Can I reach my board over SSH?",
+      "Check that port 22 is open on 192.168.1.50",
+      "Why can't my PC connect to my IQ9?",
+      "Validate network access to my device before I deploy"
+    ]
+  },
+  "device-identity-discovery": {
+    "displayName": "Qualcomm Linux Device Identification",
+    "description": "Identify a connected Qualcomm Linux (QLI) device (board, SoC, image and OS version) before choosing device-specific work.",
+    "useCases": [
+      "Identify the board I just connected",
+      "Which SoC and image is my device running?",
+      "Is this an IQ8 or an IQ9?",
+      "Confirm the device matches what I asked for before I continue"
+    ]
+  },
+  "diagnostic-log-collection": {
+    "displayName": "Qualcomm Linux Diagnostic Log Collection",
+    "description": "Collect bounded logs and diagnostics from a Qualcomm Linux (QLI) device after a failed workflow, without changing device state.",
+    "useCases": [
+      "Collect logs from my board after the model run failed",
+      "Gather diagnostics I can attach to a bug report",
+      "What does the kernel log say about the NPU?",
+      "Capture system state after a crash"
+    ]
+  },
+  "host-environment-validation": {
+    "displayName": "Host Tools Check for Qualcomm Linux Workflows",
+    "description": "Verify that your PC has the tools a selected Qualcomm Linux (QLI) workflow needs, such as SSH, adb and Python, before you start.",
+    "useCases": [
+      "Does my PC have what I need to work with my IQ9?",
+      "Check that SSH and adb are installed",
+      "Verify my host before running the readiness assessment",
+      "Which tools are missing on my host?"
+    ]
+  },
+  "qli-linux-domain": {
+    "displayName": "Qualcomm Linux Support Scope",
+    "description": "Context document that states which devices and platforms the Qualcomm Linux (QLI) skills support (IQ8, IQ9 and equivalent Linux targets) and the safety and evidence rules they follow.",
+    "useCases": [
+      "Which devices do the QLI skills support?",
+      "What evidence counts as a completed QLI check?",
+      "Check the support scope before I run a device workflow",
+      "What safety rules apply to QLI device skills?"
+    ]
+  },
+  "qli-readiness-agent": {
+    "displayName": "Qualcomm Linux Readiness Assistant",
+    "description": "Coordinates the Qualcomm Linux (QLI) readiness skills: picks approved skills, explains the plan, asks approval before consequential steps, validates results and recovers from failures.",
+    "useCases": [
+      "Check whether my QLI device is ready for development",
+      "Plan a readiness run and let me approve each step",
+      "Recover from a failed readiness check",
+      "Run the smallest set of checks to confirm my board works"
+    ]
+  },
+  "readiness-report-generation": {
+    "displayName": "Qualcomm Linux Readiness Report Generation",
+    "description": "Generate a matching readiness summary, workbook and report for a Qualcomm Linux (QLI) device from verified evidence.",
+    "useCases": [
+      "Create the readiness report for my IQ8",
+      "Generate the workbook from the evidence I collected",
+      "Produce a summary I can share with my team",
+      "Update the report after I re-ran the checks"
+    ]
+  }
+}

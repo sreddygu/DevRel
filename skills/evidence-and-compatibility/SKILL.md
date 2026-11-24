@@ -1,10 +1,10 @@
 ---
 name: evidence-and-compatibility
-description: Capture reproducible P3 validation evidence and declare exact host, runtime, device, and known-exclusion compatibility. Use when validating a project workflow, publishing a demo claim, or deciding whether a release can be promoted.
+description: Capture reproducible validation evidence and declare exact host, runtime, device, and known-exclusion compatibility. Use when validating a project workflow, publishing a demo claim, or deciding whether a release can be promoted.
 version: 1.0.0
 ---
 
-# P3 Evidence and Compatibility
+# Evidence and Compatibility
 
 1. State the source revision, host OS, runtime versions, hardware target, and
    test date before running a workflow.
@@ -14,7 +14,7 @@ version: 1.0.0
    exclusions and untested configurations explicitly.
 4. Redact credentials, private endpoints, personal data, and raw sensor content
    before publishing evidence.
-5. Publish evidence beside the project or release manifest so another P3
+5. Publish evidence beside the project or release manifest so another
    developer can reproduce the same result.
 
 Stop at the first failed gate. Preserve the failure evidence and do not infer a

@@ -1,11 +1,11 @@
 ---
 name: quad-quickstart
-description: "Use when the user asks to \"get started with QUAD\", \"set up Qualcomm AI\", \"configure my Snapdragon laptop for QUAD\", or invokes /quad-quickstart. Walks through hardware detection, SDK check, MCP server connectivity, and sample inference end-to-end."
+description: "Guided first run: hardware detection, SDK check, MCP server connectivity and a sample inference, end to end."
 ---
 
-# Quad Quickstart
+# QUAD Quickstart
 
-Use when the user asks to "get started with QUAD", "set up Qualcomm AI", "configure my Snapdragon laptop for QUAD", or invokes /quad-quickstart. Walks through hardware detection, SDK check, MCP server connectivity, and sample inference end-to-end.
+Guided first run: hardware detection, SDK check, MCP server connectivity and a sample inference, end to end.
 
 ## Catalog
 
@@ -14,10 +14,17 @@ Use when the user asks to "get started with QUAD", "set up Qualcomm AI", "config
 - **Category:** `general`
 - **Version:** `0.1.0`
 - **Agents:** `claude`, `codex`, `cursor`
-- **Tags:** `academy`, `quad-client`, `edge-ai`
+- **Tags:** `quad-client`, `edge-ai`, `quad`, `quickstart`, `qualcomm-ai`, `mcp`, `npu`, `snapdragon-x-elite`, `qairt`
+- **License:** `Apache-2.0`
+- **Compatibility:** host OS `windows`, `linux`
+- **Requirements:** Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows
+- **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../.claude/skills/quad-quickstart/SKILL.md)
 
 ## Use Cases
 
-- Quad Quickstart
+- Get me started with QUAD
+- Set up Qualcomm AI on my Snapdragon laptop
+- Run the first sample inference on my NPU
+- Check everything is connected before I start

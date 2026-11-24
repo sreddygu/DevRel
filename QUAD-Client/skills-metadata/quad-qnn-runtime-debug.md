@@ -1,11 +1,11 @@
 ---
 name: quad-qnn-runtime-debug
-description: "Use when the user is debugging a QNN/QAIRT runtime failure on already-compiled artifacts -- \"QNN backend won't initialize\", \"unable to find a valid interface\", \"QNN_BACKEND_ERROR_CANNOT_INITIALIZE\", \"GPU_ERROR_DOES_NOT_EXIST\", \"qnn-net-run fails\", \"my .bin/.dlc won't load\", \"backend initialization failure\", or invokes /quad-qnn-runtime-debug. Diagnoses backend-init, ABI/version, symbol-resolution, and input-contract failures at the dynamic-loader level rather than trusting generic QNN error strings."
+description: "Diagnose Qualcomm AI (QNN/QAIRT) runtime failures on already-compiled models: backend initialisation, ABI or version mismatch, symbol resolution and input contract errors."
 ---
 
-# Quad Qnn Runtime Debug
+# QNN Runtime Failure Debugging
 
-Use when the user is debugging a QNN/QAIRT runtime failure on already-compiled artifacts -- "QNN backend won't initialize", "unable to find a valid interface", "QNN_BACKEND_ERROR_CANNOT_INITIALIZE", "GPU_ERROR_DOES_NOT_EXIST", "qnn-net-run fails", "my .bin/.dlc won't load", "backend initialization failure", or invokes /quad-qnn-runtime-debug. Diagnoses backend-init, ABI/version, symbol-resolution, and input-contract failures at the dynamic-loader level rather than trusting generic QNN error strings.
+Diagnose Qualcomm AI (QNN/QAIRT) runtime failures on already-compiled models: backend initialisation, ABI or version mismatch, symbol resolution and input contract errors.
 
 ## Catalog
 
@@ -14,10 +14,17 @@ Use when the user is debugging a QNN/QAIRT runtime failure on already-compiled a
 - **Category:** `hardware`
 - **Version:** `0.1.0`
 - **Agents:** `claude`, `codex`, `cursor`
-- **Tags:** `academy`, `quad-client`, `edge-ai`
+- **Tags:** `quad-client`, `edge-ai`, `quad`, `qnn`, `runtime`, `debug`, `qualcomm-ai`, `mcp`, `npu`, `snapdragon-x-elite`, `qairt`
+- **License:** `Apache-2.0`
+- **Compatibility:** host OS `windows`, `linux`
+- **Requirements:** Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows
+- **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../.claude/skills/quad-qnn-runtime-debug/SKILL.md)
 
 ## Use Cases
 
-- Quad Qnn Runtime Debug
+- QNN backend won't initialize. What is wrong?
+- Unable to find a valid interface provider
+- My model fails to load with a symbol error on the NPU
+- Check for an SDK version mismatch between my model and runtime

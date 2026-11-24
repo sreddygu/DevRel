@@ -1,3 +1,9 @@
+---
+name: device-identity-discovery
+description: "Identify a connected Qualcomm Linux (QLI) device (board, SoC, image and OS version) before choosing device-specific work."
+version: 1.0.0
+---
+
 # Device Identity Discovery
 
 Use this skill to establish the target identity before selecting device-specific

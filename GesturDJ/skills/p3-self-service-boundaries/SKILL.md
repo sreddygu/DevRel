@@ -1,3 +1,9 @@
+---
+name: p3-self-service-boundaries
+description: "Context rules for independent developers (hobbyists, students and makers): use public tools only, work self-service, expect community support, and ask before changing a device."
+version: 0.1.0
+---
+
 # P3 Self-Service Boundaries (context document)
 
 Back to the [GesturDJ README](../../README.md).
