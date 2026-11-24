@@ -1,3 +1,9 @@
+---
+name: qli-linux-domain
+description: "Context document that states which devices and platforms the Qualcomm Linux (QLI) skills support (IQ8, IQ9 and equivalent Linux targets) and the safety and evidence rules they follow."
+version: 2.0.0
+---
+
 # QLI Linux Domain
 
 Apply this domain skill before selecting or executing a QLI device skill. It

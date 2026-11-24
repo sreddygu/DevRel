@@ -1,11 +1,11 @@
 ---
 name: quad-app-document
-description: "Use when the user asks \"generate documentation\", \"create docs for this app\", \"write architecture doc\", \"create a Word document for this project\", \"document this application\", or invokes /quad-app-document. Generates ARCHITECTURE.md and app_documentation.docx for any QUAD application directory."
+description: "Generate ARCHITECTURE.md and a Word document (app_documentation.docx) for any QUAD application directory."
 ---
 
-# Quad App Document
+# QUAD Application Documentation Generator
 
-Use when the user asks "generate documentation", "create docs for this app", "write architecture doc", "create a Word document for this project", "document this application", or invokes /quad-app-document. Generates ARCHITECTURE.md and app_documentation.docx for any QUAD application directory.
+Generate ARCHITECTURE.md and a Word document (app_documentation.docx) for any QUAD application directory.
 
 ## Catalog
 
@@ -14,10 +14,17 @@ Use when the user asks "generate documentation", "create docs for this app", "wr
 - **Category:** `general`
 - **Version:** `0.1.0`
 - **Agents:** `claude`, `codex`, `cursor`
-- **Tags:** `academy`, `quad-client`, `edge-ai`
+- **Tags:** `quad-client`, `edge-ai`, `quad`, `app`, `document`, `qualcomm-ai`, `mcp`, `npu`, `snapdragon-x-elite`, `qairt`
+- **License:** `Apache-2.0`
+- **Compatibility:** host OS `windows`, `linux`
+- **Requirements:** Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows
+- **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../.claude/skills/quad-app-document/SKILL.md)
 
 ## Use Cases
 
-- Quad App Document
+- Generate documentation for this QUAD app
+- Write an architecture doc for my application
+- Create a Word document describing this project
+- Document how my app uses the NPU

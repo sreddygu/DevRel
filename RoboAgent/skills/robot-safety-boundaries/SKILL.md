@@ -1,3 +1,9 @@
+---
+name: robot-safety-boundaries
+description: "Context rules for RoboAgent: read-only first, and interactive approval before any action that changes state."
+version: 0.1.0
+---
+
 # RoboAgent Safety Boundaries
 
 Apply this context to every RoboAgent request.

@@ -1,3 +1,9 @@
+---
+name: vision-model-validation
+description: "Validate an ONNX or QNN object detector (for example YOLOv8) used by VSaaS and record results labelled by backend and target."
+version: 0.1.0
+---
+
 # VSaaS Vision Model Validation
 
 Validate a selected detector using a known frame and label the evidence by

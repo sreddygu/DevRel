@@ -1,3 +1,9 @@
+---
+name: device-target-configuration
+description: "Discover and document an approved device target for the QUAD client (IQ-9075 board over SSH, Android over adb) without changing the device by default."
+version: 0.1.0
+---
+
 # QUAD-Client Device Target Configuration
 
 Discover and validate an approved target without reconfiguring it. This skill

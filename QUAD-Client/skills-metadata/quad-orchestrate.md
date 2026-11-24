@@ -1,11 +1,11 @@
 ---
 name: quad-orchestrate
-description: "Use when the user asks to \"allocate across CPU/GPU/NPU\", \"compare power modes\", \"where should this op run\", or invokes /quad-orchestrate. Compares performance/balanced/efficiency modes side-by-side with tip recommendations."
+description: "Compare performance, balanced and efficiency modes side by side and recommend where each operation should run across CPU, GPU and NPU."
 ---
 
-# Quad Orchestrate
+# QUAD CPU/GPU/NPU Allocation Advisor
 
-Use when the user asks to "allocate across CPU/GPU/NPU", "compare power modes", "where should this op run", or invokes /quad-orchestrate. Compares performance/balanced/efficiency modes side-by-side with tip recommendations.
+Compare performance, balanced and efficiency modes side by side and recommend where each operation should run across CPU, GPU and NPU.
 
 ## Catalog
 
@@ -14,10 +14,17 @@ Use when the user asks to "allocate across CPU/GPU/NPU", "compare power modes", 
 - **Category:** `general`
 - **Version:** `0.1.0`
 - **Agents:** `claude`, `codex`, `cursor`
-- **Tags:** `academy`, `quad-client`, `edge-ai`
+- **Tags:** `quad-client`, `edge-ai`, `quad`, `orchestrate`, `qualcomm-ai`, `mcp`, `npu`, `snapdragon-x-elite`, `qairt`
+- **License:** `Apache-2.0`
+- **Compatibility:** host OS `windows`, `linux`
+- **Requirements:** Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows
+- **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../.claude/skills/quad-orchestrate/SKILL.md)
 
 ## Use Cases
 
-- Quad Orchestrate
+- Allocate this model across CPU, GPU and NPU
+- Compare power modes for my workload
+- Where should this op run?
+- Which mode gives the best latency per watt?

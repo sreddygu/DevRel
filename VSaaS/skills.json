@@ -1,95 +1,138 @@
 {
-    "manifestVersion":  1,
-    "skills":  [
-                   {
-                       "name":  "video-evidence-reporting",
-                       "displayName":  "VSaaS Video Evidence Reporting",
-                       "owner":  "sreddygu",
-                       "description":  "Create redacted, provenance-preserving VSaaS evidence from event records.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "hardware",
-                       "tags":  [
-                                    "academy",
-                                    "vsaas",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "VSaaS Video Evidence Reporting"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  "skills/video-evidence-reporting",
-                                            "docPath":  "skills/video-evidence-reporting/SKILL.md",
-                                            "files":  [
-                                                          "skills/video-evidence-reporting/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "video-stream-ingestion",
-                       "displayName":  "VSaaS Video Stream Ingestion",
-                       "owner":  "sreddygu",
-                       "description":  "Validate VSaaS simulated or approved camera ingestion with privacy-aware evidence.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "hardware",
-                       "tags":  [
-                                    "academy",
-                                    "vsaas",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "VSaaS Video Stream Ingestion"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  "skills/video-stream-ingestion",
-                                            "docPath":  "skills/video-stream-ingestion/SKILL.md",
-                                            "files":  [
-                                                          "skills/video-stream-ingestion/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "vision-model-validation",
-                       "displayName":  "VSaaS Vision Model Validation",
-                       "owner":  "sreddygu",
-                       "description":  "Validate a VSaaS ONNX or QNN detector with backend- and target-labeled evidence.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "hardware",
-                       "tags":  [
-                                    "academy",
-                                    "vsaas",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "VSaaS Vision Model Validation"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  "skills/vision-model-validation",
-                                            "docPath":  "skills/vision-model-validation/SKILL.md",
-                                            "files":  [
-                                                          "skills/vision-model-validation/**"
-                                                      ]
-                                        }
-                                    ]
-                   }
-               ]
+  "manifestVersion": 1,
+  "skills": [
+    {
+      "name": "video-evidence-reporting",
+      "displayName": "Video Event Evidence Report",
+      "owner": "sreddygu",
+      "description": "Create reviewable, redacted reports from video analytics event records (metadata only, no raw video), and label every claim as simulated, host-observed or target-observed.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "hardware",
+      "tags": [
+        "vsaas",
+        "edge-ai",
+        "video",
+        "evidence",
+        "reporting",
+        "video-analytics",
+        "computer-vision",
+        "yolov8",
+        "iq8"
+      ],
+      "useCases": [
+        "Generate an evidence report from my detection events",
+        "Redact personal data in the event export",
+        "Show where each event came from and how it was produced",
+        "Create a report I can share without raw video"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/VSaaS",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "VSaaS/skills/video-evidence-reporting",
+          "docPath": "VSaaS/skills/video-evidence-reporting/SKILL.md",
+          "files": [
+            "VSaaS/skills/video-evidence-reporting/**"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "video-stream-ingestion",
+      "displayName": "Video Stream Ingestion Check",
+      "owner": "sreddygu",
+      "description": "Validate simulated or approved camera ingestion for VSaaS (a privacy-first edge video analytics prototype) with privacy-aware evidence.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "hardware",
+      "tags": [
+        "vsaas",
+        "edge-ai",
+        "video",
+        "stream",
+        "ingestion",
+        "video-analytics",
+        "computer-vision",
+        "yolov8",
+        "iq8"
+      ],
+      "useCases": [
+        "Check that the simulated camera stream is ingested correctly",
+        "Validate my approved RTSP camera with VSaaS",
+        "Confirm only metadata leaves the edge device",
+        "Run the ingestion test on my IQ8"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/VSaaS",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "VSaaS/skills/video-stream-ingestion",
+          "docPath": "VSaaS/skills/video-stream-ingestion/SKILL.md",
+          "files": [
+            "VSaaS/skills/video-stream-ingestion/**"
+          ],
+          "compatibility": {
+            "devkits": [
+              "qcs8275-iq-8275-evk-pro"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "vision-model-validation",
+      "displayName": "Edge Vision Model Validation",
+      "owner": "sreddygu",
+      "description": "Validate an ONNX or QNN object detector (for example YOLOv8) used by VSaaS and record results labelled by backend and target.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "hardware",
+      "tags": [
+        "vsaas",
+        "edge-ai",
+        "vision",
+        "model",
+        "validation",
+        "video-analytics",
+        "computer-vision",
+        "yolov8",
+        "iq8"
+      ],
+      "useCases": [
+        "Validate my YOLOv8 ONNX detector",
+        "Run the QNN YOLOv8 DLC on my IQ8 and record the result",
+        "Compare ONNX CPU and QNN results on the same video",
+        "Which backend and target produced this detection result?"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/VSaaS",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "VSaaS/skills/vision-model-validation",
+          "docPath": "VSaaS/skills/vision-model-validation/SKILL.md",
+          "files": [
+            "VSaaS/skills/vision-model-validation/**"
+          ],
+          "compatibility": {
+            "devkits": [
+              "qcs8275-iq-8275-evk-pro"
+            ]
+          }
+        }
+      ]
+    }
+  ]
 }

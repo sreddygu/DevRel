@@ -1,11 +1,11 @@
 ---
 name: quad-app-builder
-description: "Use when the user asks \"build an app\", \"create a QUAD application\", \"scaffold an inference app\", \"I want to build a vision/LLM/ASR app on Snapdragon\", \"create a production inference pipeline\", or invokes /quad-app-builder. Guides through the full lifecycle â€” requirements, implementation, testing, hardening, documentation, and git push."
+description: "Guide the full lifecycle of a Snapdragon AI application: requirements, implementation, testing, hardening, documentation and git push."
 ---
 
-# Quad App Builder
+# QUAD Application Builder
 
-Use when the user asks "build an app", "create a QUAD application", "scaffold an inference app", "I want to build a vision/LLM/ASR app on Snapdragon", "create a production inference pipeline", or invokes /quad-app-builder. Guides through the full lifecycle â€” requirements, implementation, testing, hardening, documentation, and git push.
+Guide the full lifecycle of a Snapdragon AI application: requirements, implementation, testing, hardening, documentation and git push.
 
 ## Catalog
 
@@ -14,10 +14,17 @@ Use when the user asks "build an app", "create a QUAD application", "scaffold an
 - **Category:** `devtools`
 - **Version:** `0.1.0`
 - **Agents:** `claude`, `codex`, `cursor`
-- **Tags:** `academy`, `quad-client`, `edge-ai`
+- **Tags:** `quad-client`, `edge-ai`, `quad`, `app`, `builder`, `qualcomm-ai`, `mcp`, `npu`, `snapdragon-x-elite`, `qairt`
+- **License:** `Apache-2.0`
+- **Compatibility:** host OS `windows`, `linux`
+- **Requirements:** Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows
+- **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../.claude/skills/quad-app-builder/SKILL.md)
 
 ## Use Cases
 
-- Quad App Builder
+- Build a vision app on Snapdragon with QUAD
+- Create a QUAD application that runs an LLM on the NPU
+- Scaffold an inference app and test it end to end
+- I want to build an ASR app on my Snapdragon X Elite laptop

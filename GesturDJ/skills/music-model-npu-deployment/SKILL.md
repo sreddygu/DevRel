@@ -1,3 +1,9 @@
+---
+name: music-model-npu-deployment
+description: "Check that an IQ8 board is ready to run the DiffRhythm/ACE-Step music transformer on its NPU: OS image, NPU firmware, runtime libraries and compiled model graphs."
+version: 0.1.0
+---
+
 # Music Model NPU Deployment
 
 Back to the [GesturDJ README](../../README.md).

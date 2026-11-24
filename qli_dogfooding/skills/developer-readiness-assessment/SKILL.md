@@ -1,6 +1,7 @@
 ---
 name: developer-readiness-assessment
 description: Assess the developer readiness of IQ8, IQ9, and other Linux-based edge devices by orchestrating lifecycle, networking, audio, camera, storage, AI, agent, debugging, deployment, evidence, workbook, and report workflows. Use for device dogfooding, new-device or new-image validation, readiness reruns, device comparisons, failure triage, and synchronized readiness deliverables.
+version: 1.1.0
 ---
 
 # Developer Readiness Assessment

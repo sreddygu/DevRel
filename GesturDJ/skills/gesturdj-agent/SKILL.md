@@ -1,3 +1,9 @@
+---
+name: gesturdj-agent
+description: "Coordinates the GesturDJ gesture-to-music skills: understands your request, picks the smallest safe path, keeps the live path within its latency budget, asks approval before consequential steps and recovers from failures."
+version: 0.1.0
+---
+
 # GesturDJ Agent
 
 Back to the [GesturDJ README](../../README.md).

@@ -1,11 +1,11 @@
 ---
 name: quad-doctor
-description: "Use when the user asks \"is QUAD set up correctly\", \"diagnose my install\", \"why isn't real mode working\", \"check the SDK\", or invokes /quad-doctor. Runs the local diagnostic suite and explains each warning + the exact fix."
+description: "Run the local diagnostic suite for a QUAD install and explain each warning with the exact fix."
 ---
 
-# Quad Doctor
+# QUAD Install Diagnostics
 
-Use when the user asks "is QUAD set up correctly", "diagnose my install", "why isn't real mode working", "check the SDK", or invokes /quad-doctor. Runs the local diagnostic suite and explains each warning + the exact fix.
+Run the local diagnostic suite for a QUAD install and explain each warning with the exact fix.
 
 ## Catalog
 
@@ -14,10 +14,17 @@ Use when the user asks "is QUAD set up correctly", "diagnose my install", "why i
 - **Category:** `devtools`
 - **Version:** `0.1.0`
 - **Agents:** `claude`, `codex`, `cursor`
-- **Tags:** `academy`, `quad-client`, `edge-ai`
+- **Tags:** `quad-client`, `edge-ai`, `quad`, `doctor`, `qualcomm-ai`, `mcp`, `npu`, `snapdragon-x-elite`, `qairt`
+- **License:** `Apache-2.0`
+- **Compatibility:** host OS `windows`, `linux`
+- **Requirements:** Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows
+- **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../.claude/skills/quad-doctor/SKILL.md)
 
 ## Use Cases
 
-- Quad Doctor
+- Is QUAD set up correctly?
+- Diagnose my QUAD install
+- Why isn't real mode working?
+- Check my SDK setup for QUAD

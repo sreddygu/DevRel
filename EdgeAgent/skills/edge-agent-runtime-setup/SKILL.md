@@ -1,3 +1,9 @@
+---
+name: edge-agent-runtime-setup
+description: "Prepare and inspect the EdgeAgent runtime (llama.cpp CPU backend or Genie NPU backend) on a Snapdragon X Elite PC or IQ8/IQ9 board without changing MCP client settings by default."
+version: 0.1.0
+---
+
 # EdgeAgent Runtime Setup
 
 Prepare the local EdgeAgent runtime and select a transport without writing an

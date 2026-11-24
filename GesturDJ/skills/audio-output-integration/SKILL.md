@@ -1,3 +1,9 @@
+---
+name: audio-output-integration
+description: "Find a board's audio sink and players, measure how much delay each player adds, and pick the setting a live music path should use."
+version: 0.1.0
+---
+
 # Audio Output Integration
 
 Back to the [GesturDJ README](../../README.md).

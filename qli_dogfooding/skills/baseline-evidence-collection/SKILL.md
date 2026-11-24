@@ -1,3 +1,9 @@
+---
+name: baseline-evidence-collection
+description: "Collect read-only evidence over SSH about a Qualcomm Linux (QLI) device (OS, hardware, services) as the baseline for a readiness assessment."
+version: 1.0.0
+---
+
 # Baseline Evidence Collection
 
 Collect device/date-specific SSH evidence before deep readiness workflows.

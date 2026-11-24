@@ -1,3 +1,9 @@
+---
+name: qli-readiness-agent
+description: "Coordinates the Qualcomm Linux (QLI) readiness skills: picks approved skills, explains the plan, asks approval before consequential steps, validates results and recovers from failures."
+version: 1.0.0
+---
+
 # QLI Readiness Agent
 
 Agent-layer coordinator. Interprets developer intent, selects the smallest safe

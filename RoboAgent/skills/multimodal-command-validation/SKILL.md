@@ -1,3 +1,9 @@
+---
+name: multimodal-command-validation
+description: "Evaluate the responses and proposed tool calls of RoboAgent (a local Gemma 4 robot assistant running on Windows on Snapdragon) with deterministic, grounded checks."
+version: 0.1.0
+---
+
 # RoboAgent Multimodal Command Validation
 
 Evaluate a local RoboAgent response and its proposed tool use with deterministic

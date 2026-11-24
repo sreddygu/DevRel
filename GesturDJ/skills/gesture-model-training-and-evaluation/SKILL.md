@@ -1,3 +1,9 @@
+---
+name: gesture-model-training-and-evaluation
+description: "Train a gesture recognizer (scikit-learn baseline or PyTorch), read the held-out result honestly and decide whether it is good enough to export."
+version: 0.2.0
+---
+
 # Gesture Model Training and Evaluation
 
 Back to the [GesturDJ README](../../README.md).

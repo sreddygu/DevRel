@@ -1,3 +1,9 @@
+---
+name: aura-agent-orchestration
+description: "Prepare AURA, an on-device physical-AI agent (camera, microphone, memory and local LLM) for Arduino VENTUNO Q and Qualcomm IQ8, and pick the smallest milestone to run, without starting device services by default."
+version: 0.1.0
+---
+
 # AURA Agent Orchestration
 
 Prepare the AURA runtime and select the smallest required milestone without

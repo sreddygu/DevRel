@@ -1,11 +1,11 @@
 ---
 name: live-mixer-and-latency-validation
-description: "Replay gestures through the recognizer, the mix map and the audio player many times and check the estimated gesture-to-sound time against the budget, with the audio stage taken from a measured number."
+description: "Replay many gestures through the recognizer, mix map and audio player and check the estimated gesture-to-sound delay against a 200 ms budget."
 ---
 
-# Live Mixer and Latency Validation
+# Live Mixer Latency Validation
 
-Replay gestures through the recognizer, the mix map and the audio player many times and check the estimated gesture-to-sound time against the budget, with the audio stage taken from a measured number.
+Replay many gestures through the recognizer, mix map and audio player and check the estimated gesture-to-sound delay against a 200 ms budget.
 
 ## Catalog
 
@@ -14,10 +14,17 @@ Replay gestures through the recognizer, the mix map and the audio player many ti
 - **Category:** `devtools`
 - **Version:** `0.1.0`
 - **Agents:** `claude`, `codex`, `cursor`
-- **Tags:** `academy`, `gesturdj`, `edge-ai`
+- **Tags:** `gesturdj`, `edge-ai`, `live`, `mixer`, `latency`, `validation`, `gesture-recognition`, `music`, `npu`, `iq8`
+- **License:** `Apache-2.0`
+- **Compatibility:** devkits `qcs8275-iq-8275-evk-pro`; target OS `qualcomm_linux` (qli-2.0)
+- **Requirements:** Python 3.10+; PC and Qualcomm IQ8 board (Qualcomm Linux 2.0); QAIRT for the NPU music path
+- **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../skills/live-mixer-and-latency-validation/SKILL.md)
 
 ## Use Cases
 
-- Live Mixer and Latency Validation
+- Does my gesture-to-sound latency stay within 200 ms?
+- Replay 100 gestures and report p50 and p95 latency
+- Compare spawning a player per gesture with a warm output stream
+- Find which stage of the live path uses the most latency

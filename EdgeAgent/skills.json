@@ -1,95 +1,190 @@
 {
-    "manifestVersion":  1,
-    "skills":  [
-                   {
-                       "name":  "agent-tool-contract-validation",
-                       "displayName":  "EdgeAgent Tool Contract Validation",
-                       "owner":  "sreddygu",
-                       "description":  "Validate an EdgeAgent MCP transport contract before it is installed.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "devtools",
-                       "tags":  [
-                                    "academy",
-                                    "edgeagent",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "EdgeAgent Tool Contract Validation"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  "skills/agent-tool-contract-validation",
-                                            "docPath":  "skills/agent-tool-contract-validation/SKILL.md",
-                                            "files":  [
-                                                          "skills/agent-tool-contract-validation/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "device-agent-evaluation",
-                       "displayName":  "EdgeAgent Device Agent Evaluation",
-                       "owner":  "sreddygu",
-                       "description":  "Evaluate an approved EdgeAgent workload and record target-specific evidence.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "hardware",
-                       "tags":  [
-                                    "academy",
-                                    "edgeagent",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "EdgeAgent Device Agent Evaluation"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  "skills/device-agent-evaluation",
-                                            "docPath":  "skills/device-agent-evaluation/SKILL.md",
-                                            "files":  [
-                                                          "skills/device-agent-evaluation/**"
-                                                      ]
-                                        }
-                                    ]
-                   },
-                   {
-                       "name":  "edge-agent-runtime-setup",
-                       "displayName":  "EdgeAgent Runtime Setup",
-                       "owner":  "sreddygu",
-                       "description":  "Prepare and inspect the EdgeAgent runtime without changing an MCP client by default.",
-                       "agents":  [
-                                      "claude",
-                                      "codex",
-                                      "cursor"
-                                  ],
-                       "category":  "hardware",
-                       "tags":  [
-                                    "academy",
-                                    "edgeagent",
-                                    "edge-ai"
-                                ],
-                       "useCases":  [
-                                        "EdgeAgent Runtime Setup"
-                                    ],
-                       "versions":  [
-                                        {
-                                            "version":  "0.1.0",
-                                            "path":  "skills/edge-agent-runtime-setup",
-                                            "docPath":  "skills/edge-agent-runtime-setup/SKILL.md",
-                                            "files":  [
-                                                          "skills/edge-agent-runtime-setup/**"
-                                                      ]
-                                        }
-                                    ]
-                   }
-               ]
+  "manifestVersion": 1,
+  "skills": [
+    {
+      "name": "agent-tool-contract-validation",
+      "displayName": "EdgeAgent MCP Connection Check",
+      "owner": "sreddygu",
+      "description": "Validate the MCP client configuration that EdgeAgent (a small tool-using LLM agent for local and edge devices) generates for a chosen transport, and confirm a failed connection is reported, before anything is installed.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "devtools",
+      "tags": [
+        "edgeagent",
+        "edge-ai",
+        "agent",
+        "tool",
+        "contract",
+        "validation",
+        "edge-agent",
+        "ai-agent",
+        "llm",
+        "snapdragon-x-elite",
+        "iq8",
+        "iq9"
+      ],
+      "useCases": [
+        "Preview the MCP configuration EdgeAgent will write for my transport",
+        "Test the connection to my EdgeAgent MCP server before I install it",
+        "Why does my MCP client fail to connect to EdgeAgent?",
+        "Run the EdgeAgent CLI connection tests"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/EdgeAgent",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "EdgeAgent/skills/agent-tool-contract-validation",
+          "docPath": "EdgeAgent/skills/agent-tool-contract-validation/SKILL.md",
+          "files": [
+            "EdgeAgent/skills/agent-tool-contract-validation/**"
+          ],
+          "compatibility": {
+            "devkits": [
+              "qcs8275-iq-8275-evk-pro",
+              "qcs9075-iq-9075-evk"
+            ],
+            "targetOs": [
+              {
+                "os": "qualcomm_linux",
+                "variant": "qualcomm-linux-proprietary",
+                "minVersion": "qli-2.0",
+                "maxVersion": "qli-2.0"
+              }
+            ],
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "device-agent-evaluation",
+      "displayName": "EdgeAgent On-Device Evaluation",
+      "owner": "sreddygu",
+      "description": "Run an approved evaluation of the EdgeAgent tool-using LLM agent on a Snapdragon X Elite PC or IQ8/IQ9 board and record target-specific results.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "hardware",
+      "tags": [
+        "edgeagent",
+        "edge-ai",
+        "device",
+        "agent",
+        "evaluation",
+        "edge-agent",
+        "ai-agent",
+        "llm",
+        "snapdragon-x-elite",
+        "iq8",
+        "iq9"
+      ],
+      "useCases": [
+        "Evaluate EdgeAgent with the local model on my IQ9 board",
+        "Compare EdgeAgent tool-use accuracy on CPU and NPU",
+        "Record latency and tool-call results for EdgeAgent on this device",
+        "Run the EdgeAgent evaluation and save the evidence"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/EdgeAgent",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "EdgeAgent/skills/device-agent-evaluation",
+          "docPath": "EdgeAgent/skills/device-agent-evaluation/SKILL.md",
+          "files": [
+            "EdgeAgent/skills/device-agent-evaluation/**"
+          ],
+          "compatibility": {
+            "devkits": [
+              "qcs8275-iq-8275-evk-pro",
+              "qcs9075-iq-9075-evk"
+            ],
+            "targetOs": [
+              {
+                "os": "qualcomm_linux",
+                "variant": "qualcomm-linux-proprietary",
+                "minVersion": "qli-2.0",
+                "maxVersion": "qli-2.0"
+              }
+            ],
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "edge-agent-runtime-setup",
+      "displayName": "EdgeAgent Runtime Setup",
+      "owner": "sreddygu",
+      "description": "Prepare and inspect the EdgeAgent runtime (llama.cpp CPU backend or Genie NPU backend) on a Snapdragon X Elite PC or IQ8/IQ9 board without changing MCP client settings by default.",
+      "agents": [
+        "claude",
+        "codex",
+        "cursor"
+      ],
+      "category": "hardware",
+      "tags": [
+        "edgeagent",
+        "edge-ai",
+        "edge",
+        "agent",
+        "runtime",
+        "setup",
+        "edge-agent",
+        "ai-agent",
+        "llm",
+        "snapdragon-x-elite",
+        "iq8",
+        "iq9"
+      ],
+      "useCases": [
+        "Set up EdgeAgent with a local llama.cpp server",
+        "Point EdgeAgent at the Genie NPU backend on my Snapdragon X Elite PC",
+        "Check whether EdgeAgent can reach its model server on my IQ8",
+        "What do I need installed to run EdgeAgent on an IQ9 board?"
+      ],
+      "license": "Apache-2.0",
+      "homepage": "https://github.com/sreddygu/DevRel/tree/main/EdgeAgent",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "path": "EdgeAgent/skills/edge-agent-runtime-setup",
+          "docPath": "EdgeAgent/skills/edge-agent-runtime-setup/SKILL.md",
+          "files": [
+            "EdgeAgent/skills/edge-agent-runtime-setup/**"
+          ],
+          "compatibility": {
+            "devkits": [
+              "qcs8275-iq-8275-evk-pro",
+              "qcs9075-iq-9075-evk"
+            ],
+            "targetOs": [
+              {
+                "os": "qualcomm_linux",
+                "variant": "qualcomm-linux-proprietary",
+                "minVersion": "qli-2.0",
+                "maxVersion": "qli-2.0"
+              }
+            ],
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
+        }
+      ]
+    }
+  ]
 }

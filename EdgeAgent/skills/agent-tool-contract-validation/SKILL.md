@@ -1,3 +1,9 @@
+---
+name: agent-tool-contract-validation
+description: "Validate the MCP client configuration that EdgeAgent (a small tool-using LLM agent for local and edge devices) generates for a chosen transport, and confirm a failed connection is reported, before anything is installed."
+version: 0.1.0
+---
+
 # EdgeAgent Tool Contract Validation
 
 Validate that a selected EdgeAgent transport produces the expected MCP client

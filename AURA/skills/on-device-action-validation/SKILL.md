@@ -1,3 +1,9 @@
+---
+name: on-device-action-validation
+description: "Check the AURA agent's action policy and safety limits before it is allowed to perform an approved action on a device."
+version: 0.1.0
+---
+
 # AURA On-Device Action Validation
 
 Validate AURA action-policy behavior before authorizing any physical or remote

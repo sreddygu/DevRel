@@ -1,3 +1,9 @@
+---
+name: library-generation-and-quality-evaluation
+description: "Generate music clips in the background from style prompts with an on-device music model, then check each clip and the whole set with objective measurements such as loop seams."
+version: 0.1.0
+---
+
 # Library Generation and Quality Evaluation
 
 Back to the [GesturDJ README](../../README.md).

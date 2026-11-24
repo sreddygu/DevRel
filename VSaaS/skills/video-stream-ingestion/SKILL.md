@@ -1,3 +1,9 @@
+---
+name: video-stream-ingestion
+description: "Validate simulated or approved camera ingestion for VSaaS (a privacy-first edge video analytics prototype) with privacy-aware evidence."
+version: 0.1.0
+---
+
 # VSaaS Video Stream Ingestion
 
 Start with simulated events, then use a camera or RTSP source only after

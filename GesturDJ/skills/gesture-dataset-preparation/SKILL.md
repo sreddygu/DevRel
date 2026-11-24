@@ -1,3 +1,9 @@
+---
+name: gesture-dataset-preparation
+description: "Choose and prepare a labelled motion dataset for gesture recognition (synthetic, public or your own capture), check its quality and split it for training."
+version: 0.2.0
+---
+
 # Gesture Dataset Preparation
 
 Back to the [GesturDJ README](../../README.md).

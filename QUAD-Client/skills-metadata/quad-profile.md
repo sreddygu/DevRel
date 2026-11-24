@@ -1,11 +1,11 @@
 ---
 name: quad-profile
-description: "Use when the user asks to \"profile a model\", \"find bottlenecks\", \"measure NPU latency\", \"run linting\" or \"QHAS profile\", or invokes /quad-profile. Picks the right profiling level + renders a rich latency/utilisation summary."
+description: "Pick the right profiling level and show a summary of latency and utilisation, including bottlenecks and QHAS profiling."
 ---
 
-# Quad Profile
+# QUAD Model Profiler
 
-Use when the user asks to "profile a model", "find bottlenecks", "measure NPU latency", "run linting" or "QHAS profile", or invokes /quad-profile. Picks the right profiling level + renders a rich latency/utilisation summary.
+Pick the right profiling level and show a summary of latency and utilisation, including bottlenecks and QHAS profiling.
 
 ## Catalog
 
@@ -14,10 +14,17 @@ Use when the user asks to "profile a model", "find bottlenecks", "measure NPU la
 - **Category:** `devtools`
 - **Version:** `0.1.0`
 - **Agents:** `claude`, `codex`, `cursor`
-- **Tags:** `academy`, `quad-client`, `edge-ai`
+- **Tags:** `quad-client`, `edge-ai`, `quad`, `profile`, `qualcomm-ai`, `mcp`, `npu`, `snapdragon-x-elite`, `qairt`
+- **License:** `Apache-2.0`
+- **Compatibility:** host OS `windows`, `linux`
+- **Requirements:** Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows
+- **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../.claude/skills/quad-profile/SKILL.md)
 
 ## Use Cases
 
-- Quad Profile
+- Profile my model and find bottlenecks
+- Measure NPU latency for this model
+- Run QHAS profiling
+- Lint my model for NPU-unfriendly ops

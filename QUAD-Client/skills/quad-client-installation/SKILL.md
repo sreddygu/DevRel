@@ -1,3 +1,9 @@
+---
+name: quad-client-installation
+description: "Install and validate the QUAD client (quad-mcp-client) and choose how it reaches the QUAD server (hosted URL, SSH or local), without changing MCP settings by default."
+version: 0.1.0
+---
+
 # QUAD-Client Installation
 
 Prepare QUAD-Client and choose an MCP transport without changing an agent or

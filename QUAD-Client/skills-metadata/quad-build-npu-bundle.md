@@ -1,11 +1,11 @@
 ---
 name: quad-build-npu-bundle
-description: "Use when the user wants to \"build an NPU LLM bundle\", \"export a Llama/Qwen model for the Hexagon NPU\", \"download a model for the npu provider\", \"get a model onto the X-Elite NPU\", \"the Download NPU bundle button can't run here\", or invokes /quad-build-npu-bundle. Builds an AI Hub Models Genie bundle on a non-arm64 host (WSL / x86 / macOS / Linux) and stages it onto the Snapdragon X-Elite where it runs."
+description: "Build an AI Hub Genie bundle for a large language model on a non-ARM64 host (WSL, x86, macOS or Linux) and copy it to a Snapdragon X Elite PC where it runs on the Hexagon NPU."
 ---
 
-# Quad Build Npu Bundle
+# NPU LLM Bundle Builder
 
-Use when the user wants to "build an NPU LLM bundle", "export a Llama/Qwen model for the Hexagon NPU", "download a model for the npu provider", "get a model onto the X-Elite NPU", "the Download NPU bundle button can't run here", or invokes /quad-build-npu-bundle. Builds an AI Hub Models Genie bundle on a non-arm64 host (WSL / x86 / macOS / Linux) and stages it onto the Snapdragon X-Elite where it runs.
+Build an AI Hub Genie bundle for a large language model on a non-ARM64 host (WSL, x86, macOS or Linux) and copy it to a Snapdragon X Elite PC where it runs on the Hexagon NPU.
 
 ## Catalog
 
@@ -14,10 +14,17 @@ Use when the user wants to "build an NPU LLM bundle", "export a Llama/Qwen model
 - **Category:** `hardware`
 - **Version:** `0.1.0`
 - **Agents:** `claude`, `codex`, `cursor`
-- **Tags:** `academy`, `quad-client`, `edge-ai`
+- **Tags:** `quad-client`, `edge-ai`, `quad`, `build`, `npu`, `bundle`, `qualcomm-ai`, `mcp`, `snapdragon-x-elite`, `qairt`
+- **License:** `Apache-2.0`
+- **Compatibility:** host OS `linux`, `windows`, `macos`
+- **Requirements:** Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows
+- **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../.claude/skills/quad-build-npu-bundle/SKILL.md)
 
 ## Use Cases
 
-- Quad Build Npu Bundle
+- Build an NPU bundle for Llama on my x86 machine
+- Export a Qwen model for the Hexagon NPU
+- Download a model for the NPU provider and stage it on my Snapdragon PC
+- Prepare a Genie bundle in WSL

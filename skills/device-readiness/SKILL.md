@@ -1,10 +1,10 @@
 ---
 name: device-readiness
-description: Establish whether a publicly obtainable hardware target is ready for a project’s documented P3 workflow without changing device state. Use before installing a runtime, deploying a model, recording sensors, or claiming device support.
+description: Establish whether a publicly obtainable hardware target is ready for a project’s documented workflow without changing device state. Use before installing a runtime, deploying a model, recording sensors, or claiming device support.
 version: 1.0.0
 ---
 
-# P3 Device Readiness
+# Device Readiness
 
 1. Confirm that the developer owns or controls the device and has a public
    setup path. Record device model, OS/image version, host connection method,

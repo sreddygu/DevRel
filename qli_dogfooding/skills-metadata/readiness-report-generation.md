@@ -1,11 +1,11 @@
 ---
 name: readiness-report-generation
-description: "Generate synchronized QLI readiness summary, workbook, and report deliverables from verified evidence."
+description: "Generate a matching readiness summary, workbook and report for a Qualcomm Linux (QLI) device from verified evidence."
 ---
 
-# Readiness Report Generation
+# Qualcomm Linux Readiness Report Generation
 
-Generate synchronized QLI readiness summary, workbook, and report deliverables from verified evidence.
+Generate a matching readiness summary, workbook and report for a Qualcomm Linux (QLI) device from verified evidence.
 
 ## Catalog
 
@@ -14,10 +14,17 @@ Generate synchronized QLI readiness summary, workbook, and report deliverables f
 - **Category:** `devtools`
 - **Version:** `2.0.0`
 - **Agents:** `claude`, `codex`, `cursor`
-- **Tags:** `academy`, `qli_dogfooding`, `edge-ai`
+- **Tags:** `edge-ai`, `readiness`, `report`, `generation`, `qli-linux`, `qualcomm-linux`, `qli`, `iq8`, `iq9`
+- **License:** `Apache-2.0`
+- **Compatibility:** portable (no hardware constraint declared)
+- **Requirements:** Qualcomm Linux 2.0 on IQ8 or IQ9; SSH access; Python 3.10+ on the host
+- **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../skills/readiness-report-generation/SKILL.md)
 
 ## Use Cases
 
-- Readiness Report Generation
+- Create the readiness report for my IQ8
+- Generate the workbook from the evidence I collected
+- Produce a summary I can share with my team
+- Update the report after I re-ran the checks

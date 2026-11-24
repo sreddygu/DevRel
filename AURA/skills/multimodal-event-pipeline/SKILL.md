@@ -1,3 +1,9 @@
+---
+name: multimodal-event-pipeline
+description: "Validate how the AURA on-device agent turns camera and microphone input into events and stores them in memory, with evidence that avoids saving raw images or audio."
+version: 0.1.0
+---
+
 # AURA Multimodal Event Pipeline
 
 Validate the AURA perception-to-memory event pipeline with test fixtures or

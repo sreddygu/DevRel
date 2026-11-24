@@ -1,11 +1,11 @@
 ---
 name: music-model-npu-deployment
-description: "Check that a board is ready to run the DiffRhythm transformer on its NPU (OS, NPU firmware running, runtime libraries, compiled context binaries, no stale server) and that the four chained graphs load and run."
+description: "Check that an IQ8 board is ready to run the DiffRhythm/ACE-Step music transformer on its NPU: OS image, NPU firmware, runtime libraries and compiled model graphs."
 ---
 
-# Music Model NPU Deployment
+# Music Model NPU Readiness (IQ8)
 
-Check that a board is ready to run the DiffRhythm transformer on its NPU (OS, NPU firmware running, runtime libraries, compiled context binaries, no stale server) and that the four chained graphs load and run.
+Check that an IQ8 board is ready to run the DiffRhythm/ACE-Step music transformer on its NPU: OS image, NPU firmware, runtime libraries and compiled model graphs.
 
 ## Catalog
 
@@ -14,10 +14,17 @@ Check that a board is ready to run the DiffRhythm transformer on its NPU (OS, NP
 - **Category:** `hardware`
 - **Version:** `0.1.0`
 - **Agents:** `claude`, `codex`, `cursor`
-- **Tags:** `academy`, `gesturdj`, `edge-ai`
+- **Tags:** `gesturdj`, `edge-ai`, `music`, `model`, `npu`, `deployment`, `gesture-recognition`, `iq8`
+- **License:** `Apache-2.0`
+- **Compatibility:** devkits `qcs8275-iq-8275-evk-pro`; target OS `qualcomm_linux` (qli-2.0)
+- **Requirements:** Python 3.10+; PC and Qualcomm IQ8 board (Qualcomm Linux 2.0); QAIRT for the NPU music path
+- **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../skills/music-model-npu-deployment/SKILL.md)
 
 ## Use Cases
 
-- Music Model NPU Deployment
+- Is my IQ8 board ready to run the music model on its NPU?
+- Check NPU firmware and runtime libraries before I deploy the music model
+- Why do the NPU graphs fail to load on my board?
+- Run the preflight checks for ACE-Step on the IQ8 NPU

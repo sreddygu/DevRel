@@ -1,3 +1,9 @@
+---
+name: ai-model-execution
+description: "Run a model command discovered on a Qualcomm Linux (QLI) device against a supplied image and capture the parsed result."
+version: 1.0.0
+---
+
 # AI Model Execution
 
 Run a model only after discovering the actual runner, model path, backend, and

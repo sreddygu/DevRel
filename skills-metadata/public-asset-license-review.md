@@ -1,11 +1,11 @@
 ---
 name: public-asset-license-review
-description: "Review source, model, data, binary, and documentation assets before public P3 distribution."
+description: "Review the licenses of source code, models, datasets, binaries and documents before a project is distributed publicly, and flag anything that cannot be redistributed."
 ---
 
-# P3 Public Asset License Review
+# Public Asset License Review
 
-Review source, model, data, binary, and documentation assets before public P3 distribution.
+Review the licenses of source code, models, datasets, binaries and documents before a project is distributed publicly, and flag anything that cannot be redistributed.
 
 ## Catalog
 
@@ -14,12 +14,16 @@ Review source, model, data, binary, and documentation assets before public P3 di
 - **Category:** `general`
 - **Version:** `1.0.0`
 - **Agents:** `claude`, `codex`, `cursor`
-- **Tags:** `devrel`, `p3`, `license`, `assets`, `distribution`
+- **Tags:** `license`, `assets`, `distribution`, `public`, `asset`, `review`, `open-source`, `release`
+- **License:** `Apache-2.0`
+- **Compatibility:** portable (no hardware constraint declared)
+- **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../skills/public-asset-license-review/SKILL.md)
 
 ## Use Cases
 
-- Add a dependency
-- Review a model checkpoint
-- Prepare downloadable release assets
+- Can I publish this model checkpoint with my project?
+- Review the licenses of my new Python dependency before I add it
+- List every asset in my release bundle and its license
+- Check which files in this repo must not be redistributed

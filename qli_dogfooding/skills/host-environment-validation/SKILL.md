@@ -1,3 +1,9 @@
+---
+name: host-environment-validation
+description: "Verify that your PC has the tools a selected Qualcomm Linux (QLI) workflow needs, such as SSH, adb and Python, before you start."
+version: 1.0.0
+---
+
 # Host Environment Validation
 
 Validate the host before a QLI workflow that depends on external tools.
