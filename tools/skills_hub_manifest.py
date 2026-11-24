@@ -159,6 +159,40 @@ PROJECT_TAGS = {
     "VSaaS": ["video-analytics", "computer-vision", "yolov8", "iq8"],
     "qli_dogfooding": ["qualcomm-linux", "qli", "iq8", "iq9", "readiness"],
 }
+# Skills offered through the public catalog. Everything else stays in the repo
+# (and keeps its SKILL.md and metadata page) but is not listed in skills.json:
+# context documents, agent coordinators, MCP-tool candidates, demo-specific and
+# evidence-only skills, and the internal-visibility qli_dogfooding skills.
+CATALOG = {
+    ".": {"public-asset-license-review", "release-bundle-preparation", "device-readiness"},
+    "AURA": {"aura-agent-orchestration"},
+    "EdgeAgent": {"edge-agent-runtime-setup"},
+    "GesturDJ": {
+        "gesturdj-build-journey", "gesture-dataset-preparation",
+        "gesture-model-training-and-evaluation", "model-export-and-deployment",
+        "on-device-gesture-validation", "music-model-npu-deployment",
+        "npu-quantization-and-accuracy-gating", "audio-output-integration",
+    },
+    "QUAD-Client": {
+        "quad-quickstart", "quad-doctor", "quad-detect", "quad-configure",
+        "quad-npu-prereqs", "quad-convert", "quad-codegen", "quad-profile",
+        "quad-deploy", "quad-executorch", "quad-qnn-runtime-debug",
+        "quad-recommend", "quad-app-builder",
+    },
+    "RoboAgent": {"roboagent-setup", "roboagent-run-model"},
+    "VSaaS": {"vision-model-validation"},
+    "qli_dogfooding": set(),  # all marked visibility: internal
+}
+
+
+def curate(folder, manifest):
+    keep = CATALOG.get(folder, set())
+    manifest["skills"] = [s for s in manifest["skills"] if s["name"] in keep]
+    if folder == ".":
+        manifest["sources"] = [s for s in manifest.get("sources", [])
+                               if CATALOG.get(s.get("path"), True)]
+
+
 STOP = {"and", "the", "of", "for", "to", "a", "in", "on", "with", "an"}
 # Runtime-synced skills (shipped/byte-checked copies); never edited here.
 RUNTIME_DIRS = (".claude/", ".pi/", ".codex/")
@@ -430,6 +464,7 @@ def main():
     for folder, path in manifests():
         manifest = json.loads(path.read_text(encoding="utf-8-sig"))
         if not check_only:
+            curate(folder, manifest)
             normalize(folder, manifest)
             print(f"{path.relative_to(ROOT).as_posix()}: {enrich(folder, manifest)}")
             path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
