@@ -10,13 +10,13 @@ event/workshop hooks).
 
 | # | Story | Theme | Folder | Status |
 |---|---|---|---|:--|
-| 1 | **Personal AI Companion (AURA)** | Privacy-first on-device AI | [`AURA/`](AURA/) | ✅ Built (M1–M4 verified on IQ8) |
-| 2 | **AI Across Devices** | Seamless cross-device intelligence | [`AI-Across-Devices/`](AI-Across-Devices/) | 🟡 Buildable (2-node handoff) |
-| 3 | **XR-Powered Experiences** | Spatial AI for immersive interaction | [`XR-Experiences/`](XR-Experiences/) | 🟡 Proxy on IQ; XR silicon aspirational |
-| 4 | **Wearable AI Assistant** | AI that lives on your wrist | [`Wearable-AI/`](Wearable-AI/) | 🟡 Proxy on UNO Q; W5 aspirational |
-| 5 | **Edge AI for Everyone** | Build once, deploy anywhere | [`Edge-AI-for-Everyone/`](Edge-AI-for-Everyone/) | ✅ Mostly built/verified |
-| 6 | **Developer Journey** | First 30 min to first AI app | [`Developer-Journey/`](Developer-Journey/) | ✅ Buildable now |
-| 7 | **Multiverse of Developers** | One platform, many personas | [`Multiverse-of-Developers/`](Multiverse-of-Developers/) | ✅ Routing/index brief |
+| 1 | **Personal AI Companion (AURA)** | Privacy-first on-device AI | [`AURA/`](../AURA/) | ✅ Built (M1–M4 verified on IQ8) |
+| 2 | **AI Across Devices** | Seamless cross-device intelligence | [`AI-Across-Devices/`](../AI-Across-Devices/) | 🟡 Buildable (2-node handoff) |
+| 3 | **XR-Powered Experiences** | Spatial AI for immersive interaction | [`XR-Experiences/`](../XR-Experiences/) | 🟡 Proxy on IQ; XR silicon aspirational |
+| 4 | **Wearable AI Assistant** | AI that lives on your wrist | [`Wearable-AI/`](../Wearable-AI/) | 🟡 Proxy on UNO Q; W5 aspirational |
+| 5 | **Edge AI for Everyone** | Build once, deploy anywhere | [`Edge-AI-for-Everyone/`](../Edge-AI-for-Everyone/) | ✅ Mostly built/verified |
+| 6 | **Developer Journey** | First 30 min to first AI app | [`Developer-Journey/`](../Developer-Journey/) | ✅ Buildable now |
+| 7 | **Multiverse of Developers** | One platform, many personas | [`Multiverse-of-Developers/`](../Multiverse-of-Developers/) | ✅ Routing/index brief |
 
 > **Story 1 (AURA) is a pre-existing full project** — its README is the reference
 > depth/format the other six follow. Stories 2–7 were authored as narrative
@@ -40,8 +40,8 @@ the full mapping.
 
 Quant format per runtime: **W4A16** → Genie/QAIRT (NPU) · **Q4_0** → llama.cpp
 ggml-hexagon (NPU, experimental) · **Q4_K_M** → llama.cpp (CPU). See
-[`Edge-AI-for-Everyone/README.md`](Edge-AI-for-Everyone/README.md) and
-[`LLM/HEXAGON_NPU.md`](LLM/HEXAGON_NPU.md).
+[`Edge-AI-for-Everyone/README.md`](../Edge-AI-for-Everyone/README.md) and
+[`LLM/HEXAGON_NPU.md`](../LLM/HEXAGON_NPU.md).
 
 ## How the stories relate
 

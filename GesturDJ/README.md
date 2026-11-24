@@ -21,10 +21,12 @@ current static NPU contexts.
 1. Read [`ACE-Step/README.md`](ACE-Step/README.md) for the supported workflow.
 2. Read [`ACE-Step/IQ8_NPU_WAV_STATUS.md`](ACE-Step/IQ8_NPU_WAV_STATUS.md) for
    the evidence and numerical gates.
-3. Use [`ACE-Step/ace_step_iq8_npu_wav.ipynb`](ACE-Step/ace_step_iq8_npu_wav.ipynb)
-   for the fail-closed notebook path.
-4. Read [`blogs/ace-step-iq8-npu-wav.md`](blogs/ace-step-iq8-npu-wav.md) for
-   the deployment story.
+3. Follow [`ACE-Step/IQ8_SSH_RUNBOOK.md`](ACE-Step/IQ8_SSH_RUNBOOK.md) for the
+   fail-closed WSL and SSH workflow.
+4. Read [`blogs/ace-step-iq8-npu-deployment-guide.md`](blogs/ace-step-iq8-npu-deployment-guide.md)
+   for the deployment architecture and supported workflow.
+5. Read [`blogs/ace-step-iq8-npu-validation-guide.md`](blogs/ace-step-iq8-npu-validation-guide.md)
+   for the numerical gates and operational validation process.
 
 ## Repository layout
 

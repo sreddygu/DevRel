@@ -35,7 +35,7 @@
 //   * Tensor shapes and dtypes come from the context binaries (via libQnnSystem), nothing is hard-coded here.
 //   * Client buffers are plain memory (QNN_TENSORMEMTYPE_RAW), so each pass copies about 25 MB; that is small next to 9 s.
 //   * On any QNN error it prints "FATAL <what> err=<code>" and exits 1. A hung NPU call cannot be recovered in-process;
-//     the board has to be rebooted (see DIFFRHYTHM_IQ8.md).
+//     the board has to be rebooted (see ACE-Step/IQ8_NPU_WAV_STATUS.md).
 //   * The system-context handles are intentionally never freed: the tensor name/dimension pointers we copied point into them.
 #include <dlfcn.h>
 #include <cstdio>

@@ -73,9 +73,9 @@ Promotion is per project release, not per repository. A source skill pack can be
 ## Required Release Bundle
 
 Every `preview`, `stable`, or `lts` delivery publishes a `release-bundle.json`
-conforming to [`release-bundle.schema.json`](../resources/release-bundle.schema.json). Keep
+conforming to [`release-bundle.schema.json`](../../release-bundle-preparation/resources/release-bundle.schema.json). Keep
 an example beside the implementation in
-[`release-bundle.example.json`](../resources/release-bundle.example.json).
+[`release-bundle.example.json`](../../release-bundle-preparation/resources/release-bundle.example.json).
 
 The manifest makes a release independently verifiable:
 
@@ -89,7 +89,7 @@ The manifest makes a release independently verifiable:
 Run the local validator before publishing:
 
 ```powershell
-py -3 .\scripts\validate_release_bundle.py .\resources\release-bundle.example.json
+py -3 .\skills\release-bundle-preparation\scripts\validate_release_bundle.py .\skills\release-bundle-preparation\resources\release-bundle.example.json
 ```
 
 ## Open-Source Distribution Rules
