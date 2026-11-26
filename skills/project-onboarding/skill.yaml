@@ -1,20 +1,20 @@
 schema_version: "1.0"
 id: "project-onboarding"
-name: "P3 Project Onboarding"
+name: "Project Onboarding"
 version: "1.0.0"
-description: "Classify a portfolio project and prepare its public P3 delivery path."
+description: "Classify a portfolio project and prepare its public delivery path."
 entrypoint: "SKILL.md"
 kind: "domain-skill"
 language: "en"
 synapse:
   layer: "domain"
-  domain: "p3-portfolio"
-  owner: "P3 portfolio maintainers"
+  domain: "shared-skills"
+  owner: "Project maintainers"
   review_cadence: "Each project release or delivery-model change"
   visibility: "public"
   maturity: "pilot"
   developer_journey_stage: ["discovery", "enablement"]
-  authoritative_docs: ["references/P3_DELIVERY_MODELS.md"]
+  authoritative_docs: ["references/DELIVERY_MODELS.md"]
 contract:
   inputs: ["Project README", "Existing skill catalog if present"]
   outputs: ["Delivery-lane recommendation", "Next project-local skills", "Readiness gaps"]

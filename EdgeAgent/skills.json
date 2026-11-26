@@ -3,9 +3,9 @@
   "skills": [
     {
       "name": "edge-agent-runtime-setup",
-      "displayName": "EdgeAgent Runtime Setup",
+      "displayName": "EdgeAgent Local LLM Agent Setup",
       "owner": "sreddygu",
-      "description": "Prepare and inspect the EdgeAgent runtime (llama.cpp CPU backend or Genie NPU backend) on a Snapdragon X Elite PC or IQ8/IQ9 board without changing MCP client settings by default.",
+      "description": "Set up and inspect EdgeAgent, a portable tool-using LLM agent, with a llama.cpp CPU backend or a Qualcomm AI Runtime (QAIRT) Genie NPU backend, on a Snapdragon X Elite PC or a Qualcomm Dragonwing IQ-8275 (IQ8) or Dragonwing IQ-9075 (IQ9) board, and preview its MCP client configuration before anything is written.",
       "agents": [
         "claude",
         "codex",
@@ -29,8 +29,11 @@
       "useCases": [
         "Set up EdgeAgent with a local llama.cpp server",
         "Point EdgeAgent at the Genie NPU backend on my Snapdragon X Elite PC",
+        "Run the EdgeAgent doctor check and explain every failure",
+        "Preview the MCP client configuration for the stdio-ssh transport without installing it",
         "Check whether EdgeAgent can reach its model server on my IQ8",
-        "What do I need installed to run EdgeAgent on an IQ9 board?"
+        "What do I need installed to run EdgeAgent on an IQ9 board?",
+        "Which EdgeAgent transport fits my setup: stdio-local, stdio-ssh or sse-http?"
       ],
       "license": "Apache-2.0",
       "homepage": "https://github.com/sreddygu/DevRel/tree/main/EdgeAgent",
@@ -40,7 +43,7 @@
           "path": "EdgeAgent/skills/edge-agent-runtime-setup",
           "docPath": "EdgeAgent/skills/edge-agent-runtime-setup/SKILL.md",
           "files": [
-            "EdgeAgent/skills/edge-agent-runtime-setup/**"
+            "EdgeAgent/skills/edge-agent-runtime-setup/SKILL.md"
           ],
           "compatibility": {
             "devkits": [

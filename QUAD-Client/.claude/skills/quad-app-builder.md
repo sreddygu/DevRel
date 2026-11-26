@@ -1404,3 +1404,27 @@ gh pr create \
 - **`iq-9075` — attempting NPU then GPU (or GPU then NPU) via the `onnxruntime_qnn` plugin EP in the same process, and the second attempt fails with `library is already registered under QNNExecutionProvider`:** this masks the real, informative error (e.g. "no GPU device found") behind a confusing registration error — `onnxruntime` raises if you call `register_execution_provider_library()` twice for the same EP name in one process. Guard with a module-level flag (`if not _qnn_registered: register(...); _qnn_registered = True`) — see `samples/mobilenetv2_iq9075/deploy/inference.py`'s `attempt_qnn()` for the exact pattern already applied. Apply the same guard in any new script that attempts both NPU and GPU via this plugin-EP path in one process.
 - **`iq-9075` — `adb push`/`adb shell` command fails with a garbled or Windows-style path in the error (e.g. `C:/Program Files/Git/data/local/tmp/...`):** this is Git Bash's MSYS layer silently rewriting a leading `/` path as if it were a Windows path — it only happens when `adb` is invoked through a shell command string, not when invoked as a direct argument list (e.g. Python's `subprocess.run([adb_exe, "shell", ...])`, which `scripts/board_profile.py` uses and is unaffected). If hand-rolling any shell-string adb command (as `samples/mobilenetv2_iq9075/run_iq9075.py` does), set `MSYS_NO_PATHCONV=1` in the environment for that invocation.
 - **`iq-9075` — `tar xzf`/file extraction on-device prints a "time stamp NNNN is NNN s in the future" warning:** cosmetic, not a real error — this board's on-device clock is stale (not NTP-synced, no internet) and can read a year or more behind actual time. Confirmed live (board reported a date over a year in the past during this workstream). Don't treat this warning as an extraction failure, and don't trust on-device file timestamps for anything (e.g. don't use `mtime` to infer how recently a file was pushed).
+
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Not device-specific |
+| Target OS | No target OS constraint declared |
+| Host OS | Windows, Linux (or WSL) |
+| Requirements | Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows |
+
+References: [QUAD Client README](https://github.com/sreddygu/DevRel/blob/main/QUAD-Client/README.md).
+
+## Example prompts
+
+- Build a vision app on Snapdragon with QUAD
+- Create a QUAD application that runs an LLM on the NPU
+- Scaffold an inference app and test it end to end
+- I want to build a speech-recognition app on my Snapdragon X Elite laptop
+- Add tests and documentation to my Snapdragon app and push it to git
+- Harden my app: error handling, input validation and logging
+
+<!-- skills-hub:end -->

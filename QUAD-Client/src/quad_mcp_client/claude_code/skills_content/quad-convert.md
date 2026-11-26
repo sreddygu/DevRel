@@ -141,3 +141,27 @@ as `local_path`. On a local stdio server the output is already on disk at
 💡 _Pass real calibration_data to INT8/INT4 conversion. Random noise
 produces wrong quantization scales._
 ```
+
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Not device-specific |
+| Target OS | No target OS constraint declared |
+| Host OS | Windows, Linux (or WSL) |
+| Requirements | Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows |
+
+References: [QUAD Client README](https://github.com/sreddygu/DevRel/blob/main/QUAD-Client/README.md).
+
+## Example prompts
+
+- Convert my ONNX model to run on the NPU
+- Quantize my PyTorch model to int8 with calibration data
+- Compile this model to QNN
+- What calibration image format does the converter need?
+- Convert my YOLOv8 ONNX model to a QNN DLC
+- My conversion failed with an unsupported operator. What now?
+
+<!-- skills-hub:end -->

@@ -66,3 +66,27 @@ build-capable Snapdragon host for a genuine export.
 - To run / deploy the `.pte` on a device, use the `quad-pte-run` skill.
 - Start with `--runtime xnnpack` if there's no NPU — it validates the export
   end to end on CPU.
+
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Not device-specific |
+| Target OS | No target OS constraint declared |
+| Host OS | Windows, Linux (or WSL) |
+| Requirements | Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows |
+
+References: [QUAD Client README](https://github.com/sreddygu/DevRel/blob/main/QUAD-Client/README.md).
+
+## Example prompts
+
+- Export my PyTorch model to ExecuTorch
+- Make a .pte file and run it on the NPU
+- Profile my ExecuTorch model with QUAD
+- Follow the executorch_mobilenet sample for my own model
+- What is the difference between a QNN DLC and an ExecuTorch .pte for my model?
+- Why does my .pte run on CPU instead of the NPU?
+
+<!-- skills-hub:end -->

@@ -39,3 +39,27 @@ Turn the PyTorch checkpoint into one ONNX file that a board with only `numpy` an
 
 Complete when a single `.onnx` exists and a torch-free predict returns a label.
 Correctness is judged by the next skill, not this one.
+
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Dragonwing IQ-8275 EVK (`qcs8275-iq-8275-evk-pro`) |
+| Target OS | Qualcomm Linux (`qli-2.0`, `qualcomm-linux-proprietary`) |
+| Host OS | Any |
+| Requirements | Python 3.10+; PC and Qualcomm IQ8 board (Qualcomm Linux 2.0); QAIRT for the NPU music path |
+
+References: [GesturDJ README](https://github.com/sreddygu/DevRel/blob/main/GesturDJ/README.md), [IQ8 SSH runbook](https://github.com/sreddygu/DevRel/blob/main/GesturDJ/ACE-Step/IQ8_SSH_RUNBOOK.md).
+
+## Example prompts
+
+- Export my gesture model to ONNX for the IQ8 board
+- Check that the ONNX output matches the PyTorch model
+- Package the model so a board without PyTorch can run it
+- Copy the exported model and its preprocessing script to my device
+- Why is my exported ONNX model split into several files?
+- Export my gesture model for the Arduino VENTUNO Q
+
+<!-- skills-hub:end -->

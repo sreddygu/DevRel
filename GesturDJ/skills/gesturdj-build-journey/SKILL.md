@@ -12,7 +12,7 @@ Use when the request spans several steps ("take me from nothing to a working
 gesture model") or a rerun after the data changed. For one step, use that domain
 skill directly.
 
-Inject first: `gesture-event-contract`, `p3-self-service-boundaries`.
+Related context in the GesturDJ repository: [`skills/gesture-event-contract`](../gesture-event-contract/SKILL.md).
 
 ## Steps and gates
 
@@ -48,3 +48,28 @@ package versions), [`onnx-validation.json`](../../evidence/pc-run/onnx-validatio
 Steps 1 to 5 were run on a PC in a clean virtual environment, with
 the failures and fixes recorded under [`evidence/pc-run/`](../../evidence/pc-run/). Step 6 is design
 only. The Ventuno Q and real sensor data have not been run.
+
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Dragonwing IQ-8275 EVK (`qcs8275-iq-8275-evk-pro`) |
+| Target OS | Qualcomm Linux (`qli-2.0`, `qualcomm-linux-proprietary`) |
+| Host OS | Any |
+| Requirements | Python 3.10+; PC and Qualcomm IQ8 board (Qualcomm Linux 2.0); QAIRT for the NPU music path |
+
+References: [GesturDJ README](https://github.com/sreddygu/DevRel/blob/main/GesturDJ/README.md), [IQ8 SSH runbook](https://github.com/sreddygu/DevRel/blob/main/GesturDJ/ACE-Step/IQ8_SSH_RUNBOOK.md).
+
+## Example prompts
+
+- Walk me through building GesturDJ from scratch
+- Train, export and validate a gesture model for my board
+- Which GesturDJ step should I do next, and what evidence proves the last one worked?
+- Rerun the GesturDJ build steps after I changed the dataset
+- Where did my GesturDJ build fail and why?
+- Design a gesture-to-music mapping for left, right and circle gestures
+- Check that my PC and board are ready before I start the GesturDJ build
+
+<!-- skills-hub:end -->

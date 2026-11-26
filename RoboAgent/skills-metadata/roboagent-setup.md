@@ -1,11 +1,11 @@
 ---
 name: roboagent-setup
-description: "Set up the ExecuTorch and QNN backend build environment natively on Windows on Snapdragon ARM64 (no cross-compile, no adb: the device is both host and target)."
+description: "Set up the ExecuTorch and Qualcomm AI Engine Direct (QNN) backend build environment natively on a Windows on Snapdragon ARM64 PC (no cross-compile, no adb: the PC is both host and target) for RoboAgent, an ExecuTorch QNN playground."
 ---
 
 # ExecuTorch QNN Build Setup on Windows on Snapdragon
 
-Set up the ExecuTorch and QNN backend build environment natively on Windows on Snapdragon ARM64 (no cross-compile, no adb: the device is both host and target).
+Set up the ExecuTorch and Qualcomm AI Engine Direct (QNN) backend build environment natively on a Windows on Snapdragon ARM64 PC (no cross-compile, no adb: the PC is both host and target) for RoboAgent, an ExecuTorch QNN playground.
 
 ## Catalog
 
@@ -18,6 +18,7 @@ Set up the ExecuTorch and QNN backend build environment natively on Windows on S
 - **License:** `Apache-2.0`
 - **Compatibility:** host OS `windows`
 - **Requirements:** Snapdragon X (SC8380XP) Windows on ARM device; QAIRT 2.47; no adb or cross-compile
+- **References:** [RoboAgent README](../README.md)
 - **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../.claude/skills/setup/SKILL.md)
@@ -27,4 +28,6 @@ Set up the ExecuTorch and QNN backend build environment natively on Windows on S
 - Set up the ExecuTorch QNN build environment on my Snapdragon PC
 - Check prerequisites before building a QNN runner
 - Prepare this device as both host and target for QNN
-- What do I install before building ExecuTorch with the QNN backend?
+- What do I install before building ExecuTorch with the QNN backend on Windows?
+- Verify my QAIRT 2.47 install is visible to the ExecuTorch build
+- Why does the ExecuTorch QNN build fail on my ARM64 Windows PC?

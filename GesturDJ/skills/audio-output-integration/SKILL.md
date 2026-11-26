@@ -100,3 +100,27 @@ microphone (or a recorder on the line out) and a click played at a known time.
 - Pass the audio stage to `live-mixer-and-latency-validation`.
 
 Complete when `audio-output-probe.json`, `hw-latency.json` and `warm-stream.json` exist and name a best setting, or name the failed player.
+
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Dragonwing IQ-8275 EVK (`qcs8275-iq-8275-evk-pro`) |
+| Target OS | Qualcomm Linux (`qli-2.0`, `qualcomm-linux-proprietary`) |
+| Host OS | Any |
+| Requirements | Python 3.10+; PC and Qualcomm IQ8 board (Qualcomm Linux 2.0); QAIRT for the NPU music path |
+
+References: [GesturDJ README](https://github.com/sreddygu/DevRel/blob/main/GesturDJ/README.md), [IQ8 SSH runbook](https://github.com/sreddygu/DevRel/blob/main/GesturDJ/ACE-Step/IQ8_SSH_RUNBOOK.md).
+
+## Example prompts
+
+- Which audio player should GesturDJ use on my IQ8 board?
+- Why is there a delay before sound plays on my board?
+- Measure aplay, paplay and pw-play latency on this device
+- Is audio output working on the board?
+- List the audio sinks my board exposes and which one is the default
+- Pick the lowest-latency way to play generated music on my device
+
+<!-- skills-hub:end -->

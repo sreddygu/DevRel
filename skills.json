@@ -31,7 +31,7 @@
       "name": "release-bundle-preparation",
       "displayName": "Public Release Bundle Preparation",
       "owner": "sreddygu",
-      "description": "Prepare and validate a public release bundle for a sample project: evidence, compatibility data, checksums, semantic version and rollback instructions.",
+      "description": "Prepare and validate a public release bundle for a sample project: semantic version, release channel, compatibility data, validation evidence, SHA-256 checksums, approval gates and rollback instructions, checked with a bundled validator script.",
       "agents": [
         "claude",
         "codex",
@@ -43,13 +43,17 @@
         "bundle",
         "semver",
         "preparation",
-        "open-source"
+        "open-source",
+        "shared-skills"
       ],
       "useCases": [
         "Package my project as a public release with checksums and rollback steps",
         "Promote my preview release to stable and validate the release metadata",
-        "Check that my release bundle has version, license and evidence files",
-        "What do I need before I publish v1.0.0 of this starter kit?"
+        "Create a release-bundle.json for v1.0.0 of my starter kit and run the validator",
+        "Check that my release bundle has a version, license, evidence and compatibility table",
+        "What do I need before I publish my sample as a stable release?",
+        "Generate SHA-256 checksums for every archive in my release",
+        "Which release channel (incubating, preview, stable, LTS) fits my project today?"
       ],
       "license": "Apache-2.0",
       "homepage": "https://github.com/sreddygu/DevRel/tree/main/skills",
@@ -59,8 +63,18 @@
           "path": "skills/release-bundle-preparation",
           "docPath": "skills/release-bundle-preparation/SKILL.md",
           "files": [
-            "skills/release-bundle-preparation/**"
-          ]
+            "skills/release-bundle-preparation/references/**",
+            "skills/release-bundle-preparation/resources/**",
+            "skills/release-bundle-preparation/scripts/**",
+            "skills/release-bundle-preparation/SKILL.md"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "linux",
+              "windows",
+              "macos"
+            ]
+          }
         }
       ]
     },
@@ -68,7 +82,7 @@
       "name": "public-asset-license-review",
       "displayName": "Public Asset License Review",
       "owner": "sreddygu",
-      "description": "Review the licenses of source code, models, datasets, binaries and documents before a project is distributed publicly, and flag anything that cannot be redistributed.",
+      "description": "Review the licenses of source code, models, datasets, binaries and documents before a project is distributed publicly, mark each as redistributable, download-by-user, evaluation-only or prohibited, and flag anything that cannot be shared.",
       "agents": [
         "claude",
         "codex",
@@ -83,13 +97,17 @@
         "asset",
         "review",
         "open-source",
-        "release"
+        "release",
+        "shared-skills"
       ],
       "useCases": [
         "Can I publish this model checkpoint with my project?",
         "Review the licenses of my new Python dependency before I add it",
-        "List every asset in my release bundle and its license",
-        "Check which files in this repo must not be redistributed"
+        "List every asset in my release bundle with its source, checksum and license",
+        "Check which files in this repo must not be redistributed",
+        "Which assets should users download themselves instead of me bundling them?",
+        "Is this dataset allowed in a public sample, or is it evaluation-only?",
+        "Write the license acknowledgement users must accept before downloading the model"
       ],
       "license": "Apache-2.0",
       "homepage": "https://github.com/sreddygu/DevRel/tree/main/skills",
@@ -99,8 +117,16 @@
           "path": "skills/public-asset-license-review",
           "docPath": "skills/public-asset-license-review/SKILL.md",
           "files": [
-            "skills/public-asset-license-review/**"
-          ]
+            "skills/public-asset-license-review/references/**",
+            "skills/public-asset-license-review/SKILL.md"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "linux",
+              "windows",
+              "macos"
+            ]
+          }
         }
       ]
     },
@@ -108,7 +134,7 @@
       "name": "device-readiness",
       "displayName": "Hardware Target Readiness Check",
       "owner": "sreddygu",
-      "description": "Check whether a publicly available Qualcomm development board is ready for a documented project workflow: reachable, identified, correct OS image and required tools present.",
+      "description": "Check, without changing the device, whether a publicly available Qualcomm development board is ready for a documented project workflow: reachable over SSH or USB, identified, running a supported OS image, with the required runtime and tools present.",
       "agents": [
         "claude",
         "codex",
@@ -120,13 +146,17 @@
         "readiness",
         "validation",
         "open-source",
-        "release"
+        "release",
+        "shared-skills"
       ],
       "useCases": [
         "Is my dev board ready to run this sample?",
-        "Check that my board is reachable and running a supported OS image before I deploy",
-        "What is missing on my device for this workflow?",
-        "Validate my hardware target before I publish the demo"
+        "Check that my IQ-9075 EVK is reachable and running a supported OS image before I deploy",
+        "What is missing on my RB3 Gen 2 for this workflow?",
+        "Compare my board's OS image and runtime version against the project's compatibility table",
+        "Write a dated readiness record I can link from my validation evidence",
+        "Validate my hardware target before I publish the demo",
+        "Can I claim this sample works on my board, or only on my PC?"
       ],
       "license": "Apache-2.0",
       "homepage": "https://github.com/sreddygu/DevRel/tree/main/skills",
@@ -142,8 +172,24 @@
           "path": "skills/device-readiness",
           "docPath": "skills/device-readiness/SKILL.md",
           "files": [
-            "skills/device-readiness/**"
-          ]
+            "skills/device-readiness/references/**",
+            "skills/device-readiness/SKILL.md"
+          ],
+          "compatibility": {
+            "devkits": [
+              "qcs6490-rb3gen2-core-kit",
+              "qcs6490-rb3gen2-vision-kit",
+              "qcs6490-rb3gen2-vision-lite-kit",
+              "qcs6490-rubikpi3-kit",
+              "qcs8275-iq-8275-evk-pro",
+              "qcs9075-iq-9075-evk"
+            ],
+            "hostOs": [
+              "linux",
+              "windows",
+              "macos"
+            ]
+          }
         }
       ]
     }

@@ -336,3 +336,27 @@ the AI Hub Models token + HF-token fields in `sewa-apps/SAGE/app.py`.
   produced once from source and dropped next to the EXE — disable the
   in-app download affordance rather than letting it no-op. Reference:
   SAGE's frozen guard in `download_bundle` / `_pip_install`.
+
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Not device-specific |
+| Target OS | No target OS constraint declared |
+| Host OS | Windows, Linux (or WSL) |
+| Requirements | Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows |
+
+References: [QUAD Client README](https://github.com/sreddygu/DevRel/blob/main/QUAD-Client/README.md).
+
+## Example prompts
+
+- Set up my machine to develop for the Hexagon NPU
+- What prerequisites do I need to run a model on the NPU?
+- Configure my AI Hub token and NPU wheels
+- Prepare my Snapdragon laptop for NPU builds
+- Why can't my Python environment find the NPU backend?
+- Check my ARM64 Python and QAIRT versions match
+
+<!-- skills-hub:end -->

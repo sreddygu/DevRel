@@ -51,3 +51,27 @@ Read the log's `Rate:` / `PyTorchObserver {...}` lines for prefill/decode tok/s;
 | `QnnContextCustomProtocol expected magic number: ... but get: ...` (INFO, not ERROR) | Benign for AI-Hub-style pre-generated `.pte`s — the context blob isn't wrapped in ExecuTorch's own header; the runtime already falls back to reading it raw | Ignore unless immediately followed by a real arch-mismatch error |
 | Fluent-looking garbage output, wrong from token 1; `max_context_len` absurdly large in the log; prefill `AR-<full context len>` | Export commit and runner-build commit disagree on the attention-mask tensor's rank (3-D vs 4-D) — a breaking `.pte` I/O contract change with no version guard | Match export/runner commits, or use a runner that indexes the mask shape from the end (`rank-2`/`rank-1`) rather than fixed positions |
 | Model loads, runs, reports healthy tok/s — but output is wrong | Looking healthy in the logs proves nothing; every failure above still reported plausible numbers | Always read the actual generated text before trusting a run |
+
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Not device-specific |
+| Target OS | No target OS constraint declared |
+| Host OS | Windows |
+| Requirements | Snapdragon X (SC8380XP) Windows on ARM device; QAIRT 2.47; no adb or cross-compile |
+
+References: [RoboAgent README](https://github.com/sreddygu/DevRel/blob/main/RoboAgent/README.md).
+
+## Example prompts
+
+- Run this .pte model on my Snapdragon PC
+- Benchmark LLM tokens per second with qnn_llama_runner
+- Debug a qnn_executor_runner failure
+- Validate my QNN model with a simple operator test
+- Run Gemma on the NPU of my Windows on Snapdragon laptop
+- Why does my .pte file load but produce wrong output?
+
+<!-- skills-hub:end -->

@@ -118,3 +118,27 @@ subprocess, over SSH, or as a hosted HTTP/SSE service).
     B turned up (e.g. "your NPU is ready — try `quad-app-builder` to build a
     MobileNetV2 classifier", or "the server is on the lab box over SSH — start
     with `quad-recommend` for your model").
+
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Not device-specific |
+| Target OS | No target OS constraint declared |
+| Host OS | Windows, Linux (or WSL) |
+| Requirements | Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows |
+
+References: [QUAD Client README](https://github.com/sreddygu/DevRel/blob/main/QUAD-Client/README.md).
+
+## Example prompts
+
+- Get me started with QUAD
+- Set up Qualcomm AI development on my Snapdragon X Elite laptop
+- Run the first sample inference on my NPU
+- Check everything is connected before I start
+- What does QUAD need on my machine before I can convert a model?
+- Walk me through my first model run on the Hexagon NPU
+
+<!-- skills-hub:end -->

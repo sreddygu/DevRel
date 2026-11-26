@@ -165,3 +165,27 @@ After writing files:
 ## Step 5: Summary
 
 Print a summary table showing what was configured, what's still missing, and the exact commands to get started.
+
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Not device-specific |
+| Target OS | No target OS constraint declared |
+| Host OS | Windows, Linux (or WSL) |
+| Requirements | Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows |
+
+References: [QUAD Client README](https://github.com/sreddygu/DevRel/blob/main/QUAD-Client/README.md).
+
+## Example prompts
+
+- Configure QUAD for the first time
+- Set my QAIRT SDK path and target hardware for QUAD
+- Generate quad.toml and .env for my project
+- I changed my SDK location. Update the QUAD configuration
+- Add my Dragonwing IQ-9075 board as an SSH target in QUAD
+- Store my AI Hub token for QUAD without printing it
+
+<!-- skills-hub:end -->

@@ -1,11 +1,11 @@
 ---
 name: quad-codegen
-description: "Pick the right platform, language and SDK combination for a model and generate compilable inference code."
+description: "Pick the right platform, language and SDK combination for a model with QUAD (Qualcomm Unified AI Developer) and generate compilable inference code: Python, C++ or an Android JNI binding."
 ---
 
-# QUAD Inference Code Generator
+# Inference Code Generator for Snapdragon
 
-Pick the right platform, language and SDK combination for a model and generate compilable inference code.
+Pick the right platform, language and SDK combination for a model with QUAD (Qualcomm Unified AI Developer) and generate compilable inference code: Python, C++ or an Android JNI binding.
 
 ## Catalog
 
@@ -18,6 +18,7 @@ Pick the right platform, language and SDK combination for a model and generate c
 - **License:** `Apache-2.0`
 - **Compatibility:** host OS `windows`, `linux`
 - **Requirements:** Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows
+- **References:** [QUAD Client README](../README.md)
 - **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../.claude/skills/quad-codegen/SKILL.md)
@@ -28,3 +29,5 @@ Pick the right platform, language and SDK combination for a model and generate c
 - Write a C++ app for this QNN model
 - Give me Python boilerplate to run this model on the NPU
 - Create an Android JNI binding for my model
+- Which language and SDK should I use for a Windows on Snapdragon app?
+- Generate preprocessing and postprocessing code for my classifier

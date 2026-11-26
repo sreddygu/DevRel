@@ -1,12 +1,12 @@
-# P3 Delivery Models
+# Delivery Models
 
-P3 developers are independent developers: makers, students, hobbyists, and
+This policy serves independent developers: makers, students, hobbyists, and
 community builders. Delivery must therefore be public, self-service, and
-repeatable on hardware they can obtain. A P3 release must never depend on an
+repeatable on hardware they can obtain. A public release must never depend on an
 internal build, corporate account, private network, or undocumented support
 path.
 
-This policy applies to the Synapse projects cataloged in
+This policy applies to the projects cataloged in
 [`SYNAPSE_SKILLS.md`](../../../portfolio/SYNAPSE_SKILLS.md).
 
 ## Delivery Lanes
@@ -24,7 +24,7 @@ non-destructive quickstart, and a validation command.
 `Edge-AI-for-Everyone`, `Multiverse-of-Developers`, and the early stages of all
 other projects.
 
-**P3 experience:** clone or download, select a skill, run the quickstart, and
+**Developer experience:** clone or download, select a skill, run the quickstart, and
 attach the generated evidence to a community issue when help is needed.
 
 ### 2. Installable Starter Kit
@@ -39,7 +39,7 @@ fetch instructions, example configuration, and smoke-test command.
 **Best fit:** `AURA`, `EdgeAgent`, `LLM`, `QUAD-Client`, `RoboAgent`, `VSaaS`,
 `wake_word`, `sinewave`, `mojo-max-int`, and `DiffRhythm_old_songs`.
 
-**P3 experience:** install a signed/versioned starter kit, run a local smoke
+**Developer experience:** install a signed/versioned starter kit, run a local smoke
 test, then use the project skills to configure, validate, and troubleshoot it.
 
 ### 3. Device-Ready Release Kit
@@ -54,13 +54,13 @@ that may legally be redistributed.
 **Best fit:** `GesturDJ`, `wake_word`, `Wearable-AI`, `XR-Experiences`, `AURA`,
 `EdgeAgent`, and `QUAD-Client` after each has public-device validation.
 
-**P3 experience:** choose a compatible target, download one immutable release
+**Developer experience:** choose a compatible target, download one immutable release
 bundle, verify it locally, and follow an explicit approval gate before writes,
 device installation, sensor capture, or flashing.
 
 ## Progressive Promotion
 
-| Channel | Purpose | Admission criteria | P3 promise |
+| Channel | Purpose | Admission criteria | Developer promise |
 | --- | --- | --- | --- |
 | `incubating` | Share a design or early skill | Owner, scope, public-source check | May change or be incomplete; no device claim. |
 | `preview` | Gather feedback on a runnable workflow | Reproducible quickstart and validation evidence | Works in the documented test environment. |
@@ -104,7 +104,7 @@ py -3 .\skills\release-bundle-preparation\scripts\validate_release_bundle.py .\s
    release notes, and per-asset SHA-256 values. Never replace an asset in place.
 4. **Publish provenance.** State where model/data assets came from, how they
    were transformed, the target runtime, and the validation hardware.
-5. **Give P3 a public support path.** Link to public issue templates and label
+5. **Give developers a public support path.** Link to public issue templates and label
    issues by project, release version, target device, and skill ID. Do not make
    a private account or internal channel a prerequisite for support.
 6. **Protect users by default.** Release smoke tests are read-only where
@@ -122,6 +122,6 @@ can satisfy the next lane's contract:
 | Local application or model workflow | Installable Starter Kit | A public device target and repeatable device evidence exist. |
 | Hardware, sensing, or NPU workflow | Installable Starter Kit | Compatibility, public assets, safety gates, and target-device validation exist. |
 
-`GesturDJ` and `qli_dogfooding` remain the Synapse catalog references. Their
-skill-layer model should be reused, while P3 release contents must follow this
+`GesturDJ` and `qli_dogfooding` remain the catalog references. Their
+skill-layer model should be reused, while public release contents must follow this
 public delivery policy rather than any internal deployment path.

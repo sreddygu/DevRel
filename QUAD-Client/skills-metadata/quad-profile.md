@@ -1,11 +1,11 @@
 ---
 name: quad-profile
-description: "Pick the right profiling level and show a summary of latency and utilisation, including bottlenecks and QHAS profiling."
+description: "Pick the right profiling level with QUAD (Qualcomm Unified AI Developer) and show a summary of latency and utilisation, including bottlenecks and Qualcomm Hexagon Analysis Suite (QHAS) profiling, and lint a model for NPU-unfriendly operators."
 ---
 
-# QUAD Model Profiler
+# NPU Model Profiler
 
-Pick the right profiling level and show a summary of latency and utilisation, including bottlenecks and QHAS profiling.
+Pick the right profiling level with QUAD (Qualcomm Unified AI Developer) and show a summary of latency and utilisation, including bottlenecks and Qualcomm Hexagon Analysis Suite (QHAS) profiling, and lint a model for NPU-unfriendly operators.
 
 ## Catalog
 
@@ -18,6 +18,7 @@ Pick the right profiling level and show a summary of latency and utilisation, in
 - **License:** `Apache-2.0`
 - **Compatibility:** host OS `windows`, `linux`
 - **Requirements:** Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows
+- **References:** [QUAD Client README](../README.md)
 - **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../.claude/skills/quad-profile/SKILL.md)
@@ -28,3 +29,5 @@ Pick the right profiling level and show a summary of latency and utilisation, in
 - Measure NPU latency for this model
 - Run QHAS profiling
 - Lint my model for NPU-unfriendly ops
+- Which layers of my model are not running on the NPU?
+- Compare the latency of my int8 and fp16 models

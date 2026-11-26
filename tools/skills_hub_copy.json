@@ -21,42 +21,54 @@
   },
   "release-bundle-preparation": {
     "displayName": "Public Release Bundle Preparation",
-    "description": "Prepare and validate a public release bundle for a sample project: evidence, compatibility data, checksums, semantic version and rollback instructions.",
+    "description": "Prepare and validate a public release bundle for a sample project: semantic version, release channel, compatibility data, validation evidence, SHA-256 checksums, approval gates and rollback instructions, checked with a bundled validator script.",
     "useCases": [
       "Package my project as a public release with checksums and rollback steps",
       "Promote my preview release to stable and validate the release metadata",
-      "Check that my release bundle has version, license and evidence files",
-      "What do I need before I publish v1.0.0 of this starter kit?"
+      "Create a release-bundle.json for v1.0.0 of my starter kit and run the validator",
+      "Check that my release bundle has a version, license, evidence and compatibility table",
+      "What do I need before I publish my sample as a stable release?",
+      "Generate SHA-256 checksums for every archive in my release",
+      "Which release channel (incubating, preview, stable, LTS) fits my project today?"
     ]
   },
   "public-asset-license-review": {
     "displayName": "Public Asset License Review",
-    "description": "Review the licenses of source code, models, datasets, binaries and documents before a project is distributed publicly, and flag anything that cannot be redistributed.",
+    "description": "Review the licenses of source code, models, datasets, binaries and documents before a project is distributed publicly, mark each as redistributable, download-by-user, evaluation-only or prohibited, and flag anything that cannot be shared.",
     "useCases": [
       "Can I publish this model checkpoint with my project?",
       "Review the licenses of my new Python dependency before I add it",
-      "List every asset in my release bundle and its license",
-      "Check which files in this repo must not be redistributed"
+      "List every asset in my release bundle with its source, checksum and license",
+      "Check which files in this repo must not be redistributed",
+      "Which assets should users download themselves instead of me bundling them?",
+      "Is this dataset allowed in a public sample, or is it evaluation-only?",
+      "Write the license acknowledgement users must accept before downloading the model"
     ]
   },
   "device-readiness": {
     "displayName": "Hardware Target Readiness Check",
-    "description": "Check whether a publicly available Qualcomm development board is ready for a documented project workflow: reachable, identified, correct OS image and required tools present.",
+    "description": "Check, without changing the device, whether a publicly available Qualcomm development board is ready for a documented project workflow: reachable over SSH or USB, identified, running a supported OS image, with the required runtime and tools present.",
     "useCases": [
       "Is my dev board ready to run this sample?",
-      "Check that my board is reachable and running a supported OS image before I deploy",
-      "What is missing on my device for this workflow?",
-      "Validate my hardware target before I publish the demo"
+      "Check that my IQ-9075 EVK is reachable and running a supported OS image before I deploy",
+      "What is missing on my RB3 Gen 2 for this workflow?",
+      "Compare my board's OS image and runtime version against the project's compatibility table",
+      "Write a dated readiness record I can link from my validation evidence",
+      "Validate my hardware target before I publish the demo",
+      "Can I claim this sample works on my board, or only on my PC?"
     ]
   },
   "aura-agent-orchestration": {
-    "displayName": "AURA Runtime Setup and Milestone Selection",
-    "description": "Prepare AURA, an on-device physical-AI agent (camera, microphone, memory and local LLM) for Arduino VENTUNO Q and Qualcomm IQ8, and pick the smallest milestone to run, without starting device services by default.",
+    "displayName": "AURA On-Device Agent Setup",
+    "description": "Set up AURA (Autonomous Understanding and Responsive Agents), a privacy-first on-device AI agent that sees, listens, remembers and acts, on an Arduino VENTUNO Q or a Qualcomm Dragonwing IQ-8275 (IQ8) board, and choose the smallest milestone (vision, speech, memory or agent) to build first. Does not start device services or touch hardware unless you approve.",
     "useCases": [
       "Set up the AURA on-device agent on my IQ8 board",
       "Which AURA milestone should I build first: vision, speech, memory or agent?",
       "Install only the AURA vision extra and run the tests",
-      "Show my AURA configuration and what optional components are missing"
+      "Show my AURA configuration and tell me which optional components are missing",
+      "Should AURA reason on the board, on my PC, or in hybrid mode with a trusted host?",
+      "Prepare AURA for my Arduino VENTUNO Q without opening the camera or microphone",
+      "Record which AURA settings I observed on the device and which are still unknown"
     ]
   },
   "multimodal-event-pipeline": {
@@ -100,23 +112,28 @@
     ]
   },
   "edge-agent-runtime-setup": {
-    "displayName": "EdgeAgent Runtime Setup",
-    "description": "Prepare and inspect the EdgeAgent runtime (llama.cpp CPU backend or Genie NPU backend) on a Snapdragon X Elite PC or IQ8/IQ9 board without changing MCP client settings by default.",
+    "displayName": "EdgeAgent Local LLM Agent Setup",
+    "description": "Set up and inspect EdgeAgent, a portable tool-using LLM agent, with a llama.cpp CPU backend or a Qualcomm AI Runtime (QAIRT) Genie NPU backend, on a Snapdragon X Elite PC or a Qualcomm Dragonwing IQ-8275 (IQ8) or Dragonwing IQ-9075 (IQ9) board, and preview its MCP client configuration before anything is written.",
     "useCases": [
       "Set up EdgeAgent with a local llama.cpp server",
       "Point EdgeAgent at the Genie NPU backend on my Snapdragon X Elite PC",
+      "Run the EdgeAgent doctor check and explain every failure",
+      "Preview the MCP client configuration for the stdio-ssh transport without installing it",
       "Check whether EdgeAgent can reach its model server on my IQ8",
-      "What do I need installed to run EdgeAgent on an IQ9 board?"
+      "What do I need installed to run EdgeAgent on an IQ9 board?",
+      "Which EdgeAgent transport fits my setup: stdio-local, stdio-ssh or sse-http?"
     ]
   },
   "audio-output-integration": {
     "displayName": "Board Audio Output Latency Check",
-    "description": "Find a board's audio sink and players, measure how much delay each player adds, and pick the setting a live music path should use.",
+    "description": "Find a board's audio output device and available players (aplay, paplay, pw-play), measure how much delay each one adds, and pick the setting a live music path should use, for example on a Qualcomm Dragonwing IQ-8275 (IQ8) board.",
     "useCases": [
       "Which audio player should GesturDJ use on my IQ8 board?",
       "Why is there a delay before sound plays on my board?",
       "Measure aplay, paplay and pw-play latency on this device",
-      "Is audio output working on the board?"
+      "Is audio output working on the board?",
+      "List the audio sinks my board exposes and which one is the default",
+      "Pick the lowest-latency way to play generated music on my device"
     ]
   },
   "device-and-host-discovery": {
@@ -140,23 +157,29 @@
     ]
   },
   "gesturdj-build-journey": {
-    "displayName": "GesturDJ Step-by-Step Build",
-    "description": "Take a developer from no setup to a gesture recognizer that is trained, exported and validated on the machine that will run it, with a gesture-to-music mapping designed.",
+    "displayName": "GesturDJ Gesture-to-Music Build Guide",
+    "description": "Guide a developer through GesturDJ, a gesture-controlled music project, from no setup to a motion-gesture recognizer that is trained, exported to ONNX and validated on the machine that will run it (a PC or a Qualcomm Dragonwing IQ-8275 (IQ8) board), with a gesture-to-music mapping designed.",
     "useCases": [
       "Walk me through building GesturDJ from scratch",
-      "Train, export and validate a gesture model on my board",
+      "Train, export and validate a gesture model for my board",
+      "Which GesturDJ step should I do next, and what evidence proves the last one worked?",
       "Rerun the GesturDJ build steps after I changed the dataset",
-      "Where did my GesturDJ build fail and why?"
+      "Where did my GesturDJ build fail and why?",
+      "Design a gesture-to-music mapping for left, right and circle gestures",
+      "Check that my PC and board are ready before I start the GesturDJ build"
     ]
   },
   "gesture-dataset-preparation": {
     "displayName": "Gesture Dataset Preparation",
-    "description": "Choose and prepare a labelled motion dataset for gesture recognition (synthetic, public or your own capture), check its quality and split it for training.",
+    "description": "Choose and prepare a labelled accelerometer (motion) dataset for gesture recognition, whether synthetic, the public uWave set or your own capture, check its quality and class balance, and split it into train and held-out sets before training.",
     "useCases": [
-      "Prepare a synthetic accelerometer dataset for gesture recognition",
-      "Check my gesture recordings for class imbalance and bad samples",
+      "Prepare a synthetic accelerometer dataset for left, right and circle gestures",
+      "Check my gesture recordings for class imbalance, flat series and bad samples",
       "Split my motion data into train and held-out sets",
-      "Which gesture dataset should I start with?"
+      "Which gesture dataset should I start with?",
+      "Is my dataset good enough to train on, or do I need more samples per label?",
+      "Download the public uWave gesture dataset after showing me its license",
+      "Generate dataset-report.json and explain the warnings"
     ]
   },
   "gesture-event-contract": {
@@ -171,12 +194,14 @@
   },
   "gesture-model-training-and-evaluation": {
     "displayName": "Gesture Model Training and Evaluation",
-    "description": "Train a gesture recognizer (scikit-learn baseline or PyTorch), read the held-out result honestly and decide whether it is good enough to export.",
+    "description": "Train a motion-gesture classifier (scikit-learn baseline or PyTorch), read the held-out result honestly, spot overfitting or an unrealistically easy dataset, and decide whether the model is good enough to export.",
     "useCases": [
       "Train a gesture classifier on my accelerometer data",
-      "Is my model's held-out accuracy good enough or just overfitting?",
-      "Compare the scikit-learn baseline with a PyTorch model",
-      "Show the confusion matrix for my gesture model"
+      "Is my model's held-out accuracy good enough or is it overfitting?",
+      "Compare the scikit-learn baseline with a PyTorch model on the same split",
+      "Show the confusion matrix for my gesture model",
+      "My accuracy is 100%. Is that real or is my dataset too easy?",
+      "Decide whether this model is ready to export to ONNX"
     ]
   },
   "gesture-to-live-mix-design": {
@@ -211,42 +236,51 @@
   },
   "model-export-and-deployment": {
     "displayName": "Gesture Model ONNX Export and Packaging",
-    "description": "Export a trained PyTorch gesture model to a single-file ONNX model that a board without PyTorch can load, prove it matches the original and package it.",
+    "description": "Export a trained PyTorch gesture model to a single-file ONNX model that a board without PyTorch (such as the Qualcomm Dragonwing IQ-8275 (IQ8) or Arduino VENTUNO Q) can load, prove its outputs match the original, and package and copy it to the device.",
     "useCases": [
       "Export my gesture model to ONNX for the IQ8 board",
       "Check that the ONNX output matches the PyTorch model",
-      "Package the model so a torch-free board can run it",
-      "Copy the exported model to my device"
+      "Package the model so a board without PyTorch can run it",
+      "Copy the exported model and its preprocessing script to my device",
+      "Why is my exported ONNX model split into several files?",
+      "Export my gesture model for the Arduino VENTUNO Q"
     ]
   },
   "music-model-npu-deployment": {
-    "displayName": "Music Model NPU Readiness (IQ8)",
-    "description": "Check that an IQ8 board is ready to run the DiffRhythm/ACE-Step music transformer on its NPU: OS image, NPU firmware, runtime libraries and compiled model graphs.",
+    "displayName": "Music Model NPU Readiness Check (IQ8)",
+    "description": "Check that a Qualcomm Dragonwing IQ-8275 (IQ8) board is ready to run the ACE-Step (DiffRhythm-based) music transformer on its Hexagon NPU: Qualcomm Linux image, NPU firmware state, runtime libraries for the HTP v75 target, compiled model graphs and no stale server. Read-only by default.",
     "useCases": [
-      "Is my IQ8 board ready to run the music model on its NPU?",
+      "Is my IQ8 board ready to run the ACE-Step music model on its NPU?",
       "Check NPU firmware and runtime libraries before I deploy the music model",
       "Why do the NPU graphs fail to load on my board?",
-      "Run the preflight checks for ACE-Step on the IQ8 NPU"
+      "Run the preflight checks for ACE-Step on the IQ8 NPU",
+      "Check dmesg for external aborts since the last boot",
+      "Is another music-model server still running on the NPU?",
+      "Walk me through the six chained batches the ACE-Step model needs"
     ]
   },
   "npu-quantization-and-accuracy-gating": {
     "displayName": "NPU Quantization Accuracy Gate",
-    "description": "Decide whether an int8 or mixed-precision version of the music model is accurate enough to use by comparing it with a reference using cosine similarity and rejecting versions that fall below threshold.",
+    "description": "Decide whether an int8 or mixed-precision (int8 with fp16 layers) version of the music transformer is accurate enough to deploy on the NPU, by comparing its output with the fp16 reference using cosine similarity and rejecting versions below the threshold.",
     "useCases": [
       "Is my int8 music model accurate enough compared to fp16?",
       "Compare mixed-precision and all-int8 outputs against the reference",
       "Which layers should stay in fp16 to keep accuracy?",
-      "Accept or reject this quantized model with a cosine threshold"
+      "Accept or reject this quantized model using a 0.999 cosine threshold",
+      "Run the accuracy gate on every batch of my quantized model",
+      "Why did my quantized model fail the cosine check on batch 3?"
     ]
   },
   "on-device-gesture-validation": {
     "displayName": "On-Device Gesture Model Validation",
-    "description": "On the machine that will run the recognizer, check that the exported model matches the original, keeps its accuracy on held-out data and runs fast enough.",
+    "description": "On the machine that will run the gesture recognizer (for example a Qualcomm Dragonwing IQ-8275 (IQ8) board), check that the exported ONNX model matches the original, keeps its accuracy on held-out data and runs fast enough, and record the result.",
     "useCases": [
       "Validate my exported gesture model on the IQ8 board",
       "Measure inference latency of the gesture model on the device",
-      "Does the on-device model match the PC result?",
-      "Run the held-out accuracy check on the board"
+      "Does the on-device model give the same predictions as on my PC?",
+      "Run the held-out accuracy check on the board",
+      "Is my gesture model fast enough for live use?",
+      "Write the on-device validation record for my gesture model"
     ]
   },
   "p3-self-service-boundaries": {
@@ -290,13 +324,15 @@
     ]
   },
   "quad-app-builder": {
-    "displayName": "QUAD Application Builder",
-    "description": "Guide the full lifecycle of a Snapdragon AI application: requirements, implementation, testing, hardening, documentation and git push.",
+    "displayName": "Snapdragon AI Application Builder",
+    "description": "Guide the full lifecycle of a Snapdragon AI application built with QUAD (Qualcomm Unified AI Developer): requirements, implementation, testing, hardening, documentation and git push, for example a vision, speech or LLM app on the NPU.",
     "useCases": [
       "Build a vision app on Snapdragon with QUAD",
       "Create a QUAD application that runs an LLM on the NPU",
       "Scaffold an inference app and test it end to end",
-      "I want to build an ASR app on my Snapdragon X Elite laptop"
+      "I want to build a speech-recognition app on my Snapdragon X Elite laptop",
+      "Add tests and documentation to my Snapdragon app and push it to git",
+      "Harden my app: error handling, input validation and logging"
     ]
   },
   "quad-app-document": {
@@ -320,83 +356,99 @@
     ]
   },
   "quad-codegen": {
-    "displayName": "QUAD Inference Code Generator",
-    "description": "Pick the right platform, language and SDK combination for a model and generate compilable inference code.",
+    "displayName": "Inference Code Generator for Snapdragon",
+    "description": "Pick the right platform, language and SDK combination for a model with QUAD (Qualcomm Unified AI Developer) and generate compilable inference code: Python, C++ or an Android JNI binding.",
     "useCases": [
       "Generate inference code for my model",
       "Write a C++ app for this QNN model",
       "Give me Python boilerplate to run this model on the NPU",
-      "Create an Android JNI binding for my model"
+      "Create an Android JNI binding for my model",
+      "Which language and SDK should I use for a Windows on Snapdragon app?",
+      "Generate preprocessing and postprocessing code for my classifier"
     ]
   },
   "quad-configure": {
     "displayName": "QUAD Configuration Wizard",
-    "description": "Interactive wizard that asks about SDK paths, hardware and secrets, then writes quad.toml and .env. Run before first use or when hardware or SDK setup changes.",
+    "description": "Interactive wizard that asks about your Qualcomm AI Runtime (QAIRT) SDK paths, target hardware and secrets, then writes quad.toml and .env for QUAD (Qualcomm Unified AI Developer). Run it before first use or whenever your hardware or SDK setup changes.",
     "useCases": [
       "Configure QUAD for the first time",
       "Set my QAIRT SDK path and target hardware for QUAD",
       "Generate quad.toml and .env for my project",
-      "I changed my SDK location. Update the QUAD configuration"
+      "I changed my SDK location. Update the QUAD configuration",
+      "Add my Dragonwing IQ-9075 board as an SSH target in QUAD",
+      "Store my AI Hub token for QUAD without printing it"
     ]
   },
   "quad-convert": {
-    "displayName": "QUAD Model Conversion",
-    "description": "Walk through converting a model for Snapdragon (ONNX or PyTorch to QNN or SNPE), including calibration data and image format guidance.",
+    "displayName": "Model Conversion for the Snapdragon NPU",
+    "description": "Walk through converting a model for Snapdragon with QUAD (Qualcomm Unified AI Developer) (ONNX or PyTorch to QNN or SNPE), including quantization, calibration data and image format guidance. QNN is Qualcomm AI Engine Direct; SNPE is the Snapdragon Neural Processing Engine.",
     "useCases": [
       "Convert my ONNX model to run on the NPU",
-      "Quantize my PyTorch model with calibration data",
+      "Quantize my PyTorch model to int8 with calibration data",
       "Compile this model to QNN",
-      "What calibration images format does the converter need?"
+      "What calibration image format does the converter need?",
+      "Convert my YOLOv8 ONNX model to a QNN DLC",
+      "My conversion failed with an unsupported operator. What now?"
     ]
   },
   "quad-deploy": {
-    "displayName": "QUAD Model Deployment",
-    "description": "Deploy a converted model to a target device (Android phone, Arduino board or Snapdragon target) with deploy.sh and run remote profiling.",
+    "displayName": "Model Deployment to a Snapdragon Target",
+    "description": "Deploy a converted model with QUAD (Qualcomm Unified AI Developer) to a target device (an Android phone, an Arduino board or a Snapdragon device such as the Dragonwing IQ-9075) using deploy.sh, and collect remote profiling results.",
     "useCases": [
       "Deploy my model to my Android phone",
       "Push this model to my Snapdragon target and profile it",
-      "Deploy to my IQ-9075 board",
-      "Run the deploy script and collect remote profiling results"
+      "Deploy to my Dragonwing IQ-9075 board",
+      "Run the deploy script and collect remote profiling results",
+      "My deployed model fails to start on the device. What do I check?",
+      "Deploy my model to my Arduino board"
     ]
   },
   "quad-detect": {
     "displayName": "QUAD Hardware Detection",
-    "description": "Probe the local machine and any reachable devices (USB boards via adb, SSH targets in quad.toml) and report chipset, CPU/GPU/NPU, RAM, runtimes and SDK status.",
+    "description": "Probe the local machine and any reachable Snapdragon devices (USB boards via adb, SSH targets listed in quad.toml) and report chipset, CPU, GPU and NPU, RAM, installed runtimes and Qualcomm AI Runtime (QAIRT) SDK status for QUAD (Qualcomm Unified AI Developer).",
     "useCases": [
       "What hardware do I have?",
       "Do I have an NPU on this machine?",
-      "Probe my IQ-9075 board over SSH",
-      "What targets are connected right now?"
+      "Probe my Dragonwing IQ-9075 board over SSH",
+      "What targets are connected right now?",
+      "Which Qualcomm AI runtimes are installed on this PC?",
+      "List the Android devices visible over adb and their chipsets"
     ]
   },
   "quad-doctor": {
     "displayName": "QUAD Install Diagnostics",
-    "description": "Run the local diagnostic suite for a QUAD install and explain each warning with the exact fix.",
+    "description": "Run the local diagnostic suite for a QUAD (Qualcomm Unified AI Developer) installation and explain each warning with the exact fix: Python environment, QAIRT SDK paths, MCP server connectivity and mock versus real mode.",
     "useCases": [
       "Is QUAD set up correctly?",
       "Diagnose my QUAD install",
-      "Why isn't real mode working?",
-      "Check my SDK setup for QUAD"
+      "Why isn't QUAD running in real mode?",
+      "Check my QAIRT SDK setup for QUAD",
+      "Explain every warning from the QUAD doctor and how to fix it",
+      "My QUAD MCP server is unreachable. What should I check?"
     ]
   },
   "quad-executorch": {
-    "displayName": "QUAD ExecuTorch Export and Run",
-    "description": "Drive the PyTorch to .pte to profile to runner flow with a QUAD MCP server, using the executorch_mobilenet sample as the reference.",
+    "displayName": "ExecuTorch Export and Run on Snapdragon",
+    "description": "Drive the PyTorch to ExecuTorch .pte file, profile and runner flow with a QUAD (Qualcomm Unified AI Developer) MCP server, using the executorch_mobilenet sample as the reference.",
     "useCases": [
       "Export my PyTorch model to ExecuTorch",
       "Make a .pte file and run it on the NPU",
       "Profile my ExecuTorch model with QUAD",
-      "Follow the executorch_mobilenet sample for my own model"
+      "Follow the executorch_mobilenet sample for my own model",
+      "What is the difference between a QNN DLC and an ExecuTorch .pte for my model?",
+      "Why does my .pte run on CPU instead of the NPU?"
     ]
   },
   "quad-npu-prereqs": {
-    "displayName": "QUAD NPU Prerequisites Setup",
-    "description": "Detect the host architecture and target, review the AI Hub token, NPU wheels and environment prerequisites with you, then provision what is missing for Snapdragon NPU development.",
+    "displayName": "Snapdragon NPU Development Prerequisites",
+    "description": "Detect the host architecture and target, review the Qualcomm AI Hub token, NPU Python wheels and environment prerequisites with you, then provision whatever is missing for Hexagon NPU development with QUAD (Qualcomm Unified AI Developer).",
     "useCases": [
       "Set up my machine to develop for the Hexagon NPU",
       "What prerequisites do I need to run a model on the NPU?",
       "Configure my AI Hub token and NPU wheels",
-      "Prepare my Snapdragon laptop for NPU builds"
+      "Prepare my Snapdragon laptop for NPU builds",
+      "Why can't my Python environment find the NPU backend?",
+      "Check my ARM64 Python and QAIRT versions match"
     ]
   },
   "quad-orchestrate": {
@@ -410,13 +462,15 @@
     ]
   },
   "quad-profile": {
-    "displayName": "QUAD Model Profiler",
-    "description": "Pick the right profiling level and show a summary of latency and utilisation, including bottlenecks and QHAS profiling.",
+    "displayName": "NPU Model Profiler",
+    "description": "Pick the right profiling level with QUAD (Qualcomm Unified AI Developer) and show a summary of latency and utilisation, including bottlenecks and Qualcomm Hexagon Analysis Suite (QHAS) profiling, and lint a model for NPU-unfriendly operators.",
     "useCases": [
       "Profile my model and find bottlenecks",
       "Measure NPU latency for this model",
       "Run QHAS profiling",
-      "Lint my model for NPU-unfriendly ops"
+      "Lint my model for NPU-unfriendly ops",
+      "Which layers of my model are not running on the NPU?",
+      "Compare the latency of my int8 and fp16 models"
     ]
   },
   "quad-pte-run": {
@@ -431,32 +485,38 @@
   },
   "quad-qnn-runtime-debug": {
     "displayName": "QNN Runtime Failure Debugging",
-    "description": "Diagnose Qualcomm AI (QNN/QAIRT) runtime failures on already-compiled models: backend initialisation, ABI or version mismatch, symbol resolution and input contract errors.",
+    "description": "Diagnose failures of already-compiled models in the Qualcomm AI Engine Direct (QNN) runtime, part of the Qualcomm AI Runtime (QAIRT) SDK: backend initialisation, ABI or version mismatch, symbol resolution and input contract errors.",
     "useCases": [
-      "QNN backend won't initialize. What is wrong?",
-      "Unable to find a valid interface provider",
+      "My QNN backend won't initialize. What is wrong?",
+      "I get \"Unable to find a valid interface provider\"",
       "My model fails to load with a symbol error on the NPU",
-      "Check for an SDK version mismatch between my model and runtime"
+      "Check for an SDK version mismatch between my model and the runtime",
+      "Why does my model load on CPU but fail on the HTP backend?",
+      "Verify my model's input shapes and data types match what the runtime expects"
     ]
   },
   "quad-quickstart": {
-    "displayName": "QUAD Quickstart",
-    "description": "Guided first run: hardware detection, SDK check, MCP server connectivity and a sample inference, end to end.",
+    "displayName": "QUAD Guided First Run",
+    "description": "Guided first run of QUAD (Qualcomm Unified AI Developer), the AI-assisted workflow for Qualcomm Snapdragon NPUs: detect your hardware, check the Qualcomm AI Runtime (QAIRT) SDK, confirm the QUAD MCP server connection and run a sample inference end to end.",
     "useCases": [
       "Get me started with QUAD",
-      "Set up Qualcomm AI on my Snapdragon laptop",
+      "Set up Qualcomm AI development on my Snapdragon X Elite laptop",
       "Run the first sample inference on my NPU",
-      "Check everything is connected before I start"
+      "Check everything is connected before I start",
+      "What does QUAD need on my machine before I can convert a model?",
+      "Walk me through my first model run on the Hexagon NPU"
     ]
   },
   "quad-recommend": {
-    "displayName": "QUAD Deployment Recommendations",
-    "description": "Combine model, target and use case into specific deployment recommendations, such as NPU or GPU and INT4 or INT8.",
+    "displayName": "NPU vs GPU Deployment Recommendations",
+    "description": "Combine your model, target device and use case into specific deployment recommendations with QUAD (Qualcomm Unified AI Developer), such as NPU or GPU and INT4 or INT8 precision.",
     "useCases": [
       "What's the best way to deploy this model on Snapdragon?",
       "Should I use INT4 or INT8?",
       "NPU or GPU for my LLM?",
-      "Recommend an approach for a real-time vision model"
+      "Recommend an approach for a real-time vision model on a Snapdragon X Elite laptop",
+      "Which precision gives the best speed for my speech-recognition model?",
+      "What are the trade-offs of running my model on the NPU instead of the CPU?"
     ]
   },
   "quad-run-ps1": {
@@ -521,22 +581,26 @@
   },
   "roboagent-run-model": {
     "displayName": "Run a QNN Model on Windows on Snapdragon",
-    "description": "Run a QNN .pte model on a Windows on Snapdragon device: simple operator tests with qnn_executor_runner, or LLMs with qnn_llama_runner.",
+    "description": "Run an ExecuTorch .pte model built for the Qualcomm AI Engine Direct (QNN) backend on a Windows on Snapdragon PC: simple operator tests with qnn_executor_runner, or large language models such as Gemma with qnn_llama_runner.",
     "useCases": [
       "Run this .pte model on my Snapdragon PC",
       "Benchmark LLM tokens per second with qnn_llama_runner",
       "Debug a qnn_executor_runner failure",
-      "Validate my QNN model with a simple op test"
+      "Validate my QNN model with a simple operator test",
+      "Run Gemma on the NPU of my Windows on Snapdragon laptop",
+      "Why does my .pte file load but produce wrong output?"
     ]
   },
   "roboagent-setup": {
     "displayName": "ExecuTorch QNN Build Setup on Windows on Snapdragon",
-    "description": "Set up the ExecuTorch and QNN backend build environment natively on Windows on Snapdragon ARM64 (no cross-compile, no adb: the device is both host and target).",
+    "description": "Set up the ExecuTorch and Qualcomm AI Engine Direct (QNN) backend build environment natively on a Windows on Snapdragon ARM64 PC (no cross-compile, no adb: the PC is both host and target) for RoboAgent, an ExecuTorch QNN playground.",
     "useCases": [
       "Set up the ExecuTorch QNN build environment on my Snapdragon PC",
       "Check prerequisites before building a QNN runner",
       "Prepare this device as both host and target for QNN",
-      "What do I install before building ExecuTorch with the QNN backend?"
+      "What do I install before building ExecuTorch with the QNN backend on Windows?",
+      "Verify my QAIRT 2.47 install is visible to the ExecuTorch build",
+      "Why does the ExecuTorch QNN build fail on my ARM64 Windows PC?"
     ]
   },
   "roboagent-evaluation": {
@@ -591,12 +655,14 @@
   },
   "vision-model-validation": {
     "displayName": "Edge Vision Model Validation",
-    "description": "Validate an ONNX or QNN object detector (for example YOLOv8) used by VSaaS and record results labelled by backend and target.",
+    "description": "Validate an ONNX or Qualcomm AI Engine Direct (QNN) object detector, for example YOLOv8, used by VSaaS (private edge video intelligence with searchable insights) on a Qualcomm Dragonwing IQ-8275 (IQ8) board, and record each result labelled by model, backend and target.",
     "useCases": [
       "Validate my YOLOv8 ONNX detector",
       "Run the QNN YOLOv8 DLC on my IQ8 and record the result",
-      "Compare ONNX CPU and QNN results on the same video",
-      "Which backend and target produced this detection result?"
+      "Compare ONNX CPU and QNN results on the same video frame",
+      "Which backend and target produced this detection result?",
+      "Did my detector really run on the NPU, or only on the CPU?",
+      "Record detection count, top labels and scores for my test frame"
     ]
   },
   "ai-inference-benchmark": {

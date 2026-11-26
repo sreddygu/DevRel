@@ -44,3 +44,28 @@ this in the decision.
 Complete when [`dataset-report.json`](../../evidence/pc-run/dataset-report.json) exists, `ok` is true, warnings were shown, and
 the decision is recorded. This skill never trains a model and never edits the
 developer's files.
+
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Not device-specific |
+| Target OS | No target OS constraint declared |
+| Host OS | Windows, Linux (or WSL) |
+| Requirements | Python 3.10+; PC and Qualcomm IQ8 board (Qualcomm Linux 2.0); QAIRT for the NPU music path |
+
+References: [GesturDJ README](https://github.com/sreddygu/DevRel/blob/main/GesturDJ/README.md), [IQ8 SSH runbook](https://github.com/sreddygu/DevRel/blob/main/GesturDJ/ACE-Step/IQ8_SSH_RUNBOOK.md).
+
+## Example prompts
+
+- Prepare a synthetic accelerometer dataset for left, right and circle gestures
+- Check my gesture recordings for class imbalance, flat series and bad samples
+- Split my motion data into train and held-out sets
+- Which gesture dataset should I start with?
+- Is my dataset good enough to train on, or do I need more samples per label?
+- Download the public uWave gesture dataset after showing me its license
+- Generate dataset-report.json and explain the warnings
+
+<!-- skills-hub:end -->

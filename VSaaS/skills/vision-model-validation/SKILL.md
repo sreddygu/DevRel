@@ -22,3 +22,27 @@ backend and target. Do not infer hardware acceleration from configuration alone.
 
 This is a functional validation, not an accuracy certification. It does not
 claim NPU execution without target-side evidence.
+
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Dragonwing IQ-8275 EVK (`qcs8275-iq-8275-evk-pro`) |
+| Target OS | No target OS constraint declared |
+| Host OS | Any |
+| Requirements | Python 3.12 and Linux (Ubuntu 24.04); ONNX Runtime or QNN YOLOv8 DLC for real perception |
+
+References: [VSaaS README](https://github.com/sreddygu/DevRel/blob/main/VSaaS/README.md), [Edge AI notes](https://github.com/sreddygu/DevRel/blob/main/VSaaS/docs/EDGE_AI.md).
+
+## Example prompts
+
+- Validate my YOLOv8 ONNX detector
+- Run the QNN YOLOv8 DLC on my IQ8 and record the result
+- Compare ONNX CPU and QNN results on the same video frame
+- Which backend and target produced this detection result?
+- Did my detector really run on the NPU, or only on the CPU?
+- Record detection count, top labels and scores for my test frame
+
+<!-- skills-hub:end -->
