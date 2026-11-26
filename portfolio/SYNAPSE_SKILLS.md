@@ -62,7 +62,6 @@ below contains only domain-specific work for that project.
 | `LLM` | Proposed | `p3-device` | `local-llm-runtime-setup`, `model-inference-validation`, `npu-inference-benchmark` |
 | `mojo-max-int` | Proposed | `p3-core` | `mojo-project-setup`, `kernel-performance-validation`, `build-artifact-verification` |
 | `Multiverse-of-Developers` | Proposed | `p3-core` | `developer-persona-mapping`, `experience-composition`, `portfolio-demo-validation` |
-| `QUAD-Client` | **Enabled**: 3 Synapse skills | `p3-device` | Maintain the existing QUAD-Client catalog; no bootstrap work required. |
 | `RoboAgent` | **Enabled**: 3 Synapse skills | `p3-device` | Maintain the existing RoboAgent catalog; no bootstrap work required. |
 | `sinewave` | Proposed | `p3-core` | `audio-signal-generation`, `waveform-output-validation` |
 | `VSaaS` | **Enabled**: 3 Synapse skills | `p3-device` | Maintain the existing VSaaS catalog; no bootstrap work required. |

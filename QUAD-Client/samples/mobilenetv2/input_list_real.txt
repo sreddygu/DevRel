@@ -1,1 +1,0 @@
-C:\Dropbox\DevRel\Academy\qa-intermediate-curriculum\projects\QUAD-Client\samples\mobilenetv2\test_input.raw

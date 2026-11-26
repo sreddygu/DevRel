@@ -15,10 +15,6 @@
     },
     {
       "type": "folder",
-      "path": "QUAD-Client"
-    },
-    {
-      "type": "folder",
       "path": "RoboAgent"
     },
     {
