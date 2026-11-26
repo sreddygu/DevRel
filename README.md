@@ -48,8 +48,10 @@ must have a self-explanatory name and description (acronyms such as AURA, QUAD, 
 QNN expanded on first use), at least five example prompts, and declared
 compatibility (devkits, target OS, host OS). The same compatibility table and
 example prompts are written into every published `SKILL.md`, including the QUAD-Client
-copies (the tool keeps their three byte-identical forms in sync). Run
-`python tools/skills_hub_manifest.py --check` before opening a catalog PR.
+copies (the tool keeps their three byte-identical forms in sync). [`skills-synapse.json`](skills-synapse.json) is the single inventory of all listed skills
+(project, manifest, metadata page and full entry), generated from the per-project
+`skills.json` files so it cannot drift. Run
+`python tools/skills_hub_manifest.py --check` before opening a catalog PR; it fails if the inventory is stale.
 
 | Shared skill | Use when |
 | --- | --- |
