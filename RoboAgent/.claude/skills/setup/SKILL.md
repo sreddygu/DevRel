@@ -53,3 +53,27 @@ Output: `build-arm64-windows\` — runtime, QNN backend DLL, `qnn_executor_runne
 | `flatc` not found after skipping the wheel build | `$env:FLATC_EXECUTABLE = "<repo>\build-arm64-windows\third-party\flatc_ep\bin\flatc.exe"` |
 
 Once built, see the `run-model` skill to actually execute a `.pte`.
+
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Not device-specific |
+| Target OS | No target OS constraint declared |
+| Host OS | Windows |
+| Requirements | Snapdragon X (SC8380XP) Windows on ARM device; QAIRT 2.47; no adb or cross-compile |
+
+References: [RoboAgent README](https://github.com/sreddygu/DevRel/blob/main/RoboAgent/README.md).
+
+## Example prompts
+
+- Set up the ExecuTorch QNN build environment on my Snapdragon PC
+- Check prerequisites before building a QNN runner
+- Prepare this device as both host and target for QNN
+- What do I install before building ExecuTorch with the QNN backend on Windows?
+- Verify my QAIRT 2.47 install is visible to the ExecuTorch build
+- Why does the ExecuTorch QNN build fail on my ARM64 Windows PC?
+
+<!-- skills-hub:end -->

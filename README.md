@@ -47,9 +47,8 @@ copy in [`tools/skills_hub_copy.json`](tools/skills_hub_copy.json). Every listed
 must have a self-explanatory name and description (acronyms such as AURA, QUAD, NPU and
 QNN expanded on first use), at least five example prompts, and declared
 compatibility (devkits, target OS, host OS). The same compatibility table and
-example prompts are written into each `SKILL.md` owned by this repo; the runtime-synced
-QUAD-Client and RoboAgent copies stay byte-identical and carry them on their
-`skills-metadata/` page instead. Run
+example prompts are written into every published `SKILL.md`, including the QUAD-Client
+copies (the tool keeps their three byte-identical forms in sync). Run
 `python tools/skills_hub_manifest.py --check` before opening a catalog PR.
 
 | Shared skill | Use when |

@@ -68,3 +68,27 @@ optionally run inference there.
 - Generate Android Kotlin / JNI code via `quad-codegen` and bundle
   into your app
 - Set up CI by templating these commands in `.github/workflows/`
+
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Not device-specific |
+| Target OS | No target OS constraint declared |
+| Host OS | Windows, Linux (or WSL) |
+| Requirements | Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows |
+
+References: [QUAD Client README](https://github.com/sreddygu/DevRel/blob/main/QUAD-Client/README.md).
+
+## Example prompts
+
+- Deploy my model to my Android phone
+- Push this model to my Snapdragon target and profile it
+- Deploy to my Dragonwing IQ-9075 board
+- Run the deploy script and collect remote profiling results
+- My deployed model fails to start on the device. What do I check?
+- Deploy my model to my Arduino board
+
+<!-- skills-hub:end -->

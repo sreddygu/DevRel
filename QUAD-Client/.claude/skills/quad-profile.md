@@ -152,3 +152,26 @@ is NOT proof the NPU was used (ORT silently falls back to CPU on QNN failure).
    Never treat cross-version numbers as comparable; pin and report the version
    alongside every result.
 
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Not device-specific |
+| Target OS | No target OS constraint declared |
+| Host OS | Windows, Linux (or WSL) |
+| Requirements | Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows |
+
+References: [QUAD Client README](https://github.com/sreddygu/DevRel/blob/main/QUAD-Client/README.md).
+
+## Example prompts
+
+- Profile my model and find bottlenecks
+- Measure NPU latency for this model
+- Run QHAS profiling
+- Lint my model for NPU-unfriendly ops
+- Which layers of my model are not running on the NPU?
+- Compare the latency of my int8 and fp16 models
+
+<!-- skills-hub:end -->

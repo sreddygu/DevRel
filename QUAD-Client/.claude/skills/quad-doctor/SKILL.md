@@ -52,3 +52,27 @@ Arguments passed: `$ARGUMENTS`
      and `onnxruntime-genai`; plus `qai-hub` / `qai-hub-models`.
    If any are missing, the fix is: **run `/quad-npu-prereqs`** — it
    reviews and provisions the token + wheels + env/config in one pass.
+
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Not device-specific |
+| Target OS | No target OS constraint declared |
+| Host OS | Windows, Linux (or WSL) |
+| Requirements | Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows |
+
+References: [QUAD Client README](https://github.com/sreddygu/DevRel/blob/main/QUAD-Client/README.md).
+
+## Example prompts
+
+- Is QUAD set up correctly?
+- Diagnose my QUAD install
+- Why isn't QUAD running in real mode?
+- Check my QAIRT SDK setup for QUAD
+- Explain every warning from the QUAD doctor and how to fix it
+- My QUAD MCP server is unreachable. What should I check?
+
+<!-- skills-hub:end -->

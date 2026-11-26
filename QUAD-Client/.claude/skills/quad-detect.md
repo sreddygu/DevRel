@@ -365,3 +365,26 @@ these harder checks — each caught a real misdiagnosis during IQ-9075 work:
     `get_available_providers()` on a Linux SoC board. Cross-link
     `/quad-qnn-runtime-debug` for the direct-execution fallback.
 
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Not device-specific |
+| Target OS | No target OS constraint declared |
+| Host OS | Windows, Linux (or WSL) |
+| Requirements | Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows |
+
+References: [QUAD Client README](https://github.com/sreddygu/DevRel/blob/main/QUAD-Client/README.md).
+
+## Example prompts
+
+- What hardware do I have?
+- Do I have an NPU on this machine?
+- Probe my Dragonwing IQ-9075 board over SSH
+- What targets are connected right now?
+- Which Qualcomm AI runtimes are installed on this PC?
+- List the Android devices visible over adb and their chipsets
+
+<!-- skills-hub:end -->

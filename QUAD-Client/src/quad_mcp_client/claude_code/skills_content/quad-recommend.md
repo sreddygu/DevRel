@@ -104,3 +104,27 @@ result = await convert_model(
 - **Batch + on battery** — efficiency mode is almost always right.
 - **LLM / transformer** — recommend FP16 + INT4 weights via AIMET +
   KV-cache. Profile latency per-token, not per-inference.
+
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Not device-specific |
+| Target OS | No target OS constraint declared |
+| Host OS | Windows, Linux (or WSL) |
+| Requirements | Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows |
+
+References: [QUAD Client README](https://github.com/sreddygu/DevRel/blob/main/QUAD-Client/README.md).
+
+## Example prompts
+
+- What's the best way to deploy this model on Snapdragon?
+- Should I use INT4 or INT8?
+- NPU or GPU for my LLM?
+- Recommend an approach for a real-time vision model on a Snapdragon X Elite laptop
+- Which precision gives the best speed for my speech-recognition model?
+- What are the trade-offs of running my model on the NPU instead of the CPU?
+
+<!-- skills-hub:end -->

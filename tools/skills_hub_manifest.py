@@ -459,6 +459,18 @@ def ensure_sections(skill, folder, skill_dir):
     return 1
 
 
+def sync_runtime_copies(folder, skill_dir):
+    """Keep QUAD-Client's flat and pip-bundled copies byte-identical to the dir form
+    (scripts/check_skills_sync.py enforces this)."""
+    if folder != "QUAD-Client":
+        return
+    data = (skill_dir / "SKILL.md").read_bytes()
+    for copy in (skill_dir.parent / f"{skill_dir.name}.md",
+                 ROOT / folder / "src/quad_mcp_client/claude_code/skills_content" / f"{skill_dir.name}.md"):
+        if copy.is_file() and copy.read_bytes() != data:
+            copy.write_bytes(data)
+
+
 def render_catalog(skill, level, folder):
     v = skill["versions"][-1]
     c = v.get("compatibility", {})
@@ -537,7 +549,9 @@ def enrich(folder, manifest):
             changed["tags"] += 1
         if not is_runtime(v["path"]):
             changed["frontmatter"] += ensure_front_matter(s, v["version"], sdir)
-            changed["sections"] = changed.get("sections", 0) + ensure_sections(s, folder, sdir)
+        changed["sections"] = changed.get("sections", 0) + ensure_sections(s, folder, sdir)
+        if is_runtime(v["path"]):
+            sync_runtime_copies(folder, sdir)
         changed["md"] += sync_metadata_md(folder, s)
     return changed
 
@@ -582,7 +596,7 @@ def validate(folder, label, manifest):
                 problems.append(f"{label}:{n}: files do not cover SKILL.md")
             if any(f.endswith("skill.yaml") for f in v["files"]):
                 problems.append(f"{label}:{n}: skill.yaml must not be published")
-            if not is_runtime(v["path"]) and MARK_BEGIN not in doc.read_text(encoding="utf-8-sig"):
+            if MARK_BEGIN not in doc.read_text(encoding="utf-8-sig"):
                 problems.append(f"{label}:{n}: SKILL.md lacks Compatibility / Example prompts sections")
             for f in v.get("files", []):
                 if f.endswith("/**") and not (ROOT / f[:-3]).is_dir():

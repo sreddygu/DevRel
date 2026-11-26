@@ -119,3 +119,27 @@ QNN execution** rather than continuing to debug the plugin path. Cross-link:
 - On a Qualcomm Linux SoC board, `onnxruntime-qnn` installs cleanly but
   `QNNExecutionProvider` may **never** appear in `get_available_providers()` —
   an unverified, non-primary path. Use the CLI tools instead.
+
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Not device-specific |
+| Target OS | No target OS constraint declared |
+| Host OS | Windows, Linux (or WSL) |
+| Requirements | Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows |
+
+References: [QUAD Client README](https://github.com/sreddygu/DevRel/blob/main/QUAD-Client/README.md).
+
+## Example prompts
+
+- My QNN backend won't initialize. What is wrong?
+- I get "Unable to find a valid interface provider"
+- My model fails to load with a symbol error on the NPU
+- Check for an SDK version mismatch between my model and the runtime
+- Why does my model load on CPU but fail on the HTP backend?
+- Verify my model's input shapes and data types match what the runtime expects
+
+<!-- skills-hub:end -->

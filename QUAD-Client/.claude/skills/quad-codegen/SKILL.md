@@ -115,3 +115,27 @@ convention:
 
 This applies to every `samples/`, `examples/`, and standalone script
 produced by this skill.
+
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Not device-specific |
+| Target OS | No target OS constraint declared |
+| Host OS | Windows, Linux (or WSL) |
+| Requirements | Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows |
+
+References: [QUAD Client README](https://github.com/sreddygu/DevRel/blob/main/QUAD-Client/README.md).
+
+## Example prompts
+
+- Generate inference code for my model
+- Write a C++ app for this QNN model
+- Give me Python boilerplate to run this model on the NPU
+- Create an Android JNI binding for my model
+- Which language and SDK should I use for a Windows on Snapdragon app?
+- Generate preprocessing and postprocessing code for my classifier
+
+<!-- skills-hub:end -->
