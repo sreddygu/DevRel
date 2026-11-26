@@ -15,7 +15,8 @@ This story is the *connective tissue* between the other stories: [AURA](../AURA/
 is the single-device agent; this one shows the **same agent state** handed from
 an IQ8 hub to an X Elite laptop to a wearable without losing the thread.
 
-> **Status: narrative brief.** Buildable today as a **two-node handoff** on the
+> **Status: two-node handoff implemented and verified** (IQ8 hub → PC, see
+> [Run the handoff](#run-the-handoff)). Originally a narrative brief; buildable as a **two-node handoff** on the
 > existing fleet (IQ8 ↔ X Elite ↔ IQ9) reusing the AURA `Event` contract and the
 > Agents project's `--base-url` portability. Phone/wearable/XR nodes are
 > **aspirational** until that silicon is on the bench (see below).
@@ -97,3 +98,40 @@ an IQ8 hub to an X Elite laptop to a wearable without losing the thread.
   query on both backends, compare answers.
 - **Content:** blog — *"Which processor should answer? Routing AI across a local
   fleet."*
+
+---
+
+## Run the handoff
+
+`handoff/` is a stdlib-only module (plus AURA's `Event` and `MemoryStore`) that moves
+grounded context between nodes. The hub serves a token-protected, read-only bundle bound
+to loopback; the other node pulls it through an SSH tunnel. Raw-sensor attributes
+(image, frame, audio, embedding...) are stripped before export, bundles carry a SHA-256
+checksum, and imports are idempotent.
+
+```bash
+# hub (e.g. IQ8): copy AURA/src/aura and AI-Across-Devices/handoff next to the memory db
+HANDOFF_TOKEN=<random> PYTHONPATH=. python3 -m handoff serve --db aura.db --port 8765
+
+# laptop: tunnel, then pull ("catch me up on the bay")
+ssh -N -L 18765:127.0.0.1:8765 <user>@<hub>
+HANDOFF_TOKEN=<same> PYTHONPATH=../AURA/src:. python -m handoff pull --db laptop.db --url http://127.0.0.1:18765
+```
+
+Tests: `PYTHONPATH=../AURA/src:. pytest tests` (6 pass; needs `numpy` for AURA's store).
+
+**Verified on hardware:** Dragonwing IQ-8275 (Qualcomm Linux 2.0, Python 3.14) served three
+seeded Events; a Windows-on-Snapdragon PC pulled them through the tunnel (3 added, then
+0 added on a repeat pull), `where_is("package")` answered from the pulled memory, a wrong
+token returned 401, and the `image_path` attribute did not cross the wire. The board's
+trimmed Python lacks `html`, so the server uses `socketserver` instead of `http.server`.
+**Answering over pulled context:** `python -m handoff ask --db laptop.db --base-url
+http://127.0.0.1:11434/v1 --model qwen2.5:3b "Where is the package?"` puts only the local
+Events in the prompt and calls any OpenAI-compatible endpoint (llama.cpp, Ollama, GenieX), so
+swapping `--base-url` is the cross-device routing step. Measured on the PC via Ollama
+(not the NPU): Qwen2.5-3B answered "near door 2" and "Do not know" (name not in the data)
+correctly; Qwen2.5-0.5B got both wrong, so use 3B or larger for the catch-up query.
+
+Not yet validated: a Genie/Qwen3-4B NPU backend behind the same endpoint (no model cached
+in GenieX on the bench PC), and the phone, wearable and XR nodes (aspirational silicon; the
+wearable proxy runs on the IQ8, see [Wearable AI](../Wearable-AI/README.md)).
