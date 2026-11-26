@@ -87,7 +87,6 @@ an IQ8 hub to an X Elite laptop to a wearable without losing the thread.
 - Reuses **AURA** (`../AURA`) for the Event contract, memory, and hybrid tunnel.
 - Reuses **Agents** (`../Agents`) for the write-once/run-anywhere agent and
   per-device profiles — the `--base-url` swap *is* cross-device orchestration.
-- Complements **QUAD-Client** (`../QUAD-Client`) for MCP-based remote calls.
 
 ## Event / Workshop Hooks
 

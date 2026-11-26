@@ -51,7 +51,6 @@ GESTURDJ_DEVICE = {
     "live-mixer-and-latency-validation", "music-model-npu-deployment",
     "npu-quantization-and-accuracy-gating",
 }
-QUAD_DEVICE = {"device-target-configuration"}
 QLI_DEVICE = {
     "device-identity-discovery", "baseline-evidence-collection", "ai-model-execution",
     "ai-inference-benchmark", "diagnostic-log-collection", "device-connectivity-validation",
@@ -77,14 +76,6 @@ def compat_for(folder, name):
     if folder == "GesturDJ":
         # Dataset preparation and training are host-side Python (validated on a PC).
         return IQ8_DEVICE if name in GESTURDJ_DEVICE else {"hostOs": WIN_LINUX}
-    if folder == "QUAD-Client":
-        if name in QUAD_DEVICE:
-            return IQ9_DEVICE
-        if name == "quad-run-ps1":
-            return {"hostOs": ["windows"]}
-        if name == "quad-build-npu-bundle":
-            return {"hostOs": ["linux", "windows", "macos"]}
-        return {"hostOs": WIN_LINUX}
     if folder == "RoboAgent":
         return {"hostOs": ["windows"]}  # Windows on Snapdragon is both host and target
     if folder == "VSaaS":
@@ -104,7 +95,6 @@ REQUIREMENTS = {
     "AURA": "Arduino VENTUNO Q or Qualcomm IQ8 (QCS8275); Python 3.10+; optional Genie endpoint (QAIRT 2.47) on a trusted Snapdragon host",
     "EdgeAgent": "Python 3.10+; llama.cpp server (CPU) or Genie shim over QAIRT (NPU, Snapdragon X Elite host)",
     "GesturDJ": "Python 3.10+; PC and Qualcomm IQ8 board (Qualcomm Linux 2.0); QAIRT for the NPU music path",
-    "QUAD-Client": "Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows",
     "RoboAgent": "Snapdragon X (SC8380XP) Windows on ARM device; QAIRT 2.47; no adb or cross-compile",
     "VSaaS": "Python 3.12 and Linux (Ubuntu 24.04); ONNX Runtime or QNN YOLOv8 DLC for real perception",
     "qli_dogfooding": "Qualcomm Linux 2.0 on IQ8 or IQ9; SSH access; Python 3.10+ on the host",
@@ -182,7 +172,6 @@ PROJECT_TAGS = {
     "AURA": ["ai-agent", "physical-ai", "on-device-ai", "iq8", "ventuno-q"],
     "EdgeAgent": ["ai-agent", "llm", "edge-ai", "snapdragon-x-elite", "iq8", "iq9"],
     "GesturDJ": ["gesture-recognition", "music", "npu", "iq8"],
-    "QUAD-Client": ["qualcomm-ai", "mcp", "npu", "snapdragon-x-elite", "qairt"],
     "RoboAgent": ["llm", "executorch", "qnn", "windows-on-snapdragon", "gemma"],
     "VSaaS": ["video-analytics", "computer-vision", "yolov8", "iq8"],
     "qli_dogfooding": ["qualcomm-linux", "qli", "iq8", "iq9", "readiness"],
@@ -200,12 +189,6 @@ CATALOG = {
         "gesture-model-training-and-evaluation", "model-export-and-deployment",
         "on-device-gesture-validation", "music-model-npu-deployment",
         "npu-quantization-and-accuracy-gating", "audio-output-integration",
-    },
-    "QUAD-Client": {
-        "quad-quickstart", "quad-doctor", "quad-detect", "quad-configure",
-        "quad-npu-prereqs", "quad-convert", "quad-codegen", "quad-profile",
-        "quad-deploy", "quad-executorch", "quad-qnn-runtime-debug",
-        "quad-recommend", "quad-app-builder",
     },
     "RoboAgent": {"roboagent-setup", "roboagent-run-model"},
     "VSaaS": {"vision-model-validation"},
@@ -225,7 +208,7 @@ STOP = {"and", "the", "of", "for", "to", "a", "in", "on", "with", "an"}
 # Runtime-synced skills (shipped/byte-checked copies); never edited here.
 RUNTIME_DIRS = (".claude/", ".pi/", ".codex/")
 
-ACRONYMS = {"quad": "QUAD", "qli": "QLI", "npu": "NPU", "qnn": "QNN", "pte": "PTE", "ps1": "PS1",
+ACRONYMS = {"qli": "QLI", "npu": "NPU", "qnn": "QNN", "pte": "PTE", "ps1": "PS1",
             "roboagent": "RoboAgent", "pi": "Pi", "p3": "P3", "aura": "AURA", "unoq": "UNO Q",
             "gesturdj": "GesturDJ", "executorch": "ExecuTorch", "onnx": "ONNX", "ai": "AI"}
 
@@ -386,7 +369,6 @@ REFERENCES = {
                   ("NPU quickstart", "EdgeAgent/devrel_runtime/docs/NPU_QUICKSTART.md")],
     "GesturDJ": [("GesturDJ README", "GesturDJ/README.md"),
                  ("IQ8 SSH runbook", "GesturDJ/ACE-Step/IQ8_SSH_RUNBOOK.md")],
-    "QUAD-Client": [("QUAD Client README", "QUAD-Client/README.md")],
     "RoboAgent": [("RoboAgent README", "RoboAgent/README.md")],
     "VSaaS": [("VSaaS README", "VSaaS/README.md"), ("Edge AI notes", "VSaaS/docs/EDGE_AI.md")],
 }
@@ -457,18 +439,6 @@ def ensure_sections(skill, folder, skill_dir):
         return 0
     write_text(path, new, nl)
     return 1
-
-
-def sync_runtime_copies(folder, skill_dir):
-    """Keep QUAD-Client's flat and pip-bundled copies byte-identical to the dir form
-    (scripts/check_skills_sync.py enforces this)."""
-    if folder != "QUAD-Client":
-        return
-    data = (skill_dir / "SKILL.md").read_bytes()
-    for copy in (skill_dir.parent / f"{skill_dir.name}.md",
-                 ROOT / folder / "src/quad_mcp_client/claude_code/skills_content" / f"{skill_dir.name}.md"):
-        if copy.is_file() and copy.read_bytes() != data:
-            copy.write_bytes(data)
 
 
 def render_catalog(skill, level, folder):
@@ -550,8 +520,6 @@ def enrich(folder, manifest):
         if not is_runtime(v["path"]):
             changed["frontmatter"] += ensure_front_matter(s, v["version"], sdir)
         changed["sections"] = changed.get("sections", 0) + ensure_sections(s, folder, sdir)
-        if is_runtime(v["path"]):
-            sync_runtime_copies(folder, sdir)
         changed["md"] += sync_metadata_md(folder, s)
     return changed
 

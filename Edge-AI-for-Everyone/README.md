@@ -87,7 +87,6 @@ it, target the NPU, and deploy the same artifact across the fleet.
 - **Core:** `../LLM` (GGUF + llama.cpp + `HEXAGON_NPU.md`) and `../Agents` (the
   portable agent + Genie/CPU backends + `agent_profiles.json` fleet matrix).
 - **RAG/multimodal:** `../AURA` (memory + vision + speech).
-- **MCP/remote:** `../QUAD-Client`.
 
 ## Event / Workshop Hooks
 

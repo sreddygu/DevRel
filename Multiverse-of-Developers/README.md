@@ -27,7 +27,7 @@ event organizers and BU teams can point any audience at the right entry project.
 | **IoT / Embedded** | Reliable on-device inference, tight resources | `../Wearable-AI` + `../VSaaS` | UNO Q / IQ8 |
 | **Robotics** | Perceive → decide → act loop, real actuators | `../AURA` (Milestone 5 Action) | VENTUNO Q / IQ8 |
 | **AI applications** (AI engineers) | Full LLM/RAG/agent stack on-device | `../Edge-AI-for-Everyone` + `../Agents` | X Elite / IQ8 / IQ9 |
-| **Startup enablement** | Ship a product, prove it on real edge HW | `../AURA` + `../QUAD-Client` | IQ8 / IQ9 |
+| **Startup enablement** | Ship a product, prove it on real edge HW | `../AURA` + `../EdgeAgent` | IQ8 / IQ9 |
 | **Hackathons** | A framed challenge with a clear win condition | any story's "Hackathon track" section | full fleet |
 
 ---
@@ -69,7 +69,7 @@ event organizers and BU teams can point any audience at the right entry project.
 > handful of embedded engineers in one room. The organizer opens with [Developer
 > Journey](../Developer-Journey/README.md)
 > (everyone gets a working setup), then splits the room: makers to `wake_word`,
-> robotics to AURA's action loop, the startup to AURA + QUAD-Client, AI engineers
+> robotics to AURA's action loop, the startup to AURA + EdgeAgent, AI engineers
 > to Edge-AI-for-Everyone. **Same platform, seven parallel wins by day's end.**
 
 ---
@@ -77,7 +77,7 @@ event organizers and BU teams can point any audience at the right entry project.
 ## Where This Maps in the Repo
 
 This story is the **atlas** for the other six plus the standalone building blocks:
-`AURA`, `Agents`, `LLM`, `VSaaS`, `QUAD-Client`, `wake_word`,
+`AURA`, `Agents`, `LLM`, `VSaaS`, `wake_word`,
 `gesture_recognition`, `sinewave`. Each persona row above is a live link to a
 project that already runs on the fleet.
 

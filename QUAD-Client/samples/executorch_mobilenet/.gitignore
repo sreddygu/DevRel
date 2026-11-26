@@ -1,5 +1,0 @@
-.venv/
-generated/
-*.pte
-mobilenet_v2.pt
-__pycache__/
