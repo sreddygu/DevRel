@@ -24,10 +24,10 @@ uv pip install --system-certs --python .venv\Scripts\python.exe -r requirements.
 
 # DevRel core is needed by generate.py to call generate_code(). Installed
 # editable from the sibling DevRel checkout.
-$quadRoot = Resolve-Path "..\..\..\DevRel" -ErrorAction SilentlyContinue
-if ($quadRoot) {
-    Write-Host "Installing DevRel core (editable) from $quadRoot..." -ForegroundColor Cyan
-    uv pip install --system-certs --python .venv\Scripts\python.exe -e $quadRoot
+$coreRoot = Resolve-Path "..\..\..\DevRel" -ErrorAction SilentlyContinue
+if ($coreRoot) {
+    Write-Host "Installing DevRel core (editable) from $coreRoot..." -ForegroundColor Cyan
+    uv pip install --system-certs --python .venv\Scripts\python.exe -e $coreRoot
 } else {
     Write-Host "WARN: DevRel core checkout not found at ..\..\..\DevRel -- generate.py will fail until it is installed." -ForegroundColor Yellow
 }
