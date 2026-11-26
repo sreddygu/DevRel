@@ -12,7 +12,8 @@ hears, the wearable story is about **always-on, low-power sensing** and
 **proactive** insight — the assistant surfaces something useful *before* the
 user asks, and every signal stays on-device.
 
-> **Status: narrative brief with a buildable proxy.** Production wearables need
+> **Status: proxy implemented on the IQ8** (see [Run the proxy](#run-the-proxy)); the brief below is unchanged.
+> Original status: narrative brief with a buildable proxy. Production wearables need
 > **Snapdragon W5-class silicon that is not on our bench** (flagged below). The
 > **sensor-fusion + on-device inference loop** is buildable today on the
 > **Arduino UNO Q / VENTUNO Q** (its MCU + sensors) and the existing TinyML
@@ -96,3 +97,29 @@ user asks, and every signal stays on-device.
   call to the IQ8 hub.
 - **Content:** blog — *"The low-power ladder: tiny model on the wrist, big model
   on the hub, nothing in the cloud."*
+
+---
+
+## Run the proxy
+
+`wearable/` is the sensor-fusion and gating loop, running on the **IQ8 in place of the UNO Q**.
+Sensors are **simulated** (deterministic IMU plus heart rate), so nothing here measures real
+vitals or runs `hey_dragon`/gesture models yet. A windowed motion and heart-rate classifier
+(plain arithmetic, no numpy) infers resting / walking / running / anomaly, writes an AURA
+`Event` only when the context changes (2-window debounce), and calls the "big model" burst
+only for an anomaly.
+
+```bash
+# from Wearable-AI (needs AURA on PYTHONPATH; stdlib otherwise)
+PYTHONPATH=../AURA/src:. python -m wearable --db wearable.db
+PYTHONPATH=../AURA/src:. pytest tests        # 5 pass
+```
+
+**Measured on a Dragonwing IQ-8275 (Qualcomm Linux 2.0, aarch64, Python 3.14):** 81 s of
+sensor data (2025 samples, 40 two-second windows) produced 6 context events and 1 burst
+(big-model duty 2.5%) in 0.017 s. The events were read back from the board's AURA memory
+and match the scenario. The board's trimmed Python has no `statistics` module, so the
+classifier uses plain arithmetic.
+
+Not covered: real IMU/health sensors, TinyML models on an MCU, W5 silicon, and the hub-side
+LLM that handles the burst (use `AI-Across-Devices/handoff` to move these events to a hub).
