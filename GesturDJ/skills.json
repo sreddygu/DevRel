@@ -5,7 +5,7 @@
       "name": "audio-output-integration",
       "displayName": "Board Audio Output Latency Check",
       "owner": "sreddygu",
-      "description": "Find a board's audio sink and players, measure how much delay each player adds, and pick the setting a live music path should use.",
+      "description": "Find a board's audio output device and available players (aplay, paplay, pw-play), measure how much delay each one adds, and pick the setting a live music path should use, for example on a Qualcomm Dragonwing IQ-8275 (IQ8) board.",
       "agents": [
         "claude",
         "codex",
@@ -27,7 +27,9 @@
         "Which audio player should GesturDJ use on my IQ8 board?",
         "Why is there a delay before sound plays on my board?",
         "Measure aplay, paplay and pw-play latency on this device",
-        "Is audio output working on the board?"
+        "Is audio output working on the board?",
+        "List the audio sinks my board exposes and which one is the default",
+        "Pick the lowest-latency way to play generated music on my device"
       ],
       "license": "Apache-2.0",
       "homepage": "https://github.com/sreddygu/DevRel/tree/main/GesturDJ",
@@ -37,7 +39,7 @@
           "path": "GesturDJ/skills/audio-output-integration",
           "docPath": "GesturDJ/skills/audio-output-integration/SKILL.md",
           "files": [
-            "GesturDJ/skills/audio-output-integration/**"
+            "GesturDJ/skills/audio-output-integration/SKILL.md"
           ],
           "compatibility": {
             "devkits": [
@@ -57,9 +59,9 @@
     },
     {
       "name": "gesturdj-build-journey",
-      "displayName": "GesturDJ Step-by-Step Build",
+      "displayName": "GesturDJ Gesture-to-Music Build Guide",
       "owner": "sreddygu",
-      "description": "Take a developer from no setup to a gesture recognizer that is trained, exported and validated on the machine that will run it, with a gesture-to-music mapping designed.",
+      "description": "Guide a developer through GesturDJ, a gesture-controlled music project, from no setup to a motion-gesture recognizer that is trained, exported to ONNX and validated on the machine that will run it (a PC or a Qualcomm Dragonwing IQ-8275 (IQ8) board), with a gesture-to-music mapping designed.",
       "agents": [
         "claude",
         "codex",
@@ -78,9 +80,12 @@
       ],
       "useCases": [
         "Walk me through building GesturDJ from scratch",
-        "Train, export and validate a gesture model on my board",
+        "Train, export and validate a gesture model for my board",
+        "Which GesturDJ step should I do next, and what evidence proves the last one worked?",
         "Rerun the GesturDJ build steps after I changed the dataset",
-        "Where did my GesturDJ build fail and why?"
+        "Where did my GesturDJ build fail and why?",
+        "Design a gesture-to-music mapping for left, right and circle gestures",
+        "Check that my PC and board are ready before I start the GesturDJ build"
       ],
       "license": "Apache-2.0",
       "homepage": "https://github.com/sreddygu/DevRel/tree/main/GesturDJ",
@@ -90,7 +95,7 @@
           "path": "GesturDJ/skills/gesturdj-build-journey",
           "docPath": "GesturDJ/skills/gesturdj-build-journey/SKILL.md",
           "files": [
-            "GesturDJ/skills/gesturdj-build-journey/**"
+            "GesturDJ/skills/gesturdj-build-journey/SKILL.md"
           ],
           "compatibility": {
             "devkits": [
@@ -112,7 +117,7 @@
       "name": "gesture-dataset-preparation",
       "displayName": "Gesture Dataset Preparation",
       "owner": "sreddygu",
-      "description": "Choose and prepare a labelled motion dataset for gesture recognition (synthetic, public or your own capture), check its quality and split it for training.",
+      "description": "Choose and prepare a labelled accelerometer (motion) dataset for gesture recognition, whether synthetic, the public uWave set or your own capture, check its quality and class balance, and split it into train and held-out sets before training.",
       "agents": [
         "claude",
         "codex",
@@ -131,10 +136,13 @@
         "iq8"
       ],
       "useCases": [
-        "Prepare a synthetic accelerometer dataset for gesture recognition",
-        "Check my gesture recordings for class imbalance and bad samples",
+        "Prepare a synthetic accelerometer dataset for left, right and circle gestures",
+        "Check my gesture recordings for class imbalance, flat series and bad samples",
         "Split my motion data into train and held-out sets",
-        "Which gesture dataset should I start with?"
+        "Which gesture dataset should I start with?",
+        "Is my dataset good enough to train on, or do I need more samples per label?",
+        "Download the public uWave gesture dataset after showing me its license",
+        "Generate dataset-report.json and explain the warnings"
       ],
       "license": "Apache-2.0",
       "homepage": "https://github.com/sreddygu/DevRel/tree/main/GesturDJ",
@@ -144,8 +152,14 @@
           "path": "GesturDJ/skills/gesture-dataset-preparation",
           "docPath": "GesturDJ/skills/gesture-dataset-preparation/SKILL.md",
           "files": [
-            "GesturDJ/skills/gesture-dataset-preparation/**"
-          ]
+            "GesturDJ/skills/gesture-dataset-preparation/SKILL.md"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
         }
       ]
     },
@@ -153,7 +167,7 @@
       "name": "gesture-model-training-and-evaluation",
       "displayName": "Gesture Model Training and Evaluation",
       "owner": "sreddygu",
-      "description": "Train a gesture recognizer (scikit-learn baseline or PyTorch), read the held-out result honestly and decide whether it is good enough to export.",
+      "description": "Train a motion-gesture classifier (scikit-learn baseline or PyTorch), read the held-out result honestly, spot overfitting or an unrealistically easy dataset, and decide whether the model is good enough to export.",
       "agents": [
         "claude",
         "codex",
@@ -174,9 +188,11 @@
       ],
       "useCases": [
         "Train a gesture classifier on my accelerometer data",
-        "Is my model's held-out accuracy good enough or just overfitting?",
-        "Compare the scikit-learn baseline with a PyTorch model",
-        "Show the confusion matrix for my gesture model"
+        "Is my model's held-out accuracy good enough or is it overfitting?",
+        "Compare the scikit-learn baseline with a PyTorch model on the same split",
+        "Show the confusion matrix for my gesture model",
+        "My accuracy is 100%. Is that real or is my dataset too easy?",
+        "Decide whether this model is ready to export to ONNX"
       ],
       "license": "Apache-2.0",
       "homepage": "https://github.com/sreddygu/DevRel/tree/main/GesturDJ",
@@ -186,8 +202,14 @@
           "path": "GesturDJ/skills/gesture-model-training-and-evaluation",
           "docPath": "GesturDJ/skills/gesture-model-training-and-evaluation/SKILL.md",
           "files": [
-            "GesturDJ/skills/gesture-model-training-and-evaluation/**"
-          ]
+            "GesturDJ/skills/gesture-model-training-and-evaluation/SKILL.md"
+          ],
+          "compatibility": {
+            "hostOs": [
+              "windows",
+              "linux"
+            ]
+          }
         }
       ]
     },
@@ -195,7 +217,7 @@
       "name": "model-export-and-deployment",
       "displayName": "Gesture Model ONNX Export and Packaging",
       "owner": "sreddygu",
-      "description": "Export a trained PyTorch gesture model to a single-file ONNX model that a board without PyTorch can load, prove it matches the original and package it.",
+      "description": "Export a trained PyTorch gesture model to a single-file ONNX model that a board without PyTorch (such as the Qualcomm Dragonwing IQ-8275 (IQ8) or Arduino VENTUNO Q) can load, prove its outputs match the original, and package and copy it to the device.",
       "agents": [
         "claude",
         "codex",
@@ -216,8 +238,10 @@
       "useCases": [
         "Export my gesture model to ONNX for the IQ8 board",
         "Check that the ONNX output matches the PyTorch model",
-        "Package the model so a torch-free board can run it",
-        "Copy the exported model to my device"
+        "Package the model so a board without PyTorch can run it",
+        "Copy the exported model and its preprocessing script to my device",
+        "Why is my exported ONNX model split into several files?",
+        "Export my gesture model for the Arduino VENTUNO Q"
       ],
       "license": "Apache-2.0",
       "homepage": "https://github.com/sreddygu/DevRel/tree/main/GesturDJ",
@@ -227,7 +251,7 @@
           "path": "GesturDJ/skills/model-export-and-deployment",
           "docPath": "GesturDJ/skills/model-export-and-deployment/SKILL.md",
           "files": [
-            "GesturDJ/skills/model-export-and-deployment/**"
+            "GesturDJ/skills/model-export-and-deployment/SKILL.md"
           ],
           "compatibility": {
             "devkits": [
@@ -247,9 +271,9 @@
     },
     {
       "name": "music-model-npu-deployment",
-      "displayName": "Music Model NPU Readiness (IQ8)",
+      "displayName": "Music Model NPU Readiness Check (IQ8)",
       "owner": "sreddygu",
-      "description": "Check that an IQ8 board is ready to run the DiffRhythm/ACE-Step music transformer on its NPU: OS image, NPU firmware, runtime libraries and compiled model graphs.",
+      "description": "Check that a Qualcomm Dragonwing IQ-8275 (IQ8) board is ready to run the ACE-Step (DiffRhythm-based) music transformer on its Hexagon NPU: Qualcomm Linux image, NPU firmware state, runtime libraries for the HTP v75 target, compiled model graphs and no stale server. Read-only by default.",
       "agents": [
         "claude",
         "codex",
@@ -267,10 +291,13 @@
         "iq8"
       ],
       "useCases": [
-        "Is my IQ8 board ready to run the music model on its NPU?",
+        "Is my IQ8 board ready to run the ACE-Step music model on its NPU?",
         "Check NPU firmware and runtime libraries before I deploy the music model",
         "Why do the NPU graphs fail to load on my board?",
-        "Run the preflight checks for ACE-Step on the IQ8 NPU"
+        "Run the preflight checks for ACE-Step on the IQ8 NPU",
+        "Check dmesg for external aborts since the last boot",
+        "Is another music-model server still running on the NPU?",
+        "Walk me through the six chained batches the ACE-Step model needs"
       ],
       "license": "Apache-2.0",
       "homepage": "https://github.com/sreddygu/DevRel/tree/main/GesturDJ",
@@ -280,7 +307,7 @@
           "path": "GesturDJ/skills/music-model-npu-deployment",
           "docPath": "GesturDJ/skills/music-model-npu-deployment/SKILL.md",
           "files": [
-            "GesturDJ/skills/music-model-npu-deployment/**"
+            "GesturDJ/skills/music-model-npu-deployment/SKILL.md"
           ],
           "compatibility": {
             "devkits": [
@@ -302,7 +329,7 @@
       "name": "npu-quantization-and-accuracy-gating",
       "displayName": "NPU Quantization Accuracy Gate",
       "owner": "sreddygu",
-      "description": "Decide whether an int8 or mixed-precision version of the music model is accurate enough to use by comparing it with a reference using cosine similarity and rejecting versions that fall below threshold.",
+      "description": "Decide whether an int8 or mixed-precision (int8 with fp16 layers) version of the music transformer is accurate enough to deploy on the NPU, by comparing its output with the fp16 reference using cosine similarity and rejecting versions below the threshold.",
       "agents": [
         "claude",
         "codex",
@@ -324,7 +351,9 @@
         "Is my int8 music model accurate enough compared to fp16?",
         "Compare mixed-precision and all-int8 outputs against the reference",
         "Which layers should stay in fp16 to keep accuracy?",
-        "Accept or reject this quantized model with a cosine threshold"
+        "Accept or reject this quantized model using a 0.999 cosine threshold",
+        "Run the accuracy gate on every batch of my quantized model",
+        "Why did my quantized model fail the cosine check on batch 3?"
       ],
       "license": "Apache-2.0",
       "homepage": "https://github.com/sreddygu/DevRel/tree/main/GesturDJ",
@@ -334,7 +363,7 @@
           "path": "GesturDJ/skills/npu-quantization-and-accuracy-gating",
           "docPath": "GesturDJ/skills/npu-quantization-and-accuracy-gating/SKILL.md",
           "files": [
-            "GesturDJ/skills/npu-quantization-and-accuracy-gating/**"
+            "GesturDJ/skills/npu-quantization-and-accuracy-gating/SKILL.md"
           ],
           "compatibility": {
             "devkits": [
@@ -356,7 +385,7 @@
       "name": "on-device-gesture-validation",
       "displayName": "On-Device Gesture Model Validation",
       "owner": "sreddygu",
-      "description": "On the machine that will run the recognizer, check that the exported model matches the original, keeps its accuracy on held-out data and runs fast enough.",
+      "description": "On the machine that will run the gesture recognizer (for example a Qualcomm Dragonwing IQ-8275 (IQ8) board), check that the exported ONNX model matches the original, keeps its accuracy on held-out data and runs fast enough, and record the result.",
       "agents": [
         "claude",
         "codex",
@@ -377,8 +406,10 @@
       "useCases": [
         "Validate my exported gesture model on the IQ8 board",
         "Measure inference latency of the gesture model on the device",
-        "Does the on-device model match the PC result?",
-        "Run the held-out accuracy check on the board"
+        "Does the on-device model give the same predictions as on my PC?",
+        "Run the held-out accuracy check on the board",
+        "Is my gesture model fast enough for live use?",
+        "Write the on-device validation record for my gesture model"
       ],
       "license": "Apache-2.0",
       "homepage": "https://github.com/sreddygu/DevRel/tree/main/GesturDJ",
@@ -388,7 +419,7 @@
           "path": "GesturDJ/skills/on-device-gesture-validation",
           "docPath": "GesturDJ/skills/on-device-gesture-validation/SKILL.md",
           "files": [
-            "GesturDJ/skills/on-device-gesture-validation/**"
+            "GesturDJ/skills/on-device-gesture-validation/SKILL.md"
           ],
           "compatibility": {
             "devkits": [

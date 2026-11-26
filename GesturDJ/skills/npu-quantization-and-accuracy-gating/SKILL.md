@@ -42,3 +42,27 @@ Evidence: [`ACE-Step/IQ8_NPU_WAV_STATUS.md`](../../ACE-Step/IQ8_NPU_WAV_STATUS.m
 
 Complete when every ACE-Step batch meets the cosine gate, or a failed batch is
 named.
+
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Dragonwing IQ-8275 EVK (`qcs8275-iq-8275-evk-pro`) |
+| Target OS | Qualcomm Linux (`qli-2.0`, `qualcomm-linux-proprietary`) |
+| Host OS | Any |
+| Requirements | Python 3.10+; PC and Qualcomm IQ8 board (Qualcomm Linux 2.0); QAIRT for the NPU music path |
+
+References: [GesturDJ README](https://github.com/sreddygu/DevRel/blob/main/GesturDJ/README.md), [IQ8 SSH runbook](https://github.com/sreddygu/DevRel/blob/main/GesturDJ/ACE-Step/IQ8_SSH_RUNBOOK.md).
+
+## Example prompts
+
+- Is my int8 music model accurate enough compared to fp16?
+- Compare mixed-precision and all-int8 outputs against the reference
+- Which layers should stay in fp16 to keep accuracy?
+- Accept or reject this quantized model using a 0.999 cosine threshold
+- Run the accuracy gate on every batch of my quantized model
+- Why did my quantized model fail the cosine check on batch 3?
+
+<!-- skills-hub:end -->

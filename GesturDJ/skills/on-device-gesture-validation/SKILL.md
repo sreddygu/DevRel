@@ -43,3 +43,27 @@ Torch-free, parity skipped: accuracy 1.0 (30 samples), latency p50 0.228 ms, p95
 
 Complete when [`onnx-validation.json`](../../evidence/pc-run/onnx-validation.json) exists and a verdict names the failed check,
 or says all passed on this machine.
+
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Dragonwing IQ-8275 EVK (`qcs8275-iq-8275-evk-pro`) |
+| Target OS | Qualcomm Linux (`qli-2.0`, `qualcomm-linux-proprietary`) |
+| Host OS | Any |
+| Requirements | Python 3.10+; PC and Qualcomm IQ8 board (Qualcomm Linux 2.0); QAIRT for the NPU music path |
+
+References: [GesturDJ README](https://github.com/sreddygu/DevRel/blob/main/GesturDJ/README.md), [IQ8 SSH runbook](https://github.com/sreddygu/DevRel/blob/main/GesturDJ/ACE-Step/IQ8_SSH_RUNBOOK.md).
+
+## Example prompts
+
+- Validate my exported gesture model on the IQ8 board
+- Measure inference latency of the gesture model on the device
+- Does the on-device model give the same predictions as on my PC?
+- Run the held-out accuracy check on the board
+- Is my gesture model fast enough for live use?
+- Write the on-device validation record for my gesture model
+
+<!-- skills-hub:end -->

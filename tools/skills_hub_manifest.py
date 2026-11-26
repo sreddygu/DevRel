@@ -15,6 +15,7 @@ qualcomm/skills and qualcomm/qimsdk-skills:
   * triggers reference real Skills Hub MCP tools only.
 """
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -29,6 +30,7 @@ DEVKITS = {
     "qcs6490-rb3gen2-vision-lite-kit", "qcs6490-rubikpi3-kit",
     "qcs9075-iq-9075-evk", "qcs8275-iq-8275-evk-pro",
 }
+INTERNAL_TERMS = re.compile(r"\b(p3|synapse|devrel|academy|dogfood\w*)\b", re.I)
 HUB_TOOLS = {"get_active_device", "list_devices", "validate_ssh_connection"}
 
 IQ8 = "qcs8275-iq-8275-evk-pro"
@@ -57,13 +59,24 @@ QLI_DEVICE = {
 }
 
 
+ALL_HOSTS = ["linux", "windows", "macos"]
+ALL_DEVKITS = sorted(DEVKITS)
+
+
 def compat_for(folder, name):
+    if folder == ".":
+        # Process skills: any host; the readiness check works for every public devkit.
+        c = {"hostOs": ALL_HOSTS}
+        if name == "device-readiness":
+            c = {"devkits": ALL_DEVKITS, **c}
+        return c
     if folder == "AURA":
         return IQ8_DEVICE
     if folder == "EdgeAgent":
         return {**IQ8_IQ9_DEVICE, "hostOs": WIN_LINUX}
     if folder == "GesturDJ":
-        return IQ8_DEVICE if name in GESTURDJ_DEVICE else None
+        # Dataset preparation and training are host-side Python (validated on a PC).
+        return IQ8_DEVICE if name in GESTURDJ_DEVICE else {"hostOs": WIN_LINUX}
     if folder == "QUAD-Client":
         if name in QUAD_DEVICE:
             return IQ9_DEVICE
@@ -120,6 +133,21 @@ def prefixed(folder, value):
     return f"{folder}/{value}"
 
 
+def published_files(skill_path):
+    """Download globs for an installed skill: everything except skill.yaml.
+
+    skill.yaml is repo-internal catalog metadata (maintainer/review fields); the
+    hub's SKILL.md plus its references, scripts and resources are what a user needs.
+    """
+    d = ROOT / skill_path
+    files = []
+    for entry in sorted(d.iterdir()):
+        if entry.name in ("skill.yaml", "__pycache__"):
+            continue
+        files.append(f"{skill_path}/{entry.name}" + ("/**" if entry.is_dir() else ""))
+    return files
+
+
 def normalize(folder, manifest):
     copy = json.loads((ROOT / "tools" / "skills_hub_copy.json").read_text(encoding="utf-8"))
     for s in manifest["skills"]:
@@ -134,7 +162,7 @@ def normalize(folder, manifest):
             for key in ("path", "docPath"):
                 if key in v:
                     v[key] = prefixed(folder, v[key])
-            v["files"] = [prefixed(folder, f) for f in v.get("files", [])]
+            v["files"] = published_files(v["path"])
             v.pop("compatibility", None)
             if c:
                 v["compatibility"] = json.loads(json.dumps(c))
@@ -339,6 +367,98 @@ def ensure_front_matter(skill, version, skill_dir):
     return changed
 
 
+DEVKIT_LABELS = {
+    "qcs6490-rb3gen2-vision-kit": "Dragonwing RB3 Gen 2 Vision Kit",
+    "qcs6490-rb3gen2-core-kit": "Dragonwing RB3 Gen 2 Core Kit",
+    "qcs6490-rb3gen2-vision-lite-kit": "Dragonwing RB3 Gen 2 Lite Vision Kit",
+    "qcs6490-rubikpi3-kit": "RUBIK Pi 3 Development Board",
+    "qcs9075-iq-9075-evk": "Dragonwing IQ-9075 EVK",
+    "qcs8275-iq-8275-evk-pro": "Dragonwing IQ-8275 EVK",
+}
+HOST_LABELS = {"windows": "Windows", "linux": "Linux (or WSL)", "macos": "macOS"}
+# Repo-relative documents that back each project's compatibility claims.
+REFERENCES = {
+    ".": [("Delivery models", "skills/project-onboarding/references/DELIVERY_MODELS.md"),
+          ("Skills Hub compatibility values", "docs/skills-hub-compatibility-values.md")],
+    "AURA": [("AURA README", "AURA/README.md"), ("IQ8 deployment", "AURA/docs/IQ8_DEPLOYMENT.md"),
+             ("NPU setup", "AURA/docs/NPU_SETUP.md")],
+    "EdgeAgent": [("EdgeAgent README", "EdgeAgent/README.md"), ("Run on IQ8", "EdgeAgent/RUN_ON_IQ8.md"),
+                  ("NPU quickstart", "EdgeAgent/devrel_runtime/docs/NPU_QUICKSTART.md")],
+    "GesturDJ": [("GesturDJ README", "GesturDJ/README.md"),
+                 ("IQ8 SSH runbook", "GesturDJ/ACE-Step/IQ8_SSH_RUNBOOK.md")],
+    "QUAD-Client": [("QUAD Client README", "QUAD-Client/README.md")],
+    "RoboAgent": [("RoboAgent README", "RoboAgent/README.md")],
+    "VSaaS": [("VSaaS README", "VSaaS/README.md"), ("Edge AI notes", "VSaaS/docs/EDGE_AI.md")],
+}
+MARK_BEGIN, MARK_END = "<!-- skills-hub:begin -->", "<!-- skills-hub:end -->"
+
+
+def compat_rows(skill, folder):
+    """(label, value) rows describing where a skill works; value uses plain language."""
+    v = skill["versions"][-1]
+    c = v.get("compatibility", {})
+    rows = []
+    if c.get("devkits"):
+        rows.append(("Devkits", ", ".join(f"{DEVKIT_LABELS.get(d, d)} (`{d}`)" for d in c["devkits"])))
+    else:
+        rows.append(("Devkits", "Not device-specific"))
+    for t in c.get("targetOs", []):
+        rng = t.get("minVersion", "")
+        if t.get("maxVersion") and t["maxVersion"] != rng:
+            rng += f" to {t['maxVersion']}"
+        rows.append(("Target OS", f"Qualcomm Linux (`{rng}`, `{t['variant']}`)" if t["os"] == "qualcomm_linux"
+                     else f"`{t['os']}` (`{rng}`)"))
+    if not c.get("targetOs"):
+        rows.append(("Target OS", "No target OS constraint declared"))
+    rows.append(("Host OS", ", ".join(HOST_LABELS[h] for h in c["hostOs"]) if c.get("hostOs") else "Any"))
+    if folder in REQUIREMENTS:
+        rows.append(("Requirements", REQUIREMENTS[folder]))
+    return rows
+
+
+def reference_links(folder, base_dir=None):
+    """Markdown links to the docs behind a project's compatibility claims.
+
+    With base_dir, links are relative to it (metadata pages in the repo). Without,
+    they are absolute GitHub URLs, because an installed SKILL.md is copied out of the repo.
+    """
+    out = []
+    for label, rel in REFERENCES.get(folder, []):
+        if (ROOT / rel).is_file():
+            href = (Path(os.path.relpath(ROOT / rel, base_dir)).as_posix() if base_dir
+                    else f"{HOMEPAGE}/blob/main/{rel}")
+            out.append(f"[{label}]({href})")
+    return out
+
+
+def skill_sections(skill, folder, skill_dir):
+    lines = [MARK_BEGIN, "", "## Compatibility", "", "| Item | Details |", "| --- | --- |"]
+    lines += [f"| {k} | {val} |" for k, val in compat_rows(skill, folder)]
+    refs = reference_links(folder)
+    if refs:
+        lines += ["", "References: " + ", ".join(refs) + "."]
+    lines += ["", "## Example prompts", ""] + [f"- {u}" for u in skill["useCases"]] + ["", MARK_END, ""]
+    return "\n".join(lines)
+
+
+def ensure_sections(skill, folder, skill_dir):
+    """Append or refresh the generated Compatibility and Example prompts sections of SKILL.md."""
+    path = skill_dir / "SKILL.md"
+    text, nl = read_text(path)
+    text = text.replace("\r\n", "\n")
+    block = skill_sections(skill, folder, skill_dir)
+    if MARK_BEGIN in text:
+        head, rest = text.split(MARK_BEGIN, 1)
+        tail = rest.split(MARK_END, 1)[1].lstrip("\n") if MARK_END in rest else ""
+        new = head.rstrip("\n") + "\n\n" + block + (("\n" + tail) if tail else "")
+    else:
+        new = text.rstrip("\n") + "\n\n" + block
+    if new == text:
+        return 0
+    write_text(path, new, nl)
+    return 1
+
+
 def render_catalog(skill, level, folder):
     v = skill["versions"][-1]
     c = v.get("compatibility", {})
@@ -367,6 +487,9 @@ def render_catalog(skill, level, folder):
     ]
     if folder in REQUIREMENTS:
         lines.append(f"- **Requirements:** {REQUIREMENTS[folder]}")
+    refs = reference_links(folder, ROOT / folder / "skills-metadata")
+    if refs:
+        lines.append("- **References:** " + ", ".join(refs))
     lines.append(f"- **Hub triggers:** {trig}")
     return lines
 
@@ -414,6 +537,7 @@ def enrich(folder, manifest):
             changed["tags"] += 1
         if not is_runtime(v["path"]):
             changed["frontmatter"] += ensure_front_matter(s, v["version"], sdir)
+            changed["sections"] = changed.get("sections", 0) + ensure_sections(s, folder, sdir)
         changed["md"] += sync_metadata_md(folder, s)
     return changed
 
@@ -431,6 +555,14 @@ def validate(folder, label, manifest):
         for k in ("owner", "description", "versions"):
             if not s.get(k):
                 problems.append(f"{label}:{n}: missing {k}")
+        if len(s.get("useCases", [])) < 5:
+            problems.append(f"{label}:{n}: fewer than 5 use cases")
+        if len(s.get("description", "")) < 60:
+            problems.append(f"{label}:{n}: description too short to be self-explanatory")
+        for field in ("displayName", "description", *s.get("useCases", [])):
+            text = s[field] if field in s else field
+            if INTERNAL_TERMS.search(text):
+                problems.append(f"{label}:{n}: internal term in public text: {text[:60]}")
         if s.get("category") not in CATEGORIES:
             problems.append(f"{label}:{n}: bad category {s.get('category')}")
         if set(s.get("agents", [])) - HUB_AGENTS:
@@ -445,8 +577,13 @@ def validate(folder, label, manifest):
             doc = ROOT / v.get("docPath", "<none>")
             if not doc.is_file():
                 problems.append(f"{label}:{n}: docPath not found {v.get('docPath')}")
-            elif not any(doc.relative_to(ROOT).as_posix().startswith(f[:-3]) for f in v["files"] if f.endswith("/**")):
+            elif not any(f == doc.relative_to(ROOT).as_posix() or
+                         (f.endswith("/**") and doc.relative_to(ROOT).as_posix().startswith(f[:-3])) for f in v["files"]):
                 problems.append(f"{label}:{n}: files do not cover SKILL.md")
+            if any(f.endswith("skill.yaml") for f in v["files"]):
+                problems.append(f"{label}:{n}: skill.yaml must not be published")
+            if not is_runtime(v["path"]) and MARK_BEGIN not in doc.read_text(encoding="utf-8-sig"):
+                problems.append(f"{label}:{n}: SKILL.md lacks Compatibility / Example prompts sections")
             for f in v.get("files", []):
                 if f.endswith("/**") and not (ROOT / f[:-3]).is_dir():
                     problems.append(f"{label}:{n}: files glob dir missing {f}")

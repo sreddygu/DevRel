@@ -1,11 +1,11 @@
 ---
 name: quad-convert
-description: "Walk through converting a model for Snapdragon (ONNX or PyTorch to QNN or SNPE), including calibration data and image format guidance."
+description: "Walk through converting a model for Snapdragon with QUAD (Qualcomm Unified AI Developer) (ONNX or PyTorch to QNN or SNPE), including quantization, calibration data and image format guidance. QNN is Qualcomm AI Engine Direct; SNPE is the Snapdragon Neural Processing Engine."
 ---
 
-# QUAD Model Conversion
+# Model Conversion for the Snapdragon NPU
 
-Walk through converting a model for Snapdragon (ONNX or PyTorch to QNN or SNPE), including calibration data and image format guidance.
+Walk through converting a model for Snapdragon with QUAD (Qualcomm Unified AI Developer) (ONNX or PyTorch to QNN or SNPE), including quantization, calibration data and image format guidance. QNN is Qualcomm AI Engine Direct; SNPE is the Snapdragon Neural Processing Engine.
 
 ## Catalog
 
@@ -18,6 +18,7 @@ Walk through converting a model for Snapdragon (ONNX or PyTorch to QNN or SNPE),
 - **License:** `Apache-2.0`
 - **Compatibility:** host OS `windows`, `linux`
 - **Requirements:** Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows
+- **References:** [QUAD Client README](../README.md)
 - **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../.claude/skills/quad-convert/SKILL.md)
@@ -25,6 +26,8 @@ Walk through converting a model for Snapdragon (ONNX or PyTorch to QNN or SNPE),
 ## Use Cases
 
 - Convert my ONNX model to run on the NPU
-- Quantize my PyTorch model with calibration data
+- Quantize my PyTorch model to int8 with calibration data
 - Compile this model to QNN
-- What calibration images format does the converter need?
+- What calibration image format does the converter need?
+- Convert my YOLOv8 ONNX model to a QNN DLC
+- My conversion failed with an unsupported operator. What now?

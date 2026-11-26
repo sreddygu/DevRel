@@ -3,9 +3,9 @@
   "skills": [
     {
       "name": "aura-agent-orchestration",
-      "displayName": "AURA Runtime Setup and Milestone Selection",
+      "displayName": "AURA On-Device Agent Setup",
       "owner": "sreddygu",
-      "description": "Prepare AURA, an on-device physical-AI agent (camera, microphone, memory and local LLM) for Arduino VENTUNO Q and Qualcomm IQ8, and pick the smallest milestone to run, without starting device services by default.",
+      "description": "Set up AURA (Autonomous Understanding and Responsive Agents), a privacy-first on-device AI agent that sees, listens, remembers and acts, on an Arduino VENTUNO Q or a Qualcomm Dragonwing IQ-8275 (IQ8) board, and choose the smallest milestone (vision, speech, memory or agent) to build first. Does not start device services or touch hardware unless you approve.",
       "agents": [
         "claude",
         "codex",
@@ -27,7 +27,10 @@
         "Set up the AURA on-device agent on my IQ8 board",
         "Which AURA milestone should I build first: vision, speech, memory or agent?",
         "Install only the AURA vision extra and run the tests",
-        "Show my AURA configuration and what optional components are missing"
+        "Show my AURA configuration and tell me which optional components are missing",
+        "Should AURA reason on the board, on my PC, or in hybrid mode with a trusted host?",
+        "Prepare AURA for my Arduino VENTUNO Q without opening the camera or microphone",
+        "Record which AURA settings I observed on the device and which are still unknown"
       ],
       "license": "Apache-2.0",
       "homepage": "https://github.com/sreddygu/DevRel/tree/main/AURA",
@@ -37,7 +40,7 @@
           "path": "AURA/skills/aura-agent-orchestration",
           "docPath": "AURA/skills/aura-agent-orchestration/SKILL.md",
           "files": [
-            "AURA/skills/aura-agent-orchestration/**"
+            "AURA/skills/aura-agent-orchestration/SKILL.md"
           ],
           "compatibility": {
             "devkits": [

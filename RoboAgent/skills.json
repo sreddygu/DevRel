@@ -5,7 +5,7 @@
       "name": "roboagent-run-model",
       "displayName": "Run a QNN Model on Windows on Snapdragon",
       "owner": "sreddygu",
-      "description": "Run a QNN .pte model on a Windows on Snapdragon device: simple operator tests with qnn_executor_runner, or LLMs with qnn_llama_runner.",
+      "description": "Run an ExecuTorch .pte model built for the Qualcomm AI Engine Direct (QNN) backend on a Windows on Snapdragon PC: simple operator tests with qnn_executor_runner, or large language models such as Gemma with qnn_llama_runner.",
       "agents": [
         "claude",
         "codex",
@@ -27,7 +27,9 @@
         "Run this .pte model on my Snapdragon PC",
         "Benchmark LLM tokens per second with qnn_llama_runner",
         "Debug a qnn_executor_runner failure",
-        "Validate my QNN model with a simple op test"
+        "Validate my QNN model with a simple operator test",
+        "Run Gemma on the NPU of my Windows on Snapdragon laptop",
+        "Why does my .pte file load but produce wrong output?"
       ],
       "license": "Apache-2.0",
       "homepage": "https://github.com/sreddygu/DevRel/tree/main/RoboAgent",
@@ -37,7 +39,7 @@
           "path": "RoboAgent/.claude/skills/run-model",
           "docPath": "RoboAgent/.claude/skills/run-model/SKILL.md",
           "files": [
-            "RoboAgent/.claude/skills/run-model/**"
+            "RoboAgent/.claude/skills/run-model/SKILL.md"
           ],
           "compatibility": {
             "hostOs": [
@@ -51,7 +53,7 @@
       "name": "roboagent-setup",
       "displayName": "ExecuTorch QNN Build Setup on Windows on Snapdragon",
       "owner": "sreddygu",
-      "description": "Set up the ExecuTorch and QNN backend build environment natively on Windows on Snapdragon ARM64 (no cross-compile, no adb: the device is both host and target).",
+      "description": "Set up the ExecuTorch and Qualcomm AI Engine Direct (QNN) backend build environment natively on a Windows on Snapdragon ARM64 PC (no cross-compile, no adb: the PC is both host and target) for RoboAgent, an ExecuTorch QNN playground.",
       "agents": [
         "claude",
         "codex",
@@ -72,7 +74,9 @@
         "Set up the ExecuTorch QNN build environment on my Snapdragon PC",
         "Check prerequisites before building a QNN runner",
         "Prepare this device as both host and target for QNN",
-        "What do I install before building ExecuTorch with the QNN backend?"
+        "What do I install before building ExecuTorch with the QNN backend on Windows?",
+        "Verify my QAIRT 2.47 install is visible to the ExecuTorch build",
+        "Why does the ExecuTorch QNN build fail on my ARM64 Windows PC?"
       ],
       "license": "Apache-2.0",
       "homepage": "https://github.com/sreddygu/DevRel/tree/main/RoboAgent",
@@ -82,7 +86,7 @@
           "path": "RoboAgent/.claude/skills/setup",
           "docPath": "RoboAgent/.claude/skills/setup/SKILL.md",
           "files": [
-            "RoboAgent/.claude/skills/setup/**"
+            "RoboAgent/.claude/skills/setup/SKILL.md"
           ],
           "compatibility": {
             "hostOs": [

@@ -48,3 +48,28 @@ Evidence: [`ACE-Step/IQ8_NPU_WAV_STATUS.md`](../../ACE-Step/IQ8_NPU_WAV_STATUS.m
 
 Complete when the preflight is clean and all six batches complete, or a failed
 check is named.
+
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Dragonwing IQ-8275 EVK (`qcs8275-iq-8275-evk-pro`) |
+| Target OS | Qualcomm Linux (`qli-2.0`, `qualcomm-linux-proprietary`) |
+| Host OS | Any |
+| Requirements | Python 3.10+; PC and Qualcomm IQ8 board (Qualcomm Linux 2.0); QAIRT for the NPU music path |
+
+References: [GesturDJ README](https://github.com/sreddygu/DevRel/blob/main/GesturDJ/README.md), [IQ8 SSH runbook](https://github.com/sreddygu/DevRel/blob/main/GesturDJ/ACE-Step/IQ8_SSH_RUNBOOK.md).
+
+## Example prompts
+
+- Is my IQ8 board ready to run the ACE-Step music model on its NPU?
+- Check NPU firmware and runtime libraries before I deploy the music model
+- Why do the NPU graphs fail to load on my board?
+- Run the preflight checks for ACE-Step on the IQ8 NPU
+- Check dmesg for external aborts since the last boot
+- Is another music-model server still running on the NPU?
+- Walk me through the six chained batches the ACE-Step model needs
+
+<!-- skills-hub:end -->

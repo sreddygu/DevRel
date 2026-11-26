@@ -5,7 +5,7 @@
       "name": "vision-model-validation",
       "displayName": "Edge Vision Model Validation",
       "owner": "sreddygu",
-      "description": "Validate an ONNX or QNN object detector (for example YOLOv8) used by VSaaS and record results labelled by backend and target.",
+      "description": "Validate an ONNX or Qualcomm AI Engine Direct (QNN) object detector, for example YOLOv8, used by VSaaS (private edge video intelligence with searchable insights) on a Qualcomm Dragonwing IQ-8275 (IQ8) board, and record each result labelled by model, backend and target.",
       "agents": [
         "claude",
         "codex",
@@ -26,8 +26,10 @@
       "useCases": [
         "Validate my YOLOv8 ONNX detector",
         "Run the QNN YOLOv8 DLC on my IQ8 and record the result",
-        "Compare ONNX CPU and QNN results on the same video",
-        "Which backend and target produced this detection result?"
+        "Compare ONNX CPU and QNN results on the same video frame",
+        "Which backend and target produced this detection result?",
+        "Did my detector really run on the NPU, or only on the CPU?",
+        "Record detection count, top labels and scores for my test frame"
       ],
       "license": "Apache-2.0",
       "homepage": "https://github.com/sreddygu/DevRel/tree/main/VSaaS",
@@ -37,7 +39,7 @@
           "path": "VSaaS/skills/vision-model-validation",
           "docPath": "VSaaS/skills/vision-model-validation/SKILL.md",
           "files": [
-            "VSaaS/skills/vision-model-validation/**"
+            "VSaaS/skills/vision-model-validation/SKILL.md"
           ],
           "compatibility": {
             "devkits": [

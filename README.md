@@ -41,6 +41,17 @@ Each catalog level also has a sibling `skills-metadata/` directory. It contains
 one concise `<skill-id>.md` discovery document per published skill, linked to
 its manifest entry and `SKILL.md` procedure.
 
+Catalog entries are generated and checked by
+[`tools/skills_hub_manifest.py`](tools/skills_hub_manifest.py) from the plain-language
+copy in [`tools/skills_hub_copy.json`](tools/skills_hub_copy.json). Every listed skill
+must have a self-explanatory name and description (acronyms such as AURA, QUAD, NPU and
+QNN expanded on first use), at least five example prompts, and declared
+compatibility (devkits, target OS, host OS). The same compatibility table and
+example prompts are written into each `SKILL.md` owned by this repo; the runtime-synced
+QUAD-Client and RoboAgent copies stay byte-identical and carry them on their
+`skills-metadata/` page instead. Run
+`python tools/skills_hub_manifest.py --check` before opening a catalog PR.
+
 | Shared skill | Use when |
 | --- | --- |
 | [`project-onboarding`](skills/project-onboarding/) | Starting, reviewing, or promoting an Academy project. |

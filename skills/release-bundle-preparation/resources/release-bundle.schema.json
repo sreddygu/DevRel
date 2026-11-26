@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "P3 Synapse release bundle",
+  "title": "Public release bundle",
   "type": "object",
   "additionalProperties": false,
   "required": [

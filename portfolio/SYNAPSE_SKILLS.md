@@ -16,7 +16,7 @@ py -3 .\portfolio\validate_synapse_catalog.py
 
 P3 release lanes, bundle contents, and open-source distribution rules are in
 the onboarding skill's
-[`P3_DELIVERY_MODELS.md`](../skills/project-onboarding/references/P3_DELIVERY_MODELS.md).
+[`DELIVERY_MODELS.md`](../skills/project-onboarding/references/DELIVERY_MODELS.md).
 Use the release skill's bundled schema and validator when a project moves beyond
 a source skill pack.
 

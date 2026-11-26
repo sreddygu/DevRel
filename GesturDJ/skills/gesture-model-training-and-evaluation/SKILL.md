@@ -37,3 +37,27 @@ easy, so this shows the code path works, not that real gestures are recognized.
 
 Complete when the model files exist, held-out accuracy and count are reported, and
 a decision is written. This skill does not export or deploy.
+
+<!-- skills-hub:begin -->
+
+## Compatibility
+
+| Item | Details |
+| --- | --- |
+| Devkits | Not device-specific |
+| Target OS | No target OS constraint declared |
+| Host OS | Windows, Linux (or WSL) |
+| Requirements | Python 3.10+; PC and Qualcomm IQ8 board (Qualcomm Linux 2.0); QAIRT for the NPU music path |
+
+References: [GesturDJ README](https://github.com/sreddygu/DevRel/blob/main/GesturDJ/README.md), [IQ8 SSH runbook](https://github.com/sreddygu/DevRel/blob/main/GesturDJ/ACE-Step/IQ8_SSH_RUNBOOK.md).
+
+## Example prompts
+
+- Train a gesture classifier on my accelerometer data
+- Is my model's held-out accuracy good enough or is it overfitting?
+- Compare the scikit-learn baseline with a PyTorch model on the same split
+- Show the confusion matrix for my gesture model
+- My accuracy is 100%. Is that real or is my dataset too easy?
+- Decide whether this model is ready to export to ONNX
+
+<!-- skills-hub:end -->

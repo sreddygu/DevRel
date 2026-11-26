@@ -1,21 +1,21 @@
 schema_version: "1.0"
 id: "release-bundle-preparation"
-name: "P3 Release Bundle Preparation"
+name: "Release Bundle Preparation"
 version: "1.0.0"
-description: "Prepare and validate a public P3 release bundle."
+description: "Prepare and validate a public release bundle."
 entrypoint: "SKILL.md"
 kind: "journey-skill"
 language: "en"
 synapse:
   layer: "journey"
-  domain: "p3-portfolio"
-  owner: "P3 portfolio maintainers"
+  domain: "shared-skills"
+  owner: "Project maintainers"
   review_cadence: "Each public release"
   visibility: "public"
   maturity: "pilot"
   developer_journey_stage: ["enablement", "platform-experience"]
   dependencies: ["evidence-and-compatibility", "public-asset-license-review"]
-  authoritative_docs: ["references/P3_DELIVERY_MODELS.md", "resources/release-bundle.schema.json"]
+  authoritative_docs: ["references/DELIVERY_MODELS.md", "resources/release-bundle.schema.json"]
 contract:
   inputs: ["Source revision", "Release assets", "Evidence", "Compatibility matrix"]
   outputs: ["Validated release-bundle.json", "Immutable public release checklist"]

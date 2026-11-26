@@ -1,4 +1,4 @@
-"""Validate a P3 release-bundle.json using only the Python standard library."""
+"""Validate a public release-bundle.json using only the Python standard library."""
 
 from __future__ import annotations
 

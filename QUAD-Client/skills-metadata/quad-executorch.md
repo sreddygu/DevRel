@@ -1,11 +1,11 @@
 ---
 name: quad-executorch
-description: "Drive the PyTorch to .pte to profile to runner flow with a QUAD MCP server, using the executorch_mobilenet sample as the reference."
+description: "Drive the PyTorch to ExecuTorch .pte file, profile and runner flow with a QUAD (Qualcomm Unified AI Developer) MCP server, using the executorch_mobilenet sample as the reference."
 ---
 
-# QUAD ExecuTorch Export and Run
+# ExecuTorch Export and Run on Snapdragon
 
-Drive the PyTorch to .pte to profile to runner flow with a QUAD MCP server, using the executorch_mobilenet sample as the reference.
+Drive the PyTorch to ExecuTorch .pte file, profile and runner flow with a QUAD (Qualcomm Unified AI Developer) MCP server, using the executorch_mobilenet sample as the reference.
 
 ## Catalog
 
@@ -18,6 +18,7 @@ Drive the PyTorch to .pte to profile to runner flow with a QUAD MCP server, usin
 - **License:** `Apache-2.0`
 - **Compatibility:** host OS `windows`, `linux`
 - **Requirements:** Python 3.10+; a reachable QUAD MCP server; Qualcomm AI Runtime (QAIRT) SDK 2.47 and Snapdragon X Elite for NPU workflows
+- **References:** [QUAD Client README](../README.md)
 - **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../.claude/skills/quad-executorch/SKILL.md)
@@ -28,3 +29,5 @@ Drive the PyTorch to .pte to profile to runner flow with a QUAD MCP server, usin
 - Make a .pte file and run it on the NPU
 - Profile my ExecuTorch model with QUAD
 - Follow the executorch_mobilenet sample for my own model
+- What is the difference between a QNN DLC and an ExecuTorch .pte for my model?
+- Why does my .pte run on CPU instead of the NPU?
