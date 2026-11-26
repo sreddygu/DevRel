@@ -67,3 +67,36 @@ def test_catch_up_over_http_and_auth(tmp_path) -> None:
         assert err.value.code == 401
     finally:
         server.shutdown()
+
+
+def test_ask_sends_only_local_events_to_model(tmp_path) -> None:
+    import json, threading
+    from http.server import BaseHTTPRequestHandler, HTTPServer
+    from handoff import ask
+
+    seen = {}
+
+    class Fake(BaseHTTPRequestHandler):
+        def log_message(self, *a):
+            pass
+
+        def do_POST(self):  # noqa: N802
+            seen["body"] = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
+            out = json.dumps({"model": "fake", "choices": [{"message": {"content": " In the loading bay. "}}]}).encode()
+            self.send_response(200)
+            self.send_header("Content-Length", str(len(out)))
+            self.end_headers()
+            self.wfile.write(out)
+
+    fake = HTTPServer(("127.0.0.1", 0), Fake)
+    threading.Thread(target=fake.serve_forever, daemon=True).start()
+    try:
+        with _hub(tmp_path) as hub:
+            result = ask("Where is the package?", hub, base_url=f"http://127.0.0.1:{fake.server_address[1]}/v1", model="fake")
+    finally:
+        fake.shutdown()
+    assert result == {"answer": "In the loading bay.", "model": "fake",
+                      "base_url": f"http://127.0.0.1:{fake.server_address[1]}/v1", "events_used": 2}
+    prompt = seen["body"]["messages"][1]["content"]
+    assert "package unloaded" in prompt and "/tmp/f.jpg" not in prompt
+    assert seen["body"]["temperature"] == 0

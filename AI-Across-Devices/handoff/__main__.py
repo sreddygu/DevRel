@@ -9,6 +9,7 @@ import sys
 
 from aura.memory.store import MemoryStore
 
+from .ask import ask
 from .transport import catch_up, make_server
 
 
@@ -23,7 +24,18 @@ def main(argv: list[str] | None = None) -> int:
     g.add_argument("--db", required=True)
     g.add_argument("--url", required=True)
     g.add_argument("--since")
+    a = sub.add_parser("ask", help="answer a question from the local store with an OpenAI-compatible model")
+    a.add_argument("--db", required=True)
+    a.add_argument("--base-url", required=True, help="e.g. http://127.0.0.1:11434/v1")
+    a.add_argument("--model", required=True)
+    a.add_argument("--since")
+    a.add_argument("question")
     args = p.parse_args(argv)
+
+    if args.cmd == "ask":  # no handoff token needed: purely local store + model endpoint
+        with MemoryStore(args.db).connect() as store:
+            print(json.dumps(ask(args.question, store, base_url=args.base_url, model=args.model, since=args.since)))
+        return 0
 
     token = os.environ.get("HANDOFF_TOKEN", "")
     if not token:
