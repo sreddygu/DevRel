@@ -32,4 +32,23 @@ Findings worth knowing:
   board only AURA's stdlib + numpy parts (events, memory) run.
 - `agent.py --base-url` takes the bare host and port (it adds `/v1` itself), unlike the
   `handoff ask` command, which takes the `/v1` URL.
-- The PC has QAIRT 2.51; several docs and metadata pages say 2.47.
+- The PC has QAIRT 2.51; docs and metadata that said 2.47 were updated (see the follow-up run below).
+
+## Follow-up run: the items that did not run, on QAIRT 2.51 (2026-11-27)
+
+The PC has QAIRT 2.51.40.260930 and the home IQ8's runtime (`~/diffrhythm/qnn_rt`, `~/ace_step_iq8/qnn_rt`) is QNN 2.51.40.260930
+too, so docs that said 2.47 were updated to 2.51 (host SDK requirements, SDK paths, stories). Dated evidence logs, board-version
+notes for other images, test fixtures and per-skill evidence were left at the version they were observed with.
+
+| Project | What was run | Result |
+| --- | --- | --- |
+| GesturDJ (music model) | One ACE-Step transformer block (`ctx/block.bin`) with `qnn-net-run` on the IQ8 HTP v75 | rc 0 in 0.86 s, output 1,105,920 bytes (1x108x2560 float32), bit-identical to the board's earlier recorded output (cosine 1.000000), 0 external aborts. The full six-batch WAV generation (host bridge, 7.8 GB of models) was not run |
+| VSaaS (QNN path) | YOLOv8n ONNX -> `qairt-converter` -> `qairt-quantizer` (w8a16) -> `qnn-context-binary-generator` (v75) on the PC, `qnn-net-run` on the IQ8 | Works. Held-out `zidane.jpg`: 2 persons (0.87, 0.86) and a tie; `dog.jpg`: dog 0.31 (CPU 0.55). Recipe, numbers and pitfalls in `VSaaS/docs/EDGE_AI.md`. The repo's `yolov8_det_w8a8.dlc` needs an AI Hub token and was not available |
+| LLM | llama.cpp b12803 win-arm64 (CPU and OpenCL/Adreno) with Qwen2.5-0.5B Q4_0, `run_llama_cpp.py` and `test_gemma4.py` | CPU about 20 tokens/s (CLI) and 38 (server), Adreno about 47. Fixed `.exe` lookup in `run_llama_cpp.py`. The Hexagon NPU path was **not** run: it needs the Hexagon SDK 6.7+, the OpenCL SDK and Windows test-signing (a host security change) |
+| wake_word | Train, ONNX export, parity check and file-fed streaming with the stand-in keyword `marvin` | Runs. Found and fixed a train/inference feature mismatch (recall 3% -> 98% on held-out clips). Still a weak model; see `wake_word/README.md` |
+| mojo-max-int | Mojo 0.26.1 and MAX 26.1 under WSL (aarch64) | `hello.mojo`, `agent.mojo` and `genie_client.mojo` compile and run (after porting to the current syntax); `max_graph_demo.mojo` does not compile on any release; versions pinned in the README |
+| RoboAgent | Build of ExecuTorch with the QNN backend | **Not possible on this PC today:** the disk is 98% full (15 GB free), only VS 2019 Build Tools is installed (the setup needs VS 2022 with ARM64 and Clang), and there is no ExecuTorch checkout |
+
+QAIRT 2.51 notes: the SDK's Python converter modules are x64, so on a Windows-on-Snapdragon PC use an x64 Python 3.10 venv with
+`numpy==1.26.4 packaging==24.0 pandas==2.3.3 pyyaml==6.0.3 scipy==1.15.3 onnx==1.17.0`; the SDK's own `check-python-dependency`
+fails on this platform because `opencv-python` has no ARM64 Windows wheel for its pin.
