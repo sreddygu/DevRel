@@ -29,7 +29,7 @@ against a saved reference before it is eligible for a WAV run.
 - [`ACE-Step/README.md`](ACE-Step/README.md): setup and generation commands.
 - [`ACE-Step/IQ8_NPU_WAV_STATUS.md`](ACE-Step/IQ8_NPU_WAV_STATUS.md): numerical
   gates and safe resume procedure.
-- [`blogs/ace-step-iq8-npu-wav.md`](blogs/ace-step-iq8-npu-wav.md): deployment
+- [`blogs/ace-step-iq8-npu-deployment-guide.md`](blogs/ace-step-iq8-npu-deployment-guide.md): deployment
   narrative.
 
 The legacy skill catalog remains available for gesture-development work. Its

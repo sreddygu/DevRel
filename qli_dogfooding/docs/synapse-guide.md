@@ -151,7 +151,7 @@ Expected proof:
 - `Toolkit validation: PASS`.
 
 The historical IQ9 summary is available at
-[`evidence/iq9_summary_2026-08-12.json`](../evidence/iq9_summary_2026-08-12.json).
+`evidence/iq9_summary_2026-08-12.json` (local evidence, not committed).
 This evidence was captured on **August 12, 2026**; it demonstrates the implementation's
 evidence model and is not a claim about current device state on **October 9,
 2026**.

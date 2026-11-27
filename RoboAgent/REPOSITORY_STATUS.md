@@ -1,10 +1,12 @@
 # Repository Status
 
-This folder is an exported/runtime artifact rather than a Git source checkout.
-It contains prebuilt QNN runners, the compiled Gemma model, runtime logs, and a
-small Pi integration layer. There is no `.git` directory here, so Git status and
-history are unavailable until this directory is placed inside a source checkout
-or initialized as one.
+This folder is tracked in the academy Git repository. Source, skills, the Pi
+integration layer and mock-host tests are committed. Prebuilt QNN runners
+(`qnn_*_runner.exe`), the compiled Gemma model, `models/`, `logs/` and other
+runtime artifacts are local-only, are listed in `.gitignore`, and are not part
+of a fresh checkout; rebuild or copy them per the `setup` and `run-model`
+skills. `tools/pi/test-roboagent-protocol.ps1` runs against the mock host and
+needs none of them.
 
 The Pi integration validates tool calls, records structured evaluation signals in
 `logs/evaluation-results.jsonl`, reports per-request token and QNN
