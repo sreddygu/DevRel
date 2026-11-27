@@ -19,7 +19,7 @@ synapse:
   maturity: "pilot"
   developer_journey_stage:
     - "enablement"
-  supported_versions: ["Qualcomm Linux (QLI) 2.0", "QAIRT 2.47.x host runtime"]
+  supported_versions: ["Qualcomm Linux (QLI) 2.0", "QAIRT 2.47.x or 2.51.x host runtime"]
   dependencies:
     - "qli-linux-domain"
   authoritative_docs: ["../../src/qli_device_lifecycle_apps.py"]

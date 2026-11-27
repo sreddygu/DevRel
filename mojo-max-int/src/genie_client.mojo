@@ -46,7 +46,7 @@ struct GenieClient:
         var json = Python.import_module("json")
         var urllib_req = Python.import_module("urllib.request")
 
-        var url = String("http://") + self.host + ":" + str(self.port) + "/v1/chat/completions"
+        var url = String("http://") + self.host + ":" + String(self.port) + "/v1/chat/completions"
 
         var payload_dict = Python.dict()
         payload_dict["model"] = self.model
@@ -70,4 +70,4 @@ struct GenieClient:
         var resp = urllib_req.urlopen(req, timeout=self.timeout_s)
         var data = json.loads(resp.read())
 
-        return str(data["choices"][0]["message"]["content"])
+        return String(data["choices"][0]["message"]["content"])

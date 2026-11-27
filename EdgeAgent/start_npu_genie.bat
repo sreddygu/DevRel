@@ -24,7 +24,7 @@ REM ===========================================================================
 
 set "MODE=%~1"
 
-set "QAIRT_HOME_DEFAULT=C:\Qualcomm\AIStack\QAIRT\2.47.1.260610"
+set "QAIRT_HOME_DEFAULT=C:\Qualcomm\AIStack\QAIRT\2.51.40.260930"
 set "BUNDLE_DIR_DEFAULT=C:\genie_bundle\qwen3_4b_instruct_2507-genie-w4a16-qualcomm_snapdragon_x_elite"
 
 if not defined QAIRT_HOME set "QAIRT_HOME=%QAIRT_HOME_DEFAULT%"

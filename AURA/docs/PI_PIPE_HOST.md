@@ -32,7 +32,7 @@ Everything but the QAIRT SDK ships inside AURA:
 - `models/gemma4_e2b_sc8380xp_ctxt_4000_ar_l-128/` — the Gemma-4 E2B `.pte` +
   tokenizer (~2.8 GB; local `models/` folder, not committed).
 - A **QAIRT SDK** installed on the machine (not vendored — it's large and
-  machine-specific). Example: `C:\Qualcomm\AIStack\QAIRT\2.47.1.260610`. Use a
+  machine-specific). Example: `C:\Qualcomm\AIStack\QAIRT\2.51.40.260930`. Use a
   version **>=** the one the `.pte` was compiled against (an older runtime fails
   with `err 5000`).
 - Snapdragon X Elite (SC8380XP) → HTP arch **v73**.
@@ -56,7 +56,7 @@ the AURA repo root the only machine-specific value is the SDK root:
 ```powershell
 aura-executorch-server `
   --backend pipe-host `
-  --qnn-sdk-root "C:\Qualcomm\AIStack\QAIRT\2.47.1.260610"
+  --qnn-sdk-root "C:\Qualcomm\AIStack\QAIRT\2.51.40.260930"
 ```
 
 That resolves the defaults: `--host-bin ./bin/qnn_llm_host.exe`,
@@ -74,7 +74,7 @@ aura-executorch-server `
   --decoder-model-version gemma4 `
   --pipe-name gemma4 `
   --seq-len-ceiling 3800 `
-  --qnn-sdk-root "C:\Qualcomm\AIStack\QAIRT\2.47.1.260610" `
+  --qnn-sdk-root "C:\Qualcomm\AIStack\QAIRT\2.51.40.260930" `
   --backend-dir ".\bin\RelWithDebInfo" `
   --hexagon-arch 73 `
   --model gemma-4-e2b-executorch `

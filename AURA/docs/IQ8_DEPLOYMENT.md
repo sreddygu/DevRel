@@ -24,7 +24,7 @@ The on-device driver scripts referenced below live in the repo under
 | Address | `<device-ip>` (root / password auth) |
 | Host key | `<host-key>` (SHA256 fingerprint from first connect) |
 | Python | 3.14 with `numpy` + `cv2` (no `onnxruntime`/`PIL`); `dnf` present |
-| QNN SDK | 2.47.1 under `/opt/qnn` (`qnn-net-run`, `libQnnHtp.so`, `libQnnModelDlc.so`, v75 dsp skels) |
+| QNN SDK | 2.51.40 runtime (observed on a QLI 2.0 IQ8: `qnn-net-run` and `libQnnHtp.so` under `~/diffrhythm/qnn_rt`; an earlier image carried 2.47.1 under `/opt/qnn`), with v75 dsp skels |
 | Audio | ALSA `arecord` / `aplay` present; no Python audio libs |
 
 > **Note:** set `<device-ip>` to your board's address. SSH via PuTTY:

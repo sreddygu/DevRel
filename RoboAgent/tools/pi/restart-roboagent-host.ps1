@@ -8,7 +8,7 @@ param(
 $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 $sdk = $env:QNN_SDK_ROOT
-if (-not $sdk) { $sdk = "C:\Qualcomm\AIStack\QAIRT\2.47.1.260610" }
+if (-not $sdk) { $sdk = "C:\Qualcomm\AIStack\QAIRT\2.51.40.260930" }
 
 $env:QNN_SDK_ROOT = $sdk
 $env:Path = "$root\RelWithDebInfo;$sdk\lib\aarch64-windows-msvc;$env:Path"

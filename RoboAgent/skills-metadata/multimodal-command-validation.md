@@ -17,7 +17,7 @@ Evaluate the responses and proposed tool calls of RoboAgent (a local Gemma 4 rob
 - **Tags:** `roboagent`, `edge-ai`, `multimodal`, `command`, `validation`, `llm`, `executorch`, `qnn`, `windows-on-snapdragon`, `gemma`
 - **License:** `Apache-2.0`
 - **Compatibility:** host OS `windows`
-- **Requirements:** Snapdragon X (SC8380XP) Windows on ARM device; QAIRT 2.47; no adb or cross-compile
+- **Requirements:** Snapdragon X (SC8380XP) Windows on ARM device; QAIRT 2.51; no adb or cross-compile
 - **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../skills/multimodal-command-validation/SKILL.md)

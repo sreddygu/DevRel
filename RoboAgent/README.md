@@ -33,7 +33,7 @@ token reporting, English-only output policy, and context recovery.
 ```powershell
 cd C:\Dropbox\DevRel\Academy\qa-intermediate-curriculum\projects\RoboAgent
 
-$env:QNN_SDK_ROOT = "C:\Qualcomm\AIStack\QAIRT\2.47.1.260610"
+$env:QNN_SDK_ROOT = "C:\Qualcomm\AIStack\QAIRT\2.51.40.260930"
 $env:Path = "$PWD\RelWithDebInfo;$env:QNN_SDK_ROOT\lib\aarch64-windows-msvc;$env:Path"
 $env:ADSP_LIBRARY_PATH = "$env:QNN_SDK_ROOT\lib\hexagon-v73\unsigned"
 

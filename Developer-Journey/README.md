@@ -69,7 +69,7 @@ off in every other story.
 |---|---|
 | Model server | Prebuilt llama.cpp ARM64 (`llama-server.exe`) — no toolchain |
 | Agent | `agent.py` — stdlib only (`urllib`, `json`), zero pip installs |
-| NPU (stretch) | QAIRT 2.47 · Genie (`genie_server.py` shim) |
+| NPU (stretch) | QAIRT 2.51 · Genie (`genie_server.py` shim) |
 | Env | Native ARM64 Python (project venv) |
 
 ---

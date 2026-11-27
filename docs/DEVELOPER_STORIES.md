@@ -77,6 +77,6 @@ hardware we actually have. Keep that distinction in any customer-facing deck.
 | Audio events | YAMNet | QNN / Hexagon NPU |
 | Speech | Whisper Base/Small | QNN NPU / whisper.cpp |
 | Embeddings | All-MiniLM-L6-v2 | QNN NPU → SQLite |
-| Reasoning (NPU) | Qwen3-4B-Instruct-2507 **W4A16** | Genie / QAIRT 2.47 |
+| Reasoning (NPU) | Qwen3-4B-Instruct-2507 **W4A16** | Genie / QAIRT 2.51 |
 | Reasoning (CPU) | Gemma-4-E4B / Gemma-4-12B / Qwen2.5-0.5B **GGUF** | llama.cpp |
 | Wake / TinyML | `hey_dragon` KWS, gesture, sinewave | ONNX / TFLite Micro |

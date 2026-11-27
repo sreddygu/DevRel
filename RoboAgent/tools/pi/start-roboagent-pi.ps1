@@ -25,7 +25,7 @@ if ($mutationsEnabled -and ($NoTools -or -not $ReadOnlyTools)) {
     throw "Enable mutations with -ReadOnlyTools -EnableMutations. Mutation tools cannot run without the read-only tool set."
 }
 $sdk = $env:QNN_SDK_ROOT
-if (-not $sdk) { $sdk = "C:\Qualcomm\AIStack\QAIRT\2.47.1.260610" }
+if (-not $sdk) { $sdk = "C:\Qualcomm\AIStack\QAIRT\2.51.40.260930" }
 
 $env:QNN_SDK_ROOT = $sdk
 $env:Path = "$root\RelWithDebInfo;$sdk\lib\aarch64-windows-msvc;$env:Path"

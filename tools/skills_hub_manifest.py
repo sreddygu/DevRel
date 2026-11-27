@@ -92,10 +92,10 @@ IQ8_DEVICE_NO_OS = {"devkits": [IQ8]}
 
 # Requirements the hub schema cannot express (shown on the skills-metadata pages).
 REQUIREMENTS = {
-    "AURA": "Arduino VENTUNO Q or Qualcomm IQ8 (QCS8275); Python 3.10+; optional Genie endpoint (QAIRT 2.47) on a trusted Snapdragon host",
+    "AURA": "Arduino VENTUNO Q or Qualcomm IQ8 (QCS8275); Python 3.10+; optional Genie endpoint (QAIRT 2.51) on a trusted Snapdragon host",
     "EdgeAgent": "Python 3.10+; llama.cpp server (CPU) or Genie shim over QAIRT (NPU, Snapdragon X Elite host)",
     "GesturDJ": "Python 3.10+; PC and Qualcomm IQ8 board (Qualcomm Linux 2.0); QAIRT for the NPU music path",
-    "RoboAgent": "Snapdragon X (SC8380XP) Windows on ARM device; QAIRT 2.47; no adb or cross-compile",
+    "RoboAgent": "Snapdragon X (SC8380XP) Windows on ARM device; QAIRT 2.51; no adb or cross-compile",
     "VSaaS": "Python 3.12 and Linux (Ubuntu 24.04); ONNX Runtime or QNN YOLOv8 DLC for real perception",
     "qli_dogfooding": "Qualcomm Linux 2.0 on IQ8 or IQ9; SSH access; Python 3.10+ on the host",
 }

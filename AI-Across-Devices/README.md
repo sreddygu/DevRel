@@ -64,7 +64,7 @@ an IQ8 hub to an X Elite laptop to a wearable without losing the thread.
 
 | Layer | Choice |
 |---|---|
-| Reasoning (NPU) | QAIRT 2.47 · Genie / GenieX (Qwen3-4B W4A16) |
+| Reasoning (NPU) | QAIRT 2.51 · Genie / GenieX (Qwen3-4B W4A16) |
 | Reasoning (CPU) | llama.cpp (GGUF fallback per node) |
 | Memory | SQLite event log + All-MiniLM-L6-v2 embeddings |
 | Transport | OpenAI-compatible HTTP · SSH reverse tunnel (loopback-only endpoints) |

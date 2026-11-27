@@ -22,7 +22,7 @@ part, which needs a device and is done in a live session.
 
 ## SDK source (on the PC)
 
-`C:\Qualcomm\AIStack\QAIRT\2.47.1.260610` — use the **`aarch64-oe-linux-gcc11.2`**
+`C:\Qualcomm\AIStack\QAIRT\2.51.40.260930` — use the **`aarch64-oe-linux-gcc11.2`**
 target (matches the QLI 2.0 ABI):
 
 - `bin/aarch64-oe-linux-gcc11.2/genie-t2t-run`
@@ -111,7 +111,7 @@ The full AURA → shim → NPU path was validated on the **X Elite PC** (HTP v73
 which matches the existing `C:\genie_bundle\qwen3_4b…x_elite` bundle:
 
 ```sh
-Q="/c/Qualcomm/AIStack/QAIRT/2.47.1.260610"
+Q="/c/Qualcomm/AIStack/QAIRT/2.51.40.260930"
 D="/c/genie_bundle/qwen3_4b_instruct_2507-genie-w4a16-qualcomm_snapdragon_x_elite"
 export PATH="$Q/lib/aarch64-windows-msvc:$Q/bin/aarch64-windows-msvc:$PATH"
 export ADSP_LIBRARY_PATH="$Q/lib/hexagon-v73/unsigned"   # <-- required, or load fails

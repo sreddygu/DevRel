@@ -17,7 +17,7 @@ Run and troubleshoot the local Gemma 4 ExecuTorch QNN model host on Windows on S
 - **Tags:** `roboagent`, `edge-ai`, `qnn`, `llm`, `executorch`, `windows-on-snapdragon`, `gemma`
 - **License:** `Apache-2.0`
 - **Compatibility:** host OS `windows`
-- **Requirements:** Snapdragon X (SC8380XP) Windows on ARM device; QAIRT 2.47; no adb or cross-compile
+- **Requirements:** Snapdragon X (SC8380XP) Windows on ARM device; QAIRT 2.51; no adb or cross-compile
 - **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../.pi/skills/roboagent-qnn/SKILL.md)

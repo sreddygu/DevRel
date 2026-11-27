@@ -56,7 +56,7 @@ event organizers and BU teams can point any audience at the right entry project.
 
 | Layer | Choice |
 |---|---|
-| NPU | QAIRT 2.47 · QNN · Genie / GenieX |
+| NPU | QAIRT 2.51 · QNN · Genie / GenieX |
 | CPU | llama.cpp (GGUF), ONNX Runtime, TFLite Micro |
 | Agent / app | stdlib agent (`../Agents`), AURA pipeline (`../AURA`) |
 | The point | **one toolchain**; the persona changes the *entry project*, not the platform |

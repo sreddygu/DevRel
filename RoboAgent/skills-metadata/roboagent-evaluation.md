@@ -17,7 +17,7 @@ Evaluate response quality, latency and tool use of the local Gemma 4 model used 
 - **Tags:** `roboagent`, `edge-ai`, `evaluation`, `llm`, `executorch`, `qnn`, `windows-on-snapdragon`, `gemma`
 - **License:** `Apache-2.0`
 - **Compatibility:** host OS `windows`
-- **Requirements:** Snapdragon X (SC8380XP) Windows on ARM device; QAIRT 2.47; no adb or cross-compile
+- **Requirements:** Snapdragon X (SC8380XP) Windows on ARM device; QAIRT 2.51; no adb or cross-compile
 - **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../.pi/skills/roboagent-evaluation/SKILL.md)

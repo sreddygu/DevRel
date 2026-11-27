@@ -52,7 +52,7 @@ python .\agent.py --base-url http://127.0.0.1:8080 -v "What is 12.5% of 840?"
 ## Resolved paths (this machine)
 
 ```powershell
-$QAIRT_HOME = "C:\Qualcomm\AIStack\QAIRT\2.47.1.260610"
+$QAIRT_HOME = "C:\Qualcomm\AIStack\QAIRT\2.51.40.260930"
 # The bundle MUST live on a plain local disk, NOT under C:\Dropbox -- see the
 # mmap gotcha in Troubleshooting. We keep a working copy here:
 $BUNDLE_DIR = "C:\genie_bundle\qwen3_4b_instruct_2507-genie-w4a16-qualcomm_snapdragon_x_elite"

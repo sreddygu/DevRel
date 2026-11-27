@@ -32,7 +32,7 @@ approval.
 | Devkits | Dragonwing IQ-8275 EVK (`qcs8275-iq-8275-evk-pro`) |
 | Target OS | Qualcomm Linux (`qli-2.0`, `qualcomm-linux-proprietary`) |
 | Host OS | Any |
-| Requirements | Arduino VENTUNO Q or Qualcomm IQ8 (QCS8275); Python 3.10+; optional Genie endpoint (QAIRT 2.47) on a trusted Snapdragon host |
+| Requirements | Arduino VENTUNO Q or Qualcomm IQ8 (QCS8275); Python 3.10+; optional Genie endpoint (QAIRT 2.51) on a trusted Snapdragon host |
 
 References: [AURA README](https://github.com/sreddygu/DevRel/blob/main/AURA/README.md), [IQ8 deployment](https://github.com/sreddygu/DevRel/blob/main/AURA/docs/IQ8_DEPLOYMENT.md), [NPU setup](https://github.com/sreddygu/DevRel/blob/main/AURA/docs/NPU_SETUP.md).
 

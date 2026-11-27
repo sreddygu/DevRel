@@ -466,6 +466,9 @@ def _log_mel(y: np.ndarray, *, cfg: FeatCfg, mel_fb: np.ndarray) -> np.ndarray:
     power = _stft_power(y.astype(np.float32), n_fft=cfg.n_fft, hop_length=cfg.hop_length, impl=cfg.stft_impl)
     mel = mel_fb @ power
     log_mel = np.log(np.maximum(mel, cfg.log_eps))
+    # Per-clip standardization. The notebook and kws_keyword_beep_onnx.py apply the same step at
+    # inference, so a model trained here must see identical features or it will not trigger there.
+    log_mel = (log_mel - log_mel.mean()) / (log_mel.std() + 1e-6)
     return log_mel.astype(np.float32, copy=False)
 
 
