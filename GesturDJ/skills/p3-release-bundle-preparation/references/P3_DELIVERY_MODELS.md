@@ -36,7 +36,7 @@ repeatable model workflow.
 (`pip`, `npm`, container, or platform-native package), a lockfile, public model
 fetch instructions, example configuration, and smoke-test command.
 
-**Best fit:** `AURA`, `EdgeAgent`, `LLM`, `QUAD-Client`, `RoboAgent`, `VSaaS`,
+**Best fit:** `AURA`, `EdgeAgent`, `LLM`, `RoboAgent`, `VSaaS`,
 `wake_word`, `sinewave`, `mojo-max-int`, and `DiffRhythm_old_songs`.
 
 **P3 experience:** install a signed/versioned starter kit, run a local smoke
@@ -52,7 +52,7 @@ matrix, checksums, evidence summary, rollback instructions, and only the assets
 that may legally be redistributed.
 
 **Best fit:** `GesturDJ`, `wake_word`, `Wearable-AI`, `XR-Experiences`, `AURA`,
-`EdgeAgent`, and `QUAD-Client` after each has public-device validation.
+and `EdgeAgent` after each has public-device validation.
 
 **P3 experience:** choose a compatible target, download one immutable release
 bundle, verify it locally, and follow an explicit approval gate before writes,

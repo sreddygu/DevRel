@@ -256,8 +256,7 @@ richer state available inside the UE modem stack, can make better decisions.
 
 ### 7.1 DevRel as the development framework
 
-The Modem Agent is **developed using DevRel** (Qualcomm Unified AI Developer
-toolchain) - the same framework that hosts the AI Gateway, UNO Q, and
+The Modem Agent is **developed using DevRel** - the same framework that hosts the AI Gateway, UNO Q, and
 Snapdragon X classes of DevRel samples. DevRel provides the developer-facing
 abstraction over the underlying vendor SDKs (NWAIOS / QNN / AIMET / QAIRT)
 so the agent code targets a stable, mockable, testable interface rather

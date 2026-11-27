@@ -11,7 +11,6 @@ This workspace collects hands-on Qualcomm developer-relations projects, learning
 | [GesturDJ](GesturDJ/) | Gesture-controlled music and generative-audio experiences. |
 | [LLM](LLM/) | GGUF and `llama.cpp` workflows for UNOQ devices. |
 | [mojo-max-int](mojo-max-int/) | Mojo examples and deployment targets. |
-| [QUAD-Client](QUAD-Client/) | Qualcomm Unified AI Developer client and samples. |
 | [RoboAgent](RoboAgent/) | ExecuTorch QNN playground for Windows on Snapdragon. |
 | [VSaaS](VSaaS/) | Private edge video intelligence with searchable insights. |
 | [wake_word](wake_word/) | `hey_dragon` keyword-spotting training and streaming demo. |
@@ -44,12 +43,14 @@ its manifest entry and `SKILL.md` procedure.
 Catalog entries are generated and checked by
 [`tools/skills_hub_manifest.py`](tools/skills_hub_manifest.py) from the plain-language
 copy in [`tools/skills_hub_copy.json`](tools/skills_hub_copy.json). Every listed skill
-must have a self-explanatory name and description (acronyms such as AURA, QUAD, NPU and
+must have a self-explanatory name and description (acronyms such as AURA, NPU and
 QNN expanded on first use), at least five example prompts, and declared
 compatibility (devkits, target OS, host OS). The same compatibility table and
-example prompts are written into every published `SKILL.md`, including the QUAD-Client
-copies (the tool keeps their three byte-identical forms in sync). Run
-`python tools/skills_hub_manifest.py --check` before opening a catalog PR.
+example prompts are written into every published `SKILL.md`.
+[`skills-synapse.json`](skills-synapse.json) is the single inventory of all listed skills
+(project, manifest, metadata page and full entry), generated from the per-project
+`skills.json` files so it cannot drift. Run
+`python tools/skills_hub_manifest.py --check` before opening a catalog PR; it fails if the inventory is stale.
 
 | Shared skill | Use when |
 | --- | --- |

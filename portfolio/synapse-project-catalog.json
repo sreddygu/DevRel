@@ -20,7 +20,6 @@
     {"directory": "LLM", "status": "proposed", "shared_profile": "p3-device", "next_skills": ["local-llm-runtime-setup", "model-inference-validation", "npu-inference-benchmark"]},
     {"directory": "mojo-max-int", "status": "proposed", "shared_profile": "p3-core", "next_skills": ["mojo-project-setup", "kernel-performance-validation", "build-artifact-verification"]},
     {"directory": "Multiverse-of-Developers", "status": "proposed", "shared_profile": "p3-core", "next_skills": ["developer-persona-mapping", "experience-composition", "portfolio-demo-validation"]},
-    {"directory": "QUAD-Client", "status": "enabled", "shared_profile": "p3-device", "catalog": "QUAD-Client/skills/README.md", "enabled_skill_count": 3, "next_skills": []},
     {"directory": "RoboAgent", "status": "enabled", "shared_profile": "p3-device", "catalog": "RoboAgent/skills/README.md", "enabled_skill_count": 3, "next_skills": []},
     {"directory": "sinewave", "status": "proposed", "shared_profile": "p3-core", "next_skills": ["audio-signal-generation", "waveform-output-validation"]},
     {"directory": "VSaaS", "status": "enabled", "shared_profile": "p3-device", "catalog": "VSaaS/skills/README.md", "enabled_skill_count": 3, "next_skills": []},
@@ -29,10 +28,10 @@
     {"directory": "XR-Experiences", "status": "proposed", "shared_profile": "p3-device", "next_skills": ["spatial-scene-pipeline", "grounded-xr-assistance", "xr-proxy-validation"]}
   ],
   "shared_skill_adoption": {
-    "project-onboarding": ["AI-Across-Devices", "AURA", "Developer-Journey", "Edge-AI-for-Everyone", "EdgeAgent", "GesturDJ", "LLM", "mojo-max-int", "Multiverse-of-Developers", "qli_dogfooding", "QUAD-Client", "RoboAgent", "sinewave", "VSaaS", "wake_word", "Wearable-AI", "XR-Experiences"],
-    "evidence-and-compatibility": ["AI-Across-Devices", "AURA", "Developer-Journey", "Edge-AI-for-Everyone", "EdgeAgent", "GesturDJ", "LLM", "mojo-max-int", "Multiverse-of-Developers", "qli_dogfooding", "QUAD-Client", "RoboAgent", "sinewave", "VSaaS", "wake_word", "Wearable-AI", "XR-Experiences"],
-    "release-bundle-preparation": ["AI-Across-Devices", "AURA", "Developer-Journey", "Edge-AI-for-Everyone", "EdgeAgent", "GesturDJ", "LLM", "mojo-max-int", "Multiverse-of-Developers", "qli_dogfooding", "QUAD-Client", "RoboAgent", "sinewave", "VSaaS", "wake_word", "Wearable-AI", "XR-Experiences"],
-    "public-asset-license-review": ["AI-Across-Devices", "AURA", "Developer-Journey", "Edge-AI-for-Everyone", "EdgeAgent", "GesturDJ", "LLM", "mojo-max-int", "Multiverse-of-Developers", "qli_dogfooding", "QUAD-Client", "RoboAgent", "sinewave", "VSaaS", "wake_word", "Wearable-AI", "XR-Experiences"],
-    "device-readiness": ["AI-Across-Devices", "AURA", "Edge-AI-for-Everyone", "EdgeAgent", "GesturDJ", "LLM", "qli_dogfooding", "QUAD-Client", "RoboAgent", "VSaaS", "wake_word", "Wearable-AI", "XR-Experiences"]
+    "project-onboarding": ["AI-Across-Devices", "AURA", "Developer-Journey", "Edge-AI-for-Everyone", "EdgeAgent", "GesturDJ", "LLM", "mojo-max-int", "Multiverse-of-Developers", "qli_dogfooding", "RoboAgent", "sinewave", "VSaaS", "wake_word", "Wearable-AI", "XR-Experiences"],
+    "evidence-and-compatibility": ["AI-Across-Devices", "AURA", "Developer-Journey", "Edge-AI-for-Everyone", "EdgeAgent", "GesturDJ", "LLM", "mojo-max-int", "Multiverse-of-Developers", "qli_dogfooding", "RoboAgent", "sinewave", "VSaaS", "wake_word", "Wearable-AI", "XR-Experiences"],
+    "release-bundle-preparation": ["AI-Across-Devices", "AURA", "Developer-Journey", "Edge-AI-for-Everyone", "EdgeAgent", "GesturDJ", "LLM", "mojo-max-int", "Multiverse-of-Developers", "qli_dogfooding", "RoboAgent", "sinewave", "VSaaS", "wake_word", "Wearable-AI", "XR-Experiences"],
+    "public-asset-license-review": ["AI-Across-Devices", "AURA", "Developer-Journey", "Edge-AI-for-Everyone", "EdgeAgent", "GesturDJ", "LLM", "mojo-max-int", "Multiverse-of-Developers", "qli_dogfooding", "RoboAgent", "sinewave", "VSaaS", "wake_word", "Wearable-AI", "XR-Experiences"],
+    "device-readiness": ["AI-Across-Devices", "AURA", "Edge-AI-for-Everyone", "EdgeAgent", "GesturDJ", "LLM", "qli_dogfooding", "RoboAgent", "VSaaS", "wake_word", "Wearable-AI", "XR-Experiences"]
   }
 }

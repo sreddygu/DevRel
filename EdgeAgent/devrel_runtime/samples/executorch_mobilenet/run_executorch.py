@@ -74,7 +74,7 @@ def ensure_model(model_path: Path) -> Path:
         torch.save(model, model_path)
         print(f"[setup] saved a real MobileNetV2 module → {model_path.name}")
     except Exception:
-        model_path.write_bytes(b"\x80\x02QUAD-placeholder-pytorch-model" + b"\0" * 4096)
+        model_path.write_bytes(b"\x80\x02DevRel-placeholder-pytorch-model" + b"\0" * 4096)
         print(f"[setup] torch not available — wrote a placeholder {model_path.name} "
               "(fine for mock mode)")
     return model_path
