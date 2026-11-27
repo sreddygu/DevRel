@@ -9,11 +9,11 @@ device on **October 9, 2026**.
 
 | Capability | Recorded result | Supporting artifact |
 | --- | --- | --- |
-| QNN model execution | Graph execution completed with `returncode=0` | [`qnn_run.txt`](../evidence/iq9_deep_2026-08-12/qnn_run.txt) |
-| QNN profiling | MobileNetV2 recorded 277.3925 inferences/sec with four HVX threads | [`qnn_profile.txt`](../evidence/iq9_deep_2026-08-12/qnn_profile.txt) |
-| Audio playback | WAV playback completed with `returncode=0` | [`audio_loopback.txt`](../evidence/iq9_deep_2026-08-12/audio_loopback.txt) |
-| Device-health inspection | Health agent recorded capabilities and a warning state | [`device_health_stdout.txt`](../evidence/iq9_deep_2026-08-12/device_health_stdout.txt) |
-| A2A agent validation | Health service was ready; unavailable Genie endpoint was retained as an error | [`a2a_validation.json`](../evidence/iq9_deep_2026-08-12/a2a_validation.json) |
+| QNN model execution | Graph execution completed with `returncode=0` | `qnn_run.txt` (local evidence, not committed) |
+| QNN profiling | MobileNetV2 recorded 277.3925 inferences/sec with four HVX threads | `qnn_profile.txt` (local evidence, not committed) |
+| Audio playback | WAV playback completed with `returncode=0` | `audio_loopback.txt` (local evidence, not committed) |
+| Device-health inspection | Health agent recorded capabilities and a warning state | `device_health_stdout.txt` (local evidence, not committed) |
+| A2A agent validation | Health service was ready; unavailable Genie endpoint was retained as an error | `a2a_validation.json` (local evidence, not committed) |
 
 ## QNN Execution and Performance
 
@@ -25,7 +25,7 @@ Finished Executing Graphs
 returncode=0
 ```
 
-Source: [`qnn_run.txt`](../evidence/iq9_deep_2026-08-12/qnn_run.txt#L35).
+Source: `qnn_run.txt` (local evidence, not committed).
 
 The corresponding profile identifies `mobilenetv2` and records these results:
 
@@ -36,7 +36,7 @@ The corresponding profile identifies `mobilenetv2` and records these results:
 | QNN accelerator execution time | 1995 microseconds |
 | HVX threads used | 4 |
 
-Source: [`qnn_profile.txt`](../evidence/iq9_deep_2026-08-12/qnn_profile.txt#L39).
+Source: `qnn_profile.txt` (local evidence, not committed).
 
 This demonstrates successful AI execution plus measurable performance, rather
 than a generated plan or a claimed capability.
@@ -45,12 +45,12 @@ than a generated plan or a claimed capability.
 
 The audio workflow captured a successful `aplay` execution with `returncode=0`
 and playback of a 48 kHz mono WAV file. Source:
-[`audio_loopback.txt`](../evidence/iq9_deep_2026-08-12/audio_loopback.txt#L10).
+`audio_loopback.txt` (local evidence, not committed).
 
 The device-health agent captured a `WARN` state rather than reporting an
 unqualified success. The same artifact recorded 10 audio devices, 32 camera
 devices, and 85 QNN assets. Source:
-[`device_health_stdout.txt`](../evidence/iq9_deep_2026-08-12/device_health_stdout.txt#L5).
+`device_health_stdout.txt` (local evidence, not committed).
 
 This shows that the implementation retains diagnostic findings and supports a
 recovery decision instead of concealing a non-ideal device condition.
@@ -59,7 +59,7 @@ recovery decision instead of concealing a non-ideal device condition.
 
 The A2A validation artifact reports the device-health service as `ready`. It
 also preserves a failed RPC call caused by an unavailable Genie endpoint.
-Source: [`a2a_validation.json`](../evidence/iq9_deep_2026-08-12/a2a_validation.json#L3).
+Source: `a2a_validation.json` (local evidence, not committed).
 
 This demonstrates the intended Synapse behavior: validated work and known
 limitations are retained as evidence. A failed dependency is not turned into a
@@ -86,7 +86,7 @@ Toolkit validation: PASS
 
 The execution inventory is documented in [`workflow.md`](workflow.md). The
 full IQ9 result summary is available in
-[`iq9_summary_2026-08-12.json`](../evidence/iq9_summary_2026-08-12.json).
+`iq9_summary_2026-08-12.json` (local evidence, not committed).
 
 ## Presentation Sequence
 

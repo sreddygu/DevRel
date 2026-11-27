@@ -7,7 +7,7 @@ internal build, corporate account, private network, or undocumented support
 path.
 
 This policy applies to the Synapse projects cataloged in
-[`SYNAPSE_SKILLS.md`](../../portfolio/SYNAPSE_SKILLS.md).
+[`SYNAPSE_SKILLS.md`](../../../../portfolio/SYNAPSE_SKILLS.md).
 
 ## Delivery Lanes
 

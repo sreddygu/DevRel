@@ -51,3 +51,29 @@ desktop.ini
 *.swp
 *.swo
 *~
+
+# --- Outputs and execution data (managed; do not commit run results) ---
+# Run output folders
+output/
+outputs/
+results/
+runs/
+artifacts/
+tmp/
+temp/
+checkpoints/
+exports/
+.cache/
+# Logs, local databases and process files
+*.log.*
+*.executed.ipynb
+.ipynb_checkpoints/
+# Models, compiled graphs and generated binaries
+*.onnx.data
+*.pte
+*.joblib
+*.npy
+*.npz
+# Environments, caches and secrets
+!.env.*.example
+# --- end managed block ---

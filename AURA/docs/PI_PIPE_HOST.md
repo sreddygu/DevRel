@@ -28,9 +28,9 @@ module docstring for why.
 Everything but the QAIRT SDK ships inside AURA:
 
 - `bin/qnn_llm_host.exe` + `bin/RelWithDebInfo/qnn_executorch_backend.dll` —
-  vendored (see [`../bin/README.md`](../bin/README.md)).
+  vendored (local `bin/` folder, not committed).
 - `models/gemma4_e2b_sc8380xp_ctxt_4000_ar_l-128/` — the Gemma-4 E2B `.pte` +
-  tokenizer (~2.8 GB; see [`../models/README.md`](../models/README.md)).
+  tokenizer (~2.8 GB; local `models/` folder, not committed).
 - A **QAIRT SDK** installed on the machine (not vendored — it's large and
   machine-specific). Example: `C:\Qualcomm\AIStack\QAIRT\2.47.1.260610`. Use a
   version **>=** the one the `.pte` was compiled against (an older runtime fails
