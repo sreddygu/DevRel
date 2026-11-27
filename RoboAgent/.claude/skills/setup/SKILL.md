@@ -63,7 +63,7 @@ Once built, see the `run-model` skill to actually execute a `.pte`.
 | Devkits | Not device-specific |
 | Target OS | No target OS constraint declared |
 | Host OS | Windows |
-| Requirements | Snapdragon X (SC8380XP) Windows on ARM device; QAIRT 2.47; no adb or cross-compile |
+| Requirements | Snapdragon X (SC8380XP) Windows on ARM device; QAIRT 2.51; no adb or cross-compile |
 
 References: [RoboAgent README](https://github.com/sreddygu/DevRel/blob/main/RoboAgent/README.md).
 
@@ -73,7 +73,7 @@ References: [RoboAgent README](https://github.com/sreddygu/DevRel/blob/main/Robo
 - Check prerequisites before building a QNN runner
 - Prepare this device as both host and target for QNN
 - What do I install before building ExecuTorch with the QNN backend on Windows?
-- Verify my QAIRT 2.47 install is visible to the ExecuTorch build
+- Verify my QAIRT 2.51 install is visible to the ExecuTorch build
 - Why does the ExecuTorch QNN build fail on my ARM64 Windows PC?
 
 <!-- skills-hub:end -->

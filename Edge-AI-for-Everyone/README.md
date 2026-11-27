@@ -63,7 +63,7 @@ it, target the NPU, and deploy the same artifact across the fleet.
 
 | Layer | Choice |
 |---|---|
-| NPU runtime | **QAIRT 2.47** · QNN · Genie / GenieX |
+| NPU runtime | **QAIRT 2.51** · QNN · Genie / GenieX |
 | CPU runtime | llama.cpp (GGUF), native ARM64 build |
 | Conversion | qairt-converter → qairt-quantizer → qnn-context-binary-generator (x86_64 host) |
 | Export helper | `qai-hub-models[...]` (AI Hub cloud export) |

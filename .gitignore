@@ -85,3 +85,23 @@ GesturDJ/ACE-Step/xelite_qnn_runner/build-agent/
 GesturDJ/ACE-Step/xelite_qnn_runner/build-host/
 
 # Locally generated project material
+
+# Run output folders and execution data (any project)
+**/output/
+**/outputs/
+**/results/
+**/runs/
+**/artifacts/
+**/checkpoints/
+**/tmp/
+*.executed.ipynb
+*.onnx
+*.onnx.data
+*.dlc
+*.pte
+*.gguf
+*.tflite
+*.joblib
+*.npy
+*.npz
+

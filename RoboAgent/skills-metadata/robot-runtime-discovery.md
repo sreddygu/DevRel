@@ -17,7 +17,7 @@ Inspect whether the QNN runtime and the Pi coding assistant are ready for RoboAg
 - **Tags:** `roboagent`, `edge-ai`, `robot`, `runtime`, `discovery`, `llm`, `executorch`, `qnn`, `windows-on-snapdragon`, `gemma`
 - **License:** `Apache-2.0`
 - **Compatibility:** host OS `windows`
-- **Requirements:** Snapdragon X (SC8380XP) Windows on ARM device; QAIRT 2.47; no adb or cross-compile
+- **Requirements:** Snapdragon X (SC8380XP) Windows on ARM device; QAIRT 2.51; no adb or cross-compile
 - **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
 - **Procedure:** [`SKILL.md`](../skills/robot-runtime-discovery/SKILL.md)

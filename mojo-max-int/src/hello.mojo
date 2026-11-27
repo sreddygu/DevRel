@@ -1,2 +1,2 @@
 fn main():
-    print("Hello from Mojo on IQ9 ARM CPU")
+    print("Hello from Mojo on a Qualcomm ARM CPU")

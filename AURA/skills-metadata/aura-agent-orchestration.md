@@ -17,7 +17,7 @@ Set up AURA (Autonomous Understanding and Responsive Agents), a privacy-first on
 - **Tags:** `aura`, `edge-ai`, `agent`, `orchestration`, `ai-agent`, `physical-ai`, `on-device-ai`, `iq8`, `ventuno-q`
 - **License:** `Apache-2.0`
 - **Compatibility:** devkits `qcs8275-iq-8275-evk-pro`; target OS `qualcomm_linux` (qli-2.0)
-- **Requirements:** Arduino VENTUNO Q or Qualcomm IQ8 (QCS8275); Python 3.10+; optional Genie endpoint (QAIRT 2.47) on a trusted Snapdragon host
+- **Requirements:** Arduino VENTUNO Q or Qualcomm IQ8 (QCS8275); Python 3.10+; optional Genie endpoint (QAIRT 2.51) on a trusted Snapdragon host
 - **References:** [AURA README](../README.md), [IQ8 deployment](../docs/IQ8_DEPLOYMENT.md), [NPU setup](../docs/NPU_SETUP.md)
 - **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)

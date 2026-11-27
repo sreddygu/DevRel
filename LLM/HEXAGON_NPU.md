@@ -8,7 +8,7 @@ original weights + an x86_64 host and is documented separately in `CLAUDE.md`).
           ↓
     llama.cpp  (built with GGML_HEXAGON=ON)
           ↓
-    libggml-htp-v81.so / v75  (HTP session runtime)
+    libggml-htp-v81 / v75  (HTP session runtime; `.so` on Linux, signed `.dll` on Windows)
           ↓
     HTP (NPU)   — IQ9 = v81, IQ8 = v75
 
@@ -40,11 +40,15 @@ built binaries to a non-synced path, e.g. **`C:\llm_hexagon\`**, and run from th
 Native Windows-on-Snapdragon (ARM64) build needs:
 
 - [x] Hexagon compiler — `C:\Qualcomm\HEXAGON_Tools\19.0.07`
-- [x] QAIRT 2.47.1 — `C:\Qualcomm\AIStack\QAIRT\2.47.1.260610`
-- [ ] **Hexagon SDK 6.6+** — NOT installed (only the standalone compiler is). Needed for
-      FastRPC stubs. Install via Qualcomm Package Manager (QPM).
+- [x] QAIRT 2.51.40 — `C:\Qualcomm\AIStack\QAIRT\2.51.40.260930`
+- [ ] **Hexagon SDK 6.7+** — NOT installed (only the standalone compiler is). Needed for
+      FastRPC stubs. Upstream llama.cpp (b12803) installs it with
+      `scripts\snapdragon\setup-sdk.py --hexagon --opencl`, or via Qualcomm Package Manager (QPM).
 - [ ] **OpenCL SDK 2.3+** — NOT found. Needed for the Adreno/`GGML_OPENCL` half.
-- [ ] **CMake** — not on PATH. Install (winget: `Kitware.CMake`) or add to PATH.
+- [x] **CMake** — present (4.4.2 in the Python `Scripts` folder; checked 2026-11-27). `winget install Kitware.CMake` if it is missing on another host.
+- [ ] **Windows test-signing** — the HTP session libraries are signed DLLs; the upstream Windows guide requires
+      `bcdedit /set TESTSIGNING ON` (Secure Boot off, reboot) and a self-signed certificate in the Trusted Root store.
+      This changes host security settings; it has not been done on this PC, so the NPU path was not run here.
 - [x] VS 2026 / LLVM-Clang ARM64 toolchain — `clangarm64` present on PATH.
 
 ## Build (once prerequisites are met)
@@ -60,13 +64,13 @@ no `libggml-htp-*`, so it must be rebuilt):
     cmake --build build-snapdragon
     cmake --install build-snapdragon --prefix C:/llm_hexagon/llama.cpp
 
-This produces `libggml-htp-v73/v75/v79/v81.so` alongside the binaries.
+This produces `libggml-htp-v73/v75/v79/v81` (`.so` on Linux, signed `.dll` on Windows) alongside the binaries.
 
 ## Run
 
 The NPU appears as a pseudo-GPU device `HTP0..HTP4`; offload with `-ngl`.
 
-    # PC (X Elite, v75-class) or copy to device. Model on plain disk.
+    # PC (X Elite, Hexagon v73) or copy to device. Model on plain disk.
     llama-cli -m C:/llm_hexagon/models/Qwen3-14B-Q4_0.gguf \
       --device HTP0,HTP1,HTP2 -ngl 99 -c 4096 \
       -p "Explain the Hexagon NPU in one paragraph." -n 128
@@ -79,5 +83,10 @@ The NPU appears as a pseudo-GPU device `HTP0..HTP4`; offload with `-ngl`.
 ## Status
 
 - 2026-08-19: Scaffolded. Target set to Qwen3-14B Q4_0 (32B ruled out — exceeds session
-  ceiling). Build blocked on missing Hexagon SDK 6.6+, OpenCL SDK, and cmake on this host.
+  ceiling). Build blocked on missing Hexagon SDK 6.7+, OpenCL SDK, and Windows test-signing on this host.
   Backend itself is upstream-experimental.
+- 2026-11-27: CPU and Adreno-GPU paths run on this PC with a prebuilt llama.cpp release
+  (b12803, win-arm64 CPU and OpenCL zips) and Qwen2.5-0.5B-Instruct Q4_0: CPU about 20 tokens/s
+  generation through `llama-cli` and 38 through `llama-server`; Adreno (OpenCL, `-ngl 99`)
+  about 47 tokens/s on a short sample. No Windows Hexagon/HTP release asset exists (only Android
+  and Linux snapdragon assets), so the NPU path still needs the source build above.

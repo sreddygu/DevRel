@@ -1,6 +1,6 @@
-import json, urllib.request
-BASE="http://127.0.0.1:8080"
-MODEL="gemma-4-E4B-it-Q4_K_M.gguf"
+import json, os, urllib.request
+BASE=os.environ.get("LLAMA_BASE_URL","http://127.0.0.1:8080")
+MODEL=os.environ.get("LLAMA_MODEL","gemma-4-E4B-it-Q4_K_M.gguf")  # llama-server ignores the name; set it to match what you loaded
 msgs=[{"role":"system","content":"You are a helpful assistant. No tool calls. Answer plainly."}]
 while True:
     u=input("> ").strip()

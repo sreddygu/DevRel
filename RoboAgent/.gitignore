@@ -40,3 +40,46 @@ __pycache__/
 Thumbs.db
 *.swp
 *.swo
+
+# --- Outputs and execution data (managed; do not commit run results) ---
+# Run output folders
+output/
+outputs/
+results/
+runs/
+artifacts/
+tmp/
+temp/
+checkpoints/
+exports/
+.cache/
+# Logs, local databases and process files
+*.log
+*.log.*
+*.pid
+*.db
+*.sqlite
+*.sqlite3
+*.executed.ipynb
+.ipynb_checkpoints/
+# Models, compiled graphs and generated binaries
+*.onnx.data
+*.dlc
+*.tflite
+*.joblib
+*.npy
+*.npz
+*.bin
+*.raw
+# Environments, caches and secrets
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+!.env.*.example
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+# --- end managed block ---

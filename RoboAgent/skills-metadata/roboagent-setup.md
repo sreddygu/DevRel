@@ -17,7 +17,7 @@ Set up the ExecuTorch and Qualcomm AI Engine Direct (QNN) backend build environm
 - **Tags:** `roboagent`, `edge-ai`, `setup`, `llm`, `executorch`, `qnn`, `windows-on-snapdragon`, `gemma`
 - **License:** `Apache-2.0`
 - **Compatibility:** host OS `windows`
-- **Requirements:** Snapdragon X (SC8380XP) Windows on ARM device; QAIRT 2.47; no adb or cross-compile
+- **Requirements:** Snapdragon X (SC8380XP) Windows on ARM device; QAIRT 2.51; no adb or cross-compile
 - **References:** [RoboAgent README](../README.md)
 - **Hub triggers:** none
 - **Manifest:** [`skills.json`](../skills.json)
@@ -29,5 +29,5 @@ Set up the ExecuTorch and Qualcomm AI Engine Direct (QNN) backend build environm
 - Check prerequisites before building a QNN runner
 - Prepare this device as both host and target for QNN
 - What do I install before building ExecuTorch with the QNN backend on Windows?
-- Verify my QAIRT 2.47 install is visible to the ExecuTorch build
+- Verify my QAIRT 2.51 install is visible to the ExecuTorch build
 - Why does the ExecuTorch QNN build fail on my ARM64 Windows PC?

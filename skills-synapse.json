@@ -13,7 +13,7 @@
       "project": "AURA",
       "manifest": "AURA/skills.json",
       "skillCount": 1,
-      "requirements": "Arduino VENTUNO Q or Qualcomm IQ8 (QCS8275); Python 3.10+; optional Genie endpoint (QAIRT 2.47) on a trusted Snapdragon host"
+      "requirements": "Arduino VENTUNO Q or Qualcomm IQ8 (QCS8275); Python 3.10+; optional Genie endpoint (QAIRT 2.51) on a trusted Snapdragon host"
     },
     {
       "project": "EdgeAgent",
@@ -37,7 +37,7 @@
       "project": "RoboAgent",
       "manifest": "RoboAgent/skills.json",
       "skillCount": 2,
-      "requirements": "Snapdragon X (SC8380XP) Windows on ARM device; QAIRT 2.47; no adb or cross-compile"
+      "requirements": "Snapdragon X (SC8380XP) Windows on ARM device; QAIRT 2.51; no adb or cross-compile"
     },
     {
       "project": "VSaaS",
@@ -890,7 +890,7 @@
         "Check prerequisites before building a QNN runner",
         "Prepare this device as both host and target for QNN",
         "What do I install before building ExecuTorch with the QNN backend on Windows?",
-        "Verify my QAIRT 2.47 install is visible to the ExecuTorch build",
+        "Verify my QAIRT 2.51 install is visible to the ExecuTorch build",
         "Why does the ExecuTorch QNN build fail on my ARM64 Windows PC?"
       ],
       "license": "Apache-2.0",

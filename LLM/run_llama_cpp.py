@@ -59,10 +59,12 @@ def parse_args() -> argparse.Namespace:
 
 
 def _resolve_bin(llama_cpp_dir: Path, *, server: bool) -> Path:
+    name = "llama-server" if server else "llama-cli"
+    # Windows builds and release zips ship ".exe"; a release zip also unpacks flat (no build/bin).
+    names = [name, f"{name}.exe"]
     candidates = [
-        llama_cpp_dir / "build" / "bin" / ("llama-server" if server else "llama-cli"),
-        llama_cpp_dir / "build" / ("llama-server" if server else "llama-cli"),
-    ]
+        llama_cpp_dir / "build" / "bin" / n for n in names
+    ] + [llama_cpp_dir / "build" / n for n in names] + [llama_cpp_dir / n for n in names]
     for c in candidates:
         if c.exists():
             return c

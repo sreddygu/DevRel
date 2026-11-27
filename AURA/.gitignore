@@ -104,3 +104,33 @@ bin/**/*.ilk
 # ...but keep intentional fixtures / demo assets
 !examples/**/fixture_*
 !docs/**/*.png
+
+# --- Outputs and execution data (managed; do not commit run results) ---
+# Run output folders
+outputs/
+results/
+runs/
+artifacts/
+tmp/
+temp/
+checkpoints/
+exports/
+.cache/
+# Logs, local databases and process files
+logs/
+*.log.*
+*.pid
+*.db
+*.executed.ipynb
+.ipynb_checkpoints/
+# Models, compiled graphs and generated binaries
+*.onnx.data
+*.pte
+*.joblib
+*.npy
+*.npz
+# Environments, caches and secrets
+.env.*
+!.env.example
+!.env.*.example
+# --- end managed block ---

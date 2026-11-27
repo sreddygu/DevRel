@@ -61,7 +61,7 @@ Read the log's `Rate:` / `PyTorchObserver {...}` lines for prefill/decode tok/s;
 | Devkits | Not device-specific |
 | Target OS | No target OS constraint declared |
 | Host OS | Windows |
-| Requirements | Snapdragon X (SC8380XP) Windows on ARM device; QAIRT 2.47; no adb or cross-compile |
+| Requirements | Snapdragon X (SC8380XP) Windows on ARM device; QAIRT 2.51; no adb or cross-compile |
 
 References: [RoboAgent README](https://github.com/sreddygu/DevRel/blob/main/RoboAgent/README.md).
 

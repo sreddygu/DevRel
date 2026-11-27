@@ -151,7 +151,7 @@ CPU server logs used during verification:
 
 Verified components:
 
-- QAIRT: `C:\Qualcomm\AIStack\QAIRT\2.47.1.260610`
+- QAIRT: `C:\Qualcomm\AIStack\QAIRT\2.51.40.260930`
 - Genie binary: `bin\aarch64-windows-msvc\genie-t2t-run.exe`
 - DSP libraries: `lib\hexagon-v73\unsigned`
 - Bundle: `C:\genie_bundle\qwen3_4b_instruct_2507-genie-w4a16-qualcomm_snapdragon_x_elite`
@@ -185,7 +185,7 @@ explicit local-only setup is:
 
 ```powershell
 $edgeRoot = (Get-Location).Path
-$qairt = "C:\Qualcomm\AIStack\QAIRT\2.47.1.260610"
+$qairt = "C:\Qualcomm\AIStack\QAIRT\2.51.40.260930"
 $bundle = "C:\genie_bundle\qwen3_4b_instruct_2507-genie-w4a16-qualcomm_snapdragon_x_elite"
 
 $env:QAIRT_HOME = $qairt
@@ -246,7 +246,7 @@ Run the agent with the QAIRT environment visible to both the model server and
 the local diagnostics:
 
 ```powershell
-$qairt = "C:\Qualcomm\AIStack\QAIRT\2.47.1.260610"
+$qairt = "C:\Qualcomm\AIStack\QAIRT\2.51.40.260930"
 $env:QAIRT_HOME = $qairt
 $env:Path = "$qairt\bin\aarch64-windows-msvc;" +
   "$qairt\lib\aarch64-windows-msvc;" + $env:Path

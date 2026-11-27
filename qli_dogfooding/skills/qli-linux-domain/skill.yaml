@@ -31,7 +31,7 @@ synapse:
     - "discovery"
     - "enablement"
     - "platform-experience"
-  supported_versions: ["Qualcomm Linux (QLI) 2.0", "QAIRT 2.47.x host runtime"]
+  supported_versions: ["Qualcomm Linux (QLI) 2.0", "QAIRT 2.47.x or 2.51.x host runtime"]
   dependencies: []
   supported_devices:
     - "IQ8"

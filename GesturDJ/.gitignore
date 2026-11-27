@@ -42,3 +42,38 @@ Thumbs.db
 .vscode/
 .idea/
 *.log.tmp
+
+# --- Outputs and execution data (managed; do not commit run results) ---
+# Run output folders
+output/
+results/
+runs/
+artifacts/
+tmp/
+temp/
+checkpoints/
+exports/
+.cache/
+# Logs, local databases and process files
+logs/
+*.log
+*.log.*
+*.pid
+*.db
+*.sqlite
+*.sqlite3
+*.executed.ipynb
+# Models, compiled graphs and generated binaries
+*.pte
+*.gguf
+*.tflite
+# Environments, caches and secrets
+env/
+.env.*
+!.env.example
+!.env.*.example
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+# --- end managed block ---

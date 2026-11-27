@@ -66,7 +66,7 @@ LLM** so guidance is grounded in what the headset actually sees.
 | Spatial | Lightweight pose/scene-graph in Python (OpenCV geometry) |
 | LLM | Qwen3-4B W4A16 via Genie (NPU) or GGUF via llama.cpp (CPU) |
 | XR runtime (future) | OpenXR + Snapdragon Spaces (when XR2/AR1 hardware is available) |
-| Acceleration | QAIRT 2.47 · QNN · Hexagon NPU |
+| Acceleration | QAIRT 2.51 · QNN · Hexagon NPU |
 
 ---
 
